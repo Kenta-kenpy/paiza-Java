@@ -1,1 +1,23 @@
+※欠番が存在する理由につきましては、出題自体を公開終了した問題が欠番となっております。
 
+--------------------------------------------- D001　※欠番 ◆
+# D001 ◆
+# D002　数の比較
+# utf-8
+import java.util.*;
+public class Main {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int a = sc.nextInt();
+    int b = sc.nextInt();
+    if (a > b) {
+        System.out.println(a);
+    } else if (a < b) {
+        System.out.println(b);
+    } else {
+        System.out.println("eq");
+    }
+  }
+}
+
+# D003
