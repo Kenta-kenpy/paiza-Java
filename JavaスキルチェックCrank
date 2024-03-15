@@ -1,0 +1,26 @@
+C145 公平な得点計算
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main {
+    // 得点を計算するメソッド
+    public static double calculateScore(int N, int[] scores) {
+        // 最高点と最低点を除いた合計を計算
+        int total = Arrays.stream(scores).sum() - Arrays.stream(scores).max().getAsInt() - Arrays.stream(scores).min().getAsInt();
+        // 得点を計算して小数第一位まで表示
+        return Math.floor(((double) total / (N - 2)) * 10) / 10;
+    }
+
+    public static void main(String[] args) {
+        // 入力の読み込み
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        int[] scores = new int[N];
+        for (int i = 0; i < N; i++) {
+            scores[i] = scanner.nextInt();
+        }
+        // 得点を計算して出力
+        double result = calculateScore(N, scores);
+        System.out.printf("%.1f\n", result);
+    }
+}
