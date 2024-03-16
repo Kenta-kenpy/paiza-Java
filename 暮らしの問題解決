@@ -1,0 +1,61 @@
+鍋が大中小とあるとき、同じ料理（ハンバーグのひき肉　成型前）がそれぞれの鍋に入っている。
+今、鍋の高さと内径が分かっているとき、どの鍋にも同じ量が入るようにするには、どれくらいの高さずつにすればいいか。
+
+
+import java.util.Scanner;
+
+public class NabeTakasa {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // 各鍋の内径と高さを入力
+        System.out.println("大鍋の内径を入力してください:");
+        double diameterLarge = scanner.nextDouble();
+        System.out.println("大鍋の高さを入力してください:");
+        double heightLarge = scanner.nextDouble();
+
+        System.out.println("中鍋の内径を入力してください:");
+        double diameterMedium = scanner.nextDouble();
+        System.out.println("中鍋の高さを入力してください:");
+        double heightMedium = scanner.nextDouble();
+
+        System.out.println("小鍋の内径を入力してください:");
+        double diameterSmall = scanner.nextDouble();
+        System.out.println("小鍋の高さを入力してください:");
+        double heightSmall = scanner.nextDouble();
+
+        // 各鍋の体積を計算
+        double volumeLarge = calculateVolume(diameterLarge, heightLarge);
+        double volumeMedium = calculateVolume(diameterMedium, heightMedium);
+        double volumeSmall = calculateVolume(diameterSmall, heightSmall);
+
+        // ひき肉の量を均一にするための高さを求める
+        double meatVolume = Math.min(volumeLarge, Math.min(volumeMedium, volumeSmall));
+
+        // 均一なひき肉の量を持つための各鍋の高さを計算
+        double newHeightLarge = calculateHeightForVolume(diameterLarge, meatVolume);
+        double newHeightMedium = calculateHeightForVolume(diameterMedium, meatVolume);
+        double newHeightSmall = calculateHeightForVolume(diameterSmall, meatVolume);
+
+        // 結果を出力
+        System.out.println();
+        System.out.println("それぞれの鍋の高さは次の通りです");
+        System.out.println("大鍋: " + newHeightLarge);
+        System.out.println("中鍋: " + newHeightMedium);
+        System.out.println("小鍋: " + newHeightSmall);
+
+        scanner.close();
+    }
+
+    // 鍋の体積を計算するメソッド
+    public static double calculateVolume(double diameter, double height) {
+        double radius = diameter / 2;
+        return Math.PI * radius * radius * height;
+    }
+
+    // 指定された体積を持つための高さを計算するメソッド
+    public static double calculateHeightForVolume(double diameter, double targetVolume) {
+        double radius = diameter / 2;
+        return targetVolume / (Math.PI * radius * radius);
+    }
+}
