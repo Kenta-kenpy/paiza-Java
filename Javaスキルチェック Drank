@@ -38,3 +38,31 @@ public class Main {
         }
     }
 }
+
+# D004  文字列の結合
+# utf-8
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // 文字列の個数を読み込む
+        int n = Integer.parseInt(scanner.nextLine());
+
+        // 入力文字列を格納するリスト
+        List<String> strings = new ArrayList<>();
+
+        // 各文字列をリストに追加
+        for (int i = 0; i < n; i++) {
+            strings.add(scanner.nextLine());
+        }
+
+        // カンマで結合して"Hello "の後に付ける
+        String result = "Hello " + String.join(",", strings) + ".";
+
+        // 結果を出力
+        System.out.println(result);
+    }
+}
+
