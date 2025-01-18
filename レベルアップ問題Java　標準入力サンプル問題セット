@@ -1,0 +1,158 @@
+// 1つのデータの入力
+import java.util.*;
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.next();
+    System.out.println(s);
+  }
+}
+/*入力を受け取って文字列 S に代入します。
+S をそのまま出力します。*/
+
+// 1行のデータの入力
+import java.util.*;
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    System.out.println(s);
+  }
+}
+/*標準入力から 1 行受け取って文字列 S に代入します。
+S をそのまま出力します。*/
+
+// 3行のデータの入力
+import java.util.*;
+public class Main {
+    public static void main(String... args) {
+        Scanner sc = new Scanner(System.in);
+        for (int i = 0; i < 3; i++) {
+            String S = sc.nextLine();
+            System.out.println(S);
+        }
+    }
+}
+/*標準入力から 3 回 1 行ずつ受け取り、それを順に出力します。*/
+
+// N行のデータの入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = Integer.parseInt(sc.nextLine());
+        for (int i = 0; i < N; i++) {
+            System.out.println(sc.nextLine());
+        }
+    }
+}
+/*前問の繰り返し回数が N になった場合です。
+繰り返し回数の N を受け取ります。
+標準入力から N 回 1 行ずつ受け取り、それを順に出力します。*/
+
+// 3つのデータの入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String a = sc.next();
+        String b = sc.next();
+        String c = sc.next();
+
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
+    }
+}
+/*入力を 1 行受け取り、半角スペース区切りで 3 つに分割します。*/
+
+// N個のデータの入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+
+        for (int i = 0; i < N; i++) {
+            String s = sc.next();
+            System.out.println(s);
+        }
+    }
+}
+/*初めに文字列の個数 N を受け取ります。
+入力を 1 行受け取り、半角スペースを区切り文字として N 個に分割します。*/
+
+// カンマ区切りの3つのデータの入力
+import java.util.*;
+import java.util.regex.*;
+
+public class Main {
+
+    public static void main(String... args) {
+        Scanner sc = new Scanner(System.in);
+
+        //----------------------------------
+        // 1. 区切り文字を指定
+        sc.useDelimiter(",");
+        for (int i = 0; i < 3; i++) {
+            String s = sc.next();
+            System.out.println(s);
+        }
+        //----------------------------------
+
+        //----------------------------------
+        // 2. split で分割
+        // String line = sc.nextLine();
+        // String[] words = line.split(",");
+        // for (int i = 0; i < 3; i++) {
+        //     String s = words[i];
+        //     System.out.println(s);
+        // }
+        //----------------------------------
+    }
+}
+/*入力を 1 行受け取り、カンマを区切り文字として 3 つに分割します。*/
+
+// カンマ区切りのN個のデータの入力
+import java.util.*;
+import java.util.regex.*;
+
+public class Main {
+
+    public static void main(String... args) {
+        Scanner sc = new Scanner(System.in);
+
+        //----------------------------------
+        // 1. 区切り文字を指定
+        // int N = sc.nextInt();
+        // sc.useDelimiter(",");
+        // for (int i = 0; i < N; i++) {
+        //     String s = sc.next();
+        //     System.out.println(s.trim());
+        // }
+        //----------------------------------
+
+        //----------------------------------
+        // 2. split で分割
+        String line = sc.nextLine();
+        int N = Integer.valueOf(line);
+
+        line = sc.nextLine();
+        String[] words = line.split(",");
+        for (int i = 0; i < N; i++) {
+            String s = words[i];
+            System.out.println(s);
+        }
+        //----------------------------------
+    }
+}
+/*初めに文字列の個数 N を受け取ります。
+入力を 1 行受け取り、カンマを区切り文字として N 個に分割します。*/
