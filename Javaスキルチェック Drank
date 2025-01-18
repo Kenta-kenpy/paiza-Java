@@ -3,7 +3,6 @@
 --------------------------------------------- D001　※欠番 ◆
 # D001 ◆
 # D002　数の比較
-# utf-8
 import java.util.*;
 public class Main {
 public static void main(String[] args) {
@@ -21,7 +20,6 @@ public static void main(String[] args) {
 }
 
 # D003　掛け算のリスト
-# utf-8
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -40,7 +38,6 @@ public class Main {
 }
 
 # D004  文字列の結合
-# utf-8
 import java.util.*;
 
 public class Main {
