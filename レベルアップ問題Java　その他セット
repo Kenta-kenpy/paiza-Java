@@ -1,0 +1,132 @@
+<総和の計算>
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        // 入力を受け取る
+        long a = scanner.nextLong();
+        long b = scanner.nextLong();
+        scanner.close();
+
+        // 数列の総和を計算する公式を使用
+        // sum = (b * (b + 1) / 2) - ((a - 1) * a / 2)
+        BigInteger sumB = BigInteger.valueOf(b).multiply(BigInteger.valueOf(b + 1)).divide(BigInteger.valueOf(2));
+        BigInteger sumA = BigInteger.valueOf(a).multiply(BigInteger.valueOf(a - 1)).divide(BigInteger.valueOf(2));
+        BigInteger result = sumB.subtract(sumA);
+
+        // 結果を出力
+        System.out.println(result);
+    }
+}
+
+/*2つの整数A, B を受け取ります。
+1からNまでの和は、N(N+1)/2で求めることができます。 また、A < B であることから A から B までの和は、 (1からBまでの和) - (1からA-1までの和) で求めることができます。
+立式を行うと、 B(B+1)/2-(A-1)A/2 となるので、式変形を行うことで、(A+B)(B-A+1)/2 を導出することができます。
+数列の和の公式: 
+𝑆 = 𝑛 ⋅ (𝑛+1)/2​
+を使用し、範囲 [1, B] の和から [1, A-1] の和を引くことで、[A, B] の総和を効率的に計算します。
+
+BigInteger の使用:
+B が非常に大きい場合を考慮し、BigInteger を使うことで桁あふれを防ぎます*/
+
+<ifを使いますか？三項演算子を使いますか？>
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        // 標準入力を扱うためのScannerオブジェクトを作成
+        Scanner sc = new Scanner(System.in);
+
+        // 1行目の入力を整数として読み取り、変数aに格納
+        int a = Integer.parseInt(sc.nextLine());
+        
+        // 2行目の入力を文字列として読み取り、変数bに格納
+        String b = sc.nextLine();
+        
+        // 3行目の入力を文字列として読み取り、変数cに格納
+        String c = sc.nextLine();
+        
+        // 4行目の入力を文字列として読み取り、変数dに格納
+        String d = sc.nextLine();
+        
+        // 5行目の入力を文字列として読み取り、変数eに格納
+        String e = sc.nextLine();
+
+        // 条件: aが0より大きいなら"plus"を出力、それ以外の場合はそのままaを出力
+        System.out.println(a > 0 ? "plus" : a);
+
+        // 条件: bが"hoge"と一致するなら"yes"を出力、それ以外の場合はそのままbを出力
+        System.out.println(b.equals("hoge") ? "yes" : b);
+
+        // 条件: cの文字列長が10なら"ten"を出力、それ以外の場合はそのままcを出力
+        System.out.println(c.length() == 10 ? "ten" : c);
+
+        // 条件: dに"x"が含まれている場合、最初に見つかった位置(0始まり)を出力、
+        //       含まれていない場合は"nothing"を出力
+        System.out.println(d.contains("x") ? d.indexOf("x") : "nothing");
+
+        // 条件: eの文字列長が5なら"five"を出力、
+        //       それ以外の場合はeの最初の1文字を出力
+        System.out.println(e.length() == 5 ? "five" : e.charAt(0));
+    }
+}
+/*int a = Integer.parseInt(sc.nextLine());
+標準入力から文字列を1行読み取り、Integer.parseIntで整数に変換してaに格納します。
+この操作は、数値入力を受け取る際に必要です。
+String b = sc.nextLine();
+標準入力から文字列を1行読み取り、そのままbに格納します。
+String c = sc.nextLine();
+3行目の入力を文字列としてcに格納します。
+String d = sc.nextLine();
+4行目の入力を文字列としてdに格納します。
+String e = sc.nextLine();
+5行目の入力を文字列としてeに格納します。
+System.out.println(a > 0 ? "plus" : a);
+三項演算子を使用し、aが0より大きい場合は"plus"を出力し、そうでなければaそのものを出力します。
+System.out.println(b.equals("hoge") ? "yes" : b);
+文字列bが"hoge"と一致する場合は"yes"を出力し、そうでなければbそのものを出力します。
+System.out.println(c.length() == 10 ? "ten" : c);
+文字列cの長さが10の場合は"ten"を出力し、それ以外の場合はcそのものを出力します。
+System.out.println(d.contains("x") ? d.indexOf("x") : "nothing");
+文字列dに"x"が含まれているかを確認し、含まれている場合は最初に見つかったインデックスを出力、含まれていない場合は"nothing"を出力します。
+System.out.println(e.length() == 5 ? "five" : e.charAt(0));
+文字列eの長さが5の場合は"five"を出力し、それ以外の場合はeの最初の1文字を出力します。*/
+
+<総和の計算>
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // 1行目で正の整数nを入力
+        int n = Integer.parseInt(scanner.nextLine());
+
+        // 入力された数値を保持するリスト
+        List<Integer> numbers = new ArrayList<>();
+
+        // n行の整数を読み込む
+        for (int i = 0; i < n; i++) {
+            numbers.add(Integer.parseInt(scanner.nextLine()));
+        }
+
+        // 数値を昇順にソート
+        Collections.sort(numbers);
+
+        // ソート結果を改行区切りで出力
+        for (int number : numbers) {
+            System.out.println(number);
+        }
+
+        scanner.close();
+    }
+}
+/*入力の読み取り:
+最初の行で整数 n を読み取り、続く n 行で整数を読み取ります。
+入力された整数をリスト numbers に格納します。
+ソート処理:
+Collections.sort メソッドを使ってリスト内の整数を昇順にソートします。
+出力:
+ソートされた整数を順に出力します。*/
