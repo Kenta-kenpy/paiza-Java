@@ -1,1 +1,465 @@
+<2つの数値を出力>
+step1 1つの文字列を出力
+public class Main {
 
+    public static void main(String[] args) {
+        System.out.println("paiza");
+    }
+}
+/*文字列を 1 つ出力します。
+Java では、System.out.println() で () に挟まれた値を出力します。
+今回、文字列 "paiza" を出力したいのでそのように書きます。
+また、Java では、文字列を表現するとき、" (ダブルクオーテーション) で挟みます。*/
+
+step2 2つの文字列を出力
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println("paiza learning");
+    }
+}
+/*文字列を 2 つ半角スペース区切りで出力します。
+"paiza", 半角スペース, "learning" を 1 つの文字列とみて "paiza learning" を出力することで解けます*/
+
+step3 1行の出力
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("813");
+    }
+}
+/*Java では、出力は System.out.println() を用います。
+System.out.println() は () に挟まれた値を出力します。
+System.out.println() は自動的に改行を挿入するため、明示的に改行することを記述する必要はありません。*/
+
+step4 3行の出力
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println(8);
+        System.out.println(1);
+        System.out.println(3);
+    }
+}
+/*標準出力関数を使用して整数 8 と 1 と 3 を出力します。
+また、整数を出力した後に改行を出力します。
+System.out.println() を 3 回使って出力します。
+System.out.println() は自動的に改行を挿入するため、明示的に改行することを記述する必要はありません。*/
+
+final 2つの数値を出力
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println(1 + " " + 1);
+    }
+}
+/*半角スペース区切りで 2 つの 1 を出力します。
+1 , 半角スペース , 1 の順に出力します。
+出力には System.out.println() を使います。
+() 内で + を使って 1 と " " と 1 を連結して出力します。
++ は左結合 (下で説明) で、ここでは数値は文字列に変換されてから結合されます。
+【 「左結合」とは何か 】
+演算子の左側と右側どちらを先に処理するかを意味する、左結合、右結合、という用語があります。
+左結合は演算子の左側を先に処理します。
+演算子 + は A + B + C を (A + B) + C として処理する左結合の演算子です。
+因みに、右結合の演算子の例としては = が挙げられます。
+A = B = C は A = (B = C) のように演算される (C に A の値が代入されるのではなく、A に C の値が代入される) ので、右結合です。*/
+
+<代入演算1>
+step1 足し算
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println(1231 + 5178);
+    }
+}
+/*足し算を行うプログラムを記述します。
+多くのプログラミング言語では + 記号で足し算を表すことができます。*/
+
+step2 割り算
+import java.util.*;
+
+public class Main {
+
+    public static void main(String... args) {
+        var a = 437_326;
+        var b = 9_085;
+
+        System.out.println((a / b) + " " + (a % b));
+    }
+}
+/*割り算をおこなうプログラムを記述します。
+多くのプログラミング言語では / 記号で割り算を表すことができますが、一部の言語では // 記号で割り算を表すこともあります。
+A を B で割った余りは % 記号などであわらすことができますが、 A - A / B * B でも同様に計算することができます。
+Python で整数同士の割り算をするためには / 記号ではなく // 記号を用います。 / 記号を用いると小数部も含めた演算ができます。*/
+
+step3 累乗
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        var a = 202;
+        var b = 134;
+        var c = 107;
+
+        System.out.println(((a + b) * c) * ((a + b) * c));
+    }
+}
+/*累乗が入った、少し複雑な計算を行うプログラムを記述します。しかし、今までの問題の知識を思い出せば解けるはずです。
+まず、多くの言語で足し算は + 記号、掛け算は * 記号で計算することができます。*/
+
+final 代入演算1
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        var n = 0;
+
+        n += 3286;
+        n *= 4736;
+        n %= 12312;
+
+        System.out.println(n);
+    }
+}
+/*代入演算とは、変数に数値や変数を代入する演算のことです。たとえば、変数 N に 1 代入するという処理がこれに当たります。多くの言語では = 記号で記述することができます。
+他にも、演算を行いながら代入を行う演算がこれに当たります。たとえば変数 N に 1 を足した値を N に代入するといった演算です。足し算の場合、多くの言語では += 記号などで記述することができます。
+また、 n = n + 3286 は n += 3286 と同じ意味です。特に代入演算が複雑になる場合、このように足し算を行った後に代入してもよいです。*/
+
+<半角スペース区切りの2つの入力>
+step1 1行の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+        System.out.println(s);
+
+        sc.close();
+    }
+}
+/*まず入力を受け取って変数 s に代入します。次に s をそのまま出力します。
+この解答例では、標準入力の受け取りに Scanner を用います。
+そして、Scanner クラスのメソッドを用いて、入力を受け取ります。
+Scanner クラスは java.util にあるので、
+import java.util.Scanner;
+または
+import java.util.*;
+でインポートして使います。
+後者の import 文は java.util 直下にあるクラスをすべてインポートして使える様にすることができます。
+Scanner クラスで標準入力を文字列で受け取るためには、next メソッドを使います。
+受け取った文字列を System.out.println() を用いて出力します。これは、() に挟まれた値を末尾に改行を入れて出力します。*/
+
+step2 2行の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+        String t = sc.next();
+
+        System.out.println(s);
+        System.out.println(t);
+
+        sc.close();
+    }
+}
+/*まず入力を受け取って変数 s, t に代入します。次に s, t をそのまま出力します。
+2 行の入力を受け取るので、input() を 2 回使います。
+print() は末尾に改行を出力するので、今回は print() を 2 回使って s と t を出力します。*/
+
+step3 1つの入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+        System.out.println(s);
+
+        sc.close();
+    }
+}
+/*半角スペースを含まない 1 つの文字列なので、s にそのまま入力します。
+次に s をそのまま出力します。入力される文字列に空白文字が含まれないことが保証されているので、next() メソッドを用いて入力される文字列を受け取ります。
+受け取ったら、そのまま System.out.println() を用いて出力します。*/
+
+final 半角スペース区切りの2つの入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+        String t = sc.next();
+
+        System.out.println(s);
+        System.out.println(t);
+
+        sc.close();
+    }
+}
+/*半角スペース区切りで分割し、変数 s, t に代入します。それぞれ改行して出力します。
+Scanner クラスの next メソッドは特に指定しない限り、入力を空白文字区切りで受け取ります。なにが空白文字か、については Oracle の API に書かれています。
+今回の場合、2 回 next メソッドを用いることで、入力されるすべての文字列を受け取ることができます。*/
+
+<乗客人数>
+step1 入力された2つの文字列を出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+        String t = sc.next();
+
+        System.out.println(s);
+        System.out.println(t);
+
+        sc.close();
+    }
+}
+/*入力された 2 つの文字列を改行区切りでそのまま出力します。
+標準入力を受け取るために、この解答例では Scanner クラスを用います。
+Scanner クラスは java.util にあるので、
+import java.util.*;
+または
+import java.util.Scanner;
+でインポートして使います。
+Scanner クラスの next メソッドを用いることで、入力を空白文字区切り (※1) で受け取ることができます。
+今回の入力は 2 行で、どちらも空白文字を含まないので、next メソッドを 2 回使って入力を受け取ります。
+出力は System.out.println() を使います。
+【 ※1 Java での空白文字 】
+Java での空白文字は「スペース (半角、全角問わず)」「改行」「タブ」などのことを指します。
+具体的には Character.isWhitespace(文字) で true が返ってくる 文字 が空白文字です。*/
+
+step2 引き算・掛け算
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        var sc = new Scanner(System.in);
+
+        var a = sc.nextInt();
+        var b = sc.nextInt();
+
+        System.out.println((a - b) + " " + (a * b));
+    }
+}
+/*引き算と掛け算を行うプログラムを記述します。
+多くのプログラミング言語では - 記号で引き算を、 * 記号で掛け算を表すことができます。
+A と B は標準入力によって与えられます。*/
+
+step3 代入演算2
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        var sc = new Scanner(System.in);
+
+        var a = sc.nextInt();
+        var b = sc.nextInt();
+        var c = sc.nextInt();
+
+        var n = 0;
+
+        n += a;
+        n *= b;
+        n %= c;
+
+        System.out.println(n);
+    }
+}
+/*代入演算とは、変数に数値や変数を代入する演算のことです。たとえば、変数 N に 1 代入するという処理がこれに当たります。多くの言語では=記号で記述することができます。
+他にも、演算を行いながら代入を行う演算がこれに当たります。たとえば変数 N に 1 を足した値を N に代入するといった演算です。足し算の場合、多くの言語では+=記号で記述することができます。
+また、n = n + aはn += aと同じ意味です。特に代入演算が複雑になる場合、このように足し算を行った後に代入してもよいです。*/
+
+final 乗客人数
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        System.out.println(a - b + c);
+    }
+}
+
+<占い>
+step1 単純な条件分岐
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+        if (s.equals("paiza")) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+        sc.close();
+    }
+}
+/*以下の順で処理をおこないます。
+文字列 S を標準入力より受け取る
+S とpaizaを比較する
+もし S とpaizaが一致するなら、YESを出力する
+もし S とpaizaが一致しないなら、NOを出力する
+s = sc.next() で標準入力から、次の空白文字までを文字列型で受け取っています。
+s が "paiza" に一致するかは if(s.equals("paiza")) で判定します。
+もし、s が "paiza" と一致するなら、if 文の構文に従って 10 行目の処理が実行されます。
+そうでないなら、else 節が実行されます。*/
+
+step2 数値の分岐
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        if (n <= 100) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+        sc.close();
+    }
+}
+/*以下の順で処理をおこないます。
+整数 N を標準入力より受け取る
+N と 100 を比較する
+もし N が 100 以下なら、YESを出力する
+もしそうではないなら、NOを出力する
+n = sc.nextInt() で標準入力を整数型で受け取ります。
+n が 100 以下であるか、は if(n <= 100) の条件分岐で判定します。
+<= は左辺が右辺以下であるか、を判定したいときに使います。*/
+
+step3 数値演算結果で分岐
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+
+        if (a * b <= c) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+        sc.close();
+    }
+}
+/*以下の順で処理をおこないます。
+整数A, B, Cを標準入力より受け取る
+A × B ≦ C か判定する
+a * b <= cという式は条件式なので、多くの言語ではif文の中にそのまま記述することができます。
+方針の通り、if 文の中に計算式と条件式を書きます。
+a * b <= c が今回の条件式として挙げられます。*/
+
+final 占い
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        if (n == 7) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
+<FizzBuzz>
+step1 ある数字までの出力2
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使用して標準入力から値を取得
+        Scanner scanner = new Scanner(System.in);
+        
+        // 正の整数Nを入力
+        int N = scanner.nextInt();
+        
+        // 1からNまで順に出力
+        for (int i = 1; i <= N; i++) {
+            System.out.println(i);
+        }
+    }
+}
+/*Scannerクラスを使用して標準入力から整数
+Nを読み取ります。
+forループを用いて1からNまでの整数を順に出力します。
+各出力はSystem.out.printlnで改行付きで出力されます。*/
+
+final FizzBuzz
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        // ループ変数が1から100まで変化
+        for (int i = 1; i <= 100; i++) {
+            // 条件分岐
+            if (i % 3 == 0 && i % 5 == 0) {
+                // 3と5で割り切れる場合
+                System.out.println("FizzBuzz");
+            } else if (i % 3 == 0) {
+                // 3で割り切れる場合
+                System.out.println("Fizz");
+            } else if (i % 5 == 0) {
+                // 5で割り切れる場合
+                System.out.println("Buzz");
+            } else {
+                // どちらでも割り切れない場合
+                System.out.println(i);
+            }
+        }
+    }
+}
+/*ループの設定:
+for (int i = 1; i <= 100; i++): 変数 i を 1 から 100 に遷移させます。
+条件分岐:
+i % 3 == 0 && i % 5 == 0: 3 と 5 の両方で割り切れる場合に "FizzBuzz" を出力。
+i % 3 == 0: 3 で割り切れる場合に "Fizz" を出力。
+i % 5 == 0: 5 で割り切れる場合に "Buzz" を出力。
+上記の条件に該当しない場合は、i 自身を出力。
+出力フォーマット:
+各出力は System.out.println を使用して改行付きで表示します。*/
