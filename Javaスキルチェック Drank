@@ -63,6 +63,29 @@ public class Main {
 }
 
 // D005  等差数列
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // 入力を受け取る
+        int m = scanner.nextInt(); // 初項
+        int n = scanner.nextInt(); // 公差
+
+        // 数列を計算して出力
+        for (int i = 0; i < 10; i++) {
+            if (i > 0) {
+                System.out.print(" ");
+            }
+            System.out.print(m + i * n);
+        }
+        System.out.println(); // 最後に改行
+
+        scanner.close();
+    }
+}
+
 // D006  単位の計算
 // D007  ◆
 // D008  奇数か偶数か
