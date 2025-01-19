@@ -1,1 +1,47 @@
+<Dランク>
+// Eメールアドレス
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // ローカル部を入力として取得
+        String s = sc.nextLine();
+        // ドメインを入力として取得
+        String t = sc.nextLine();
+        
+        // ローカル部とドメインを"@"で繋いで出力
+        System.out.println(s + "@" + t);
+    }
+}
+/*String s = sc.nextLine();
+標準入力から1行目を読み取り、それをローカル部として文字列sに格納します。
+String t = sc.nextLine();
+標準入力から2行目を読み取り、それをドメインとして文字列tに格納します。
+System.out.println(s + "@" + t);
+ローカル部sとドメインtを@で結合し、その結果を出力します。
+nextLine()を使用する理由:
+改行区切りで文字列を入力するので、nextLine()を使って1行単位でデータを読み取ります。
++演算子の使用:
++演算子は文字列同士を連結する際に利用されます。s + "@" + t の結果は結合された文字列です。*/
+
+// N倍の文字列
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        // 入力を整数として取得
+        int N = sc.nextInt();
+
+        // for文を使用してN個の"*"を出力
+        for (int i = 0; i < N; i++) {
+            System.out.print("*");
+        }
+        // 改行
+        System.out.println();
+    }
+}
+/*Scannerの使用: sc.nextInt() を使用して整数として入力を取得します。Integer.parseIntは文字列を整数に変換しますが、sc.nextInt()を使用すればそのまま整数を取得可能です。
+文字列の繰り返し: Javaでは*のような文字列の繰り返しにString.repeatメソッドを使用します。このメソッドは、指定した回数分文字列を繰り返して新しい文字列を生成します。*/
