@@ -1,6 +1,74 @@
 <Dランク>
 // 掛け算
+import java.util.Scanner;
+
+public class Main{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+
+		System.out.println(a*b);
+	}
+}
+/*2つの整数を入力として受け取り、それらを掛け合わせた結果を出力すればよいです。*/
+
 // 足し算
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        System.out.println(a + b);
+    }
+}
+/*2つの整数を入力として受け取り、それらを足し合わせた結果を出力すればよいです。*/
+
 // 一番小さい値
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int answer = 101;
+        for (int i = 0; i < 5; i++) {
+            int n = sc.nextInt();
+            if (n < answer) {
+                answer = n;
+            }
+        }
+
+        System.out.println(answer);
+    }
+}
+/*答えを管理する変数 answer を用意し、適当に大きな値で初期化します。そして、入力された整数と answer を比較し、小さい方の値で answer を更新するという処理を行えばよいです。*/
+
 // 文字の一致
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String a = sc.next();
+        String b = sc.next();
+
+        if (a.equals(b)) {
+            System.out.println("OK");
+        } else {
+            System.out.println("NG");
+        }
+    }
+}
+/*文字列を2つ受け取り、それらが一致しているかどうかを確かめればよいです。
+2つの文字列について、値が等しいかどうかを確認するには String クラスの equals メソッドを、オブジェクトとして等しいかどうかを確認するには == 演算子を使います。*/
 
