@@ -72,3 +72,30 @@ public class Main {
 /*文字列を2つ受け取り、それらが一致しているかどうかを確かめればよいです。
 2つの文字列について、値が等しいかどうかを確認するには String クラスの equals メソッドを、オブジェクトとして等しいかどうかを確認するには == 演算子を使います。*/
 
+<Cランク>
+// Fizz Buzz
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        for (int i = 1; i <= n; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                System.out.println("Fizz Buzz");
+            } else if (i % 3 == 0) {
+                System.out.println("Fizz");
+            } else if (i % 5 == 0) {
+                System.out.println("Buzz");
+            } else {
+                System.out.println(i);
+            }
+        }
+    }
+}
+/*1 ~ n までの各数値について、問題文の指示に従って if 文等で場合分けを行い出力すればよいです。
+i % 3 == i % 5 == 0 の条件式は最初に置く必要があることに注意してください。
+たとえば、この条件式が i % 3 == 0 の後の elif 節にある場合は、3 の倍数はすべて i % 3 == 0 で引っかかってしまうので、i % 3 == i % 5 == 0 内の処理がおこなわれることがなくなってしまいます。*/
+
