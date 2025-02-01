@@ -445,3 +445,115 @@ colorOfArea 配列に、各エリアの色を格納します。エリアを特�
 長方形が交差している場合の処理の際に、llUrCrossing や ulLrCrossing フラグを用いて、エリアIDを細かく調整しています。*/
 
 S// 画像の切り抜き
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 入力: 画像の縦 H, 横 W, 切り抜く長方形の最小縦 N, 最小横 M
+        int H = sc.nextInt();
+        int W = sc.nextInt();
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+        sc.nextLine(); // 整数入力後の改行を消費
+
+        // 画像の各行を格納
+        String[] a = new String[H];
+        for (int i = 0; i < H; i++) {
+            a[i] = sc.nextLine(); // 各行を文字列として読み込む
+        }
+
+        // 二分探索の精度設定
+        int prec = 40;
+        double valid = 0.0, sup = 2.0;
+
+        // 二分探索を使って最大の黒さを探す
+        for (int t = 0; t < prec; t++) {
+            // 黒さの中間値を計算
+            double mid = (valid + sup) / 2.0;
+
+            // 累積和を格納する2次元配列を初期化
+            double[][] sum = new double[H + 1][W + 1];
+
+            // 画像を累積和で処理する
+            for (int i = 1; i <= H; i++) {
+                for (int j = 1; j <= W; j++) {
+                    sum[i][j] = 0.0;
+                    // 白（'0'）と黒（'1'）に対して異なる値を設定
+                    if (a[i - 1].charAt(j - 1) == '1') {
+                        sum[i][j] += (1.0 - mid); // 黒マスの累積和
+                    } else {
+                        sum[i][j] -= mid; // 白マスの累積和
+                    }
+                    // 累積和の公式
+                    sum[i][j] += sum[i - 1][j] + sum[i][j - 1] - sum[i - 1][j - 1];
+                }
+            }
+
+            // 各列の累積和を保持する配列
+            double[] work = new double[W + 1];
+            double[] mx = new double[W + 1];
+            boolean flag = false; // 長方形が見つかったかどうかを判定するフラグ
+
+            // 各長方形の領域をチェック
+            for (int i = 0; i <= H - N; i++) { // 上端を決める
+                for (int j = i + N; j <= H; j++) { // 下端を決める
+                    // i から j までの各列に対して差分を計算
+                    for (int k = 0; k <= W; k++) {
+                        work[k] = sum[j][k] - sum[i][k]; // 上端 i から下端 j までの黒さの差
+                    }
+
+                    // 最大値を右から累積
+                    for (int k = W; k >= 0; k--) {
+                        mx[k] = work[k];
+                        if (k < W) {
+                            mx[k] = Math.max(mx[k], mx[k + 1]); // 最大の黒さの差を維持
+                        }
+                    }
+
+                    // M列以上の長方形が存在するかチェック
+                    for (int k = M; k <= W; k++) {
+                        if (-work[k - M] + mx[k] >= 0.0) { // 黒さの差が0以上ならばフラグを立てる
+                            flag = true;
+                        }
+                    }
+                }
+            }
+
+            // フラグが立ったら黒さがmid以上であることが確認できたため、validを更新
+            if (flag) {
+                valid = mid;
+            } else {
+                // そうでなければ、黒さの上限を更新
+                sup = mid;
+            }
+        }
+
+        // 最後に結果を10桁の精度で出力
+        System.out.printf("%.10f\n", valid);
+    }
+}
+/*ロジックの解説
+入力処理:
+H, W, N, Mはそれぞれ画像の縦横のサイズ、および最小の切り抜き長方形の縦横サイズです。
+次に、各行の白黒画像を格納するために、aという配列に各行の文字列を格納します。画像は0（白）と1（黒）で構成されています。
+二分探索の準備:
+二分探索を使って、長方形の「黒さ」を最大化します。validとsupで現在探索している黒さの範囲を保持し、黒さの中間値midを計算します。
+累積和の計算:
+2次元累積和を用いて、任意の長方形領域に含まれる黒いマスの数を効率的に求められるようにします。sum[i][j]には、(0, 0)から(i-1, j-1)までの範囲における、黒マスの重み付き和を格納します。
+もしその位置が黒マス（'1'）なら、黒さを(1.0 - mid)に、白マス（'0'）なら-midに設定します。
+長方形領域の探索:
+iを上端、jを下端とする長方形の範囲を探索します。
+長方形内の黒さの合計を求めるために、sum[j][k] - sum[i][k]の差分を計算し、それを利用して各列の黒さを計算します。
+右端における最大値の保持:
+各列に対して右から累積して、最大値mx[k]を維持します。これにより、任意の長方形が黒さの条件を満たすかどうかを効率的に判定できます。
+条件の判定:
+-work[k - M] + mx[k] >= 0.0を使って、黒さがmid以上の長方形が存在するかをチェックします。もし存在すれば、flagをtrueに設定し、validを更新します。
+二分探索の更新:
+もしflagがtrueならば、その黒さmidは有効であるため、validを更新します。flagがfalseならば、黒さの上限supを更新して再探索します。
+結果の出力:
+最後に、探索で得られた最大の黒さvalidを10桁の精度で出力します。*/
+
+// P共通テスト過去問題2　★
