@@ -22,6 +22,104 @@ public class Main {  // クラス名を Main に変更
 支払いが足りていれば、M - S を計算して返金額を表示し、足りなければ「Tarimasen!」を表示します。*/
 
 C// rot-x
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // 入力を受け取る
+        int n = sc.nextInt();   // 文字列の長さ
+        String s = sc.next();    // 平文 s
+        String t = sc.next();    // 暗号文 t
+        
+        // 文字のシフト量を格納するためのマップ
+        Map<Integer, Integer> rot = new HashMap<>();
+        
+        // 各文字のシフト量を計算し、マップに格納
+        for (int i = 0; i < n; i++) {
+            int shift = (t.charAt(i) - s.charAt(i) + 26) % 26;  // シフト量を計算
+            rot.put(shift, rot.getOrDefault(shift, 0) + 1);  // シフト量の出現回数をカウント
+        }
+        
+        // シフト量の種類が1つの場合、正しい暗号文と判断
+        if (rot.size() == 1) {
+            // シフト量が1種類だけの場合
+            System.out.println("correct rot-" + rot.keySet().iterator().next());
+        }
+        // シフト量の種類が2つの場合
+        else if (rot.size() == 2) {
+            // マップのエントリをリスト化して、頻度を比較
+            List<Map.Entry<Integer, Integer>> entries = new ArrayList<>(rot.entrySet());
+            entries.sort((a, b) -> Integer.compare(a.getValue(), b.getValue()));
+            
+            // 出現頻度が少ない方のシフト量が1回なら修正が可能
+            if (entries.get(0).getValue() == 1) {
+                // 1回だけ間違っているので修正する
+                StringBuilder fixedT = new StringBuilder(t);
+                int wrongShift = entries.get(0).getKey();
+                int correctShift = entries.get(1).getKey();
+                
+                for (int i = 0; i < n; i++) {
+                    if ((t.charAt(i) - s.charAt(i) + 26) % 26 == wrongShift) {
+                        // 間違っている文字を修正
+                        fixedT.setCharAt(i, (char) ('a' + (s.charAt(i) - 'a' + correctShift) % 26));
+                    }
+                }
+                // 修正した暗号文を出力
+                System.out.println("fixed " + fixedT.toString());
+            } else {
+                // 出現頻度が1回でない場合は修正不可
+                System.out.println("incorrect");
+            }
+        }
+        // シフト量の種類が3種類以上の場合、修正は不可能
+        else {
+            System.out.println("incorrect");
+        }
+        
+        // Scannerを閉じる
+        sc.close();
+    }
+}
+/*与えられた平文 s と暗号文 t に対して、どのようなシフト量（右シフト）が適用されたかを計算し、その結果に基づいて暗号文が正しいか、1文字のみ間違っているか、または2文字以上間違っているかを判断します。
+入力の読み取り
+最初に、Scanner を使って入力を読み取ります。
+1行目で、文字列 s と t の長さ n を読み取ります。
+2行目で平文 s を、3行目で暗号文 t を読み取ります。
+
+シフト量の計算
+各文字について、平文 s の文字と暗号文 t の文字のシフト量を計算します。シフト量は、文字 s[i] から文字 t[i] へのシフト量を求めます。
+シフト量の計算方法は、(t[i] - s[i] + 26) % 26 です。これは、文字が負のシフト量になるのを防ぎ、常に正のシフト量を計算するためです。
+
+シフト量のカウント
+計算したシフト量を Map<Integer, Integer> に格納し、各シフト量が何回現れたかをカウントします。シフト量はキーとして、出現回数は値として保存されます。
+例えば、もしシフト量 2 が3回現れ、シフト量 3 が2回現れる場合、rot は {2: 3, 3: 2} となります。
+
+シフト量の判定
+次に、シフト量が1種類だけの場合、2種類の場合、またはそれ以上の種類の場合に分けて処理を行います。
+(1) シフト量が1種類の場合
+もし rot.size() が1ならば、すべての文字が同じシフト量で変換されているため、暗号文は正しい暗号文であり、correct rot-x を出力します。ここで x はそのシフト量です。
+(2) シフト量が2種類の場合
+rot.size() が2の場合、シフト量が2種類存在していることを意味します。この場合、2つのシフト量がどのように出現しているかに基づいて次の処理を行います：
+まず、rot マップのエントリをリストに変換し、出現頻度が少ないシフト量を1回だけ間違っていると仮定します。
+出現頻度が1回のシフト量が1つだけ存在する場合、その1文字を修正する処理を行います。具体的には、その文字を正しいシフト量で修正して fixed t' を出力します。
+出現頻度が1回でない場合は修正ができないため、incorrect を出力します。
+(3) シフト量がそれ以上の場合
+rot.size() が3以上の場合、シフト量が3種類以上存在しているため、暗号文が間違っていると判断し、incorrect を出力します。
+
+シフト量が2種類の場合で、1回だけ間違っている文字を修正する場合、修正は次のように行われます：
+t[i] の文字が間違っているシフト量に該当する場合、その文字を平文 s[i] から正しいシフト量を適用して修正します。
+例えば、間違ってシフト量 2 が適用された文字を、正しいシフト量 3 に基づいて修正します。
+
+最後に、条件に応じて適切な結果を出力します：
+シフト量が1種類ならば correct rot-x を出力。
+シフト量が2種類で1回だけ間違っているならば fixed t' を出力。
+シフト量が3種類以上または修正できない場合は incorrect を出力。
+
+文字列 s, t の各文字について、それぞれ何文字右シフトされているかを求め、問題文の指示に従って答えを出力すればよいです。
+全文字がそれぞれ何文字右シフトされているかを集計する際は、長さ 26 の整数型配列や連想配列などを用いるとよいです。*/
+
 B// リング型のトークンパッシング
 A// データの分類
 S// ペイントソフト
