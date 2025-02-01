@@ -1,2 +1,28 @@
-# P共通テスト過去問題1　★
-D# お釣り
+// P共通テスト過去問題1　★
+D// お釣り
+import java.util.Scanner;
+
+public class Main {  // クラス名を Main に変更
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int S = scanner.nextInt(); // 商品の合計金額
+        int M = scanner.nextInt(); // 支払われた金額
+        scanner.close();
+        
+        if (M >= S) {
+            System.out.println(M - S);
+        } else {
+            System.out.println("Tarimasen!");
+        }
+    }
+}
+/*もし支払金額が十分であれば、返金額を表示し、足りなければ「Tarimasen!」というエラーメッセージを出力します。
+具体的には、Scanner クラスを使って商品金額 S と支払金額 M を受け取り、条件分岐を使って支払いが適切かを判断します。
+支払いが足りていれば、M - S を計算して返金額を表示し、足りなければ「Tarimasen!」を表示します。*/
+
+C// rot-x
+B// リング型のトークンパッシング
+A// データの分類
+S// ペイントソフト
+S// 画像の切り抜き
