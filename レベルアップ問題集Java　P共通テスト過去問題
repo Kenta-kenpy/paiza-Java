@@ -557,3 +557,96 @@ iを上端、jを下端とする長方形の範囲を探索します。
 最後に、探索で得られた最大の黒さvalidを10桁の精度で出力します。*/
 
 // P共通テスト過去問題2　★
+D// 拡散の脅威
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 入力を取得
+        int A = scanner.nextInt(); // タロー君の投稿のリツイート数
+        int B = scanner.nextInt(); // リツイートした人達の平均フォロワー数
+        int C = scanner.nextInt(); // タロー君のフォロワー数
+        
+        scanner.close();
+        
+        // 計算 (リツイートされた回数 × 平均フォロワー数) + タロー君のフォロワー数
+        int result = A * B + C;
+        
+        // 結果を出力
+        System.out.println(result);
+    }
+}
+/*Scannerクラスの利用
+Scanner クラスを使用して、標準入力から整数値を3つ取得します。
+int A = scanner.nextInt(); → タロー君の投稿のリツイート数を取得
+int B = scanner.nextInt(); → リツイートした人たちの平均フォロワー数を取得
+int C = scanner.nextInt(); → タロー君のフォロワー数を取得
+計算の実行
+(A * B + C) という式を用いて、投稿が最大何人に見られたかを計算します。
+A * B は、リツイートされた回数ごとに新しく見られる可能性のあるフォロワーの数
+C は、タロー君のフォロワーが直接投稿を見られる人数
+この2つを足すことで、最大視聴可能人数を求めます。
+結果の出力
+System.out.println(result); を使って計算結果を出力します。                    
+リソースの解放
+scanner.close(); で Scanner を閉じ、リソースの無駄遣いを防ぎます。*/
+
+C// 正確なフィッティング （最小二乗法）
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // タロー君が求めた小数 a を入力
+        double a = scanner.nextDouble();  
+        // データの数 n を入力
+        int n = scanner.nextInt();        
+        
+        long xySum = 0; // Σ x_i * y_i の合計を保持
+        long xxSum = 0; // Σ x_i^2 の合計を保持
+        
+        // n 個のデータを読み込み、xySum と xxSum を計算
+        for (int i = 0; i < n; i++) {
+            int x = scanner.nextInt();
+            int y = scanner.nextInt();
+            xySum += (long) x * y;
+            xxSum += (long) x * x;
+        }
+        
+        scanner.close();
+        
+        // 最小二乗法による傾き α' を計算
+        double accurateA = (double) xySum / xxSum;
+        // 小数第5位を四捨五入
+        accurateA = Math.round(accurateA * 10000.0) / 10000.0;
+        
+        // タロー君の求めた a と比較し、結果を出力
+        if (a == accurateA) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+/*このプログラムは、最小二乗法を用いてデータを直線 y=αx にフィッティングし、タロー君が求めた傾きが正しいかを判定するものです。
+Scanner を使って標準入力を受け付けます。1行目の a はタロー君が求めた傾きの値（小数第4位までの数値）。2行目の n は与えられるデータの数（2 ≦ n ≦ 10,000）。
+xySum には ∑𝑥𝑖𝑦𝑖（x座標とy座標の積の合計）を格納。xxSum には ∑𝑥𝑖2（x座標の2乗の合計）を格納。
+n 回のループを回し、各データ点 (𝑥𝑖,𝑦𝑖)を入力。xySum と xxSum を計算して累積。Scanner を閉じ、リソースを解放。
+最小二乗法による最適な傾き 𝛼′ を計算。小数第5位を四捨五入し、小数第4位までの精度に変換。
+タロー君が求めた値 a と、計算された accurateA を比較。
+一致すれば "Yes"、異なれば "No" を出力。*/
+
+B// パリティチェック
+A// PC重ね
+S// JUMP!!!
+S// 数論階層クラスタリング
+
+
+
+
+
+
+
