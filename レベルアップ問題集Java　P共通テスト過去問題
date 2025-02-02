@@ -640,13 +640,359 @@ n 回のループを回し、各データ点 (𝑥𝑖,𝑦𝑖)を入力。xySu
 一致すれば "Yes"、異なれば "No" を出力。*/
 
 B// パリティチェック
+import java.util.*;
+
+public class ParityCheck {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 入力として行数 h と列数 w を取得
+        int h = scanner.nextInt();
+        int w = scanner.nextInt();
+        
+        // ビット配列の初期化
+        int[][] bitArray = new int[h][w];
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                bitArray[i][j] = scanner.nextInt();
+            }
+        }
+        
+        // 垂直パリティ（行ごとのパリティビット）を取得
+        int[] verticalParity = new int[h];
+        for (int i = 0; i < h; i++) {
+            verticalParity[i] = scanner.nextInt();
+        }
+        
+        // 水平パリティ（列ごとのパリティビット）を取得
+        int[] horizontalParity = new int[w];
+        for (int j = 0; j < w; j++) {
+            horizontalParity[j] = scanner.nextInt();
+        }
+        
+        int errorRow = -1; // 誤りがある行のインデックス
+        int errorCol = -1; // 誤りがある列のインデックス
+        
+        // 垂直パリティのチェック（各行のビットの和を計算し、誤りがある行を特定）
+        for (int i = 0; i < h; i++) {
+            int sum = 0;
+            for (int j = 0; j < w; j++) {
+                sum += bitArray[i][j];
+            }
+            if ((sum + verticalParity[i]) % 2 != 0) {
+                errorRow = i;
+                break;
+            }
+        }
+        
+        // 水平パリティのチェック（各列のビットの和を計算し、誤りがある列を特定）
+        for (int j = 0; j < w; j++) {
+            int sum = 0;
+            for (int i = 0; i < h; i++) {
+                sum += bitArray[i][j];
+            }
+            if ((sum + horizontalParity[j]) % 2 != 0) {
+                errorCol = j;
+                break;
+            }
+        }
+        
+        // 誤りが見つかった場合、該当するビットを反転させ修正
+        if (errorRow != -1 && errorCol != -1) {
+            bitArray[errorRow][errorCol] = 1 - bitArray[errorRow][errorCol];
+        }
+        
+        // 修正後のビット配列を出力
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                System.out.print(bitArray[i][j]);
+                if (j < w - 1) {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+        
+        scanner.close();
+    }
+}
+/*入力の読み取り
+h（行数）とw（列数）を取得します。
+h×w のビット列を2次元配列 bitArray に格納します。
+各行のパリティ情報（verticalParity）と各列のパリティ情報（horizontalParity）を配列として読み取ります。
+
+パリティチェック
+各行についてビットの和を計算し、誤った行（errorRow）を特定します。
+各列についてビットの和を計算し、誤った列（errorCol）を特定します。
+
+誤りの訂正
+errorRow と errorCol が特定できた場合、該当するビットを 0→1 または 1→0 に反転します。
+
+修正後のビット配列を出力
+指定のフォーマットで修正後のビット列を出力します。*/
+
 A// PC重ね
+import java.util.*;
+
+public class Main {
+    static int n;
+    static int[] weight, resist;
+    static int minSpace = Integer.MAX_VALUE;
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
+        weight = new int[n];
+        resist = new int[n];
+        
+        // 入力を受け取る
+        for (int i = 0; i < n; i++) {
+            weight[i] = sc.nextInt();
+            resist[i] = sc.nextInt();
+        }
+        sc.close();
+        
+        // PCのインデックスリストを作成
+        List<Integer> indices = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            indices.add(i);
+        }
+        
+        // すべての順列を試す
+        permute(indices, 0);
+        
+        // 最小のスペース数を出力
+        System.out.println(minSpace);
+    }
+    
+    // 配列の順列を生成する関数
+    static void permute(List<Integer> arr, int k) {
+        if (k == arr.size()) {
+            checkStacking(arr); // 現在の順序で積み上げを試す
+        } else {
+            for (int i = k; i < arr.size(); i++) {
+                Collections.swap(arr, i, k);
+                permute(arr, k + 1);
+                Collections.swap(arr, i, k);
+            }
+        }
+    }
+    
+    // PCを積み上げる際のスペース数をチェックする関数
+    static void checkStacking(List<Integer> order) {
+        int space = 1; // 最初のスペース
+        int wOnPc = 0; // 現在の積載重量
+        
+        for (int i : order) {
+            // 耐荷重を超える場合は新しいスペースを作る
+            if (wOnPc > resist[i]) {
+                space++;
+                wOnPc = 0;
+            }
+            wOnPc += weight[i];
+        }
+        
+        // 最小スペースを更新
+        minSpace = Math.min(minSpace, space);
+    }
+} 　
+/*このコードは、複数のPCを積み上げる際の最小スペース数を求める問題を解決するものです。具体的には、PCの重量と耐荷重が与えられたときに、積み上げる順番を決め、どれくらいのスペース（棚）を使うのかを計算します。
+n はPCの数です。weight 配列は各PCの重量を保持します。resist 配列は各PCが耐えられる重量（耐荷重）を保持します。
+indices はPCのインデックス（番号）を格納したリストです。これを使って順列を生成します。permute メソッドを呼び出して、全ての順列を試し、最小のスペース数を求めます。
+このメソッドは再帰的に順列を生成します。arr はPCのインデックスのリストです。k は順列生成の進行状況を示すインデックスです。
+k が arr.size() に到達すると、すべての順列が生成されたことになります。この時、checkStacking メソッドを呼び出してその順序で積み上げを試します。
+再帰的に順列を生成するため、Collections.swap を使って要素を入れ替えています。
+このメソッドは、指定された順番（order）でPCを積み上げる際に、必要なスペース数を計算します。space は現在の積み上げに必要なスペースの数で、最初は1から始まります。wOnPc は現在の積載重量を追跡します。
+order の各PCについて、wOnPc にそのPCの重量を加えます。しかし、wOnPc がそのPCの耐荷重を超える場合には、新しいスペースを使用する必要があるので、space を1増やし、wOnPc をリセットします。
+最終的に、すべての順列について最小スペース数を minSpace に保存します。最終的に計算された最小スペース数を出力します。*/
+
 S// JUMP!!!
+以下がJava実装の模範解答です
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // 入力を読み込む
+        int n = scanner.nextInt();
+        int m = scanner.nextInt();
+
+        int[] d = new int[n];
+        int[] h = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            d[i] = scanner.nextInt();
+            h[i] = scanner.nextInt();
+        }
+
+        double[] a = new double[m];
+        for (int i = 0; i < m; i++) {
+            a[i] = scanner.nextDouble();
+        }
+
+        // 加速度の配列を降順にソート
+        Arrays.sort(a);
+        for (int i = 0; i < m / 2; i++) {
+            double temp = a[i];
+            a[i] = a[m - 1 - i];
+            a[m - 1 - i] = temp;
+        }
+
+        final double c = 600.0;
+
+        // 二分探索の準備
+        int left = -1, right = m;
+        while (right - left > 1) {
+            int mid = (left + right) / 2;
+            if (check(mid, d, h, a, c)) {
+                left = mid;
+            } else {
+                right = mid;
+            }
+        }
+
+        // 結果を出力
+        System.out.println(right);
+    }
+
+    // 指定された加速度で全てのハードルを飛び越えられるかをチェックする関数
+    private static boolean check(int i, int[] d, int[] h, double[] a, double c) {
+        double jump = 0;
+        for (int j = 0; j < d.length; j++) {
+            double left = d[j] - Math.sqrt((c - h[j]) / a[i]) - Math.sqrt(c / a[i]);
+            double leftOn = left + 2 * Math.sqrt(c / a[i]);
+            double right = d[j] + Math.sqrt((c - h[j]) / a[i]) - Math.sqrt(c / a[i]);
+
+            if (jump < left) {
+                jump = leftOn;
+            } else if (jump <= right) {
+                jump += 2 * Math.sqrt(c / a[i]);
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+/*このJavaコードは、ハードル走の問題を解くためのプログラムで、主に次のようなロジックで動作します。
+入力の読み込み
+最初に、標準入力からデータを読み込みます。このデータには、以下の情報が含まれています：
+n: ハードルの数
+m: 走者の数
+d[]: 各ハードルの位置
+h[]: 各ハードルの高さ
+a[]: 各走者のジャンプ加速度
+
+加速度の降順ソート
+次に、ジャンプ加速度を大きい順に並び替えます。なぜなら、ジャンプ加速度が大きいほどジャンプの幅が狭くなり、最初に試すべき加速度が大きい順だからです。
+a[] 配列を昇順にソートした後、降順に並び替えています。
+
+二分探索の準備
+次に、最適な加速度を見つけるために二分探索を行います。二分探索の目的は、最も大きな加速度で全てのハードルを跳び越えることができる走者の数を求めることです。
+left と right は探索範囲を指しており、mid はその中間のインデックスです。check 関数で、a[mid] の加速度で全てのハードルを越えられるかどうかをチェックしています。
+
+ハードルを越えられるか判定する関数 check
+この関数は、指定された加速度で全てのハードルを越えられるかどうかを判定します。具体的には、次のような流れで動作します。
+
+jump は現在までに飛んだ地点を示します。
+各ハードルに対して、飛び越えるためのジャンプできる範囲を計算します。ジャンプする位置と着地する位置が、その範囲内に収まっていなければなりません。
+left と right は、各ハードルが越えられる範囲を計算したものです。
+もし jump が left よりも後ろに進んでしまった場合、次のハードルを越えられないため false を返します。逆に、すべてのハードルを越えられる場合は true を返します。
+
+結果の出力
+最終的に、二分探索を通じて得られた結果を出力します。right には、最も大きな加速度で全てのハードルを越えられる人数が格納されているので、そのまま出力します。
+
+このコードは、ハードルの位置や高さが与えられたときに、各走者がどの加速度で全てのハードルを跳び越えられるかを計算し、何人の走者が最後まで完走できるかを求める問題に対応しています。*/
+
 S// 数論階層クラスタリング
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使用して入力を受け取る
+        Scanner sc = new Scanner(System.in);
 
+        // 数列の長さNを入力
+        int n = sc.nextInt();
 
+        // 数列Aとその位置を記録する配列p
+        int[] a = new int[n];  // 数列Aの各要素
+        int[] p = new int[n + 1];  // 位置を記録する配列（1-indexedで使用）
 
+        // 数列Aの各要素とその位置を入力
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+            p[a[i]] = i;  // a[i]の値の位置をpに格納
+        }
 
+        // 結果を格納する変数
+        int ans = 0;
 
+        // i = 1 から n までの数について
+        for (int i = 1; i <= n; i++) {
+            List<Integer> indices = new ArrayList<>();  // iの倍数に対応するインデックスを格納するリスト
+
+            // リストに最初と最後のインデックスを追加
+            indices.add(-1);  // 最初の位置を-1として仮定（実際のインデックスより1つ前）
+            indices.add(n);   // 最後の位置をnとして仮定（実際のインデックスより1つ後）
+
+            // iの倍数の位置をindicesに追加
+            for (int j = i; j <= n; j += i) {
+                indices.add(p[j]);  // a[i]の位置をindicesリストに追加
+            }
+
+            // インデックスリストを昇順にソート
+            Collections.sort(indices);
+
+            List<Integer> c = new ArrayList<>();  // 差が偶数であればその差を格納するリスト
+
+            // indicesの隣接するインデックス間の差を計算
+            for (int j = 1; j < indices.size(); j++) {
+                if ((indices.get(j) - indices.get(j - 1) - 1) % 2 == 0) {
+                    c.add(indices.get(j) - indices.get(j - 1) - 1);  // 差が偶数ならばcに追加
+                }
+            }
+
+            // 操作の状態を追跡する変数
+            int status = 0;
+
+            // cに格納された差を基に状態遷移を行う
+            for (int j = 0; j < c.size(); j++) {
+                if (status == 0 && j % 2 == 0 && c.get(j) == 0) {
+                    status = 1;  // 最初の状態から進行
+                } else if (status == 1 && j % 2 == 1 && c.get(j) == 0) {
+                    status = 2;  // 次の状態へ進行
+                }
+            }
+
+            // 状態が2ならば、iが現在の最大の答えとなる
+            if (status == 2) {
+                ans = i;  // 最も大きなiを答えとして保存
+            }
+        }
+
+        // 結果を出力
+        System.out.println(ans);
+
+        // Scannerを閉じてリソースを解放
+        sc.close();
+    }
+}
+/*Scannerを使って標準入力からデータを受け取ります。
+n は数列の長さで、a はその数列を格納する配列、p は数列の各要素のインデックスを格納する配列です（順番を追跡するため）。
+数列 a の各要素を入力し、その要素の位置（インデックス）を配列 p に記録します。p[a[i]] は数列の値 a[i] が、配列 a の何番目に出現するかを示します。
+i の倍数（i, 2i, 3i, ...）に対応するインデックスをリスト indices に追加します。最初に -1 と n を追加しておき、その後、p[j] を順に追加していきます。
+最後に、indices を昇順にソートします。
+indices の隣接するインデックス間の差が偶数であれば、その差をリスト c に追加します。差が偶数であることが、後の操作の条件になります。
+変数 status は操作の状態を追跡します。最初は status = 0 でスタートし、c の要素に基づいて状態遷移します。
+status == 2 になった場合、現在の i が最大の値として答えに設定されます。
+最終的に求められた最大の i を ans として出力します。入力のために使用した Scanner を閉じ、リソースを解放します。
+アルゴリズムの流れ
+数列の各要素の位置を記録。
+各 i の倍数に対応するインデックスをリストに収集。
+そのインデックスの差が偶数であるかを確認。
+状態遷移を通じて、最も大きな値 i を答えとして導き出す。
+最終的な出力は、操作を繰り返した後に残る最大の値です*/
 
