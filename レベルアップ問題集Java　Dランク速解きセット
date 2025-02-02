@@ -1,4 +1,34 @@
 // 早解き1　1日1万歩
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使用して入力を受け取る
+        Scanner sc = new Scanner(System.in);
+        
+        // dは距離(km)、sは歩幅(cm)
+        int d = sc.nextInt();
+        int s = sc.nextInt();
+        
+        // 1万歩以上かどうかを判定
+        // 歩数 = (d * 1000 * 100) / s
+        int steps = (d * 1000 * 100) / s;
+        
+        // 結果を出力
+        if (steps >= 10000) {
+            System.out.println("yes");
+        } else {
+            System.out.println("no");
+        }
+    }
+}
+/*入力の受け取り:
+Scannerを使って距離（d）と歩幅（s）を受け取ります。
+歩数の計算:
+stepsという変数で、歩数を計算します。計算式は (d * 1000 * 100) / s です。
+判定と出力:
+歩数が1万歩以上であれば "yes" を、少なければ "no" を出力します。*/
+
 // 早解き2  正n角形の内角
 // 早解き3  うなりの周波数
 // 早解き4  たぶん...
