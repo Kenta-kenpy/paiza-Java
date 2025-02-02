@@ -30,6 +30,31 @@ stepsという変数で、歩数を計算します。計算式は (d * 1000 * 10
 歩数が1万歩以上であれば "yes" を、少なければ "no" を出力します。*/
 
 // 早解き2  正n角形の内角
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // nを入力
+        int n = sc.nextInt();
+        
+        // 正n角形の1つの内角を計算
+        double innerAngle = (180.0 * (n - 2)) / n;
+        
+        // 小数点以下を切り捨てて出力
+        System.out.println((int) Math.floor(innerAngle));
+        
+        sc.close();
+    }
+}
+/*Scannerクラスを使用して、標準入力からnの値を受け取ります。
+内角の計算：
+innerAngle = (180.0 * (n - 2)) / n で正n角形の1つの内角を求めます。
+180.0 * (n - 2) の部分が内角の和、これをnで割ることで1つの内角を得ます。
+Math.floor(innerAngle) で小数点以下を切り捨てて、結果を整数として表示します。
+System.out.println() で結果を出力します。*/
+
 // 早解き3  うなりの周波数
 // 早解き4  たぶん...
 // 早解き5  アンダーライン
