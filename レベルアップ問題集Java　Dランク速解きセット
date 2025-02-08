@@ -83,19 +83,448 @@ Math.abs() を使って、2つの周波数の差の絶対値を計算します�
 System.out.println() を使って、計算したうなりの周波数を出力します。scanner.close(); を呼び出して、Scannerオブジェクトを閉じます。これはリソースを適切に管理するための良い習慣です。*/
 
 // 早解き4  たぶん...
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine();
+        scanner.close();
+        
+        // 末尾の ", maybe." を "!!" に置換
+        if (s.endsWith(", maybe.")) {
+            s = s.substring(0, s.length() - 8) + "!!";
+        }
+        
+        System.out.println(s);
+    }
+}
+/*Scanner クラスを使って標準入力から文字列 s を読み取ります。
+nextLine() を使用することで、改行を含む1行分の文字列を取得します。
+読み取りが終わったら scanner.close() で Scanner を閉じます。
+endsWith(", maybe.") を使って、文字列 s の末尾が ", maybe." で終わっているかを確認します。
+substring(0, s.length() - 8) によって、末尾 ", maybe." を削除します。
+s.length() - 8 は、末尾の ", maybe." の8文字分を取り除くための処理です。
+その後、削除した部分の代わりに "!!" を追加します。
+変更後の文字列 s を標準出力に表示します。*/
+
 // 早解き5  アンダーライン
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine(); // 文字列を標準入力から取得
+        scanner.close();
+        
+        // 入力された文字列をそのまま出力
+        System.out.println(s);
+        
+        // 文字列の長さと同じ数の ^ を出力
+        System.out.println("^".repeat(s.length()));
+    }
+}
+/*入力された文字列の下にアンダーラインの代わりに ^ を追加して出力するものです。
+Scanner クラスをインポートして、標準入力（コンソール）からデータを取得できるようにする。Main という名前のクラスを定義。Java の実行開始点（main メソッド）を持つ。
+Scanner クラスのオブジェクト scanner を作成し、標準入力（キーボード）からデータを受け取れるようにする。Scanner を閉じて、リソースを解放（メモリリークを防ぐため）。
+入力された文字列 s をそのまま出力。s.length() の長さと同じ数だけ ^ を繰り返して表示。
+String.repeat(int count) メソッド（Java 11 以降で使用可能）を使って、^ を s.length() 回繰り返して生成。*/
+
 // 早解き6  式の計算
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerオブジェクトを使って入力を受け取る
+        Scanner scanner = new Scanner(System.in);
+        
+        // 入力された式を文字列として読み込む
+        String input = scanner.nextLine();
+        
+        // 文字列を「 + 」で分割して、v1 と v2 を取得
+        String[] parts = input.split(" \\+ ");
+        
+        // 分割した部分を整数に変換
+        int v1 = Integer.parseInt(parts[0]);
+        int v2 = Integer.parseInt(parts[1]);
+        
+        // v1 と v2 を足し合わせてその結果を出力
+        System.out.println(v1 + v2);
+    }
+}
+/*Scannerクラスを使用して標準入力から入力を受け取ります。
+入力された式（例：40 + 8）をsplit(" \\+ ")メソッドで「+」を基準に分割し、左辺（v1）と右辺（v2）に分けます。このとき、正規表現で「+」の前後に空白があることを考慮して、\\+（空白+プラス記号+空白）で分割しています。
+分割された文字列をInteger.parseInt()を使って整数に変換します。
+最後にv1とv2を加算し、その結果を出力します。*/
+
 // 早解き7  鉛筆の濃さ
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 鉛筆の濃さを配列に格納
+        String[] hardnessLevels = {
+            "6B", "5B", "4B", "3B", "2B", "B", "HB", "F", 
+            "H", "2H", "3H", "4H", "5H", "6H", "7H", "8H", "9H"
+        };
+
+        // Scannerを使って標準入力からkを受け取る
+        Scanner sc = new Scanner(System.in);
+        int k = sc.nextInt();
+
+        // k番目に濃い鉛筆の濃さを出力
+        System.out.println(hardnessLevels[k - 1]);
+        
+        sc.close();
+    }
+}
+/*鉛筆の濃さを、リスト（配列）に格納する。入力されたk番目に濃い鉛筆の濃さをリストから取り出して出力する。
+hardnessLevelsという配列に鉛筆の濃さを格納します。配列のインデックスは0から始まるので、入力されるk番目の濃さを取り出す際に、インデックスをk - 1にしています。
+Scannerクラスを使って、標準入力から整数値を読み取ります。
+最後に、System.out.printlnで、配列から該当する鉛筆の濃さを出力します。*/
+
 // 早解き8  靴のサイズ
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を受け取る
+        Scanner scanner = new Scanner(System.in);
+        double s = scanner.nextDouble(); // 靴のサイズ (cm)
+
+        // USサイズとUKサイズの計算
+        double usSize = s - 18;
+        double ukSize = s - 18.5;
+
+        // 結果を小数点1桁まで表示
+        System.out.printf("%.1f %.1f\n", usSize, ukSize);
+    }
+}
+/*USサイズは、CMサイズから18を引いた値で求めます。
+UKサイズは、CMサイズから18.5を引いた値で求めます。
+結果は小数点以下1桁で出力し、整数部分があっても1桁まで表示する必要があります。*/
+
 // 早解き9  30人31脚
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 入力を受け取る
+        int m = scanner.nextInt();
+        
+        // 脚の数は人数 + 1
+        int totalLegs = m + 1;
+        
+        // 結果を出力
+        System.out.println(totalLegs);
+        
+        // スキャナーのリソースを解放
+        scanner.close();
+    }
+}
+/*2人が結びつけられるとき、片足ずつ結ぶので、結んでいる足は1本として数える。
+そのため、結ばれていない残りの足は2本（左足と右足）で、1人で立っている感じです。
+つまり、m人の場合、全体の脚の数は m + 1 になります。*/
+
 // 早解き10 ボーダー柄
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 入力を受け取る
+        int n = scanner.nextInt();
+        
+        // 黒と白のパターン
+        String black = "##########";
+        String white = "..........";
+        
+        // n回繰り返してボーダー柄を表示
+        for (int i = 0; i < n; i++) {
+            System.out.println(black);
+            System.out.println(white);
+        }
+        
+        // スキャナーのリソースを解放
+        scanner.close();
+    }
+}
+/*入力としてnが与えられます。nはボーダー柄を繰り返す回数です。
+ボーダー柄の1パターンは、黒い部分と白い部分が交互に表示されることです。
+1回のパターンとして、まず黒い部分（##########）、次に白い部分（..........）を表示します。
+これをn回繰り返します。*/
+
 // 早解き11 縦書き
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使って入力を受け取る
+        Scanner sc = new Scanner(System.in);
+
+        // 入力を受け取る
+        String s = sc.nextLine();
+        
+        // 文字列の長さ分ループして、1文字ずつ改行して出力
+        for (int i = 0; i < s.length(); i++) {
+            System.out.println(s.charAt(i));
+        }
+
+        // スキャナーを閉じる
+        sc.close();
+    }
+}
+/*String s = sc.nextLine();
+入力された文字列を受け取ります。nextLine()は一行全体を取得します。
+
+for (int i = 0; i < s.length(); i++)
+文字列の長さに応じてループを回し、1文字ずつ処理します。
+
+System.out.println(s.charAt(i));
+文字列のi番目の文字を取り出して表示します。このprintlnにより、文字を表示した後に改行が入ります。*/
+
 // 早解き12 山の英語表記
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を受け取るためのScannerオブジェクトを作成
+        Scanner scanner = new Scanner(System.in);
+        
+        // 山の名前を入力
+        String mountainName = scanner.nextLine();
+        
+        // Mt. を追加して出力
+        System.out.println("Mt. " + mountainName);
+        
+        // スキャナーを閉じる（リソースを解放）
+        scanner.close();
+    }
+}
+/*Scannerクラスの利用: Scannerクラスを使用して標準入力から山の名前を受け取ります。
+nextLine()メソッド: このメソッドを使って、1行の文字列（山の名前）を取得します。
+文字列の結合: "Mt. " と入力された山の名前を結合して、結果を標準出力に表示します。
+scanner.close(): Scannerクラスのリソースを解放するために、最後にスキャナーを閉じます。*/
+
 // 早解き13 満員電車の乗車率
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を受け取るためのScannerオブジェクト
+        Scanner scanner = new Scanner(System.in);
+        
+        // 乗車人数を入力として受け取る
+        int n = scanner.nextInt();
+        
+        // 乗車定員は140人
+        int capacity = 140;
+        
+        // 乗車率の計算
+        int occupancyRate = (n * 100) / capacity;
+        
+        // 乗車率を出力
+        System.out.println(occupancyRate + "%");
+        
+        // Scannerを閉じる
+        scanner.close();
+    }
+}
+/*一両の定員は常に 140 人で固定されています。
+入力として乗車した人数 n が与えられます。
+乗車率は次の式で計算します：
+乗車率=(𝑛/140)×100
+計算結果は小数点以下を切り捨てた整数として表示します。Javaではこれを Math.floor やキャストを使って実現できます。*/
+
 // 早解き14 0から9までのカウンタ
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // nの入力を受け取る
+        int n = scanner.nextInt();
+        
+        // カウンタを10回繰り返して出力
+        for (int i = 0; i < 10; i++) {
+            System.out.println((n + i) % 10);
+        }
+    }
+}
+/*入力の取得:
+Scannerクラスを使用して標準入力から整数nを受け取ります。
+カウンタの処理:
+ループを10回（iは0から9まで）実行し、各回でn + iを10で割った余りを計算して出力します。これにより、カウンタは0から9の範囲内で繰り返し動作します。
+出力:
+System.out.printlnで各カウント値を改行付きで表示します。*/
+
 // 早解き15 気温の変化
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使って標準入力からt1とt2を取得
+        Scanner scanner = new Scanner(System.in);
+        
+        // t1とt2を入力として読み込む
+        int t1 = scanner.nextInt();
+        int t2 = scanner.nextInt();
+        
+        // 気温差を計算
+        int difference = t2 - t1;
+        
+        // 結果に基づいて適切な出力を行う
+        if (difference > 0) {
+            // 今日が暖かければ、+差分を出力
+            System.out.println("+" + difference);
+        } else if (difference < 0) {
+            // 今日が寒ければ、-差分を出力
+            System.out.println(difference);
+        } else {
+            // 今日と昨日が同じ気温なら、0を出力
+            System.out.println(0);
+        }
+        
+        // Scannerを閉じる
+        scanner.close();
+    }
+}
+/*Main クラスに main メソッドがあり、標準入力から気温 t1 と t2 を受け取ります。
+気温差を計算して、+差分、-差分、または 0 を出力します。*/
+
 // 早解き16 アルファベットの穴の数
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を取得するためのScannerを作成
+        Scanner scanner = new Scanner(System.in);
+        
+        // アルファベット1文字の入力を取得
+        char s = scanner.nextLine().charAt(0);
+        
+        // 囲われた部分の数を決めるための条件分岐
+        int enclosedParts = 0;
+
+        switch (s) {
+            case 'A': case 'D': case 'O': case 'P': case 'Q': case 'R':
+                enclosedParts = 1; // 1個の囲われた部分
+                break;
+            case 'B':
+                enclosedParts = 2; // 2個の囲われた部分
+                break;
+            default:
+                enclosedParts = 0; // 囲われた部分なし
+        }
+
+        // 結果を出力
+        System.out.println(enclosedParts);
+    }
+}
+/*Scannerクラス を使用して、標準入力から1文字のアルファベットを読み取ります。
+その文字に対して、囲われた部分の数を switch 文を使って判定します。
+'A', 'D', 'O', 'P', 'Q', 'R' は囲われた部分が1個。
+'B' は囲われた部分が2個。
+その他のアルファベット（'C', 'E', 'F', など）は囲われた部分が0個。
+最後に、その囲われた部分の数を出力します。*/
+
 // 早解き17 騒音レベル
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を取得するためのScannerを作成
+        Scanner scanner = new Scanner(System.in);
+        
+        // 騒音値lを取得（整数値として）
+        int l = scanner.nextInt();
+        
+        // 騒音値に基づいて騒音の大きさを判定
+        if (l < 30) {
+            System.out.println("quiet");
+        } else if (l >= 30 && l < 50) {
+            System.out.println("normal");
+        } else if (l >= 50 && l < 70) {
+            System.out.println("noisy");
+        } else {
+            System.out.println("very noisy");
+        }
+    }
+}
+/*30 dB 未満のときは "quiet" と出力。
+30 dB 以上 50 dB 未満のときは "normal" と出力。
+50 dB 以上 70 dB 未満のときは "noisy" と出力。
+70 dB 以上のときは "very noisy" と出力。*/
+
 // 早解き18 TGIF
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を取得するためのScannerを作成
+        Scanner scanner = new Scanner(System.in);
+        
+        // 曜日を入力として取得
+        String s = scanner.nextLine();
+        
+        // 曜日によって出力を判定
+        if (s.equals("Friday")) {
+            System.out.println("TGIF");
+        } else {
+            System.out.println("Still " + s);
+        }
+    }
+}
+/*その曜日が "Friday" であれば "TGIF" を出力し、それ以外の場合（"Monday", "Tuesday", "Wednesday", "Thursday"）は "Still " + 曜日名 を出力します。*/
+
 // 早解き19 可聴領域
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を取得するためのScannerを作成
+        Scanner scanner = new Scanner(System.in);
+        
+        // 音の周波数fを取得（整数値として）
+        int f = scanner.nextInt();
+        
+        // 周波数に基づいて判定
+        if (f >= 20 && f <= 15000) {
+            System.out.println("yes");
+        } else if (f > 15000 && f <= 20000) {
+            System.out.println("not sure");
+        } else {
+            System.out.println("no");
+        }
+    }
+}
+/*音の周波数 f に基づいて次のように判定します:
+20 ≤ f ≤ 15000 の範囲内であれば "yes" を出力。
+15000 < f ≤ 20000 の範囲内であれば "not sure" を出力。
+それ以外（f < 20 または f > 20000）であれば "no" を出力。*/
+
 // 早解き20 駄菓子の大人買い
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を取得するためのScannerを作成
+        Scanner scanner = new Scanner(System.in);
+        
+        // 所持金額mを取得（整数値として）
+        int m = scanner.nextInt();
+        
+        // 10円の駄菓子を何個買えるか計算
+        int candies = m / 10;
+        
+        // 結果を出力
+        System.out.println(candies);
+    }
+}
+/*Scannerクラス を使用して、標準入力から所持金額 m を読み取ります。
+m を10円で割り、何個の駄菓子を買えるかを計算します。/ 演算子は整数型同士で割るため、割り算の結果は整数になります。
+計算結果（駄菓子の個数）を出力します。*/
