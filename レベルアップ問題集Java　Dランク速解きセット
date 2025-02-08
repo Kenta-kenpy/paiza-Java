@@ -56,6 +56,32 @@ Math.floor(innerAngle) で小数点以下を切り捨てて、結果を整数と
 System.out.println() で結果を出力します。*/
 
 // 早解き3  うなりの周波数
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 2つの整数を入力として取得
+        int f1 = scanner.nextInt();
+        int f2 = scanner.nextInt();
+        
+        // うなりの周波数を計算（絶対値を取る）
+        int beatFrequency = Math.abs(f1 - f2);
+        
+        // 結果を出力
+        System.out.println(beatFrequency);
+        
+        scanner.close();
+    }
+}
+/*Scanner クラスをインポートして、標準入力（キーボードからの入力）を受け取れるようにします。Javaのプログラムは必ずクラスの中に書く必要があります。
+Main というクラス名を定義しました（Javaではメインメソッドを持つクラスは Main という名前が一般的です）。
+Javaプログラムは main メソッドから実行が始まります。public static void は、メソッドのアクセス修飾子や戻り値の型を表します。
+Scanner クラスのオブジェクトを作成し、標準入力からデータを取得できるようにします。scanner.nextInt() を使って、ユーザーが入力した2つの整数（周波数）を取得します。
+Math.abs() を使って、2つの周波数の差の絶対値を計算します。うなりの周波数は、大きい周波数から小さい周波数を引いた値の絶対値として定義されます。
+System.out.println() を使って、計算したうなりの周波数を出力します。scanner.close(); を呼び出して、Scannerオブジェクトを閉じます。これはリソースを適切に管理するための良い習慣です。*/
+
 // 早解き4  たぶん...
 // 早解き5  アンダーライン
 // 早解き6  式の計算
