@@ -79,13 +79,280 @@ public class Main {
 
 // 単語のカウント
 step2 「単語のカウント」を解くために part1
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 一行の入力を取得
+        String input = scanner.nextLine();
+        
+        // 半角スペースで分割
+        String[] wordList = input.split(" ");
+        
+        // 各単語を改行区切りで出力
+        for (String word : wordList) {
+            System.out.println(word);
+        }
+        
+        scanner.close();
+    }
+}
+/*入力された単語を配列やリストに格納します。
+配列やリストの名前に特に決まりはありませんが、この解説では、単語(word)の一覧(lsit)であることを表現する意図を持ってword_listと名付けています。
+繰り返し処理を用いて、その配列やリストの要素を順に出力します。*/
+
 step3 「単語のカウント」を解くために part2
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 一行の入力を取得
+        String input = scanner.nextLine();
+        
+        // 半角スペースで分割
+        String[] wordList = input.split(" ");
+        
+        // "red" が含まれているかチェック
+        boolean found = false;
+        for (String word : wordList) {
+            if (word.equals("red")) {
+                found = true;
+                break;
+            }
+        }
+        
+        // 結果を出力
+        if (found) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+        
+        scanner.close();
+    }
+}
+/*Scanner クラスを使用して、標準入力（コンソール）から1行の文字列を読み取ります。
+nextLine() メソッドは改行までの文字列をすべて取得します。split(" ") メソッドを使用し、入力文字列を 半角スペース で区切り、単語ごとに String 型の配列 wordList に格納します。
+found という boolean 型の変数を false に初期化します。
+for 文を使用し、wordList の各単語を順番に調べます。
+if (word.equals("red")) で、単語が "red" と完全一致するかを判定します。
+"red" が見つかった場合、found を true に変更し、break でループを終了します（これにより、無駄なループを避けます）。
+if 文で found の値を確認します。"red" が見つかっていたら "Yes" を出力します。見つからなかったら "No" を出力します。*/
+
 step4 「単語のカウント」を解くために part3
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 一行の入力を取得
+        String input = scanner.nextLine();
+        
+        // 半角スペースで分割
+        String[] wordList = input.split(" ");
+        
+        // 出現した単語を記録するセット
+        Set<String> seenWords = new HashSet<>();
+        
+        // 各単語を処理
+        for (String word : wordList) {
+            if (seenWords.contains(word)) {
+                System.out.println("already_been");
+            } else {
+                System.out.println(word);
+                seenWords.add(word);
+            }
+        }
+        
+        scanner.close();
+    }
+}
+/*orderという配列やリストを用意します。
+　　入力された単語を入力された順番(order)で格納していくので、orderと名付けています。
+条件分岐を用いて以下のような処理をします
+　　もし、与えられた単語が既にorderに含まれていれば、その単語は既出なので、already_beenという文字列を出力します。
+　　もし、与えられた単語がまだorderに含まれていなければ、その単語を出力します。
+　　この時、次に同じ単語が入力された時に正しく分岐されるよう、入力された単語をorderに追加します。*/
+
 step5 「単語のカウント」を解くために part4
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 一行の入力を取得
+        String input = scanner.nextLine();
+        
+        // 半角スペースで分割
+        String[] wordList = input.split(" ");
+        
+        // 出現した単語を記録するセット
+        Set<String> seenWords = new LinkedHashSet<>();
+        
+        // 単語をセットに追加
+        for (String word : wordList) {
+            seenWords.add(word);
+        }
+        
+        // 結果を出力
+        for (String word : seenWords) {
+            System.out.println(word);
+        }
+        
+        scanner.close();
+    }
+}
+/*orderという配列やリストを用意します。
+　　入力された単語を入力された順番(order)で格納していくので、orderと名付けています。
+もし、与えられた単語がまだorderに含まれていなければ、その単語をorderに追加し、出力します
+　　（今回の問題では、与えられた単語が既にorderに含まれている場合にしなければならない処理は存在しません。）*/
+
 step6 「単語のカウント」を解くために part5
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 一行の入力を取得
+        String input = scanner.nextLine();
+        
+        // 半角スペースで分割
+        String[] wordList = input.split(" ");
+        
+        // 出現した単語を記録するセット
+        LinkedHashSet<String> uniqueWords = new LinkedHashSet<>();
+        
+        // 単語をセットに追加
+        for (String word : wordList) {
+            uniqueWords.add(word);
+        }
+        
+        // ユニークな単語を出力
+        for (String word : uniqueWords) {
+            System.out.println(word);
+        }
+        
+        // 出現回数（すべて1）をリストに格納し出力
+        List<Integer> counts = new ArrayList<>(Collections.nCopies(uniqueWords.size(), 1));
+        for (int count : counts) {
+            System.out.println(count);
+        }
+        
+        scanner.close();
+    }
+}
+/*入力された単語を一度だけ出力し、その後に各単語の種類の数だけ "1" を出力するようになっています。*/
+
 step7 「単語のカウント」を解くために part6
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 一行目の入力を取得し、半角スペースで分割
+        String[] wordList = scanner.nextLine().split(" ");
+        
+        // 二行目の入力を取得
+        String target = scanner.nextLine();
+        
+        // 指定された文字列の最初の出現位置を検索
+        int index = -1;
+        for (int i = 0; i < wordList.length; i++) {
+            if (wordList[i].equals(target)) {
+                index = i;
+                break;
+            }
+        }
+        
+        // 結果を出力
+        System.out.println(index);
+        
+        scanner.close();
+    }
+}
+/*入力された単語のリストから指定された単語の最初の出現位置を見つけ、そのインデックスを出力します。*/
+
 step8 「単語のカウント」を解くために part7
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // 入力された文字列を読み込む
+        String input = sc.nextLine();
+        
+        // スペースで区切られた単語をリストに分割
+        String[] words = input.split(" ");
+        
+        // 出現回数を記録するためのMap
+        Map<String, Integer> wordCount = new LinkedHashMap<>();
+        
+        // 単語を一つずつ処理
+        for (String word : words) {
+            // すでにMapに存在する単語なら回数を増加、無ければ新たに追加
+            wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
+        }
+        
+        // 単語を出現順に出力
+        for (String word : wordCount.keySet()) {
+            System.out.println(word);
+        }
+        
+        // 単語の出現回数を出現順に出力
+        for (int count : wordCount.values()) {
+            System.out.println(count);
+        }
+        
+        sc.close();
+    }
+}
+/*入力から、既にorderに含まれている単語が与えられた場合、countの数を1増やします。そうすることで単語の出現回数を数えます。
+「既にorderに含まれている単語が与えられた場合」と「orderに含まれていない単語が与えられた場合」で処理を分岐させます。
+　　既にorderに含まれている単語が与えられた場合、countの数を1増やします。
+　　このとき、countの中の何番目の数字がどの単語に対応しているかを分かるようにしておく必要があります。
+　　そのため、orderの中の単語の順番と、countの中の数字の順番を対応させる必要があります。
+　　例えば、入力例1のケースでは、orderの 0 番目に "red" が保存されているので、countの 0 番目に "red" の出現回数を保存します。*/
+
 step1  単語のカウント（力試し編）・final 単語のカウント
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        ArrayList<String> words = new ArrayList<>();
+        ArrayList<Integer> counter = new ArrayList<>();
+
+        while (sc.hasNext()) {
+            String word = sc.next();
+            int index = words.indexOf(word);
+            if (index == -1) {
+                words.add(word);
+                counter.add(1);
+            } else {
+                counter.set(index, counter.get(index) + 1);
+            }
+        }
+
+        for (int i = 0; i < words.size(); i++) {
+            System.out.println(words.get(i) + " " + counter.get(i));
+        }
+    }
+}
+/*英単語を出現した順番で保存しておく配列と、その出現回数を記録する配列を用意し、英単語を順に見ていきながら処理していけばよいです。
+ArrayList を用いて、出現する英単語とその出現回数を保存する可変長の配列を用意しています。
+ArrayList クラスの indexOf メソッドを用いると、指定した要素が格納されているインデックスを取得することが出来ます。指定した要素が格納されていない場合は、-1 が返ります。*/
 
 // 宝くじ
 import java.util.Scanner;
