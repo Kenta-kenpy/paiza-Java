@@ -1,12 +1,226 @@
 // 長方形4席入口垂直
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s1 = sc.next();
+        String s2 = sc.next();
+        String s3 = sc.next();
+        String s4 = sc.next();
+        System.out.println(s3 + " " + s1);
+        System.out.println(s4 + " " + s2);
+    }
+}
+
 // 長方形6席入口平行
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s_1 = sc.next();
+        String s_2 = sc.next();
+        String s_3 = sc.next();
+        String s_4 = sc.next();
+        String s_5 = sc.next();
+        String s_6 = sc.next();
+        System.out.println(s_3 + " " + s_2 + " " + s_1);
+        System.out.println(s_6 + " " + s_5 + " " + s_4);
+    }
+}
+
 // 複数人掛けと一人掛け
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s_1 = sc.next();
+        String s_2 = sc.next();
+        String s_3 = sc.next();
+        String s_4 = sc.next();
+        String s_5 = sc.next();
+        System.out.println(s_1 + " " + s_4);
+        System.out.println(s_2 + " " + s_5);
+        System.out.println(s_3);
+    }
+}
+
 // 議長席
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s_1 = sc.next();
+        String s_2 = sc.next();
+        String s_3 = sc.next();
+        String s_4 = sc.next();
+        String s_5 = sc.next();
+        String s_6 = sc.next();
+        String s_7 = sc.next();
+        System.out.println("_ " + s_1 + " _");
+        System.out.println(s_3 + " _ " + s_2);
+        System.out.println(s_5 + " _ " + s_4);
+        System.out.println(s_7 + " _ " + s_6);
+    }
+}
+
 // 富士山
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s_1 = sc.next();
+        String s_2 = sc.next();
+        String s_3 = sc.next();
+        String s_4 = sc.next();
+
+        System.out.println(s_3 + " " + s_1);
+        System.out.println(s_4 + " " + s_2);
+    }
+}
+
 // コの字
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s_1 = sc.next();
+        String s_2 = sc.next();
+        String s_3 = sc.next();
+        String s_4 = sc.next();
+        String s_5 = sc.next();
+        String s_6 = sc.next();
+        String s_7 = sc.next();
+        String s_8 = sc.next();
+        String s_9 = sc.next();
+
+        System.out.println("_ " + s_5 + " " + s_7 + " " + s_9);
+        System.out.println(s_3 + " _ _ _");
+        System.out.println(s_1 + " _ _ _");
+        System.out.println(s_2 + " _ _ _");
+        System.out.println("_ " + s_4 + " " + s_6 + " " + s_8);
+    }
+}
+
 // タクシー
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s_1 = sc.next();
+        String s_2 = sc.next();
+        String s_3 = sc.next();
+        String s_4 = sc.next();
+
+        System.out.println(s_4 + " _");
+        System.out.println(s_2 + " " + s_3 + " " + s_1);
+    }
+}
+
 // 社用車
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s_1 = sc.next();
+        String s_2 = sc.next();
+        String s_3 = sc.next();
+        String s_4 = sc.next();
+
+        System.out.println(s_1 + " _");
+        System.out.println(s_3 + " " + s_4 + " " + s_2);
+    }
+}
+
 // 電車
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s_1 = sc.next();
+        String s_2 = sc.next();
+        String s_3 = sc.next();
+        String s_4 = sc.next();
+        String s_5 = sc.next();
+        String s_6 = sc.next();
+
+        System.out.println(s_4 + " " + s_6 + " " + s_2);
+        System.out.println(s_3 + " " + s_5 + " " + s_1);
+    }
+}
+
 // エレベーター
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s_1 = sc.next();
+        String s_2 = sc.next();
+        String s_3 = sc.next();
+        String s_4 = sc.next();
+        String s_5 = sc.next();
+
+        System.out.println(s_1 + " " + s_2);
+        System.out.println(s_3 + " " + s_4 + " " + s_5);
+    }
+}
+
 // 和室
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s_1 = sc.next();
+        String s_2 = sc.next();
+        String s_3 = sc.next();
+        String s_4 = sc.next();
+        String s_5 = sc.next();
+        String s_6 = sc.next();
+
+        System.out.println(s_3 + " " + s_1 + " " + s_2);
+        System.out.println(s_6 + " " + s_4 + " " + s_5);
+    }
+}
+
 // 円卓
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s_1 = sc.next();
+        String s_2 = sc.next();
+        String s_3 = sc.next();
+        String s_4 = sc.next();
+        String s_5 = sc.next();
+        String s_6 = sc.next();
+        String s_7 = sc.next();
+        String s_8 = sc.next();
+
+        System.out.println(s_3 + " " + s_1 + " " + s_2);
+        System.out.println(s_5 + " _ " + s_4);
+        System.out.println(s_7 + " " + s_8 + " " + s_6);
+    }
+}
