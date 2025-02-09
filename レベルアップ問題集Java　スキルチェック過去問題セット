@@ -389,12 +389,235 @@ Math クラスの abs メソッドを用いると、絶対値を取得するこ�
 
 // 野球の審判
 step2 「野球の審判」を解くために part1
+import java.util.*;
+
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.println(n);
+    }
+}
+/*標準入力を用いて、入力を受け取ります。
+このとき、整数型で受け取ると、この先の実装がスムーズに進みます。
+受け取った値を変数に代入します。
+変数の名前に特に決まりはありませんが、この入力について問題文中で N と表記されているので、実装例では変数名も N にして、合わせています。
+他の名付け方としては「投球」や「投球数」を想起できる英語表現を採用するパターンもあります。
+その場合、pitch や number_of_pitches などの候補が挙がるでしょう。
+変数の値を標準出力します。*/
+
 step3 「野球の審判」を解くために part2
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            String s = sc.next();
+            System.out.println("strike or ball");
+        }
+    }
+}
+/*標準入力を用いて、入力を受け取ります。
+受け取った値を変数に代入します。【ここまでが前の問題でやった内容です】
+N 回実行される繰り返し処理を書きます。
+繰り返し処理の中で strike or ball という文字列を出力します。*/
+
 step4 「野球の審判」を解くために part3
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            String s = sc.next();
+            System.out.println(s);
+        }
+    }
+}
+/*標準入力を用いて、入力を受け取ります。
+受け取った値を変数に代入します。
+N 回実行される繰り返し処理を書きます。【ここまでが前の問題でやった内容です】
+　　4 ~ 6 の手順が N 回実行されるように書きます
+入力を 1 行受け取ります。(strike か ball が入力されます)
+受け取った値を変数に代入します。（実装例では変数名を s としています。）
+変数の値を出力します。*/
+
 step5 「野球の審判」を解くために part4
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            String s = sc.next();
+            if (s.equals("strike")){
+                System.out.println("strike!");
+            } else {
+                System.out.println(s);
+            }
+        }
+    }
+}
+/*標準入力を用いて、入力を受け取ります。
+受け取った値を変数に代入します。
+N 回実行される繰り返し処理を書きます。
+　　4 ~ 6 の手順が N 回実行されるように書きます。
+入力を 1 行受け取ります。(strike か ball が入力されます)
+受け取った値を変数に代入します。【ここまでが前の問題でやった内容です】
+5 の変数の値によって処理が変わる条件分岐を書きます。
+　　もし、変数の値が "strike" ならば "strike!" を出力します
+　　そうでないならば、変数の値をそのまま出力します*/
+
 step6 「野球の審判」を解くために part5
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int strike_count = 0;
+
+        for (int i = 0; i < n; i++) {
+            String s = sc.next();
+            if (s.equals("strike")){
+                strike_count++;
+                System.out.println("strike!");
+                System.out.println(strike_count);
+            } else {
+                System.out.println(s);
+            }
+        }
+    }
+}
+/*1標準入力を用いて、入力を受け取ります。
+2受け取った値を変数に代入します。
+3N 回実行される繰り返し処理を書きます。
+　　4 ~ 6 の手順が N 回実行されるように書きます。
+4入力を 1 行受け取ります。(strike か ball が入力される)
+5受け取った値を変数に代入します。
+6 5の変数の値によって処理が変わる条件分岐を書きます。【ここまでが前の問題でやった内容です】
+　　もし、変数の値が strike ならば strike! を出力します
+　　そうでないならば、変数の値をそのまま出力します
+7 ループの処理が始まる前に、strikeの数を数えるための変数を用意し、0 を代入します
+　　実装例では変数名を strike_count としています。
+　　何も受け取っていない（１球も投げていない）段階では strike は 0 個なので、変数に 0 を代入します。
+8 6で作った条件分岐で 「strike だった場合に実行される処理」に以下の処理を加えます
+　　・7 で作った変数の値に +1 する処理
+　　　　プログラムのこの部分が実行されるということは、今回の投球結果が strike だったということなので、「strike の数を数える変数」の値に 1 を足します。
+　　・7 で作った変数の値を出力する
+　　　　このとき、先に足してから、そのあと出力されるよう、順番に留意して書いてください。*/
+
 step7 「野球の審判」を解くために part6
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int strike_count = 0;
+
+        for (int i = 0; i < n; i++) {
+            String s = sc.next();
+            if (s.equals("strike")){
+                strike_count++;
+                if (strike_count == 3) {
+                    System.out.println("out!");
+                } else {
+                    System.out.println("strike!");
+                }
+            } else {
+                System.out.println(s);
+            }
+        }
+    }
+}
+/*1標準入力を用いて、入力を受け取ります。
+2受け取った値を変数に代入します。
+3N 回実行される繰り返し処理を書きます。
+　　4 ~ 6 の手順が N 回実行されるように書きます。
+4入力を 1 行受け取ります。(strike か ball が入力される)
+5受け取った値を変数に代入します。
+6 5の変数の値によって処理が変わる条件分岐を書きます。
+　　もし、変数の値が strike ならば strike! を出力します
+　　そうでないならば、変数の値をそのまま出力します
+7 ループの処理が始まる前に、strikeの数を数えるための変数を用意し、0 を代入します
+　　実装例では変数名を strike_count としています。
+　　何も受け取っていない（１球も投げていない）段階では strike は 0 個なので、変数に 0 を代入します
+8 6で作った条件分岐で 「strike だった場合に実行される処理」に以下の処理を加えます。
+　　・7 で作った変数に +1 する処理【ここまでが前の問題でやった内容です】
+　　・もし、7 で作った変数の値が 3 であれば、out! と出力し、そうでないならば strike! と出力する条件分岐*/
+
 step1  野球の審判（力試し編）・final 野球の審判
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int ball_count = 0;
+        int strike_count = 0;
+
+        for (int i = 0; i < n; i++) {
+            String s = sc.next();
+            if (s.equals("strike")) {
+                strike_count++;
+                if (strike_count == 3) {
+                    System.out.println("out!");
+                } else {
+                    System.out.println("strike!");
+                }
+            } else {
+                ball_count++;
+                if (ball_count == 4) {
+                    System.out.println("fourball!");
+                } else {
+                    System.out.println("ball!");
+                }
+            }
+        }
+    }
+}
+/*標準入力を用いて、入力を受け取ります。
+受け取った値を変数に代入します。
+N 回実行される繰り返し処理を書きます。
+　　4 ~ 6 の手順が N 回実行されるように書きます。
+入力を 1 行受け取ります。(strike か ball が入力される)
+受け取った値を変数に代入します。
+5 の変数の値によって処理が変わる条件分岐を書きます。
+　　もし、変数の値が strike ならば strike! を出力します
+　　そうでないならば、変数の値をそのまま出力します
+ループの処理が始まる前に、strikeの数を数えるための変数を用意し、0 を代入します
+　　実装例では変数名を strike_count としています。
+　　何も受け取っていない（１球も投げていない）段階では strike は 0 個なので、変数に 0 を代入します
+6 で作った条件分岐で 「strike だった場合に実行される処理」に以下の処理を加えます。【ここまでが前の問題でやった内容です】
+　　・7 で作った変数の値に +1 する処理
+　　・もし、7 で作った変数の値が 3 であれば、out! と出力し、そうでないならば strike! と出力する条件分岐
+　　条件分岐の中に条件分岐を書きます。
+ループの処理が始まる前に、ball の数を数えるための変数を用意し、0 を代入します
+　　実装例では変数名を ball_count としています。
+6 で作った条件分岐に「strike でなかった場合に実行される処理」に以下の処理を追加します
+　　・9 で作った変数の値に +1 する処理
+　　・もし、9 で作った変数の値が 4 であれば、fourball! と出力し、そうでないならば ball! と出力する条件分岐*/
 
 // みかんの仕分け
 step2 「みかんの仕分け」を解くために part1
