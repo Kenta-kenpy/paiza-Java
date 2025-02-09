@@ -937,10 +937,169 @@ System.out.printf("%.4f\n", remainingAfterDeliSale); で誤差を抑えて出力
 
 // 1を数えよ【ビット演算】
 step2 「1を数えよ」を解くために part1
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を受け取るためのScannerを作成
+        Scanner sc = new Scanner(System.in);
+        
+        // 整数Nを入力
+        int N = sc.nextInt();
+        
+        // 出力
+        System.out.println(N);
+    }
+}
+/*標準入力を用いて入力を受け取り、変数に代入します。
+　　このとき整数型で受け取ります。
+　　変数の名前に特に決まりはありませんが、この入力について問題文中で N と表記されているので、実装例では変数名を N にして、合わせています。
+変数の値を標準出力します。*/
+
 step3 「1を数えよ」を解くために part2
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を受け取るためのScannerを作成
+        Scanner sc = new Scanner(System.in);
+        
+        // 2進数の文字列 S を入力
+        String S = sc.nextLine();
+        
+        // 1の個数をカウントする変数
+        int ans = 0;
+        
+        // S の各文字を調べて '1' を数える
+        for (int i = 0; i < S.length(); i++) {
+            if (S.charAt(i) == '1') {
+                ans++;
+            }
+        }
+        
+        // 出力
+        System.out.println(ans);
+    }
+}
+/*標準入力を用いて入力を受け取り、変数に代入します。
+　　解説・実装例では文字列型で受け取ることにします。(実装例では変数名 S)
+1 の個数を管理する変数を用意し、初期値を 0 にします。(実装例では変数名 ans)
+S の長さと同じ回数実行される繰り返し処理を書きます。
+　　4 の手順が繰り返されるようにします。
+　　解説・実装例ではループ変数を i とし、0 ~ S の長さ-1 まで変化させます。
+S[i] が 1 なら ans に 1 加算します。(S[i] は 文字列 S の i+1 番目の文字を表します。)
+ans の値を出力します。*/
+
 step4 「1を数えよ」を解くために part3
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を受け取るためのScannerを作成
+        Scanner sc = new Scanner(System.in);
+        
+        // 整数Nを入力
+        int N = sc.nextInt();
+        
+        // 1の個数をカウントする変数
+        int ans = 0;
+        
+        // N を 2 進数に変換する過程
+        while (N > 0) {
+            // N の最下位のビットが1であれば ans を増やす
+            if (N % 2 == 1) {
+                ans++;
+            }
+            // N を 2 で割って次のビットを調べる
+            N /= 2;
+        }
+        
+        // 結果を出力
+        System.out.println(ans);
+    }
+}
+/*1 標準入力を用いて入力を受け取り、変数に代入します。(実装例では変数名 N)
+2 問題文にしたがって N を 2 進数に変換していきます。変換後の 2 進数を管理する配列を用意します。(実装例では変数名 binaryNumber)
+3 N を商が 0 になるまで 2 で割り続けます。N を 2 で割った商が 0 より大きい限り繰り返される while 文を書きます。
+　　4 ~ 5 の手順が繰り返されるようにします。
+4 N を 2 で割った余りを binaryNumber に追加します。
+5 N を 2 で割ります。切り捨て除算になるように注意してください。
+6 N をbinaryNumber に追加します。
+7 binaryNumber を逆順にします。ここまでの操作で binaryNumber は N を 2 進数に変換したものになりました。
+　　この問題に解答する上では逆順にする操作はなくてもかまいません。
+8 1 の個数を管理する変数を用意し、初期値を 0 にします。(実装例では変数名 ans)
+9 binaryNumber の要素数と同じ回数実行される繰り返し処理を書きます。
+　　10 の手順が繰り返されるようにします。
+　　解説・実装例ではループ変数を i とします。
+10 binaryNumber[i] が 1 なら ans に 1 加算します。
+11 ans の値を出力します。*/
+
 step5 「1を数えよ」を解くために part4
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を受け取るためのScannerを作成
+        Scanner sc = new Scanner(System.in);
+        
+        // 整数Nを入力
+        int N = sc.nextInt();
+        
+        // N と 1 の論理積を取って最下位ビットが1かどうか判定
+        if ((N & 1) == 1) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+/*N を 2 進数にしたとき最下位の桁が 1 かどうか判定するには、2 進数で最下位の桁のみ 1 である数値との論理積を取ればよいです。 つまり、N と 1 の論理積を取ればよいです。 N と 1 の論理積が 1 なら N を 2 進数にしたとき最下位の桁が 1 、そうでないなら 0 です。
+方針
+標準入力を用いて入力を受け取り、変数に代入します。(実装例では変数名 N)
+N と 1 の論理積によって処理が変わる条件分岐を書きます。
+　　論理積が 1 なら Yes を出力します。
+　　そうでないなら No を出力します。*/
+
 step1  1を数えよ（力試し編）・final 1を数えよ
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を読み取るためのScanner
+        Scanner sc = new Scanner(System.in);
+        
+        // Nの値を読み取る
+        int N = sc.nextInt();
+        
+        // 1の個数をカウントする変数
+        int ans = 0;
+        
+        // bitMaskは1のビットを保持
+        int bitMask = 1;
+        
+        // Nのビットの長さが最大で16ビットなので、16回繰り返せば十分
+        for (int i = 0; i < 16; i++) {
+            if ((N & bitMask) != 0) {  // bitMaskとNの論理積が0でない場合
+                ans++;  // 1の個数をカウント
+            }
+            bitMask <<= 1;  // bitMaskを左シフトして次のビットをチェック
+        }
+        
+        // 結果を出力
+        System.out.println(ans);
+    }
+}
+/*N を 2 進数にしたとき最下位の桁が 1 かどうか判定するには、2 進数で最下位の桁のみ 1 である数値との論理積を取ればよいのでした。 
+これをすべてのビットに対して行えばよいです。 例えば、N の下から 2 ビット目が 1 か判定するには、2 進数で下から 2 桁目のみ 1 である数値 00000010、つまり 10 進数の 2 と論理積を取ればよいです。
+このような、ビット単位の論理演算で特定のビットだけを取り出したりするために用いられるビットパターンのことをビットマスクと呼びます。
+1 標準入力を用いて入力を受け取り、変数に代入します。(実装例では変数名 N)
+2 1 の個数を管理する変数を用意し、初期値を 0 にします。(実装例では変数名 ans)
+3 論理積を取る相手(ビットマスク)を用意し、初期値を 1 とします。(実装例では変数名 bitMask)
+4 bitMask の値が N 以下である限り実行される繰り返し処理を書きます。
+　　5 ~ 6 の手順が繰り返されるようにします。
+5 N と bitMask の論理積が 0 でないなら、ans に 1 加算します。
+6 bitMask に 2 をかけます。(bitMask のビットが立っている桁を左に 1 ずらします。)
+7 ans の値を出力します。*/
 
 // 文字列の抽出
 step2 「文字列の抽出」を解くために part1
