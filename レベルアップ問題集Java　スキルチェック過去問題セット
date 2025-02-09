@@ -1103,7 +1103,209 @@ public class Main {
 
 // 文字列の抽出
 step2 「文字列の抽出」を解くために part1
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 文字列 S を入力
+        String input = scanner.nextLine();
+        
+        // 2 回出力
+        System.out.println(input);
+        System.out.println(input);
+        
+        scanner.close();
+    }
+}
+/*標準入力から文字列 S を取得します。
+その文字列を 2 回、改行区切りで出力します。*/
+
 step3 「文字列の抽出」を解くために part2
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // 1行目: 開始タグと終了タグを取得
+        String tagLine = scanner.nextLine();
+        String[] tags = tagLine.split(" ");
+        String startTag = tags[0];
+        String endTag = tags[1];
+
+        // 2行目: テキストデータを取得
+        String text = scanner.nextLine();
+
+        // 3行目: 開始タグと終了タグの位置を取得
+        String[] positions = scanner.nextLine().split(" ");
+        int startIndex = Integer.parseInt(positions[0]) - 1;  // インデックスは0-based
+        int endIndex = Integer.parseInt(positions[1]) - 1;  // インデックスは0-based
+
+        // 開始タグから終了タグの間の部分を抽出
+        // 開始タグの終了位置は startIndex + startTag.length()
+        // 終了タグの開始位置は endIndex
+        String content = text.substring(startIndex + startTag.length(), endIndex).trim();
+
+        // 抽出した内容が空の場合は<blank>を出力
+        if (content.isEmpty()) {
+            System.out.println("<blank>");
+        } else {
+            System.out.println(content);
+        }
+
+        scanner.close();
+    }
+}
+/*タグとテキストデータの取得:
+開始タグと終了タグを入力として取得します。
+テキストデータを 2 行目から取得します。
+開始タグと終了タグの位置（インデックス）を 3 行目から取得します。
+抽出処理:
+開始タグの位置から終了タグの位置を使って、タグ間の内容を抽出します。
+開始タグと終了タグの間に何もない場合は <blank> を出力します。
+出力:
+抽出した内容をそのまま出力します。もし内容がない場合は <blank> と出力します。*/
+
 step4 「文字列の抽出」を解くために part3
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 1行目: 開始タグと終了タグを取得
+        String tagLine = scanner.nextLine();
+        String[] tags = tagLine.split(" ");
+        String startTag = tags[0];
+        String endTag = tags[1];
+
+        // 2行目: テキストデータを取得
+        String text = scanner.nextLine();
+
+        // 開始タグと終了タグの位置を検索
+        int startIndex = text.indexOf(startTag); // 開始タグの位置 (0-based)
+        int endIndex = text.indexOf(endTag);     // 終了タグの位置 (0-based)
+
+        // 位置は1-basedにするため、それぞれに+1を加える
+        System.out.println((startIndex + 1) + " " + (endIndex + 1));
+
+        scanner.close();
+    }
+}
+/*タグの入力を取得:
+1 行目から開始タグ (tag_a) と終了タグ (tag_b) を取得します。
+テキストデータの入力を取得:
+2 行目からテキストデータ (S) を取得します。
+開始タグと終了タグの位置を検索:
+indexOf メソッドを使用して開始タグと終了タグの位置を検索します。indexOf はタグの最初の位置を返しますが、出力は1-based インデックスを要求されているので、0-based インデックスから1を加えた値を出力します。
+位置の出力:
+開始タグの位置と終了タグの位置を空白区切りで出力します。*/
+
 step5 「文字列の抽出」を解くために part4
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 1行目: 開始タグと終了タグを取得
+        String tagLine = scanner.nextLine();
+        String[] tags = tagLine.split(" ");
+        String startTag = tags[0];
+        String endTag = tags[1];
+
+        // 2行目: テキストデータを取得
+        String text = scanner.nextLine();
+        
+        // 開始タグと終了タグをすべて見つける
+        int startIndex = 0;
+        while (startIndex != -1) {
+            // 開始タグを探す
+            startIndex = text.indexOf(startTag, startIndex);
+            if (startIndex == -1) break; // 開始タグがもう見つからなければ終了
+
+            // 終了タグを探す（開始タグの後から）
+            int endIndex = text.indexOf(endTag, startIndex + startTag.length());
+            if (endIndex == -1) break; // 終了タグが見つからなければ終了
+
+            // 開始タグと終了タグの位置を1-based インデックスで出力
+            System.out.println((startIndex + 1) + " " + (endIndex + 1));
+
+            // 次の開始タグを探すためにstartIndexを更新
+            startIndex = endIndex + endTag.length();
+        }
+
+        scanner.close();
+    }
+}
+/*入力の取得:
+開始タグと終了タグを1行目から取得します。
+2行目でテキストデータを取得します。
+開始タグと終了タグの位置の検索:
+indexOf メソッドを使って開始タグと終了タグの位置を検索します。
+開始タグが見つかった後、その位置から終了タグを探し、ペアとして位置を記録します。
+終了タグを見つけると、次の開始タグを探し始めます。
+結果の出力:
+各開始タグと終了タグの位置を1-based インデックスで出力します。*/
+
 step1  文字列の抽出（力試し編）・final 文字列の抽出
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 1行目のタグを取得
+        String tagLine = scanner.nextLine();
+        String[] tags = tagLine.split(" ");
+        String startTag = tags[0];
+        String endTag = tags[1];
+        
+        // 2行目のテキストデータを取得
+        String text = scanner.nextLine();
+        
+        // 文字列の抽出開始
+        int currentIndex = 0;
+        
+        while (true) {
+            // 開始タグを探す
+            int startIndex = text.indexOf(startTag, currentIndex);
+            if (startIndex == -1) {
+                break;  // 開始タグが見つからなければ終了
+            }
+            
+            // 開始タグの後ろから終了タグを探す
+            int endIndex = text.indexOf(endTag, startIndex + startTag.length());
+            if (endIndex == -1) {
+                break;  // 終了タグが見つからなければ終了
+            }
+            
+            // 開始タグと終了タグの間の文字列を抽出
+            String content = text.substring(startIndex + startTag.length(), endIndex);
+            
+            // コンテンツが空なら<blank>を出力
+            if (content.isEmpty()) {
+                System.out.println("<blank>");
+            } else {
+                System.out.println(content);
+            }
+            
+            // 次の検索は終了タグの後から始める
+            currentIndex = endIndex + endTag.length();
+        }
+        
+        scanner.close();
+    }
+}
+/*この問題では、特定の開始タグ <abc> と終了タグ <xyz> の間にある文字列を抽出するプログラムを作成する必要があります。入力されたタグに基づいて、テキストデータ内で開始タグから終了タグまでの間を繰り返し抽出し、出力します。もし、開始タグと終了タグの間に文字列がない場合は <blank> を出力します。
+
+アルゴリズムの流れ
+タグの入力: 開始タグと終了タグを入力から取得します。
+テキストデータの処理:
+開始タグをテキストデータ内で検索します。
+開始タグが見つかると、その後に終了タグを検索します。
+開始タグと終了タグの間に文字列があればその部分を出力し、終了タグの後から次の開始タグを探し続けます。
+もし開始タグと終了タグの間に文字列がなければ <blank> を出力します。
+繰り返し処理: 次の開始タグを見つけるまで処理を繰り返します。*/
