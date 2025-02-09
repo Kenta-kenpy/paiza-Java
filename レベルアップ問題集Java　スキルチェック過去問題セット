@@ -48,11 +48,144 @@ public class Main {
 
 <Cランク>
 // 検索履歴
-// 単語のカウント
-// 宝くじ
-// 野球の審判
-// みかんの仕分け
-// 残り物の量
-// 1を数えよ【ビット演算】
-// 文字列の抽出
+import java.util.HashSet;
+import java.util.Scanner;
 
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        String[] words = new String[n];
+
+        for (int i = 0; i < n; i++) {
+            words[i] = sc.next();
+        }
+
+        HashSet<String> appear = new HashSet<>();
+
+        for (int i = n - 1; i >= 0; i--) {
+            if (appear.contains(words[i])) {
+                continue;
+            }
+            System.out.println(words[i]);
+            appear.add(words[i]);
+        }
+    }
+}
+/*連結リスト等のデータ構造を用いて、問題文にある通りに履歴を作ってもよいのですが、以下のようにすると簡単に解くことが出来ます。
+検索ワードを W_N から W_1 まで逆順に見ていき、そのワードが既出でなければ出力する。HashSet に既出の検索ワードを格納しておくことにより、検索ワードが既出かどうかを調べられるようにしています。*/
+
+// 単語のカウント
+step2 「単語のカウント」を解くために part1
+step3 「単語のカウント」を解くために part2
+step4 「単語のカウント」を解くために part3
+step5 「単語のカウント」を解くために part4
+step6 「単語のカウント」を解くために part5
+step7 「単語のカウント」を解くために part6
+step8 「単語のカウント」を解くために part7
+step1  単語のカウント（力試し編）・final 単語のカウント
+
+// 宝くじ
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int b = sc.nextInt();
+
+        int n = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            int a = sc.nextInt();
+
+            String result = "blank";
+            if (a == b) {
+                result = "first";
+            } else if (Math.abs(a - b) == 1) {
+                result = "adjacent";
+            } else if (a % 10000 == b % 10000) {
+                result = "second";
+            } else if (a % 1000 == b % 1000) {
+                result = "third";
+            }
+
+            System.out.println(result);
+        }
+    }
+}
+/*宝くじの番号を整数値として処理すると、当たりかどうかの判定を簡単に行うことができます。
+Math クラスの abs メソッドを用いると、絶対値を取得することが出来ます。
+当選番号と宝くじの番号の下 4 桁が一致しているかどうかを確認するには、両者を 10000 で割った余りを比較すればよいです。下 3 桁についても同様に、1000 で割った余りを比較すればよいです。*/
+
+// 野球の審判
+step2 「野球の審判」を解くために part1
+step3 「野球の審判」を解くために part2
+step4 「野球の審判」を解くために part3
+step5 「野球の審判」を解くために part4
+step6 「野球の審判」を解くために part5
+step7 「野球の審判」を解くために part6
+step1  野球の審判（力試し編）・final 野球の審判
+
+// みかんの仕分け
+step2 「みかんの仕分け」を解くために part1
+step3 「みかんの仕分け」を解くために part2
+step4 「みかんの仕分け」を解くために part3
+step5 「みかんの仕分け」を解くために part4
+step6 「みかんの仕分け」を解くために part5
+step1  みかんの仕分け（力試し編）・final みかんの仕分け
+
+// 残り物の量
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 入力の受け取り
+        int m = scanner.nextInt();
+        int p = scanner.nextInt();
+        int q = scanner.nextInt();
+        
+        scanner.close();
+        
+        // 生鮮食品の販売後の残りの量
+        double remainingAfterFreshSale = m * (1 - p / 100.0);
+        
+        // 惣菜販売後の残りの量
+        double remainingAfterDeliSale = remainingAfterFreshSale * (1 - q / 100.0);
+        
+        // 結果の出力（小数点以下の精度を保つ）
+        System.out.printf("%.4f\n", remainingAfterDeliSale);
+    }
+}
+/*入力の受け取り
+Scanner を使用して、標準入力から m, p, q の値を取得します。
+
+生鮮食品の販売後の計算
+
+m の p% を販売し、売れ残りを計算します。
+remainingAfterFreshSale = m * (1 - p / 100.0)
+惣菜販売後の計算
+
+売れ残りを惣菜にし、その q% を販売。
+remainingAfterDeliSale = remainingAfterFreshSale * (1 - q / 100.0)
+結果の出力
+
+System.out.printf("%.4f\n", remainingAfterDeliSale); で誤差を抑えて出力します。*/
+
+// 1を数えよ【ビット演算】
+step2 「1を数えよ」を解くために part1
+step3 「1を数えよ」を解くために part2
+step4 「1を数えよ」を解くために part3
+step5 「1を数えよ」を解くために part4
+step1  1を数えよ（力試し編）・final 1を数えよ
+
+// 文字列の抽出
+step2 「文字列の抽出」を解くために part1
+step3 「文字列の抽出」を解くために part2
+step4 「文字列の抽出」を解くために part3
+step5 「文字列の抽出」を解くために part4
+step1  文字列の抽出（力試し編）・final 文字列の抽出
