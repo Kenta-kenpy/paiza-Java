@@ -1,23 +1,1228 @@
 D<閏年の判定>
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int y = sc.nextInt();
+        boolean leap;
+        if (y % 400 == 0) {
+            leap = true;
+        } else if (y % 100 == 0) {
+            leap = false;
+        } else if (y % 4 == 0) {
+            leap = true;
+        } else {
+            leap = false;
+        }
+        System.out.println(leap ? "Yes" : "No");
+    }
+}
+/*閏年の条件を満たしているかどうか条件分岐で求めます。
+西暦を受け取って閏年かどうかを真偽値で返す関数を作成すると後々の問題で利用しやすくなります。
+条件を吟味すると、
+400 で割り切れる
+4 で割り切れてかつ 100 で割り切れない
+のどちらかを満たしていればよいことがわかります。*/
+
 C<西暦の和暦変換2>
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int y = sc.nextInt();
+        int m = sc.nextInt();
+        int d = sc.nextInt();
+        String era = "";
+        int era_year = -1;
+        if (
+            y <= 1911 || y == 1912 && m <= 6 || y == 1912 && m == 7 && d <= 29
+        ) {
+            era = "明治";
+            era_year = y - 1867;
+        } else if (
+            y <= 1925 || y == 1926 && m <= 11 || y == 1926 && m == 12 && d <= 24
+        ) {
+            era = "大正";
+            era_year = y - 1911;
+        } else if (y <= 1988 || y == 1989 && m == 1 && d <= 7) {
+            era = "昭和";
+            era_year = y - 1925;
+        } else if (y <= 2018 || y == 2019 && m <= 4) {
+            era = "平成";
+            era_year = y - 1988;
+        } else {
+            era = "令和";
+            era_year = y - 2018;
+        }
+        String era_year_str = era_year + "";
+        if (era_year == 1) {
+            era_year_str = "元";
+        }
+        System.out.println(era + era_year_str + "年" + m + "月" + d + "日");
+    }
+}
+/*西暦の和暦変換のように日付の比較は数値への変換を通して行います。
+分岐の中で和暦何年かを計算します。
+和暦 1 年のときは元年と出力するようにします。西暦の和暦変換のように条件分岐を行い、今回は分岐の中で和暦何年かを計算します。
+和暦 1 年のとき、和暦何年かを文字列として持つ year_string に "元" と代入し、和暦 1 年でないとき、year_string に和暦の数字を文字列に変換して代入します。
+string year_string = year == 1 ? "元" : to_string(year); で用いられている x = b ? t : f; の構文は if (b) {x = t;} else {x = f;} という意味です。
+b ? t : f は様々な場所で用いることができ、cout << b ? t : f << endl; とすると b が真のときに t を、偽のときに f を出力します。*/
+
 C<西暦の和暦変換>
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int y = sc.nextInt();
+        int m = sc.nextInt();
+        int d = sc.nextInt();
+        String era = "";
+        if (
+            y <= 1911 || y == 1912 && m <= 6 || y == 1912 && m == 7 && d <= 29
+        ) {
+            era = "明治";
+        } else if (
+            y <= 1925 || y == 1926 && m <= 11 || y == 1926 && m == 12 && d <= 24
+        ) {
+            era = "大正";
+        } else if (y <= 1988 || y == 1989 && m == 1 && d <= 7) {
+            era = "昭和";
+        } else if (y <= 2018 || y == 2019 && m <= 4) {
+            era = "平成";
+        } else {
+            era = "令和";
+        }
+        System.out.println(era + "年" + m + "月" + d + "日");
+    }
+}
+/*年月日そのままでは比較が大変なので、年月日を数値に変換して比較します。
+日付が遅いほど大きな値となるような変換を行うことで数値比較で日付の比較を行います。
+年月日を数値に変換する関数を作成して変換を楽にします。*/
+
 C<月の日数>
+import java.util.*;
+
+public class Main {
+
+    static boolean isLeap(int year) {
+        if (year % 400 == 0 || year % 100 != 0 && year % 4 == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int y = sc.nextInt();
+        int m = sc.nextInt();
+        String era = "";
+        int days = 0;
+        switch (m) {
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                days = 30;
+                break;
+            case 2:
+                days = 28;
+                break;
+            default:
+                days = 31;
+                break;
+        }
+        if (m == 2 && isLeap(y)) days++;
+        System.out.println(days);
+    }
+}
+/*各言語の switch 文やパターンマッチングを用いて分岐します。
+表示したい月が 2 月の場合、閏年かどうかを判定します。
+高々 12 ヶ月しかないので、各月の日数を格納した配列を用意することでも十分対応できます。*/
+
 C<次の日>
+import java.util.*;
+
+public class Main {
+
+    static boolean isLeap(int year) {
+        if (year % 400 == 0 || year % 100 != 0 && year % 4 == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    static int days(int year, int month) {
+        int days = 0;
+        switch (month) {
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                days = 30;
+                break;
+            case 2:
+                if (isLeap(year)) {
+                    days = 29;
+                } else {
+                    days = 28;
+                }
+                break;
+            default:
+                days = 31;
+                break;
+        }
+        return days;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int year = sc.nextInt();
+        int month = sc.nextInt();
+        int day = sc.nextInt();
+        day++;
+        if (day > days(year, month)) {
+            day = 1;
+            month++;
+        }
+        if (month >= 13) {
+            month = 1;
+            year++;
+        }
+        System.out.println(year + " " + month + " " + day);
+    }
+}
+/*年末か月末かで条件分岐を行います。12 月 31 日の場合翌年の 1 月 1 日を出力します。
+12 月以外の月末の場合、同年の翌月 1 日を出力します。
+月末でない場合は同年同月の翌日を出力します。
+各月の日数の取得は前問 (月の日数) の配列を用いる方針にすると簡潔になります。*/
+
 B<曜日>
+import java.util.*;
+
+public class Main {
+
+    static boolean isLeap(int year) {
+        return year % 400 == 0 || year % 100 != 0 && year % 4 == 0;
+    }
+
+    static int lastDay(int year, int month) {
+        switch (month) {
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                return 30;
+            case 2:
+                if (isLeap(year)) {
+                    return 29;
+                } else {
+                    return 28;
+                }
+            default:
+                return 31;
+        }
+    }
+
+    static int[] nextDate(int year, int month, int day) {
+        day++;
+        if (day > lastDay(year, month)) {
+            day = 1;
+            month++;
+        }
+        if (month > 12) {
+            month = 1;
+            year++;
+        }
+        return new int[] { year, month, day };
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int year = sc.nextInt();
+        int month = sc.nextInt();
+        int day = sc.nextInt();
+
+        int count = 0;
+        int y = 1800, m = 1, d = 1;
+        while (!(y == year && m == month && d == day)) {
+            int[] date = nextDate(y, m, d);
+            y = date[0];
+            m = date[1];
+            d = date[2];
+            count++;
+        }
+
+        // 曜日
+        String[] day_of_weeks = { "水", "木", "金", "土", "日", "月", "火" };
+        System.out.println(day_of_weeks[count % 7] + "曜日");
+    }
+}
+/*1799 年 12 月 31 日から何日たったかを計算します。
+各曜日 (日, 月, 火…) と数字 (0, 1, 2…) を対応させて曜日を扱います。
+方針の通り、曜日は日曜を 0、月曜を 1、…、土曜を 6 と対応させて扱います。
+変数 weekday に 1799 年 12 月 31 日の曜日である火曜に対応する数字 2 を代入しておきます。
+まず、1 年まるごと経過日数に足せる分、つまり、1800 年から y-1 年の日数を経過日数に足します。
+このとき、閏年の際には 366 日足すことに気をつけます。次に、1 月まるごと経過日数に足せる分、つまり、1 月から m-1 月の日数を経過日数に足します。
+このとき、y 年が閏年の際には 2 月で 29 日足すことに気をつけます。最後に、d 日だけ経過日数に足します。
+経過日数を 7 で割ったあまりが曜日になるように weekday の初期値を設定したので、weekday を 7 で割ったあまりの曜日に対応する漢字を出力します。*/
+
 B<曜日(large)>
+import java.util.*;
+
+public class Main {
+
+    static boolean isLeap(long year) {
+        return year % 400 == 0 || year % 100 != 0 && year % 4 == 0;
+    }
+
+    static int lastDay(long year, int month) {
+        switch (month) {
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                return 30;
+            case 2:
+                if (isLeap(year)) {
+                    return 29;
+                } else {
+                    return 28;
+                }
+            default:
+                return 31;
+        }
+    }
+
+    static long[] nextDate(long year, long month, long day) {
+        day++;
+        if (day > lastDay(year, (int) month)) {
+            day = 1;
+            month++;
+        }
+        if (month > 12) {
+            month = 1;
+            year++;
+        }
+        return new long[] { year, month, day };
+    }
+
+    static long countDays(long year, long month, long day) {
+        long y = 1800, m = 1, d = 1;
+        long count = 0;
+
+        // 400の倍数年未来へ飛ぶ
+        long days400y = 365 * 400 + (400 / 4) - (400 / 100) + (400 / 400);
+        count += (year - y) / 400 * days400y;
+        y = year - (year - y) % 400;
+
+        // 100の倍数年未来へ飛ぶ
+        long days100y = 365 * 100 + (100 / 4) - (100 / 100);
+        count += (year - y) / 100 * days100y;
+        if (year - y >= 300) { // 400の倍数年の閏年を考慮
+            count += 1;
+        }
+        y = year - (year - y) % 100;
+
+        // 4の倍数年未来へ飛ぶ
+        long days4y = 365 * 4 + (4 / 4);
+        count += (year - y) / 4 * days4y;
+        if (!isLeap(y) && (year - y) / 4 >= 1) { // 100の倍数年の平年を考慮
+            count -= 1;
+        }
+        y = year - (year - y) % 4;
+
+        // 1の倍数年未来へ飛ぶ
+        long days1y = 365;
+        count += (year - y) * days1y;
+        if (isLeap(y) && (year - y) >= 1) { // 4の倍数年の閏年を考慮
+            count += 1;
+        }
+        y = year;
+
+        // month月まで飛ぶ
+        while (m < month) {
+            count += lastDay(y, (int) m);
+            m += 1;
+        }
+
+        // day日まで飛ぶ
+        count += day - d;
+        d = day;
+
+        /*
+    while (!(y == year && m == month && d == day)) {
+      long[] date = nextDate(y, m, d);
+      y = date[0];
+      m = date[1];
+      d = date[2];
+      count ++;
+    }
+    */
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        long year = sc.nextLong();
+        long month = sc.nextLong();
+        long day = sc.nextLong();
+
+        long count = countDays(year, month, day);
+        String[] day_of_weeks = { "水", "木", "金", "土", "日", "月", "火" };
+        System.out.println(day_of_weeks[(int) (count % 7)] + "曜日");
+    }
+}
+/*全体の方針は前問 (曜日) と同じです。
+この問題は y に非常に大きな値を与えられることがあるので、1 年まるごと経過日数に加えられる分の計算に少し工夫を加えます。
+現実の日付に対応している曜日を求めたい場合、ツェラーの公式を使うこともできます。*/
+
 A<曜日(large2)>
+import java.util.*;
+
+public class Main {
+
+    static boolean isLeap(long year) {
+        return year % 400 == 0 || year % 100 != 0 && year % 4 == 0;
+    }
+
+    static int lastDay(long year, int month) {
+        if (month == 12 && isLeap(year)) {
+            return 31;
+        } else {
+            return 30;
+        }
+    }
+
+    static long[] nextDate(long year, long month, long day) {
+        day++;
+        if (day > lastDay(year, (int) month)) {
+            day = 1;
+            month++;
+        }
+        if (month > 12) {
+            month = 1;
+            year++;
+        }
+        return new long[] { year, month, day };
+    }
+
+    static long countDays(long year, long month, long day) {
+        long y = 0, m = 1, d = 1;
+        long count = 0;
+
+        long days400 = 360 * 400 + 1 * (400 / 4) - (400 / 100) + (400 / 400);
+        count += year / 400 * days400; // 400年の周期性を利用して一気に未来へ飛ぶ
+        y = year - year % 400;
+        while (!(y == year && m == month && d == day)) {
+            long[] date = nextDate(y, m, d);
+            y = date[0];
+            m = date[1];
+            d = date[2];
+            count++;
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        long year = sc.nextLong();
+        long month = sc.nextLong();
+        long day = sc.nextLong();
+
+        long count = countDays(year, month, day);
+        String[] day_of_weeks = { "木", "金", "土", "日", "月", "火", "水" };
+        System.out.println(day_of_weeks[(int) (count % 7)] + "曜日");
+    }
+}
+/*前問 (曜日(large)) でツェラーの公式を用いずに解いた場合、前問 (曜日(large)) とまったく同じ方針で解くことができます。
+前問 (曜日(large)) の解答コードに対して、days_of_month を問題に従って調整し、閏年でない年の日数を 360 日とすることで解くことができます。
+前問で扱った閏年の計算は 1 から y 年の間に含まれる閏年の回数を計算するもので、0 年を含むことができないので、y が 0 より大きいとき閏年の数を 1 増やします。*/
+
 C<翌営業日 - その1>
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int M = sc.nextInt();
+        int D = sc.nextInt();
+        String d = sc.next();
+        if (d.equals("FRI")) {
+            D += 3;
+        } else if (d.equals("SAT")) {
+            D += 2;
+        } else {
+            D += 1;
+        }
+        switch (M) {
+            case 2:
+                if (D > 28) {
+                    D -= 28;
+                    M += 1;
+                }
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                if (D > 30) {
+                    D -= 30;
+                    M += 1;
+                }
+                break;
+            default:
+                if (D > 31) {
+                    D -= 31;
+                    M += 1;
+                }
+                break;
+        }
+        if (M == 13) {
+            M = 1;
+        }
+        System.out.println(M + "月" + D + "日");
+    }
+}
+/*受け取った曜日を値に変換し、平日になるまで日付を進め続けます。
+受け取った曜日を数値に変換します。
+日付を翌日に進めて、その日が平日なら break、そうでないなら再び日付を翌日に進める無限ループを回します。
+ループから抜けたときの日付が次の営業日です。*/
+
 B<翌営業日 - その2>
+import java.util.*;
+
+public class Main {
+
+    static int[] nextDate(int M, int D) {
+        if (
+            M == 2 &&
+            D == 28 ||
+            M == 4 &&
+            D == 30 ||
+            M == 6 &&
+            D == 30 ||
+            M == 9 &&
+            D == 30 ||
+            M == 11 &&
+            D == 30 ||
+            D == 31
+        ) return new int[] { M + 1, 1 }; else return new int[] { M, D + 1 };
+    }
+
+    static boolean isHoliday(int M, int D) {
+        if (M == 7 && D == 15) return true;
+        return (
+            M == 1 &&
+            (D == 1 || D == 14) ||
+            M == 2 &&
+            D == 11 ||
+            M == 3 &&
+            D == 21 ||
+            M == 4 &&
+            (D == 29 || D == 30) ||
+            M == 5 &&
+            (1 <= D && D <= 6) ||
+            M == 7 &&
+            D == 15 ||
+            M == 8 &&
+            (D == 11 || D == 12) ||
+            M == 9 &&
+            (D == 16 || D == 23) ||
+            M == 10 &&
+            (D == 14 || D == 22) ||
+            M == 11 &&
+            (D == 3 || D == 4 || D == 23)
+        );
+    }
+
+    public static int[] nextNormalDate(int M, int D, int d) {
+        int[] nextDate = nextDate(M, D);
+        M = nextDate[0];
+        D = nextDate[1];
+        d = (d + 1) % 7;
+        if (d == 0 || d == 6) return nextNormalDate(M, D, d); else if (
+            isHoliday(M, D)
+        ) return nextNormalDate(M, D, d); else return new int[] { M, D };
+    }
+
+    public static int dateToInteger(String d) {
+        if (d.equals("SUN")) return 0;
+        if (d.equals("MON")) return 1;
+        if (d.equals("TUE")) return 2;
+        if (d.equals("WED")) return 3;
+        if (d.equals("THU")) return 4;
+        if (d.equals("FRI")) return 5;
+        if (d.equals("SAT")) return 6;
+        throw new Error("hoge");
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int M = sc.nextInt();
+        int D = sc.nextInt();
+        int d = dateToInteger(sc.next());
+        int[] date = nextNormalDate(M, D, d);
+        System.out.println(date[0] + "月" + date[1] + "日");
+    }
+}
+/*受け取った曜日を値に変換し、平日になるまで日付を進め続けます。
+基本は前問 (翌営業日) と同様です。
+祝日かどうか判定するために二次元配列 isholiday を用意し、祝日なら isholiday[月][日] が true、そうでないなら false となるように値を設定します。
+日付を翌日に進めて、その日が平日なら break、そうでないなら再び日付を翌日に進める無限ループを回します。*/
+
 D<最長の連休2019>
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
+
+public class Main {
+    public static void main(String[] args) {
+        Set<LocalDate> holidays = new HashSet<>();
+        int year = 2019;
+        
+        // 日本の祝日（2019年）
+        int[][] holidayDates = {
+            {1, 1}, {1, 14}, {2, 11}, {3, 21}, {4, 29}, {4, 30}, {5, 1}, {5, 2}, {5, 3}, {5, 4}, {5, 5}, {5, 6},
+            {7, 15}, {8, 11}, {8, 12}, {9, 16}, {9, 23}, {10, 14}, {11, 3}, {11, 4}, {11, 23}
+        };
+        
+        for (int[] date : holidayDates) {
+            holidays.add(LocalDate.of(year, date[0], date[1]));
+        }
+
+        int maxHolidayStreak = 0;
+        int currentStreak = 0;
+
+        for (LocalDate date = LocalDate.of(year, 1, 1); date.getYear() == year; date = date.plusDays(1)) {
+            if (date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY || holidays.contains(date)) {
+                currentStreak++;
+                maxHolidayStreak = Math.max(maxHolidayStreak, currentStreak);
+            } else {
+                currentStreak = 0;
+            }
+        }
+        
+        System.out.println(maxHolidayStreak);
+    }
+}
+/*対象となる休業日の定義
+
+土曜日、日曜日は休業日とする。
+内閣府が定める2019年の国民の祝日・休日をリストに追加し、休業日とする。
+ただし、1月2日、1月3日、12月31日は休業日ではないため、含めない。
+データの準備
+2019年のカレンダーを1月1日から12月31日まで順に調べる。
+祝日を**セット（Set<LocalDate>）**として管理することで、高速に検索できるようにする。
+連続する休業日のカウント
+1日ずつ日付を進めながら、休業日かどうかを判定する。
+休業日ならカウンター（currentStreak）を増やす。
+休業日でなければカウンターをリセットし、最大値を更新する。
+結果の出力
+1年間を通して調べた中で、最も長く続いた休業日の日数を出力する。
+なぜこの方法か？
+全日付を1回ずつチェックするため、計算量は O(365)（ほぼ O(1)）と非常に高速。
+セット（Set<LocalDate>）を利用することで、祝日の判定を高速化（平均 O(1)）。
+カウンターを使って連続した休業日を求める方法は直感的でわかりやすい。*/
+
 C<最長の連休paiza>
+import java.util.*;
+
+public class Main {
+
+    static int[] nextDate(int m, int d) {
+        if (
+            m == 2 &&
+            d == 28 ||
+            m == 4 &&
+            d == 30 ||
+            m == 6 &&
+            d == 30 ||
+            m == 9 &&
+            d == 30 ||
+            m == 11 &&
+            d == 30 ||
+            d == 31
+        ) {
+            return new int[] { m + 1, 1 };
+        } else {
+            return new int[] { m, d + 1 };
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int[] M = new int[N];
+        int[] D = new int[N];
+        for (int i = 0; i < N; i++) {
+            M[i] = sc.nextInt();
+            D[i] = sc.nextInt();
+        }
+        boolean[] isHoliday = new boolean[365];
+        String[] dayOfWeeks = { "火", "水", "木", "金", "土", "日", "月" };
+        int dow = 0;
+        int m = 1, d = 1;
+        for (int i = 0; i < 365; i++) {
+            if (dayOfWeeks[dow].equals("土") || dayOfWeeks[dow].equals("日")) {
+                isHoliday[i] = true;
+            }
+            for (int j = 0; j < N; j++) {
+                if (m == M[j] && d == D[j]) {
+                    isHoliday[i] = true;
+                }
+            }
+            int[] next = nextDate(m, d);
+            m = next[0];
+            d = next[1];
+            dow = (dow + 1) % 7;
+        }
+        int max = 0;
+        for (int i = 0; i < 365; i++) {
+            int j = 0;
+            for (; i + j < 365; j++) {
+                if (!isHoliday[i + j]) {
+                    break;
+                }
+            }
+            if (j > max) {
+                max = j;
+            }
+        }
+        System.out.println(max);
+    }
+}
+/*前問 (最長の連休2019) と同様の方針で解くことができます。
+前問で holidays として自分で用意したものが、今回は入力として与えられると考えれば良いです。
+isholiday の初期化に与えられたデータを用いれば良いです。
+他は前問と同じです。*/
+
 A<連休を伸ばす2>
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt(), L = sc.nextInt();
+        int[] B = new int[N];
+        for (int i = 0; i < N; i++) {
+            B[i] = sc.nextInt();
+        }
+        int result = 0;
+        int one = 0;
+        int zero = 0;
+        for (int l = 0, r = 0; r < N; r++) {
+            if (B[r] == 1) {
+                one++;
+            } else {
+                zero++;
+                while (zero > L) {
+                    if (B[l] == 1) {
+                        one--;
+                    } else {
+                        zero--;
+                    }
+                    l++;
+                }
+            }
+            result = Math.max(result, one + zero);
+        }
+        System.out.println(result);
+    }
+}
+/*前問と同じ方法で解くと計算時間がかかりすぎてしまうため、別のアルゴリズムを考える必要があります。
+尺取法と呼ばれるアルゴリズムを用いて、計算時間を抑えることができます。*/
+
 B<連休を伸ばす1>
+import java.util.*;
+
+public class Main {
+
+    static int howMany(int[] B, int N, int L, int i) {
+        int one = 0;
+        int zero = 0;
+        while (i + one + zero < N) {
+            if (B[i + one + zero] == 1) {
+                one++;
+            } else {
+                if (zero == L) {
+                    break;
+                }
+                zero++;
+            }
+        }
+        return one + zero;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt(), L = sc.nextInt();
+        int[] B = new int[N];
+        for (int i = 0; i < N; i++) {
+            B[i] = sc.nextInt();
+        }
+        int result = 0;
+        for (int i = 0; i < N; i++) {
+            int tmp = howMany(B, N, L, i);
+            if (tmp > result) {
+                result = tmp;
+            }
+        }
+        System.out.println(result);
+    }
+}
+/*各日から休めるだけ休んだ際に何連休となるかを計算し、最大何連休となるのかを計算します。*/
+
 C<日付のフォーマット>
+import java.util.*;
+
+public class Main {
+
+    static boolean isDigits(String s) {
+        for (char c : s.toCharArray()) if (c < '0' || c > '9') return false;
+        return true;
+    }
+
+    static boolean valid(String s) {
+        String[] t = s.split("/");
+        if (t.length != 3) return false;
+        if (t[0].length() != 4) return false;
+        if (t[1].length() != 2) return false;
+        if (t[2].length() != 2) return false;
+        if (!isDigits(t[0])) return false;
+        if (!isDigits(t[1])) return false;
+        if (!isDigits(t[2])) return false;
+        int month = Integer.parseInt(t[1]);
+        if (month < 1 || month > 12) return false;
+        int day = Integer.parseInt(t[2]);
+        if (day < 1 || day > 31) return false;
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        if (valid(s)) System.out.println("Yes"); else System.out.println("No");
+    }
+}
+/*YYYY/MM/DD のフォーマットに従っているか以下の 3 点を順にみて確認します。
+文字列長が 10 か確認します。
+5, 8 文字目が / になっているかを確認します。
+YYYY, MM, DD の箇所が数字列になっていてかつ、MM, DD の値が適切な範囲に収まっているかを確認します。
+引数の文字列が数字列かどうか確認する関数 isNumber を用意します。
+isValidFormat という関数で方針に書いたチェックを行い、true を返すなら Yes を、そうでないなら No を出力します。*/
+
 C<年月日の順序>
+import java.util.*;
+
+public class Main {
+
+    static boolean month(int v) {
+        return 1 <= v && v <= 12;
+    }
+
+    static boolean day(int v) {
+        return 1 <= v && v <= 31;
+    }
+
+    static boolean ymd(String a, String b, String c) {
+        if (
+            !(a.length() == 4 && b.length() == 2 && c.length() == 2)
+        ) return false;
+        int A = Integer.parseInt(a);
+        int B = Integer.parseInt(b);
+        int C = Integer.parseInt(c);
+        if (!month(B)) return false;
+        if (!day(C)) return false;
+        return true;
+    }
+
+    static boolean ydm(String a, String b, String c) {
+        if (
+            !(a.length() == 4 && b.length() == 2 && c.length() == 2)
+        ) return false;
+        int A = Integer.parseInt(a);
+        int B = Integer.parseInt(b);
+        int C = Integer.parseInt(c);
+        if (!month(C)) return false;
+        if (!day(B)) return false;
+        return true;
+    }
+
+    static boolean myd(String a, String b, String c) {
+        if (
+            !(a.length() == 2 && b.length() == 4 && c.length() == 2)
+        ) return false;
+        int A = Integer.parseInt(a);
+        int B = Integer.parseInt(b);
+        int C = Integer.parseInt(c);
+        if (!month(A)) return false;
+        if (!day(C)) return false;
+        return true;
+    }
+
+    static boolean mdy(String a, String b, String c) {
+        if (
+            !(a.length() == 2 && b.length() == 2 && c.length() == 4)
+        ) return false;
+        int A = Integer.parseInt(a);
+        int B = Integer.parseInt(b);
+        int C = Integer.parseInt(c);
+        if (!month(A)) return false;
+        if (!day(B)) return false;
+        return true;
+    }
+
+    static boolean dym(String a, String b, String c) {
+        if (
+            !(a.length() == 2 && b.length() == 4 && c.length() == 2)
+        ) return false;
+        int A = Integer.parseInt(a);
+        int B = Integer.parseInt(b);
+        int C = Integer.parseInt(c);
+        if (!month(C)) return false;
+        if (!day(A)) return false;
+        return true;
+    }
+
+    static boolean dmy(String a, String b, String c) {
+        if (
+            !(a.length() == 2 && b.length() == 2 && c.length() == 4)
+        ) return false;
+        int A = Integer.parseInt(a);
+        int B = Integer.parseInt(b);
+        int C = Integer.parseInt(c);
+        if (!month(B)) return false;
+        if (!day(A)) return false;
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] t = sc.next().split("/");
+        String a = t[0], b = t[1], c = t[2];
+        String result = null;
+        if (ymd(a, b, c)) {
+            if (result != null) {
+                System.out.println("many answers");
+                return;
+            }
+            result = "YYYY/MM/DD";
+        }
+        if (ydm(a, b, c)) {
+            if (result != null) {
+                System.out.println("many answers");
+                return;
+            }
+            result = "YYYY/DD/MM";
+        }
+        if (myd(a, b, c)) {
+            if (result != null) {
+                System.out.println("many answers");
+                return;
+            }
+            result = "MM/YYYY/DD";
+        }
+        if (mdy(a, b, c)) {
+            if (result != null) {
+                System.out.println("many answers");
+                return;
+            }
+            result = "MM/DD/YYYY";
+        }
+        if (dym(a, b, c)) {
+            if (result != null) {
+                System.out.println("many answers");
+                return;
+            }
+            result = "DD/YYYY/MM";
+        }
+        if (dmy(a, b, c)) {
+            if (result != null) {
+                System.out.println("many answers");
+                return;
+            }
+            result = "DD/MM/YYYY";
+        }
+        if (result == null) System.out.println(
+            "no answer"
+        ); else System.out.println(result);
+    }
+}
+/*文字列長が 4 なら YYYY に対応し、文字列長が 2 かつ 12 以下なら MM と DD のどちらに対応する可能性もあり、文字列長が 2 かつ 13 以上 31 以下なら DD に対応します。
+YYYY に対応するものが 1 つ、DD に対応するものが 1 つ、MM と DD のどちらにも対応するものが 1 つ存在するとき、並び順は確定します。
+YYYY に対応するものが 1 つでかつ MM と DD のどちらにも対応するものが 2 つ存在するとき、many answers です。
+上記のどちらでもない場合は no answer です。*/
+
 B<カレンダーの表示>
+import java.util.*;
+
+public class Main {
+
+    static boolean leap(int year) {
+        return year % 400 == 0 || year % 100 != 0 && year % 4 == 0;
+    }
+
+    static int lastDay(int year, int month) {
+        if (month == 2 && leap(year)) return 29; else if (
+            month == 2 && !leap(year)
+        ) return 28; else if (
+            month == 4 || month == 6 || month == 9 || month == 11
+        ) return 30; else return 31;
+    }
+
+    static int[] nextDate(int year, int month, int day) {
+        if (day != lastDay(year, month)) return new int[] {
+            year,
+            month,
+            day + 1,
+        }; else if (month != 12) return new int[] {
+            year,
+            month + 1,
+            1,
+        }; else return new int[] { year + 1, 1, 1 };
+    }
+
+    static int dayOfWeek(int year, int month, int day) {
+        int y = 1800, m = 1, d = 1, dow = 3; // 水
+        while (!(y == year && m == month && d == day)) {
+            int[] date = nextDate(y, m, d);
+            y = date[0];
+            m = date[1];
+            d = date[2];
+            dow = (dow + 1) % 7;
+        }
+        return dow;
+    }
+
+    static void dispCalendar(String[][] cal) {
+        for (int i = 0; i < cal.length; i++) {
+            System.out.print(cal[i][0]);
+            for (int j = 1; j < cal[0].length; j++) {
+                System.out.print(" " + cal[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int year = sc.nextInt();
+        int month = sc.nextInt();
+
+        String[][] cal = new String[6][7];
+        for (int i = 0; i < cal.length; i++) for (
+            int j = 0;
+            j < cal[0].length;
+            j++
+        ) cal[i][j] = "  ";
+        int i = 0, j = dayOfWeek(year, month, 1);
+        int day = 1;
+        while (day <= lastDay(year, month)) {
+            cal[i][j] = String.format("%2d", day);
+            day++;
+            i += (j + 1) / 7;
+            j = (j + 1) % 7;
+        }
+
+        dispCalendar(cal);
+    }
+}
+/*y 年 m 月 1 日の曜日を求めます。
+その後、求められているフォーマットに従ってカレンダーを出力します。
+方針の通りに y 年 m 月 1 日の曜日を求めた後にカレンダーを出力します。*/
+
 C<13日の金曜日(2桁)>
+import java.util.*;
+
+public class Main {
+
+    // 閏年判定
+    static boolean isLeap(int year) {
+        return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+    }
+
+    public static void main(String[] args) {
+        // 1800年1月1日が水曜日(WED)なので、その曜日を基準に計算
+        int weekday = 3; // 水曜日 (0:日曜日, 1:月曜日, ..., 6:土曜日)
+        int fri = 0; // 金曜日の数
+        int[] daysOfMonth = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; // 各月の日数
+
+        // 1800年から2200年までループ
+        for (int year = 1800; year < 2200; year++) {
+            // 閏年の場合、2月の日数を29日に変更
+            if (isLeap(year)) {
+                daysOfMonth[2] = 29;
+            } else {
+                daysOfMonth[2] = 28;
+            }
+
+            // 各月をループ
+            for (int month = 1; month <= 12; month++) {
+                // 13日の曜日が金曜日の場合、friをカウント
+                if (weekday == 5) {
+                    fri++;
+                }
+                
+                // 次の月の1日を求めるため、曜日を進める
+                weekday = (weekday + daysOfMonth[month]) % 7;
+            }
+        }
+
+        // 金曜日の13日の確率を計算
+        double probability = (double) fri / (400 * 12); // 400年 * 12ヶ月 = 4800ヶ月
+        // 小数点2桁で表示
+        System.out.printf("%.2f\n", probability);
+    }
+}
+/*isLeap 関数：与えられた年が閏年かどうかを判定します。
+曜日の計算：1800年1月1日は水曜日（曜日番号は3）なので、その曜日から始めます。
+月ごとのループ：各月ごとに13日が金曜日かどうかをチェックします。金曜日ならfriをインクリメントします。
+確率の計算：friの数を400年間の全月数（4800月）で割って確率を計算します。
+結果の表示：printfを使って、確率を小数点2桁で表示します。*/
+
 C<13日の金曜日(3桁)>
+import java.time.*;
+import java.util.*;
+
+class Main {
+
+    static final Random random = new Random("Friday".hashCode());
+
+    //final static Random random = new Random(System.currentTimeMillis());
+    static int randomInt(int fr, int to) {
+        return random.nextInt((to - fr + 1)) + fr;
+    }
+
+    public static void main(String[] args) {
+        int count = 0;
+        int all = 0;
+        for (int i = 0; i < 10000000; i++) {
+            int year = randomInt(
+                LocalDate.MIN.getYear(),
+                LocalDate.MAX.getYear()
+            );
+            int month = randomInt(1, 12);
+            if (
+                LocalDate
+                    .of(year, month, 13)
+                    .getDayOfWeek()
+                    .equals(DayOfWeek.FRIDAY)
+            ) count++;
+            all++;
+        }
+        double prob = (double) count / all;
+        double res = (int) (prob * 1000) / 1000.0;
+        System.out.printf("%.3f\n", res);
+    }
+}
+/*1800 年 1 月 1 日 (水) かつ 2200 年 1 月 1 日 (水) となるように、400 年ちょうどで曜日の周期と閏年の周期が合うので、この期間を元に計算すれば良いです。*/
 C<13日の金曜日(4桁)>
+import java.time.*;
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+        LocalDate date = LocalDate.of(2019, 5, 13);
+        // 400年の周期性, 曜日はさらに7通り
+        LocalDate end_date = LocalDate.of(2019 + 400 * 7, 5, 13);
+        int friday13 = 0;
+        while (date.isBefore(end_date)) {
+            if (
+                date.getDayOfMonth() == 13 &&
+                date.getDayOfWeek().equals(DayOfWeek.FRIDAY)
+            ) friday13++;
+            date = date.plusMonths(1);
+        }
+        double p = ((double) friday13) / (400 * 7 * 12);
+        double r = (int) (p * 10000) / 10000.0;
+        System.out.printf("%.4f\n", r);
+    }
+}
+/*1800 年 1 月 1 日 (水) かつ 2200 年 1 月 1 日 (水) となるように、400 年ちょうどで曜日の周期と閏年の周期が合うので、この期間を元に計算すれば良いです。*/
+
 B<月末最後の営業日の曜日>
+import java.time.*;
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+        int dow = new Scanner(System.in).nextInt();
+        LocalDate date = LocalDate.of(2019, 1, 1);
+        LocalDate end_date = LocalDate.of(2019 + 400 * 7, 1, 1);
+        int[] dows = new int[7];
+        while (date.isBefore(end_date)) {
+            LocalDate last_date = LocalDate.of(
+                date.getYear(),
+                date.getMonth(),
+                date.lengthOfMonth()
+            );
+            dows[last_date.getDayOfWeek().getValue() % 7]++;
+            date = date.plusMonths(1);
+        }
+        dows[5] += dows[6] + dows[0];
+        int days = dows[dow];
+        double p = ((double) days) / (400 * 7 * 12);
+        double r = (int) (p * 1000000) / 1000000.0;
+        System.out.printf("%.6f\n", r);
+    }
+}
+/*1800 年 1 月 1 日 (水) かつ 2200 年 1 月 1 日 (水) となるように、400 年ちょうどで曜日の周期と閏年の周期が合うので、この期間を元に計算すれば良いです。*/
+
 C<令和を作る>
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        String[] kk = new String[n];
+        for (int i = 0; i < n; i++) kk[i] = sc.next();
+        int i = 0;
+        boolean nice = false;
+        for (String k1 : kk) {
+            for (String k2 : kk) {
+                String s = k1 + k2;
+                if (i < 1000) System.out.println(s);
+                if (s.equals("令和")) nice = true;
+                i++;
+            }
+        }
+        if (nice) System.out.println("Nice"); else System.out.println("Bad");
+    }
+}
+/*問題の通りに 2 文字を組み合わせることを繰り返します。
+そして、組み合わせた結果できた文字列に"令和"が含まれるかどうかを確かめます。
+作った文字列が1000個以下ならそのすべてを、1001個以上なら最初の1000個のみを出力します。*/
+
 C<令和を数える>
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        int cnt = 0;
+        for (int i = 0; i + 1 < s.length(); i++) if (
+            s.charAt(i) == '令' && s.charAt(i + 1) == '和'
+        ) cnt++;
+        System.out.println(cnt);
+    }
+}
+/*文字列から 2 文字ずつ取り出して "令和" と合致するか確認します。*/
