@@ -174,7 +174,30 @@ public class Main {
 }
 
 // D012  絶対値を求めよ
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        System.out.println(Math.abs(n));
+        scanner.close();
+    }
+}
+
 // D013  割り算
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int m = scanner.nextInt();
+        int n = scanner.nextInt();
+        System.out.println((m / n) + " " + (m % n));
+        scanner.close();
+    }
+}
+
 // D014  小文字を大文字に
 // D015  カウントダウン
 // D016  N文字目まで出力
