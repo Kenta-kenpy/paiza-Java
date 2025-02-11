@@ -87,9 +87,74 @@ public class Main {
 }
 
 // D006  単位の計算
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // 入力を取得
+        int n = sc.nextInt();
+        String s = sc.next();
+        
+        // 換算処理
+        int result = 0;
+        if (s.equals("km")) {
+            result = n * 1000000;  // km -> mm
+        } else if (s.equals("m")) {
+            result = n * 1000;     // m -> mm
+        } else if (s.equals("cm")) {
+            result = n * 10;       // cm -> mm
+        }
+        
+        // 結果を出力
+        System.out.println(result);
+    }
+}
+
 // D007  ◆
 // D008  奇数か偶数か
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scanner を使って入力を取得
+        Scanner sc = new Scanner(System.in);
+        
+        // 正の整数 N を入力
+        int N = sc.nextInt();
+        
+        // N が偶数か奇数かを判定
+        if (N % 2 == 0) {
+            System.out.println("even");
+        } else {
+            System.out.println("odd");
+        }
+        
+        sc.close();  // Scanner を閉じる
+    }
+}
+
 // D009  西暦の計算
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scanner を使って入力を受け取る
+        Scanner scanner = new Scanner(System.in);
+
+        // 入力された2つの整数を読み取る
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+
+        // a から b までの年数を計算して出力
+        System.out.println(b - a);
+
+        // Scanner を閉じる
+        scanner.close();
+    }
+}
+
 // D010  ◆
 --------------------------------------------- D011　※欠番 ◆
 --------------------------------------------- D021　※欠番 ◆
