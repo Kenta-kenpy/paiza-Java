@@ -1,0 +1,372 @@
+// 競技1 合格判定　D
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使用して入力を取得
+        Scanner sc = new Scanner(System.in);
+        
+        // 入力された点数を文字列として読み込む
+        String scoreStr = sc.nextLine();
+        
+        // 文字列を整数に変換
+        int score = Integer.parseInt(scoreStr);
+        
+        // 点数が80以上ならpass、それ以外はfail
+        if (score >= 80) {
+            System.out.println("pass");
+        } else {
+            System.out.println("fail");
+        }
+        
+        // Scannerを閉じる
+        sc.close();
+    }
+}
+/*入力の受け取り: Scannerを使って標準入力から得点を文字列として読み取ります。
+文字列の整数への変換: Integer.parseInt()を使用して文字列を整数に変換します。
+判定: 得点が80点以上ならpassを、それ以外ならfailを出力します。*/
+
+// 競技2 間違い探し D
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使用して標準入力から2行を読み取る
+        Scanner sc = new Scanner(System.in);
+        
+        // 最初の文字列（元の文章）
+        String s1 = sc.nextLine();
+        
+        // 2番目の文字列（部下が書き写した文章）
+        String s2 = sc.nextLine();
+        
+        // s1とs2が一致するかどうかをチェック
+        if (s1.equals(s2)) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+        
+        // Scannerを閉じる
+        sc.close();
+    }
+}
+/*入力の受け取り: Scannerを使って2行の文字列を標準入力から読み取ります。
+一致の確認: Stringクラスのequals()メソッドを使って、2つの文字列が一致するかを確認します。
+出力: 一致する場合は「YES」、一致しない場合は「NO」を出力します。*/
+
+// 競技3 深夜時間の表記 D
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使用して入力を受け取る
+        Scanner sc = new Scanner(System.in);
+        
+        // 入力された時刻
+        int n = sc.nextInt();
+        
+        // 24を引いて1〜12の範囲に変換
+        int result = n - 24;
+        
+        // 結果を出力
+        System.out.println(result);
+        
+        // Scannerを閉じる
+        sc.close();
+    }
+}
+/*入力の受け取り: Scannerを使って整数 n（25 ≤ n ≤ 36）を標準入力から受け取ります。
+変換: n - 24 を計算し、その結果を1〜12の範囲に変換します。
+出力: 結果の時刻を出力します。*/
+
+// 競技4 明日天気にな～れ! D
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使用して入力を受け取る
+        Scanner sc = new Scanner(System.in);
+        
+        // n日分の天気占い
+        int n = sc.nextInt();
+        sc.nextLine();  // 改行を読み飛ばす
+        
+        // n日分の占い結果を処理する
+        for (int i = 0; i < n; i++) {
+            String direction = sc.nextLine();  // 向きの入力
+            
+            // 向きに応じた天気占いを出力
+            if (direction.equals("forward")) {
+                System.out.println("Sunny");
+            } else if (direction.equals("reverse")) {
+                System.out.println("Rainy");
+            } else if (direction.equals("sideways")) {
+                System.out.println("Cloudy");
+            }
+        }
+        
+        // Scannerを閉じる
+        sc.close();
+    }
+}
+/*入力が forward, reverse, sideways のどれなのかを、if 文や switch 文を用いて判定することを n 回行います。
+n 回繰り返しは各言語の for 文を用います。
+
+入力の受け取り:
+最初にnを読み取ります。これが占いの日数です。
+次に、各日の占い結果（forward, reverse, sideways）をそれぞれ読み取ります。
+天気の判定:
+forwardは「Sunny」、reverseは「Rainy」、sidewaysは「Cloudy」に変換して出力します。
+出力:
+各占い結果に対応する天気をそのまま出力します。*/
+
+// 競技5 ゆで卵 D
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使用して入力を受け取る
+        Scanner sc = new Scanner(System.in);
+        
+        // 入力された時間（分）
+        int m = sc.nextInt();
+        
+        // 時間に応じて卵の状態を判定
+        if (m >= 0 && m <= 5) {
+            System.out.println("raw");
+        } else if (m >= 6 && m <= 7) {
+            System.out.println("soft boiled");
+        } else if (m >= 8 && m <= 15) {
+            System.out.println("hard boiled");
+        }
+        
+        // Scannerを閉じる
+        sc.close();
+    }
+}
+/*求められている出力の通りに if 文を用いて条件分岐を行います。
+入力の受け取り: Scannerを使って、標準入力から時間 m を受け取ります。
+状態の判定:
+0 ≤ m ≤ 5 のときは「raw」（生卵）を出力。
+6 ≤ m ≤ 7 のときは「soft boiled」（半熟）を出力。
+8 ≤ m ≤ 15 のときは「hard boiled」（固ゆで）を出力。
+出力: m に対応する卵の状態を出力します。*/
+
+// 競技6 匿名希望さん D
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使用して入力を受け取る
+        Scanner sc = new Scanner(System.in);
+        
+        // 入力された名前を受け取る
+        String s1 = sc.next();
+        String s2 = sc.next();
+        
+        // イニシャルを出力
+        System.out.println(s1.charAt(0) + "." + s2.charAt(0) + ".");
+        
+        // Scannerを閉じる
+        sc.close();
+    }
+}
+/*入力の受け取り:
+Scannerを使って、2つの単語（ファーストネーム s1 とラストネーム s2）をそれぞれ読み取ります。
+イニシャルの取得と出力:
+charAt(0) メソッドを使って、各名前の最初の文字を取り出します。
+取り出した文字をそのまま出力し、後ろにドット（.）を付けます。
+出力形式:
+ファーストネームの最初の文字、ドット、ラストネームの最初の文字、ドットという形式で出力します。*/
+
+// 競技7 奇数大好き山田さん C
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使用して入力を受け取る
+        Scanner sc = new Scanner(System.in);
+        
+        // 最初の整数n
+        int n = sc.nextInt();
+        
+        // 奇数を格納するリスト
+        ArrayList<Integer> oddNumbers = new ArrayList<>();
+        
+        // n個の整数を読み取る
+        for (int i = 0; i < n; i++) {
+            int a = sc.nextInt();
+            if (a % 2 != 0) {  // 奇数の場合
+                oddNumbers.add(a);
+            }
+        }
+        
+        // 奇数を昇順にソート
+        Collections.sort(oddNumbers);
+        
+        // 結果を改行区切りで出力
+        for (int odd : oddNumbers) {
+            System.out.println(odd);
+        }
+        
+        // Scannerを閉じる
+        sc.close();
+    }
+}
+/*入力の受け取り:
+最初に整数 n を受け取り、その後 n 個の整数を読み取ります。
+奇数の抽出:
+各整数について、a % 2 != 0 の条件で奇数かどうかを確認し、奇数の場合は oddNumbers リストに追加します。
+ソート:
+Collections.sort(oddNumbers) を使用して、リスト内の奇数を昇順にソートします。
+ArrayListを使用して動的に奇数を格納し、後で昇順にソートしています。
+出力:
+ソートされた奇数を一行ずつ出力します。*/
+
+// 競技8 お一人様一点限り C
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使用して入力を受け取る
+        Scanner sc = new Scanner(System.in);
+        
+        // 最初にお客さんの数nを受け取る
+        int n = sc.nextInt();
+        
+        // すでに来たお客さんの名前を管理するセット
+        Set<String> seenCustomers = new HashSet<>();
+        
+        // お客さんの名前を順番に受け取る
+        for (int i = 0; i < n; i++) {
+            String customerName = sc.next();
+            
+            // 名前がすでに出現しているかどうかをチェック
+            if (seenCustomers.contains(customerName)) {
+                // すでに来たことがある場合
+                System.out.println("NO");
+            } else {
+                // 初めて来た場合
+                System.out.println("YES");
+                seenCustomers.add(customerName); // 名前をセットに追加
+            }
+        }
+        
+        // Scannerを閉じる
+        sc.close();
+    }
+}
+/*処理の流れ:
+お客さんの名前が順番に入力されるので、名前が初めて来たかどうかを判定します。
+初めて来た名前には「YES」を、以前に来たことのある名前には「NO」を出力します。
+解法:
+名前を記録するために Set（集合）を使います。Set は重複を許さないため、名前が初めて来たかどうかを簡単に判定できます。
+名前が初めての場合、その名前を Set に追加し、YES を出力します。
+すでに Set に存在する名前が来た場合は、NO を出力します。*/
+
+// 競技9 線対象と点対称 B
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 入力を受け取る
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        sc.nextLine(); // 改行を読み飛ばす
+        String[] grid = new String[n];
+
+        // グリッドを読み込む
+        for (int i = 0; i < n; i++) {
+            grid[i] = sc.nextLine();
+        }
+
+        // 線対称と点対称の判定
+        boolean isLineSymmetry = isLineSymmetry(grid, n, m);
+        boolean isPointSymmetry = isPointSymmetry(grid, n, m);
+
+        // 結果の出力
+        if (isLineSymmetry && isPointSymmetry) {
+            System.out.println("line point symmetry");
+        } else if (isLineSymmetry) {
+            System.out.println("line symmetry");
+        } else if (isPointSymmetry) {
+            System.out.println("point symmetry");
+        } else {
+            System.out.println("none");
+        }
+
+        sc.close();
+    }
+
+    // 線対称の判定（水平、垂直両方をチェック）
+    public static boolean isLineSymmetry(String[] grid, int n, int m) {
+        boolean horizontalSymmetry = true;
+        boolean verticalSymmetry = true;
+
+        // 水平線対称チェック（上下の行が反転しているか）
+        for (int i = 0; i < n / 2; i++) {
+            if (!grid[i].equals(grid[n - 1 - i])) {
+                horizontalSymmetry = false;
+                break;
+            }
+        }
+
+        // 垂直線対称チェック（左右の列が反転しているか）
+        for (int i = 0; i < n; i++) {
+            String row = grid[i];
+            for (int j = 0; j < m / 2; j++) {
+                if (row.charAt(j) != row.charAt(m - 1 - j)) {
+                    verticalSymmetry = false;
+                    break;
+                }
+            }
+        }
+
+        return horizontalSymmetry || verticalSymmetry;
+    }
+
+    // 点対称の判定
+    public static boolean isPointSymmetry(String[] grid, int n, int m) {
+        // 中心で180度回転させた場合に一致するか確認
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                // 対称的な位置が一致しない場合
+                if (grid[i].charAt(j) != grid[n - 1 - i].charAt(m - 1 - j)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
+/*isLineSymmetry メソッド:
+
+水平線対称性のチェック: 2つの行が反転して一致するかを確認します。
+垂直線対称性のチェック: 各行内で左右の文字が反転して一致するかを確認します。
+isPointSymmetry メソッド:
+
+180度回転させたときに対応する位置が一致するかを確認します。具体的には、grid[i][j] と grid[n-1-i][m-1-j] が一致するかどうかをチェックします。
+出力のロジック:
+
+線対称と点対称が両方成り立つ場合は "line point symmetry" と出力します。
+線対称だけ成り立つ場合は "line symmetry" と出力します。
+点対称だけ成り立つ場合は "point symmetry" と出力します。
+どちらも成り立たない場合は "none" と出力します。
+
+水平と垂直の線対称性を個別にチェックすることにより、どちらか一方だけを確認できるようにしています。
+点対称性のチェックでは、中心を基準にした180度回転に対応する位置が一致するかどうかを確認しています。
+
+ドット絵を表現する二次元配列を pixels とすると、全ての 0 ≦ i < n, 0 ≦ j < m に対して
+pixels[i][j] == pixels[i][m-j-1] ならば水平方向に線対称
+pixels[i][j] == pixels[n-i-1][j] ならば垂直方向に線対称
+pixels[i][j] == pixels[n-i-1][m-j-1] ならば点対称
+となります。
+条件を満たすかのフラグを初期値 true として用意し、条件を満たさないドットを発見したところでそのフラグを false とするような実装をすると楽です。*/
