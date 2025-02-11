@@ -75,8 +75,408 @@ hanoi メソッドは、円盤を移動させる再帰的な処理を行い、�
 System.exit(0) を使用して、指定された回数の移動が完了した時点でプログラムを終了させます。*/
 
 // 山折り谷折り A
+import java.util.Scanner;
+
+public class Main {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        
+        // 折り目のサイズは 2^N - 1
+        int size = (1 << N) - 1; // 2^N - 1
+        int[] paper = new int[size];
+        
+        // 初期状態：1回折ったときは "0"
+        paper[0] = 0;
+        
+        // N回折る
+        for (int i = 1; i < N; i++) {
+            // 折り目を作り直す
+            int currentSize = (1 << i) - 1; // 2^i - 1
+            // 新しい折り目の配列を作成
+            int[] newPaper = new int[(1 << (i + 1)) - 1]; // 2^(i+1) - 1
+            // 前回の折り目をコピー
+            System.arraycopy(paper, 0, newPaper, 0, currentSize);
+            // 新しい中央を追加
+            newPaper[currentSize] = 0;
+            // 前回の折り目を反転して右側に追加
+            for (int j = 0; j < currentSize; j++) {
+                newPaper[currentSize + 1 + j] = 1 - paper[currentSize - 1 - j];
+            }
+            // 新しい折り目をpaperに更新
+            paper = newPaper;
+        }
+        
+        // 結果を出力
+        for (int i = 0; i < paper.length; i++) {
+            System.out.print(paper[i]);
+        }
+        System.out.println();
+    }
+}
+/*方針の整理
+折り目の構造:
+N = 1 の場合、折り目は "0" です。
+N = 2 の場合、折り目は "001" です。
+N = 3 の場合、折り目は "0010011" です。
+このように、折り目の構造は次のように成り立ちます:
+S は N-1 回折ったときの折り目の文字列。
+S' は S を逆順にして、各文字を反転した文字列です。
+N 回折ったときの折り目は S + "0" + S' で求められます。
+再帰的に折り目を求める方法:
+最初の折り目の配列を S とし、S を変換していくという方法です。
+
+入力の読み取り:
+標準入力から N を読み取ります。
+折り目のサイズ:
+2回折ると 2^2 - 1 = 3 の長さになることから、折り目のサイズは 2^N - 1 です。
+折り目の更新:
+最初の状態は 0（谷折り）です。
+次に、折り目を S + "0" + S' の形で更新します。
+S' は、元の配列を反転し、各要素を逆にしたものです。
+新しい折り目は、前回の折り目の内容を左にコピーし、中央に 0 を挿入し、反転した内容を右に追加します。
+結果の出力:
+最後に折り目のパターンを出力します。各要素は 0 または 1 です。*/
+
 // 本の整理 A
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力の受け取り
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int[] shelf = new int[N];
+        for (int i = 0; i < N; i++) {
+            shelf[i] = sc.nextInt() - 1;  // ID を 0-based に調整
+        }
+
+        // 本の位置を記録するための配列
+        int[] pos = new int[N];
+        for (int i = 0; i < N; i++) {
+            pos[shelf[i]] = i;
+        }
+
+        // 交換回数をカウント
+        int swapCount = 0;
+
+        // 手順を N 回繰り返す
+        for (int i = 0; i < N; i++) {
+            if (shelf[i] == i) {
+                continue;  // 本がすでに正しい位置にあれば交換しない
+            }
+
+            // 交換が必要な場合
+            swapCount++;
+
+            // pos[i] には ID が i+1 の本が現在どの位置にあるかが格納されている
+            // 本の位置を交換
+            int j = pos[i];  // ID i+1 の本の現在位置
+            // i 番目の本と j 番目の本を交換する
+            int tmp = shelf[i];
+            shelf[i] = shelf[j];
+            shelf[j] = tmp;
+
+            // pos 配列の更新
+            pos[shelf[i]] = i;
+            pos[shelf[j]] = j;
+        }
+
+        // 結果の出力
+        System.out.println(swapCount);
+    }
+}
+/*本のIDを格納: まず、入力で与えられた本の順番を shelf 配列に格納します。
+本の位置情報の保持: 本の ID に対する現在の位置を pos 配列で保持します。
+並べ替えと交換: 1回目から N回目の手順を順番に実行し、交換が発生した場合はその回数をカウントします。
+
+shelf 配列:
+shelf[i] は、1 番目から i+1 番目の位置に置かれている本の ID を保持します。入力の本の ID は 1-based ですが、0-based にして処理します。
+pos 配列:
+pos[i] は、ID が i+1 の本が現在本棚のどの位置にあるかを記録します。これにより、ID が最小の本を探す際に位置を直接参照できます。
+交換処理:
+各手順では、最も小さな ID の本が左から i 番目にない場合、その本と左から i 番目の本を交換します。
+交換後は pos 配列と shelf 配列を更新して、次の手順に備えます。
+出力:
+最後に、交換回数 (swapCount) を出力します。*/
+
 // 雪だるま作り A
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // N と K の入力
+        int N = scanner.nextInt();
+        int K = scanner.nextInt();
+        
+        // 雪玉の直径リストを入力
+        int[] a = new int[N];
+        for (int i = 0; i < N; i++) {
+            a[i] = scanner.nextInt();
+        }
+        
+        // 雪玉の直径を昇順にソート
+        Arrays.sort(a);
+        
+        // 貪欲法でペアを作る
+        int tail = 0;
+        int head = N - 1;
+        int count = 0;
+        
+        while (tail < head) {
+            if (a[tail] + a[head] >= K) {
+                // 高さが K 以上ならペアを作成
+                count++;
+                tail++;
+                head--;
+            } else {
+                // 高さが K より小さい場合、tail を進める
+                tail++;
+            }
+        }
+        
+        // 結果を出力
+        System.out.println(count);
+    }
+}
+/*ソート: 雪玉の直径を昇順にソートします。
+
+2ポインタ法:
+tail ポインタをリストの最初に、head ポインタをリストの最後に設定します。
+tail が指す雪玉と head が指す雪玉を組み合わせ、その和が K 以上であれば、ペアが成立し、両ポインタを更新します。
+和が K より小さい場合は、tail を1つ進めて次の雪玉を試します。
+終了条件: tail が head を越えるまで、ペア作成を続けます。
+
+tail と head の2つのポインタを使って、雪玉をペアにしていきます。もし和が K 以上であればペアを作成し、tail を進め、head を戻します。もし和が K より小さい場合、tail を進めて次の小さな雪玉を試します。*/
+
 // 最小の運賃 A
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // 入力の読み込み
+        Scanner sc = new Scanner(System.in);
+        
+        // E:路線数, V:駅数, T:目的地駅
+        int E = sc.nextInt();
+        int V = sc.nextInt();
+        int T = sc.nextInt();
+        
+        // 駅間の運賃を格納する隣接リスト
+        List<int[]>[] graph = new List[V];
+        for (int i = 0; i < V; i++) {
+            graph[i] = new ArrayList<>();
+        }
+        
+        // 路線情報の読み込み
+        for (int i = 0; i < E; i++) {
+            int s = sc.nextInt();  // 出発駅
+            int e = sc.nextInt();  // 到着駅
+            int c = sc.nextInt();  // 運賃
+            graph[s].add(new int[]{e, c});
+            graph[e].add(new int[]{s, c});  // 無向グラフとして扱う
+        }
+
+        // ダイクストラ法の実行
+        int[] dist = new int[V];
+        Arrays.fill(dist, Integer.MAX_VALUE);  // 最初は全て無限大
+        dist[0] = 0;  // 0 番目の駅から出発
+        
+        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[1]));
+        pq.add(new int[]{0, 0});  // (駅番号, 現在の運賃)
+        
+        while (!pq.isEmpty()) {
+            int[] current = pq.poll();
+            int u = current[0];  // 現在の駅
+            int currentCost = current[1];  // 現在の運賃
+
+            // 目的駅に到達した場合
+            if (u == T) {
+                break;
+            }
+
+            // 隣接駅を確認
+            for (int[] neighbor : graph[u]) {
+                int v = neighbor[0];  // 隣の駅
+                int cost = neighbor[1];  // 運賃
+
+                // 新たに行く方法が安ければ更新
+                if (currentCost + cost < dist[v]) {
+                    dist[v] = currentCost + cost;
+                    pq.add(new int[]{v, dist[v]});
+                }
+            }
+        }
+
+        // 結果の出力
+        System.out.println(dist[T]);
+    }
+}
+/*この問題は、鉄道の駅間を結ぶ運賃の最小経路を求める問題であり、グラフの最短経路問題に該当します。具体的には、0 番目の駅から T 番目の駅への最短経路を、ダイクストラ法を使用して求めることができます。
+ダイクストラ法は、非負の辺の重みを持つグラフにおいて最短経路を求めるためのアルゴリズムであり、特にこの問題に適しています。
+入力の読み込み:
+最初に駅数 V、目的駅 T などを読み込みます。
+その後、各路線の情報 (出発駅、到着駅、運賃) を読み込み、隣接リスト graph に格納します。無向グラフなので、駅間の双方向の道を考慮しています。
+ダイクストラ法の適用:
+最短経路を求めるために、ダイクストラ法を使用します。dist 配列を使って、各駅への最短運賃を記録します。
+PriorityQueue を使用して、最も運賃が少ない駅を効率的に取り出します。
+結果の出力:
+最終的に、目的駅 T への最短運賃が dist[T] に格納されているので、それを出力します。*/
+
 // 文字列収集 S
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // N: 文字列の数, M: クエリの数
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+
+        // 連想配列（Map）で接頭辞ごとの価格合計を管理
+        Map<String, Integer> prefixSum = new HashMap<>();
+
+        // 文字列とその価格を読み込み、接頭辞ごとの価格合計を更新
+        for (int i = 0; i < N; i++) {
+            String s = sc.next();
+            int p = sc.nextInt();
+            // 文字列の各接頭辞について価格を加算
+            for (int j = 1; j <= s.length(); j++) {
+                String prefix = s.substring(0, j);
+                prefixSum.put(prefix, prefixSum.getOrDefault(prefix, 0) + p);
+            }
+        }
+
+        // クエリを処理
+        for (int i = 0; i < M; i++) {
+            String q = sc.next();
+            System.out.println(prefixSum.getOrDefault(q, 0));
+        }
+
+        sc.close();
+    }
+}
+/*文字列から数値への連想配列を用意することで、各クエリに対して効率的に合致する価格の総和を求めることができます。
+このアプローチでは、文字列の接頭辞ごとに価格の合計を管理し、クエリの際にその情報を直接参照することができます。
+連想配列 prefixSum:
+prefixSum は、接頭辞（最大 100 文字）をキーとして、その接頭辞で始まる文字列の価格の合計を保持する Map<String, Integer> 型の変数です。
+入力の処理:
+最初に、N 個の文字列とその価格が与えられます。それぞれの文字列に対して、1 文字目から最大で 100 文字目までの接頭辞を生成し、その接頭辞をキーとして価格を prefixSum に加算します。substring(0, j) を使用して、各接頭辞を取り出し、価格を加算しています。
+クエリの処理:
+各クエリに対して、その接頭辞が prefixSum に存在すればその価格合計を取得し、存在しない場合は 0 を返します。getOrDefault(q, 0) を使用して、クエリの接頭辞が存在しない場合に 0 を返すようにしています。*/
+
 // 十億連勝 S
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int N = sc.nextInt(); // ステージ数
+        int X = sc.nextInt(); // 最大連勝数条件
+        int MOD = 1000000000; // 答えは9桁まで
+        
+        int[] A = new int[N];
+        for (int i = 0; i < N; i++) {
+            A[i] = sc.nextInt(); // 各ステージの試合数
+        }
+        
+        // 状態遷移を管理するための Map
+        Map<String, Long> states = new HashMap<>();
+        states.put("0,false", 1L); // 初期状態: 連勝数0、隠し要素未達成
+
+        for (int i = 0; i < N; i++) {
+            Map<String, Long> newStates = new HashMap<>();
+            for (Map.Entry<String, Long> entry : states.entrySet()) {
+                String state = entry.getKey();
+                Long comb = entry.getValue();
+                
+                String[] parts = state.split(",");
+                int wins = Integer.parseInt(parts[0]);
+                boolean cond = Boolean.parseBoolean(parts[1]);
+
+                if (wins + A[i] <= X) {
+                    // A[i] 全てに勝つ場合
+                    push(newStates, wins + A[i], cond, comb);
+
+                    // A[i] のどこかで負ける場合
+                    push(newStates, 0, cond, comb * A[i]);
+                } else {
+                    // X 連勝ちょうどで負ける場合
+                    push(newStates, 0, true, comb);
+
+                    // X 連勝未満で負ける場合
+                    push(newStates, 0, cond, comb * (X - wins));
+                }
+            }
+
+            // 下 9 桁のみにする
+            for (Map.Entry<String, Long> entry : newStates.entrySet()) {
+                long value = entry.getValue();
+                if (value > MOD) {
+                    newStates.put(entry.getKey(), value % MOD);
+                }
+            }
+
+            // 次のステージに新しい状態を更新
+            states = newStates;
+        }
+
+        // 最後に隠し要素の条件を満たす場合の通り数を計算
+        long ans = 0;
+        for (Map.Entry<String, Long> entry : states.entrySet()) {
+            String state = entry.getKey();
+            Long comb = entry.getValue();
+            String[] parts = state.split(",");
+            int wins = Integer.parseInt(parts[0]);
+            boolean cond = Boolean.parseBoolean(parts[1]);
+
+            if (cond || wins == X) {
+                ans += comb;
+            }
+        }
+
+        // 最後に9桁で結果を出力
+        System.out.println(ans % MOD);
+    }
+
+    // 状態更新を行う関数
+    public static void push(Map<String, Long> states, int wins, boolean cond, long comb) {
+        String key = wins + "," + cond;
+        if (states.containsKey(key)) {
+            states.put(key, states.get(key) + comb);
+        } else {
+            states.put(key, comb);
+        }
+    }
+}
+/*各ステージが終わった時点での連勝数 w と、それまでに X 連勝したことがあるかの真偽値 b の組からなる状態 (w, b) を考え、各ステージ終了時点での各状態の組み合わせの数を計算します。
+各状態に対する組み合わせの数は連想配列で保持することができます。
+i-1 ステージ終了時の状態 (w, b) の組み合わせの数が c のとき、次のステージ i 終了時の各状態に次のように寄与します。
+w + A[i] ≦ X のとき、全勝する場合を考え、(w + A[i], b) の組み合わせの数を c だけ増やす。また、どこかで負ける場合を考え、(0, b) の組み合わせの数を c * A[i] だけ増やす。
+w + A[i] > X のとき、X 連勝ちょうどで負ける場合を考え、 (0, true) の組み合わせの数を c だけ増やす。また、X 連勝未満で負ける場合を考え、 (0, b) の組み合わせの数を c * (X - w) だけ増やす。X+1 連勝以上する場合は隠し要素の条件を満たさないので無視する。
+(0, false) の組み合わせの数が 1 という初期条件から初めて各ステージに対して計算すればよいです。
+下 9 桁の取り出しは 1000000000 で割った余りを用いれば良いです。
+
+初期状態:
+
+states は連勝数 (wins) と隠し要素条件 (cond) による状態をキーとし、その状態に到達する通り数 (comb) を保持します。
+初期状態として 0,false の状態を 1 として設定します。
+状態遷移:
+
+各ステージごとに、前の状態から新しい状態へ遷移します。
+勝つ場合、連勝数が増える（連勝数が wins + A[i] に更新される）。
+負ける場合、連勝数は 0 となり、その時点で隠し要素が達成されていないかどうかに応じて状態が遷移します。
+新しい状態の追加:
+push 関数を使用して、新しい状態を states に追加または更新します。
+下9桁の保持:
+MOD で 1000000000 を設定し、答えが9桁以上になる場合には、その都度モジュロ演算を行って9桁に収めます。
+隠し要素の条件を満たすプレイの方法の総数を出力:
+最後に、隠し要素を達成した状態（cond が true もしくは連勝数が X の場合）の通り数を計算して出力します。*/
