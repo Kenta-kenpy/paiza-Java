@@ -1,4 +1,79 @@
 // ハノイの塔　A
+import java.util.*;
+
+public class Main {
+    
+    // グローバル変数として、現在の回数を追跡
+    static int count = 0;
+    
+    // 各杭の状態を出力するメソッド
+    public static void printTower(List<List<Integer>> towers) {
+        for (List<Integer> tower : towers) {
+            if (tower.isEmpty()) {
+                System.out.println("-");
+            } else {
+                System.out.println(String.join(" ", tower.stream().map(String::valueOf).toArray(String[]::new)));
+            }
+        }
+    }
+
+    // ハノイの塔を再帰的に解くメソッド
+    public static void hanoi(int n, int frm, int to, int tmp, int t, List<List<Integer>> towers) {
+        if (n == 1) {
+            // 1つの円盤を動かす
+            towers.get(to).add(towers.get(frm).remove(towers.get(frm).size() - 1));
+            count++;
+            if (count == t) {
+                printTower(towers);
+                System.exit(0);  // 結果が出力されたので終了
+            }
+        } else {
+            // 再帰的に円盤を移動
+            hanoi(n - 1, frm, tmp, to, t, towers);
+            hanoi(1, frm, to, tmp, t, towers);
+            hanoi(n - 1, tmp, to, frm, t, towers);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 入力の読み込み
+        int n = sc.nextInt();
+        int t = sc.nextInt();
+        
+        // 各杭の状態を保持するリストを作成
+        List<List<Integer>> towers = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            towers.add(new ArrayList<>());
+        }
+        
+        // 初期状態ではすべての円盤が杭Aに置かれている
+        for (int i = n; i >= 1; i--) {
+            towers.get(0).add(i);
+        }
+
+        // ハノイの塔を解く
+        hanoi(n, 0, 2, 1, t, towers);
+
+        sc.close();
+    }
+}
+/*再帰的なハノイの塔の動作:
+Pythonコードでは、再帰的にハノイの塔を解いていき、指定された回数
+t に到達した時点でその時の状態を出力しています。Javaでもこのアプローチを踏襲します。
+状態の出力:
+その時点での杭の状態を towers 配列に格納し、指定された回数で終了時に出力します。
+
+再帰的な処理:
+hanoi メソッドは、円盤を移動させる再帰的な処理を行い、指定された回数 t に到達した時点でその杭の状態を出力します。
+リストを使用:
+各杭の状態は List<List<Integer>> というリストのリストで保持し、towers.get(i) で各杭の円盤を取得します。
+状態の出力:
+各杭の状態を printTower メソッドで出力します。杭が空の場合は "-" を出力し、それ以外の場合はスペース区切りで円盤を出力します。
+プログラム終了:
+System.exit(0) を使用して、指定された回数の移動が完了した時点でプログラムを終了させます。*/
+
 // 山折り谷折り A
 // 本の整理 A
 // 雪だるま作り A
