@@ -199,11 +199,125 @@ public class Main {
 }
 
 // D014  小文字を大文字に
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使って入力を受け取る
+        Scanner scanner = new Scanner(System.in);
+        
+        // 入力された文字列を読み込む
+        String s = scanner.nextLine();
+        
+        // 文字列を大文字に変換して出力
+        System.out.println(s.toUpperCase());
+        
+        // スキャナーを閉じる
+        scanner.close();
+    }
+}
+
 // D015  カウントダウン
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使って入力を受け取る
+        Scanner scanner = new Scanner(System.in);
+        
+        // 入力された正整数nを読み込む
+        int n = scanner.nextInt();
+        
+        // nから1までカウントダウンして出力
+        for (int i = n; i >= 1; i--) {
+            System.out.println(i);
+        }
+        
+        // スキャナーを閉じる
+        scanner.close();
+    }
+}
+
 // D016  N文字目まで出力
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を受け取るためのScannerを作成
+        Scanner scanner = new Scanner(System.in);
+        
+        // 文字列 S と整数 N を読み込む
+        String S = scanner.nextLine();
+        int N = scanner.nextInt();
+        
+        // 文字列 S の 1 文字目から N 文字目を出力
+        // N は 1-indexed なので、S.substring(0, N) を使って N 文字目まで切り取る
+        System.out.println(S.substring(0, N));
+        
+        // Scanner を閉じる
+        scanner.close();
+    }
+}
+
 // D017  最大と最小
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を受け取るためのScannerを作成
+        Scanner scanner = new Scanner(System.in);
+
+        // 5個の数字を格納するための配列を作成
+        int[] numbers = new int[5];
+
+        // 5回の入力を受け取る
+        for (int i = 0; i < 5; i++) {
+            numbers[i] = scanner.nextInt();
+        }
+
+        // 最大値と最小値を計算
+        int max = numbers[0];
+        int min = numbers[0];
+        
+        for (int i = 1; i < 5; i++) {
+            if (numbers[i] > max) {
+                max = numbers[i];
+            }
+            if (numbers[i] < min) {
+                min = numbers[i];
+            }
+        }
+
+        // 最大値と最小値を出力
+        System.out.println(max);
+        System.out.println(min);
+
+        // Scannerを閉じる
+        scanner.close();
+    }
+}
+
 // D018  ◆
 // D019  文字列からN番目
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を受け取るためのScannerを作成
+        Scanner scanner = new Scanner(System.in);
+        
+        // 文字列 s と整数 n を読み込む
+        String s = scanner.next();
+        int n = scanner.nextInt();
+        
+        // n番目の文字を出力（nは1-indexedなので、s.charAt(n-1)を使用）
+        System.out.println(s.charAt(n - 1));
+        
+        // Scannerを閉じる
+        scanner.close();
+    }
+}
+
 // D020  ◆
 --------------------------------------------- D021　※欠番 ◆
 --------------------------------------------- D031　※欠番 ◆
