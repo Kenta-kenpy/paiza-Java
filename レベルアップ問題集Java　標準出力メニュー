@@ -1,16 +1,195 @@
 //【改行あり出力】1000行の出力
 step1 1行の出力
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println(813);
+    }
+}
+/*標準出力を使用して整数 813 を出力します。
+また、最後に改行を出力します。
+Java では、出力は System.out.println() を用います。
+System.out.println() は () に挟まれた値を出力します。
+System.out.println() は自動的に改行を挿入するため、明示的に改行することを記述する必要はありません。*/
+
 step2 2行の出力
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println(8);
+        System.out.println(13);
+    }
+}
+/*標準出力関数を使用して整数 8 と 13 を出力します。
+また、整数 8 と 13 の間と、最後に改行を出力します。
+System.out.println() で出力します。
+System.out.println() は自動的に改行を挿入するため、明示的に改行することを記述する必要はありません。*/
+
 step3 3行の出力
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println(8);
+        System.out.println(1);
+        System.out.println(3);
+    }
+}
+/*標準出力関数を使用して整数 8 と 1 と 3 を出力します。
+また、整数を出力した後に改行を出力します。
+System.out.println() を 3 回使って出力します。
+System.out.println() は自動的に改行を挿入するため、明示的に改行することを記述する必要はありません。*/
+
 step4 10行の出力
+public class Main {
+
+    public static void main(String[] args) {
+        int[] n = new int[] {
+            813,
+            1,
+            2,
+            923874,
+            23648,
+            782356,
+            3256,
+            2342,
+            24324,
+            112,
+        };
+
+        for (int x : n) {
+            System.out.println(x);
+        }
+    }
+}
+/*
+10 個の整数を出力します。
+問題文の整数をコピーすることでミスを防ぐことができます。
+10 回出力関数を書いてもよいのですが、ループを使用することで簡潔に書くことができます。
+指定された整数を要素に持つ配列を用いることで、for 文で出力することができます。
+今回は拡張 for 文を使いました。
+【 拡張 for 文について 】
+拡張 for 文は配列やリストなどのオブジェクトの各要素を順に変数に代入して繰り返し処理ができる for 文のことです。
+【 書き方 】
+for(要素の型 変数名 : 配列など) {処理} のように書きます。
+配列などのオブジェクトに格納されている値の型に応じた変数を用意する必要があります。
+【 動作 】
+配列などのオブジェクトの先頭の要素から順に変数に代入され、繰り返し処理が行われます。
+たとえば、
+for(int i : a) {System.out.println(i)}
+と記述した for 文の実行結果は以下のようになります。
+a_1 
+a_2
+a_3
+...
+a_n
+*/
+
 final 1000行の出力
+public class Main {
+
+    public static void main(String[] args) {
+        for (int i = 1; i < 1001; i++) {
+            System.out.println(i);
+        }
+    }
+}
+/*1 以上 1,000 以下の整数を出力します。1000 行出力の処理を書くのは非現実的なので、for 文を使います。
+上記のコードの for 文は i=1 から i=1000 まで繰り返し処理を行います。
+for 文内で i を出力すれば解けます*/
 
 //【半角スペース区切りの出力】1000個の数値を出力
 step1 2つの数値を出力
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println(1 + " " + 1);
+    }
+}
+/*半角スペース区切りで 2 つの 1 を出力します。
+1 , 半角スペース , 1 の順に出力します。
+出力には System.out.println() を使います。
+() 内で + を使って 1 と " " と 1 を連結して出力します。
++ は左結合 (下で説明) で、ここでは数値は文字列に変換されてから結合されます。
+【 「左結合」とは何か 】
+演算子の左側と右側どちらを先に処理するかを意味する、左結合、右結合、という用語があります。
+左結合は演算子の左側を先に処理します。
+演算子 + は A + B + C を (A + B) + C として処理する左結合の演算子です。
+因みに、右結合の演算子の例としては = が挙げられます。
+A = B = C は A = (B = C) のように演算される (C に A の値が代入されるのではなく、A に C の値が代入される) ので、右結合です。*/
+
 step2 3つの数値を出力
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println(8 + " " + 1 + " " + 3);
+    }
+}
+/*半角スペース区切りで 3 つの数値 8, 1, 3 を出力します。
+8 , 半角スペース , 1 , 半角スペース , 3 の順に出力します。
+前問と同じ要領で + を使って、複数の値を 1 行で出力します。
+よって print 関数の中の文字列に {} 3 つを 半角スペース で区切って、format メソッドの引数を 3 つ用意します。format を用いると {} が format の引数で順に置換されるので、半角スペース区切りでの出力が実現できます。*/
+
 step3　10個の数値を出力（末尾に半角スペース有）
+public class Main {
+
+    public static void main(String[] args) {
+        for (int i = 1; i < 11; i++) {
+            System.out.print(i + " ");
+        }
+
+        System.out.println();
+    }
+}
+/*半角スペース区切りで 1 から 10 までの 10 個の数値を出力します。
+各数値うしろには半角スペースを、末尾には改行を出力する必要があります。
+for 文を用いて実装します。
+上記のコードに記述されている for 文は i=1 から i=10 まで繰り返し処理を行います。
+従って、i を出力します。
+System.out.print() は末尾に改行を入れない出力メソッドです。
+数値の後ろに半角スペースを入れることを忘れないで下さい。
+また、問題文に「末尾に改行を入れ」と書いてあるので、最後に System.out.println() で改行します。*/
+
 step4　10個の数値を出力
+public class Main {
+
+    public static void main(String[] args) {
+        for (int i = 1; i < 11; i++) {
+            System.out.print(i);
+            if (i < 10) {
+                System.out.print(" ");
+            } else {
+                System.out.println();
+            }
+        }
+    }
+}
+/*半角スペース区切りで 1 から 10 までの 10 個の数値を出力します。
+各数値の間には半角スペースを、末尾には改行を出力する必要があります。
+for 文を用いて、i=1 から i=10 まで繰り返し処理を行います。
+注意しなければならないのは、今回は 10 を出力した後に半角スペースが入ってはいけないということです。
+そこで、if 文で条件分岐することを考えます。
+半角スペースを入れるのは i < 10 のとき、改行するのは i = 10 のときと考えて if 文を作成します。*/
+
 final　1000個の数値を出力（半角スペース区切り）
+public class Main {
+
+    public static void main(String[] args) {
+        for (int i = 1; i < 1001; i++) {
+            System.out.print(i);
+            if (i < 1000) {
+                System.out.print(" ");
+            } else {
+                System.out.println();
+            }
+        }
+    }
+}
+/*半角スペース区切りで 1 から 1,000 までの 1,000 個の数値を出力します。
+各数値の間には半角スペースを、末尾には改行を出力する必要があります。
+前問と同様の方針で解けます。
+for 文で i=1 から i=1000 まで繰り返し処理を行います。
+出力の際は、if 文を用いて「改行するのか」「半角スペースを入れるのか」を判定します。*/
+
 
 //【文字列の出力】入力された10個の文字列を出力
 step1　1つの文字列を出力
