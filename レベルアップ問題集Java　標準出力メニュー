@@ -190,59 +190,1239 @@ public class Main {
 for 文で i=1 から i=1000 まで繰り返し処理を行います。
 出力の際は、if 文を用いて「改行するのか」「半角スペースを入れるのか」を判定します。*/
 
-
 //【文字列の出力】入力された10個の文字列を出力
 step1　1つの文字列を出力
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println("paiza");
+    }
+}
+/*文字列を 1 つ出力します。Java では、System.out.println() で () に挟まれた値を出力します。
+今回、文字列 "paiza" を出力したいのでそのように書きます。
+また、Java では、文字列を表現するとき、" (ダブルクオーテーション) で挟みます。*/
+
 step2　2つの文字列を出力
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println("paiza learning");
+    }
+}
+/*文字列を 2 つ半角スペース区切りで出力します。
+"paiza", 半角スペース, "learning" を 1 つの文字列とみて "paiza learning" を出力することで解けます*/
+
 step3　入力された2つの文字列を出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+        String t = sc.next();
+
+        System.out.println(s);
+        System.out.println(t);
+
+        sc.close();
+    }
+}
+/*入力された 2 つの文字列を改行区切りでそのまま出力します。
+標準入力を受け取るために、この解答例では Scanner クラスを用います。
+Scanner クラスは java.util にあるので、
+import java.util.*;
+または
+import java.util.Scanner;
+でインポートして使います。
+以降もこの問題集の解答例では Scanner クラスを用いて標準入力を受け取ります。
+Scanner クラスの next メソッドを用いることで、入力を空白文字区切り (※1) で受け取ることができます。
+今回の入力は 2 行で、どちらも空白文字を含まないので、next メソッドを 2 回使って入力を受け取ります。
+出力は System.out.println() を使います。
+【 ※1 Java での空白文字 】
+Java での空白文字は「スペース (半角、全角問わず)」「改行」「タブ」などのことを指します。
+具体的には Character.isWhitespace(文字) で true が返ってくる 文字 が空白文字です。*/
+
 step4　入力された10個の文字列を出力（半角スペース区切り）
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] s = new String[10];
+        for (int i = 0; i < 10; i++) {
+            s[i] = sc.next();
+        }
+
+        for (int i = 0; i < 10; i++) {
+            System.out.print(s[i]);
+            if (i < 9) {
+                System.out.print(" ");
+            } else {
+                System.out.println();
+            }
+        }
+
+        sc.close();
+    }
+}
+/*入力された 10 個の文字列を半角スペース区切りでそのまま出力します。配列などに代入しておくと出力しやすくなります。
+入力値を配列で管理することを考えます。
+入力は 10 行の文字列からなるので、長さ 10 の文字列型の配列を用意します。
+そして、Scanner クラスの next メソッドを用いて入力を受け取ります。
+出力の際、「改行するか」「半角スペースを入れるか」を変数 i の値を元に判定します。
+普段は半角スペースを入れて末尾で改行する、と考えると、「末尾かどうか」が if 文を作る大事な材料になります。
+末尾は i=9 のときなので、これを用いて if 文を作ります。*/
+
 final　入力された10個の文字列を出力（改行区切り）
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] s = new String[10];
+        for (int i = 0; i < 10; i++) {
+            s[i] = sc.next();
+        }
+
+        for (String t : s) {
+            System.out.println(t);
+        }
+
+        sc.close();
+    }
+}
+/*入力された 10 個の文字列を改行区切りでそのまま出力します。
+文字列が半角スペース区切りで入力されるので、半角スペースで分割して受け取る必要があります。
+文字列の長さが 1,000 文字になる場合があるので、言語によっては注意が必要です。
+Scanner クラスの next メソッドは空白文字区切りで入力を受け取るので、今回も 10 回 next メソッドを使うことで、すべての入力値を受け取ることができます。
+出力には拡張 for 文を使っています。
+拡張 for 文は配列などの要素を先頭から順に取得しながら繰り返し処理を行う for 文です。*/
 
 //【n行の出力】1000行以内の出力
 step1　1行または2行の出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        if (n == 1) {
+            System.out.println(1);
+        } else {
+            System.out.println(1);
+            System.out.println(2);
+        }
+
+        sc.close();
+    }
+}
+/*入力された値によって場合分けをおこないます。
+1 が入力された場合は 1 を、2 が入力された場合は 1 と 2 を出力します。
+入力される整数値を受け取るときは、Scanner クラスの nextInt メソッドを使います。
+nextInt メソッドは next メソッド同様に空白文字区切りで入力を受け取ります。
+受け取った n が 1 であるか、否か (入力値は 1 か 2 であるから) で出力の仕方を変えるので、if 文を使います。*/
+
 step2　数行の出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        if (n >= 1) {
+            System.out.println(1);
+        }
+        if (n >= 2) {
+            System.out.println(2);
+        }
+        if (n >= 3) {
+            System.out.println(3);
+        }
+        if (n >= 4) {
+            System.out.println(4);
+        }
+        if (n == 5) {
+            System.out.println(5);
+        }
+
+        sc.close();
+    }
+}
+/*入力された値によって出力する値を変更します。
+入力値が小さいので、条件分岐で実装可能です。
+<別解>
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        for (int i = 1; i < n + 1; i++) {
+            System.out.println(i);
+        }
+
+        sc.close();
+    }
+}
+
+for 文を用いて i=1 から i=n まで繰り返し処理を行います。
+繰り返し処理で i を出力することで、求められている出力ができます。*/
+
 step3　10行以内の出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        for (int i = 1; i < n + 1; i++) {
+            System.out.println(i);
+        }
+
+        sc.close();
+    }
+}
+/*入力された値によって出力する値を変更します。
+入力値が少し大きいので、条件分岐ではなく、ループを使うときれいに実装可能です。
+入力される整数 n の最大値が 10 に及ぶため、if 文の条件分岐で書くとコードが長くなります。
+そこで、for 文を用いることを考えます。
+今回の場合は 1 以上 n 以下の整数を出力するので、i=1 から i=n まで繰り返し処理を行う for 文を記述します。*/
+
 final　1000行以内の出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        for (int i = 1; i < n + 1; i++) {
+            System.out.println(i);
+        }
+
+        sc.close();
+    }
+}
+/*入力された値によって出力する値を変更します。
+入力値が 10 までなら条件分岐などでも書くことは可能ですが、今回は 1,000 までなので、ループを使う必要があります。
+今回は整数 n の最大値が 1000 に及ぶので、if 文の条件分岐での実装は非現実的です。
+for 文で i=1 から i=n まで繰り返し処理を行って i を出力することで、解けます*/
 
 //【特定の文字で区切り1行で出力】大きな数値を3けたごとにカンマ区切りで出力2
 step1　カンマ区切りで2つ出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        System.out.println(n + "," + m);
+
+        sc.close();
+    }
+}
+/*入力された値をそのまま出力します。
+数値を出力する際は間にカンマを、そして最後に改行を出力します。
+入力される 2 つの整数を nextInt メソッドを 2 回使って受け取ります。
+出力時、+ を使うことで、複数の値を 1 行で出力することができます。
+今回は n と "," と m を + で繋げます。*/
+
 step2　バーティカルライン区切りで3つの文字列を出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s1 = sc.next();
+        String s2 = sc.next();
+        String s3 = sc.next();
+
+        System.out.println(s1 + "|" + s2 + "|" + s3);
+
+        sc.close();
+    }
+}
+/*3 つの文字列を受けとりそれぞれをバーティカルライン区切りで出力します。
+今回は文字列が入力されるので、next メソッドを使います。
+前問と同様 + を使って 1 行で出力します。*/
+
 step3　カンマ区切りで10個出力1
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] n = new int[10];
+        for (int i = 0; i < 10; i++) {
+            n[i] = sc.nextInt();
+        }
+
+        for (int x : n) {
+            System.out.print(x + ",");
+        }
+
+        System.out.println();
+
+        sc.close();
+    }
+}
+/*数値を出力するたびにカンマを出力します。
+また、最後に改行を出力します。ここでは配列を使って 1 度入力される整数を格納する方針で行きます。
+要素数は 10 で、入力される値は整数だと分かっているので、整数型で長さ 10 の配列を用意します。
+その後、10 回繰り返す for 文を記述して 10 個の整数を受け取ります。
+出力は、拡張 for 文でします。
+この際 "," を入れることを忘れないで下さい。
+「末尾に改行を入れ」と問題文に書いてあるので、最後に System.out.println() を記述します。*/
+
 step4　カンマ区切りで10個出力2
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] n = new int[10];
+        for (int i = 0; i < 10; i++) {
+            n[i] = sc.nextInt();
+        }
+
+        for (int i = 0; i < 10; i++) {
+            System.out.print(n[i]);
+            if (i < 9) {
+                System.out.print(",");
+            } else {
+                System.out.println();
+            }
+        }
+
+        sc.close();
+    }
+}
+/*数値を出力するたびにカンマを出力します。ただし、末尾はカンマではなく改行を出力します。
+ここでは配列を使って 1 度入力される整数を格納する方針で行きます。
+要素数は 10 で、入力される値は整数だと分かっているので、整数型で長さ 10 の配列を用意します。
+その後、10 回繰り返す for 文を記述して 10 個の整数を受け取ります。
+for 文を用いて出力します。
+数列の端は i=9 のときなので、i < 9 のときは "," を出力して、そうでないとき (数列の端のとき) は改行します。*/
+
 step5　半角スペースとバーティカルライン区切りで10個出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] n = new int[10];
+        for (int i = 0; i < 10; i++) {
+            n[i] = sc.nextInt();
+        }
+
+        for (int i = 0; i < 10; i++) {
+            System.out.print(n[i]);
+            if (i < 9) {
+                System.out.print(" | ");
+            } else {
+                System.out.println();
+            }
+        }
+
+        sc.close();
+    }
+}
+/*数値を出力するたびに区切り文字 | を出力します。最後の数値のあとには改行を出力します。
+入力の受け取りはここ数問と同様のやり方で実装しています。
+数列の端は i=9 のときなので、i < 9 のときは " | " を入れ、そうでないとき (数列の端のとき) は改行をします。*/
+
 step6　大きな数値を3桁ごとにカンマ区切りで出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String n = sc.next();
+        for (int i = 0; i < n.length(); i++) {
+            if (i != 0 && i % 3 == 0) {
+                System.out.print(",");
+            }
+            System.out.print(n.charAt(i));
+        }
+        System.out.println();
+
+        sc.close();
+    }
+}
+/*まず、入力される数値がとても大きいので、数値型ではなく、文字列型を使用します。
+次に、大きなけたから順に数値を出力します。
+また、出力したけた数が 3 の倍数のときはカンマも出力します。
+n の桁数が 3 の倍数であることが保証されているので、先頭から 3 桁に一回 , を付けていきます。
+インデックスは 0 から始まるので、, を入れるタイミングは以下の 2 通り考えられます。
+1.i 番目の要素を出力した後、(i+1) % 3 == 0 のとき、"," を出力する
+この際、末尾でも "," が入ってしまうので、その可能性を if 文で排除する必要があります。
+2.i % 3 == 0 のとき、"," を出力し、条件判定に関わらず i 番目の要素を出力する
+この際、先頭に "," が入ってしまうので、その可能性を if 文で排除する必要があります。
+解答コードは 2. の方針で作成しました。*/
+
 final　大きな数値を3桁ごとにカンマ区切りで出力2
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String n = sc.next();
+        int mod = n.length() % 3;
+
+        for (int i = 0; i < n.length(); i++) {
+            if (i % 3 == mod && i != 0) {
+                System.out.print(",");
+            }
+            System.out.print(n.charAt(i));
+        }
+        System.out.println();
+
+        sc.close();
+    }
+}
+/*方針1
+まず、入力される数値がとても大きいので、数値型ではなく、文字列型を使用します。
+次に、大きなけたから順に数値を出力します。
+また、文字列の長さのあまりを求めておいて、左から今何けたに処理したのかに応じてカンマを出力します。
+文字列の長さを 3 で割ったあまりを M とします。入力された文字列の最初の M 文字を除くと、残りの文字列の長さは 3 の倍数となり、「特定の区切り文字を使って出力 6 : 大きな数値を 3 けたごとにカンマ区切りで出力」と同じ問題として解けます。
+n の桁数を 3 で割ったときの余りを使って、先頭からカンマを付けていきます。
+n の桁数が丁度 3 の倍数のとき、i=0 でカンマが入ってしまうので、この可能性を排除する必要があります。
+
+方針2
+もう 1 つの方法として、文字列を反転させて処理し、再度反転させるという方法があります。
+文字列を反転させることで、文字列の左から順に 3 けたずつカンマで区切ることができます。
+注意点として、文字列を反転した状態で出力してはいけないので、別の変数に結果を保存しておく必要があります。
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String n = sc.next();
+        
+        String ans = "";
+        for (int i = 0; i < n.length(); i++) {
+            if (i % 3 == 0 && i != 0) {
+                ans = "," + ans;
+            }
+            ans = n.charAt(n.length() - 1 - i) + ans;
+        }
+        System.out.println(ans);
+
+        sc.close();
+    }
+}
+文字列の末尾から処理をしていくコードです。
+i=0 から始まるので、「いま何番目の数字か」が分かります。
+文字列の要素にアクセスするときは n.charAt(n.length() - 1 - i) とすることで、一番後ろの数字から処理をすることができます。
+末尾から処理をするので、余りを使わずに実装できるのがこのコードのポイントです。*/
 
 //【n＊nの2次元配列の表示】N*Nの九九表の出力
 step1　2＊2の出力
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println(0 + " " + 8);
+        System.out.println(1 + " " + 3);
+    }
+}
+/*4 つの数値を 2 つずつに分けます。
+その後、その 2 つの数値を半角スペース区切りで出力します。
+最後に改行を忘れないでください。+ を使って求められている出力を実現します。*/
+
 step2　3＊3の出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] n = new int[9];
+        for (int i = 0; i < 9; i++) {
+            n[i] = sc.nextInt();
+        }
+
+        for (int i = 0; i < 9; i++) {
+            System.out.print(n[i]);
+            if (i % 3 == 2) {
+                System.out.println();
+            } else {
+                System.out.print(" ");
+            }
+        }
+
+        sc.close();
+    }
+}
+/*まず、9 個の数値をすべて受け取ります。
+次に、3 つずつ数値を出力するのですが、ループカウンタの値によって半角スペースを出力するか、改行を出力するか切り替えます。
+2 次元配列で実装することも出来ますが、今回は 1 次元配列で実装することを考えます。
+出力は「改行するか」「半角スペースを入れるか」を i を元に判定します。
+改行すべきところは要素を 3 回出力したあと、つまり、i % 3 == 2 のときです。それ以外のときは、半角スペースを入れます。*/
+
 step3　九九表の出力
+public class Main {
+
+    public static void main(String[] args) {
+        for (int i = 1; i < 10; i++) {
+            for (int j = 1; j < 10; j++) {
+                System.out.print(i * j);
+                if (j < 9) {
+                    System.out.print(" ");
+                } else {
+                    System.out.println();
+                }
+            }
+        }
+    }
+}
+/*2 重のループですべての i, j( 1 ≦ i, j ≦ 9 ) の組み合わせを列挙します。
+また、数値と数値の間には半角スペースを出力、各行の末尾には改行を出力をします。
+2 重 for 文で実装します。
+外側の for 文は i=1 から i=9 まで、内側の for 文は i=a (0 ≦ a ≦ 9) に対して j=1 から j=9 まで繰り返し処理を行います。
+内側の for 文内で i*j を出力することで、九九表の要素を順に出力できます。
+「改行するか」「半角スペースを入れるか」は j が 9 かどうかで判定します。*/
+
 final　Ｎ＊Ｎの九九表の出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        for (int i = 1; i < n + 1; i++) {
+            for (int j = 1; j < n + 1; j++) {
+                System.out.print(i * j);
+                if (j < n) {
+                    System.out.print(" ");
+                } else {
+                    System.out.println();
+                }
+            }
+        }
+
+        sc.close();
+    }
+}
+/*2 重のループですべての i, j( 1 ≦ i, j ≦ N ) の組み合わせを列挙します。
+また、数値と数値の間には半角スペースを出力、1 行の末尾には改行を出力をします。
+前問と同様の考え方で解けます
+9 × 9 の表を n × n の表にするので、i=0 から i=n まで繰り返す for 文の内側に j=1 から j=n まで繰り返す for 文を書きます。
+改行と半角スペースの箇所も j=n のときが列の端なので、そこで改行して、それ以外は半角スペースを入れます。*/
 
 //【行によって長さが違う二次元配列の表示】すべての行の長さと値が不定な 2 次元配列の出力
 step1　N個の文字を半分ずつ出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        for (int i = 1; i < n + 1; i++) {
+            System.out.print(i);
+            if (i == n / 2 || i == n) {
+                System.out.println();
+            } else {
+                System.out.print(" ");
+            }
+        }
+
+        sc.close();
+    }
+}
+/*N を整数型として入力を受け取ります。
+ループを用いて、1 行目には 1 以上 N / 2 以下の数を、2 行目には N / 2 + 1 以上 N 以下の数を出力します。
+数値の間には半角スペースを、行の末尾には改行を出力します。
+for 文で i=1 から i=n まで繰り返し処理を行います。
+この問題のポイントは「どこで改行するか」ということですが、それは n/2, n を出力した後です。
+上記の内容を if 文を用いて判定します。
+改行しないときは、半角スペースを入れることを忘れないで下さい。*/
+
 step2　数値を異なる長さで2行出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        for (int i = 1; i < n + 1; i++) {
+            System.out.print(i);
+            if (i < n) {
+                System.out.print(" ");
+            } else {
+                System.out.println();
+            }
+        }
+
+        for (int i = 1; i < m + 1; i++) {
+            System.out.print(i);
+            if (i < m) {
+                System.out.print(" ");
+            } else {
+                System.out.println();
+            }
+        }
+
+        sc.close();
+    }
+}
+/*まず N と M を整数型で受け取ります。
+次に 1 以上 N 以下の数値をすべて、ループを用いて順に出力します。
+そして 1 以上 M 以下の数値をすべて、ループを用いて順に出力します。
+このとき、数値の間には半角スペースを、行の末尾には改行を出力します。
+i=1 から i=n まで繰り返す for 文と i=1 から i=m まで繰り返す for 文を用いて解きます。
+「改行するか」「半角スペースを入れるか」を if 文を用いて判定します。*/
+
 step3　直角三角形の出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        for (int i = 1; i < n + 1; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(j);
+                if (j == i) {
+                    System.out.println();
+                } else {
+                    System.out.print(" ");
+                }
+            }
+        }
+
+        sc.close();
+    }
+}
+/*N 行の出力をする必要がありますが、問題を簡単に考えるために、まずは 1 行として考えてみましょう。
+たとえば「 1 行で 1 以上 10 以下の数値をすべて出力してください」という問題だった場合は「可変長 2 次元配列の出力 1 : N 個の文字を半分ずつ出力」と同じように、ループを用いて実装できます。
+このような問題をN回解くと考えて、N 行を出力する場合について考えてみます。
+1 行目の出力する個数は 1 つ、2 行目の出力する個数は 2 つですね。さらに、i 行目の出力する個数は i 個ですね。
+この i をループカウンタとして考えます。i を 1 から n までループで変化させ、その各 i について、「 1 行で 1 以上 i 以下の数値をすべて出力してください」という問題を解きます。
+よってループが入れ子になったような状態、2 重ループを用いて解くことができます。
+2 重ループで実装します。
+外側の for 文は行を、内側の for 文は列を表すと考えると解きやすくなるかもしれません。
+i 行で出力する値は 1 から i までの整数なので、内側の for 文は j=1 から j=i までの繰り返し処理をするように書きます。
+列の端まで出力したら改行するように if 文を書き、端でないときは半角スペースを入れます。*/
+
 step4　すべての行の長さが不定な2次元配列の出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            int m = sc.nextInt();
+            for (int j = 1; j < m + 1; j++) {
+                System.out.print(j);
+                if (j < m) {
+                    System.out.print(" ");
+                } else {
+                    System.out.println();
+                }
+            }
+        }
+
+        sc.close();
+    }
+}
+/*基本的には「直角三角形の出力」と一緒です。
+変わった点は 1 箇所で、i 行目に出力する数値の個数が i 個から M_i 個になりました。
+よって配列に値を入れておいて、1 つずつ i だった部分を M_i にすればいいです。
+まず、「何個の整数が入力されるか」を表す整数 n が入力されるので、それを整数型で受け取ります。
+n 個の整数を受け取るために n 回の繰り返し処理を行う for 文を用意します。
+i=1 から i=n にかけて整数 m_i が入力されるので、j=1 から j=m_i まで繰り返し処理を行う for 文を内側にもう 1 つ用意します。
+解答コードで j は j=1 から j=m_i まで 1 ずつ増加していくので System.out.println() で j を出力しています。*/
+
 final　すべての行の長さと値が不定な2次元配列の出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        int[] b = new int[m];
+        for (int i = 0; i < m; i++) {
+            b[i] = sc.nextInt();
+        }
+
+        int nextIndex = 0;
+        for (int x : b) {
+            for (int i = 0; i < x; i++) {
+                System.out.print(a[nextIndex]);
+                if (i < x - 1) {
+                    System.out.print(" ");
+                } else {
+                    System.out.println();
+                }
+
+                nextIndex += 1;
+            }
+        }
+
+        sc.close();
+    }
+}
+/*イメージとしては 数列A を M 個に分割するというものです。
+1 行目は数列のここからここまでを出力、2 行目は数列のここからここまでを出力...ということがわかれば前問と同じように解くことができます。
+さて、各行で出力する区間なのですが、始点(begin)がわかれば終点(end)は end = begin + B[i] - 1 と、容易に求まります。注意点として、end = begin + B[i] とすると、最後の要素は範囲外なので出力してはいけません(今回は数学の言葉で「閉区間」として考えます。)。
+次に始点について考えてみます。最初に出力する数列の始点は 0 です(問題文では 1 - indexed でしたが、解説では 0 -indexed です)。
+i番目に出力する数列の始点について考えてみます。これは、(i - 1 番目に出力する数列の終点) + 1 であることがわかります。よって、すべての数列の始点と終点がわかりました。
+この問題は「出力を前回の続きからやる」というところが他の問題と違うところでした。
+この解決策として、前回の出力でどこまで出力したか、を保持する変数を用意することが挙げられます。
+解答コードではそれを実現するために変数 nextIndex を用意しました。
+変数 nextIndex は次に出力する要素のインデックスを保持しています。
+常に次のインデックスを示すので、出力とセットで +1 します。
+1 行で出力する要素の数は配列 b が保持しているので、b の要素に従って出力します。
+「改行するのか」「半角スペースを入れるのか」をインデックスの値で判定して出力をします。*/
 
 //【実数をフォーマット指定して出力】複数の実数を出力
 step1　1つの実数を出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        double n = sc.nextDouble();
+        System.out.println(n);
+
+        sc.close();
+    }
+}
+/*実数型の変数を用いて入力を受け取ります。
+言語によりますが、基本的にはそのまま出力すればよいです。
+実数型ではなく文字列型として受け取るという方法もあります。
+入力を実数で受け取るために Scanner クラスの nextDouble メソッドを使います。
+nextDouble メソッドは next メソッドや nextInt メソッド同様のルールで入力を受け取ります。
+今回の問題の制約の上では、入力の受け取りで誤差は生じませんが、一般的には誤差が生じることがあるので、注意して下さい。
+文字列で受け取る方針のコードは next メソッドで受け取り、そのまま出力します。*/
+
 step2　1つの実数を出力2
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String n = sc.next();
+
+        System.out.println(n);
+
+        sc.close();
+    }
+}
+/*文字列として入力を受け取ります。
+実数型の場合は末尾に余分な 0 が出力されないようにする必要があります。また、指数表記に変換されないように出力しなければなりません。
+// 不正解となる実装例
+import java.util.*;
+
+public class Main {
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    String n = sc.next();
+
+    System.out.println(n);
+
+    sc.close();
+  }
+}
+方針の通り、入力値を文字列で受け取ってそのまま出力します。
+文字列で受け取るには Scanner クラスの next メソッドを使います。*/
+
 step3　1つの実数を出力3
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        double n = sc.nextDouble();
+
+        System.out.printf("%.3f\n", n);
+
+        sc.close();
+    }
+}
+/*書式付き出力関数を使うだけで正解できます。
+nextDouble メソッドを用いて入力を実数型で受け取ります。
+Java には、書式付き出力メソッドとして printf メソッドが用意されています。
+%, .3f, f, \n について順に説明します。
+【 % について 】
+これは「これから書式を指定していきます」という開始を表す記号です。
+【 .3f について 】
+これは「小数点以下の桁数」を 3 に指定することを意味します。
+小数点以下の桁数が 4 以上の場合、小数第 4 位で四捨五入されます。
+一般的な説明をすると、.xf で、小数点以下の桁数を x にして出力します。
+ここで x は 0 以上の整数である必要があります。
+【 f について 】
+これは「出力する値の型」が小数 (小数点数) であることを意味します。
+他にも d が 10 進数、x が 16 進数、s が文字列、など様々あるので、調べてみると面白いかもしれません。
+【 \n について 】
+これは「改行」を意味します。
+文字列の中で「改行」を意味する特殊な文字列です。
+なぜ、\n が必要かというと、printf メソッドは末尾で「改行」を出力しないからです。
+問題文には「末尾に改行を入れ」とあるので \n が必要になります。*/
+
 step4　1つの実数を出力4
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        double n = sc.nextDouble();
+        int m = sc.nextInt();
+
+        System.out.printf("%." + m + "f\n", n);
+
+        sc.close();
+    }
+}
+/*M のとりうる範囲が小さいので、条件分岐を使うことで「1 つの実数を出力 3」と同じように解くことができます。
+「小数第何位まで出力するか」が入力で与えられるところが難点だったかと思います。
+まず、"%.(ここで m の値を使いたい)f\n" が書式として思い浮かびます。
+そこで、変数の値を用いてどのように書式指定するか、を解決する手段として + を使う方法を紹介します。
+"" の中に m を入れてしまうと m は文字列として処理されるので、m の前後で "%.", m, "f\n" のように分割してから + を用いて "%." + m + "f\n" のように再構成します。
+書式が出来上がったので、これを用いて出力すれば解けます*/
+
 final　複数の実数を出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int q = sc.nextInt();
+        for (int i = 0; i < q; i++) {
+            double n = sc.nextDouble();
+            int m = sc.nextInt();
+
+            System.out.printf("%." + m + "f\n", n);
+        }
+
+        sc.close();
+    }
+}
+/*同じ問題を複数回解くので、各問題が解ければ、あとはループを用いて繰り返し処理すればよいです。
+M のとりうる範囲が小さいので、条件分岐を使うことで「1 つの実数を出力 3」と同じように解くことができます。
+前問と書式の設定は同じなので、for 文で q 回繰り返し処理をすれば解けます
+書式についての説明を以下で再掲します。
+【「1 つの実数を出力 4」の解説より 】
+「小数第何位まで出力するか」が入力で与えられるところが難点だったかと思います。
+まず、"%.(ここで m の値を使いたい)f\n" が書式として思い浮かびます。
+そこで、変数の値を用いてどのように書式指定するか、を解決する手段として + を使う方法を紹介します。
+"" の中に m を入れてしまうと m は文字列として処理されるので、m の前後で "%.", m, "f\n" のように分割してから + を用いて "%." + m + "f\n" のように再構成します。
+書式が出来上がったので、これを用いて出力すれば解けます。*/
 
 //【出力幅を指定して出力】N 個の数値を M けた半角スペース埋めで出力
 step1　数値を半角スペース埋めで出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        System.out.printf("%3d\n", n);
+
+        sc.close();
+    }
+}
+/*書式付き出力関数を使用します。
+nextInt メソッドを用いて入力を整数型で受け取ります。
+Java には、書式付き出力メソッドとして printf メソッドが用意されています。
+%, 3d, d, \n について順に説明します。
+【 % について 】
+これは「これから書式を指定していきます」という開始を表す記号です。
+【 3d について 】
+これは「出力する値の最小の幅」を 3 に指定することを意味します。
+出力する値の桁数が 3 に満たないときは、半角スペースで埋められます。
+一般的な説明をすると、xd で、最小の幅を x にして出力します。
+x は 0 でない整数でなくてはなりません。また、正、負について以下の場合分けができます。
+x < 0 のとき、左詰め
+x > 0 のとき、右詰め
+【 d について 】
+これは「出力する値の型」が整数 (10 進数) であることを意味します。
+他にも x が 16 進数、s が文字列、など様々あるので、調べてみると面白いかもしれません。
+【 \n について 】
+これは「改行」を意味します。
+これは文字列の中で「改行」を意味する特殊な文字列です。
+なぜ、\n が必要かというと、printf メソッドは末尾で「改行」を出力しないからです。
+問題文には「末尾に改行を入れ」とあるので、\n が必要になります。*/
+
 step2　数値をゼロ埋めで出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        System.out.printf("%03d\n", n);
+
+        sc.close();
+    }
+}
+/*半角スペースではなく、今回は 0 で埋めるという問題でした。
+0 で埋めるためには、桁数の指定の前に 0 を置きます。
+桁数指定で負の数 (左詰め) を指定している場合はエラーになるので注意して下さい。
+よって、書式は "%03d\n" となります。*/
+
 step3　複数の数値を半角スペース埋めで出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            int m = sc.nextInt();
+
+            System.out.printf("%3d\n", m);
+        }
+
+        sc.close();
+    }
+}
+/*ループを用いてN回書式付き出力関数を使用します。
+書式は「数値を半角スペース埋めで出力」と変わりません。
+n 回繰り返し処理を行う for 文を使って、繰り返し処理を行えば解けます
+以下で書式についての説明を再掲します。
+【「数値を半角スペース埋めで出力」の解説より 】
+%, 3d, d, \n について順に説明します。
+【 % について 】
+これは「これから書式を指定していきます」という開始を表す記号です。
+【 3d について 】
+これは「出力する値の最小の幅」を 3 に指定することを意味します。
+出力する値の桁数が 3 に満たないときは、半角スペースで埋められます。
+一般的な説明をすると、xd で、最小の幅を x にして出力します。
+x は 0 でない整数でなくてはなりません。また、正、負について以下の場合分けができます。
+x < 0 のとき、左詰め
+x > 0 のとき、右詰め
+【 d について 】
+これは「出力する値の型」が整数 (10 進数) であることを意味します。
+他にも x が 16 進数、s が文字列、など様々あるので、調べてみると面白いかもしれません。
+【 \n について 】
+これは「改行」を意味します。
+これは文字列の中で「改行」を意味する特殊な文字列です。
+なぜ、\n が必要かというと、printf メソッドは末尾で「改行」を出力しないからです。
+問題文には「末尾に改行を入れ」とあるので、\n が必要になります。*/
+
 step4　数値をM桁半角スペース埋めで出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        System.out.printf("%" + m + "d\n", n);
+
+        sc.close();
+    }
+}
+/*書式付き出力関数を使用します。
+他にも、N を文字列として受け取り、(M - Nの文字数)だけ半角スペースを出力したあとに N を出力する方法もあります。
+「何桁で出力するか」が入力で与えられるところが難点だったかと思います。
+まず、"%(ここで m の値を使いたい)d\n" が書式として思い浮かびます。
+そこで、変数の値を用いてどのように書式指定するか、を解決する手段として + を使う方法を紹介します。
+"" の中に m を入れてしまうと m は文字列として処理されるので、m の前後で "%", m, "d\n" のように分割してから + を用いて "%" + m + "d\n" のように再構成します。
+書式が出来上がったので、これを用いて出力すれば解けます*/
+
 final　N個の数値をM桁半角スペース埋めで出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            int a = sc.nextInt();
+
+            System.out.printf("%" + m + "d\n", a);
+        }
+
+        sc.close();
+    }
+}
+/*ループを使用して N 回、書式付き出力関数を使用します。
+他にも、A_i を文字列として受け取り、( M - N の文字数)だけ半角スペースを出力したあとに N を出力する方法もあります。
+書式の設定は前問と同様なので、前問の書式を使って for 文で入力値を受け取りながら n 回繰り返し処理をすれば解けます
+以下で、書式についての説明を再掲します。
+【「数値を M けた半角スペース埋めで出力」の解説より 】
+「何桁で出力するか」が入力で与えられるところが難点だったかと思います。
+まず、"%(ここで m の値を使いたい)d\n" が書式として思い浮かびます。
+そこで、変数の値を用いてどのように書式指定するか、を解決する手段として + を使う方法を紹介します。
+"" の中に m を入れてしまうと m は文字列として処理されるので、m のところで "%", m, "d\n" のように分割してから + を用いて "%" + m + "d\n" のように再構成します。
+書式が出来上がったので、これを用いて出力すれば解けます*/
 
 //【出力形式を指定して出力】ペアの数値の入った表を罫線入りで出力 2
 step1　2つの文字列を出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+        String t = sc.next();
+
+        System.out.printf("%s + %s = %s\n", s, t, s + t);
+
+        sc.close();
+    }
+}
+/*そのまま順に出力しても正解となりますが、書式付き出力関数やテンプレート文字列と呼ばれるものを使用するとすっきりと記述できます。
+書式付き出力メソッド printf を使います。
+% 記号は「これから書式を指定していきます」という意味を持つことは説明しました。
+文字列に対しては s という記号を使うので、文字列を置換したい箇所に %s を置きます。
+printf メソッドは末尾で改行されないので、\n をつける必要があります。
+【 % 記号について補足説明 】
+% 記号は文字列の中で何度も使うことができ、その位置に引数の値が置換されます。ただし、% 記号の数だけ引数を用意する必要があります。
+つまり、% 記号は置換の目印であり、% の数だけ値を置換することができます。
+また、置換の際は % 記号から始まる一連の書式指定に基づいて置換されます。
+置換の順は左から順です。
+例: System.out.printf("%f掛ける%dの解を小数点第3位で四捨五入して表示すると[%.2f]になる", 0.178, 3, 0.178*3);
+ここでは % が 3 回出てきています。
+つまり、3 回置換が行われるので 3 つの引数を用意します。
+置換は % 以降の書式に基づいて行われます。
+よって今回は以下の様に置換されます
+%f に 0.178 が置換される
+f で桁数指定をしなかった場合、小数点第 6 位まで表示されます。
+%d に 3 が置換される
+%.2f に 0.178*3 の計算結果が小数点第 3 位で四捨五入され、置換される
+従って、このコードを実行すると 0.178000掛ける3の解を小数点第3位で四捨五入して表示すると[0.53]になる と出力されます。*/
+
 step2　文字列とN個の整数の出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            System.out.printf("(%d, %d)", a, b);
+            if (i < n - 1) {
+                System.out.print(", ");
+            } else {
+                System.out.println();
+            }
+        }
+
+        sc.close();
+    }
+}
+/*そのまま順に出力しても正解となりますが、書式付き出力関数を使用するとすっきりと記述できます。
+また、今回は同じ文字列を N 回出力する必要があるので、ループを用います。
+書式付き出力メソッド printf を使います。
+printf メソッドを使わずに書くこともできますが、その場合 + が多くなり少々煩雑になるので、printf メソッドを用います。
+今回の書式について考えます。
+書式は "(%d, %d)" です。以下で「なぜか」について考えていきます。
+前問の解説の通り、% がある箇所に値が置換される (順番は左から順) ので、今回は % を 2 つ使います。
+値の型は整数型で10 進数なので、d を使います。
+よって、今回の書式は "(%d, %d)" になります。
+「改行するのか」「, を入れるか」はインデックスの値で判定します。*/
+
 step3　九九表を罫線入りで出力
+public class Main {
+
+    public static void main(String[] args) {
+        for (int i = 1; i < 10; i++) {
+            for (int j = 1; j < 10; j++) {
+                System.out.printf("%2d", i * j);
+                if (j < 9) {
+                    System.out.print(" | ");
+                } else {
+                    System.out.println();
+                }
+            }
+            if (i != 9) {
+                for (int j = 0; j < 2 * 9 + 3 * (9 - 1); j++) {
+                    System.out.print("=");
+                }
+                System.out.println();
+            }
+        }
+    }
+}
+/*数値を出力するたびに | を出力します。ただし、行の最後(X * 9 を出力するとき)は代わりに改行を出力します。
+数値を出力する際には、printf関数 など書式付き出力関数を使用することで 2 けたになるよう出力します。
+また、行間で = を出力する際は、各行でいくつ = を出力するか考えます。各行で 2 けたの数値を 9 個と 3 文字の区切り文字 | を 9 - 1 = 8 個出力するので、2 * 9 + 3 * 8 = 42 個出力します。
+2 桁分のスペースを使って数値を出力をするために printf メソッドを使うと便利です。
+%, 2d, d について簡単に説明します。
+【 % について 】
+書式の指定を始める、という意味で、この記号がある箇所に値が置換される
+【 2d について 】
+幅 2 の出力をする
+値の幅が 2 に満たない場合は、半角スペースで埋める
+【 d について 】
+値の型は 10 進数の整数であるとき使う
+インデックスの値によって「改行するのか」「" | " を出力するのか」「"=" を出力するのか」を判定します。
+Java では、文字列を n 回繰り返すための演算子は用意されていないので、for 文を使って書きます。*/
+
 step4　ペアの数値の入った表を罫線入りで出力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int h = sc.nextInt();
+        int w = sc.nextInt();
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                System.out.printf("(%d, %d)", a, b);
+                if (j < w - 1) {
+                    System.out.print(" | ");
+                } else {
+                    System.out.println();
+                }
+            }
+            if (i != h - 1) {
+                for (int j = 0; j < 6 * w + 3 * (w - 1); j++) {
+                    System.out.print("=");
+                }
+                System.out.println();
+            }
+        }
+
+        sc.close();
+    }
+}
+/*「九九表を罫線入りで出力」とほとんど同じプログラムで正解することができます。
+変わった点は 3 箇所です。 1 つ目は入力を受け取る必要がある点、2 つ目は出力する文字列の形式が「(A, B)」になった点です。
+3 つ目は = の出力する個数です。今回、A と B は 1 以上 9 以下をとるので、必ず 1 けたです。よって「(A, B)」は 6 文字です。また、区切り文字 | は 3 文字で、1 行で w - 1 回出力します。よって = の出力する個数は 6 * w + 3 * (w - 1 ) 個となります。
+"(A, B)" を出力するとき、printf メソッドが便利です。
+書式は「文字列と N 個の整数の出力」と同じです。
+インデックスの値によって「改行するのか」「" | " を出力するのか」「"=" を出力するのか」を判定します。
+Java では、文字列を n 回繰り返すための演算子は用意されていないので、for 文を使って書きます。*/
+
 final　ペアの数値の入った表を罫線入りで出力2
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int h = sc.nextInt();
+        int w = sc.nextInt();
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                System.out.printf("(%9d, %9d)", a, b);
+                if (j < w - 1) {
+                    System.out.print(" | ");
+                } else {
+                    System.out.println();
+                }
+            }
+            if (i < h - 1) {
+                for (int j = 0; j < 22 * w + 3 * (w - 1); j++) {
+                    System.out.print("=");
+                }
+                System.out.println();
+            }
+        }
+
+        sc.close();
+    }
+}
+/*「ペアの数値の入った表を罫線入りで出力」とほとんど同じプログラムで正解することができます。
+変わった点は 2 箇所です。 1 つ目は数値を出力する際は 9 けたになるように出力すること。これは書式付き出力関数を用いることで実現できます。
+2 つ目は = の出力する」個数です。 3 つに分解して考えてみましょう。 1. 数値 A は 9 文字で、1 行で W 回出力します。また、数値は A と B で 2 種類出力します。よって数値は合計 9 * W * 2 文字になります。
+2.「(A, B)」のうち、A、B 以外の文字は (, ) の 4 文字です。これを W 回出力するので、合計 4 * W 文字になります。
+3. 区切り文字 | は W 回出力する「(A, B)」の間のみ出力します。よって 3 * ( W - 1 ) 文字になります。
+これにより、= は ( 9 * W * 2 ) + ( 4 * W ) + ( 3 * ( W - 1 )) 回出力すればよいことがわかりました。
+前問と少し書式の指定を変えなくてはなりません。
+それぞれ 9 桁分のスペースを使って a と b を出力するので、"%9d" とします。
+インデックスの値によって「改行するのか」「" | " を出力するのか」「"=" を出力するのか」を判定します。
+Java では、文字列を n 回繰り返すための演算子は用意されていないので、for 文を使って書きます。*/
