@@ -321,14 +321,157 @@ public class Main {
 // D020 ◆
 --------------------------------------------- D021　※欠番 ◆
 // D021 文字列の一致
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 1行目の入力を取得
+        String S = scanner.nextLine().trim();
+        // 2行目の入力を取得
+        String T = scanner.nextLine().trim();
+        
+        // 比較して出力
+        if (S.equals(T)) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+        
+        scanner.close();
+    }
+}
+
 // D022 表面積の計算
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int a = scanner.nextInt();
+        scanner.close();
+        
+        int surfaceArea = (int) (6 * Math.pow(a, 2));
+        System.out.println(surfaceArea);
+    }
+}
+
 // D023 Aの個数
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine().trim();
+        scanner.close();
+        
+        int count = 0;
+        for (char c : s.toCharArray()) {
+            if (c == 'A') {
+                count++;
+            }
+        }
+        
+        System.out.println(count);
+    }
+}
+
 // D024 三角形の内角の和
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+        scanner.close();
+        
+        int c = 180 - (a + b);
+        System.out.println(c);
+    }
+}
+
 // D025 数字の出力
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        scanner.close();
+        
+        System.out.printf("%03d\n", n);
+    }
+}
+
 // D026 一週間の予定
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int requiredLeave = 0;
+        
+        for (int i = 0; i < 7; i++) {
+            String day = scanner.nextLine().trim();
+            if ("no".equals(day)) {
+                requiredLeave++;
+            }
+        }
+        scanner.close();
+        
+        System.out.println(requiredLeave);
+    }
+}
+
 // D027 nまでの和
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        scanner.close();
+        
+        int sum = n * (n + 1) / 2;
+        System.out.println(sum);
+    }
+}
+
 // D028 数字の桁数
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        scanner.close();
+        
+        int digitCount = String.valueOf(n).length();
+        System.out.println(digitCount);
+    }
+}
+
 // D029 サイコロの裏面
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使って標準入力を読み取る
+        Scanner sc = new Scanner(System.in);
+        
+        // サイコロの目 n を入力として受け取る
+        int n = sc.nextInt();
+        
+        // 裏側の目は 7 - n なのでそれを計算して出力する
+        System.out.println(7 - n);
+        
+        // Scannerを閉じる
+        sc.close();
+    }
+}
+
 // D030 ◆
 --------------------------------------------- D031　※欠番 ◆
 // D031 分から秒へ
