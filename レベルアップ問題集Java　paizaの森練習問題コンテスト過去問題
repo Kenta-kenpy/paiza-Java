@@ -1,8 +1,107 @@
 // paizaの森練習問題コンテスト過去問題1　★
 // Q.　スポーツの人数
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String sport = scanner.nextLine().trim();
+        scanner.close();
+        
+        // スポーツ名と人数のマップを作成
+        Map<String, Integer> sportToPlayers = new HashMap<>();
+        sportToPlayers.put("baseball", 9);
+        sportToPlayers.put("soccer", 11);
+        sportToPlayers.put("rugby", 15);
+        sportToPlayers.put("basketball", 5);
+        sportToPlayers.put("volleyball", 6);
+        
+        // 結果を出力
+        System.out.println(sportToPlayers.get(sport));
+    }
+}
+/*スポーツ名ごとに条件分岐をして，入力とスポーツ名が一致したらスポーツに対応した競技人数を表示します．*/
+
 // Q.　バイトの休憩時間
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int h = Integer.parseInt(scanner.nextLine().trim());
+        scanner.close();
+        
+        if (h > 8) {
+            System.out.println("60 min");
+        } else if (h > 6) {
+            System.out.println("45 min");
+        } else {
+            System.out.println("no break");
+        }
+    }
+}
+/*勤務時間が6時間を超えて8時間以下の場合は「45 min」、8時間を超える場合は「60 min」、それ以外は「no break」を出力します。*/
+
 // Q.　自動車の燃費
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int v = scanner.nextInt(); // 給油量（L）
+        int d = scanner.nextInt(); // 走行距離（km）
+        scanner.close();
+        
+        int fuelEfficiency = d / v; // 燃費計算（小数点以下切り捨て）
+        System.out.println(fuelEfficiency);
+    }
+}
+/*給油量と走行距離を入力として受け取り、燃費を小数点以下切り捨てで出力するようにしました。*/
+
 // Q.　背番号順
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        // 入力される選手の数を読み取る
+        int n = Integer.parseInt(scanner.nextLine().trim());
+        
+        // 選手情報を格納するリストを作成
+        List<Player> players = new ArrayList<>();
+        
+        // n 人分の選手情報を読み取る
+        for (int i = 0; i < n; i++) {
+            String[] input = scanner.nextLine().split(" ");
+            int number = Integer.parseInt(input[0]); // 背番号を取得
+            String name = input[1]; // 選手名を取得
+            players.add(new Player(number, name)); // リストに追加
+        }
+        scanner.close();
+        
+        // 背番号の昇順に並び替える
+        players.sort(Comparator.comparingInt(p -> p.number));
+        
+        // ソート後の結果を出力
+        for (Player player : players) {
+            System.out.println(player.number + " " + player.name);
+        }
+    }
+}
+
+// 選手情報を保持するクラス
+class Player {
+    int number; // 背番号
+    String name; // 選手名
+    
+    // コンストラクタ
+    Player(int number, String name) {
+        this.number = number;
+        this.name = name;
+    }
+}
+/*入力を [[背番号1，名前1], [背番号2，名前2], ...] という形で受け取ります． その配列を背番号によってソートし，ソート後の配列を出力します．
+野球選手の背番号と名前を昇順に並び替えて出力する処理を実装しました。Player クラスを作成し、List と Comparator を用いたソートを行っています。*/
 
 // paizaの森練習問題コンテスト過去問題2　★
 // Q.　競輪のユニフォーム
