@@ -649,8 +649,77 @@ public class Main {
 
 --------------------------------------------- D041　※欠番 ◆
 // D041 本棚選び
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 入力の読み取り
+        int n = sc.nextInt(); // 本の幅の合計
+        int d = sc.nextInt(); // 本棚の段数
+        int e = sc.nextInt(); // 1段の幅
+
+        // 本棚の収容可能幅
+        int totalCapacity = d * e;
+
+        // 収容可能かどうかを判定して出力
+        if (totalCapacity >= n) {
+            System.out.println("OK");
+        } else {
+            System.out.println("NG");
+        }
+
+        sc.close();
+    }
+}
+
 // D042 行列
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 入力値を取得
+        int n1 = sc.nextInt();  // 行列の (1,1) 成分
+        int n2 = sc.nextInt();  // 行列の (1,2) 成分
+        int n3 = sc.nextInt();  // 行列の (2,1) 成分
+        int n4 = sc.nextInt();  // 行列の (2,2) 成分
+
+        // 行列式を計算
+        int determinant = n1 * n4 - n2 * n3;
+
+        // 結果を出力
+        System.out.println(determinant);
+
+        sc.close();
+    }
+}
+
 // D043 天気の表示
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 降水確率の入力を取得
+        int n = sc.nextInt();
+
+        // ルールに基づいて天気を表示
+        if (n <= 30) {
+            System.out.println("sunny");
+        } else if (n <= 70) {
+            System.out.println("cloudy");
+        } else {
+            System.out.println("rainy");
+        }
+
+        sc.close();
+    }
+}
+
 // D044 はじめまして
 // D045 通知票
 // D046 不思議なたまご
