@@ -798,7 +798,52 @@ public class Main {
 }
 
 // D047 メダリストの表示
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使って標準入力から読み取る
+        Scanner scanner = new Scanner(System.in);
+
+        // 各選手の名前を入力として受け取る
+        String n_g = scanner.nextLine(); // 金メダリスト
+        String n_s = scanner.nextLine(); // 銀メダリスト
+        String n_b = scanner.nextLine(); // 銅メダリスト
+
+        // メダル表を出力する
+        System.out.println("Gold " + n_g);
+        System.out.println("Silver " + n_s);
+        System.out.println("Bronze " + n_b);
+        
+        // スキャナーを閉じる
+        scanner.close();
+    }
+}
+
 // D048 台風の間隔
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使って標準入力から読み取る
+        Scanner scanner = new Scanner(System.in);
+        
+        // 5つの台風の上陸日を配列に格納
+        int[] days = new int[5];
+        for (int i = 0; i < 5; i++) {
+            days[i] = scanner.nextInt(); // それぞれの上陸日を入力
+        }
+
+        // 各台風の間隔日数を計算して出力
+        for (int i = 1; i < 5; i++) {
+            System.out.println(days[i] - days[i - 1]);
+        }
+
+        // スキャナーを閉じる
+        scanner.close();
+    }
+}
+
 // D049 〇〇の秋
 // D050 お月見だんご
 --------------------------------------------- D051　※欠番 ◆
