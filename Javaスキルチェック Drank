@@ -475,15 +475,178 @@ public class Main {
 // D030 ◆
 --------------------------------------------- D031　※欠番 ◆
 // D031 分から秒へ
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        scanner.close();
+        
+        System.out.println(n * 60);
+    }
+}
+
 // D032 充電時間
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        scanner.close();
+        
+        System.out.println(100-n);
+    }
+}
+
 // D033 頭文字
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 入力を取得
+        String s = scanner.next();
+        String t = scanner.next();
+        
+        // それぞれの最初の文字を取得し、"." で結合
+        String initials = s.charAt(0) + "." + t.charAt(0);
+        
+        // 結果を出力
+        System.out.println(initials);
+        
+        scanner.close();
+    }
+}
+
 // D034 どれにしようかな
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        scanner.close();
+        
+        int choice = 21 % n;
+        if (choice == 0) {
+            choice = n;
+        }
+        
+        System.out.println(choice);
+    }
+}
+
 // D035 日付のデータ
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int y = scanner.nextInt();
+        int m = scanner.nextInt();
+        int d = scanner.nextInt();
+        scanner.close();
+        
+        System.out.println(y + "/" + m + "/" + d);
+    }
+}
+
 // D036 アットマーク
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String S = scanner.nextLine().trim(); // 入力の取得と余分な空白削除
+        scanner.close();
+        
+        // "at" を "@" に置換
+        String result = S.replace("at", "@");
+        
+        // 結果を出力（改行を含める）
+        System.out.println(result);
+    }
+}
+
 // D037 花粉症でつらい
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int M = scanner.nextInt(); // ティッシュ1箱が空になるまでの日数
+        int N = scanner.nextInt(); // 残りの花粉症の季節の日数
+        scanner.close();
+        
+        // 必要なティッシュ箱の数を計算（切り上げ計算）
+        int result = (N + M - 1) / M;
+        
+        // 結果を出力
+        System.out.println(result);
+    }
+}
+
 // D038 試合の回数
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        scanner.close();
+        System.out.println(calculateMatches(N));
+    }
+
+    private static int calculateMatches(int N) {
+        return N * (N - 1) / 2;
+    }
+}
+
 // D039 正三角形かどうか
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int a = Integer.parseInt(scanner.nextLine().trim());
+        int b = Integer.parseInt(scanner.nextLine().trim());
+        int c = Integer.parseInt(scanner.nextLine().trim());
+        scanner.close();
+        
+        if (a == b && b == c) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+    }
+}
+
 // D040 連休の天気
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int count = 0;
+        
+        // 7日の降水確率を読み込み
+        for (int i = 0; i < 7; i++) {
+            int precipitation = sc.nextInt();
+            if (precipitation <= 30) {
+                count++;  // 30%以下の場合、出かける
+            }
+        }
+        
+        System.out.println(count);  // 出かける日数を出力
+        
+        sc.close();
+    }
+}
+
 --------------------------------------------- D041　※欠番 ◆
 // D041 本棚選び
 // D042 行列
