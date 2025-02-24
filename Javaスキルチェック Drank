@@ -745,6 +745,34 @@ public class Main {
 }
 
 // D045 通知票
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を受け取るためのScannerオブジェクトを作成
+        Scanner scanner = new Scanner(System.in);
+        
+        // 成績の数字 N を入力として受け取る
+        int N = scanner.nextInt();
+        
+        // 成績の数字をアルファベットに変換して出力
+        if (N == 5) {
+            System.out.println("A");
+        } else if (N == 4) {
+            System.out.println("B");
+        } else if (N == 3) {
+            System.out.println("C");
+        } else if (N == 2) {
+            System.out.println("D");
+        } else if (N == 1) {
+            System.out.println("E");
+        }
+        
+        // スキャナーを閉じる
+        scanner.close();
+    }
+}
+
 // D046 不思議なたまご
 // D047 メダリストの表示
 // D048 台風の間隔
