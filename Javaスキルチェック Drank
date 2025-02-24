@@ -774,6 +774,29 @@ public class Main {
 }
 
 // D046 不思議なたまご
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を受け取るためのScannerオブジェクトを作成
+        Scanner scanner = new Scanner(System.in);
+        
+        // 3つのタマゴの歩行距離を入力として受け取る
+        int d1 = scanner.nextInt();
+        int d2 = scanner.nextInt();
+        int d3 = scanner.nextInt();
+        
+        // 3つの距離の中で最大のものを求める
+        int maxDistance = Math.max(Math.max(d1, d2), d3);
+        
+        // 最低限必要な歩行距離を出力
+        System.out.println(maxDistance);
+        
+        // スキャナーを閉じる
+        scanner.close();
+    }
+}
+
 // D047 メダリストの表示
 // D048 台風の間隔
 // D049 〇〇の秋
