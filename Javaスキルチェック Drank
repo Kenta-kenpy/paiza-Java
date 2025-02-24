@@ -721,6 +721,29 @@ public class Main {
 }
 
 // D044 はじめまして
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を受け取るためのScannerオブジェクトを作成
+        Scanner scanner = new Scanner(System.in);
+        
+        // 名前と性別を入力として受け取る
+        String s1 = scanner.next();
+        String s2 = scanner.next();
+        
+        // 性別に基づいた挨拶を出力
+        if (s2.equals("M")) {
+            System.out.println("Hi, Mr. " + s1);
+        } else if (s2.equals("F")) {
+            System.out.println("Hi, Ms. " + s1);
+        }
+        
+        // スキャナーを閉じる
+        scanner.close();
+    }
+}
+
 // D045 通知票
 // D046 不思議なたまご
 // D047 メダリストの表示
