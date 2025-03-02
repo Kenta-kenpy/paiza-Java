@@ -845,7 +845,41 @@ public class Main {
 }
 
 // D049 〇〇の秋
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String S = scanner.nextLine().trim(); // 入力を取得し、前後の空白を削除
+        scanner.close();
+        
+        if (S.endsWith("noaki")) {
+            System.out.println(S.substring(0, S.length() - 5));
+        } else {
+            System.out.println(S);
+        }
+    }
+}
+
 // D050 お月見だんご
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int d1 = scanner.nextInt();
+        int d2 = scanner.nextInt();
+        
+        d1 = Math.min(d1, 5);
+        d2 = Math.min(d2, 5);
+        
+        System.out.println(d1 + d2);
+        
+        scanner.close();
+    }
+}
+
 --------------------------------------------- D051　※欠番 ◆
 // D051 衣替え
 // D052 ピラミッドの作り方
