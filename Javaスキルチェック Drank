@@ -882,6 +882,37 @@ public class Main {
 
 --------------------------------------------- D051　※欠番 ◆
 // D051 衣替え
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String[] clothes = scanner.nextLine().split(" ");
+        scanner.close();
+        
+        if (clothes.length != 10) {
+            System.out.println("Invalid input");
+            return;
+        }
+        
+        int winterCount = 0;
+        for (String cloth : clothes) {
+            if (cloth.equals("W")) {
+                winterCount++;
+            } else if (!cloth.equals("S")) {
+                System.out.println("Invalid input");
+                return;
+            }
+        }
+        
+        if (winterCount >= 5) {
+            System.out.println("OK");
+        } else {
+            System.out.println("NG");
+        }
+    }
+}
+
 // D052 ピラミッドの作り方
 // D053 トリック・オア・トリート
 // D054 11/11
