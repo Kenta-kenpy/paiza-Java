@@ -399,8 +399,75 @@ public class Main {
 出力は System.out.println() を使います。*/
 
 step3 5行の整数の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] a = new int[5];
+        for (int i = 0; i < 5; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*5 つの整数を格納する配列を用意して、入力を受け取ります。
+nextInt メソッドを用いることで、入力を整数として受け取ることができます。
+出力は、拡張 for 文を使うと簡潔に書けます。*/
+
 step4 100行の整数の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] a = new int[100];
+        for (int i = 0; i < 100; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*まず入力を受け取り、整数型の配列 a の a[0] から a[99] にループを用いて代入します。
+その次に、a[0] から a[99] をループを用いて 100 行で出力します。従って、用意する配列の要素数と、for 文のループ回数を 100 に変更するだけで解けます。
+配列への代入や、要素の出力は 100 回同じ操作を繰り返すだけなので、for 文を使うことで簡潔に書けます。*/
+
 final 1000行の整数の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] a = new int[1000];
+        for (int i = 0; i < 1000; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*まず入力を受け取り、整数型の配列 a の a[0] から a[999] にループを用いて代入します。
+その次に、a[0] から a[999] をループを用いて 1000 行で出力します。*/
 
 // 【整数の半角スペース区切りの入力】1,000個の整数の半角スペース区切りの入力
 step1 1つの整数の入力
