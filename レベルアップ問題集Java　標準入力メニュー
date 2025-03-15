@@ -359,6 +359,24 @@ public class Main {
 
 // 【整数の行入力】1,000行の整数の入力
 step1 1行の整数の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+
+        System.out.println(a);
+
+        sc.close();
+    }
+}
+/*まず入力を受け取り、変数 a に代入します。その次に、a をそのまま出力します。
+Scanner クラスの nextInt メソッドを用います。
+nextInt メソッドは next メソッドと同様のルールで入力値を受け取りますが、それを整数型に変換して受け取ります。*/
+
 step2 2行の整数の入力
 step3 5行の整数の入力
 step4 100行の整数の入力
