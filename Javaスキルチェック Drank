@@ -914,9 +914,70 @@ public class Main {
 }
 
 // D052 ピラミッドの作り方
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int N = Integer.parseInt(scanner.nextLine().trim());
+        scanner.close();
+
+        int totalPeople = N * (N + 1) / 2;
+        System.out.println(totalPeople);
+    }
+}
+
 // D053 トリック・オア・トリート
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine().trim();
+        scanner.close();
+        
+        if (s.equals("candy") || s.equals("chocolate")) {
+            System.out.println("Thanks!");
+        } else {
+            System.out.println("No!");
+        }
+    }
+}
+
 // D054 11/11
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine().trim();
+        scanner.close();
+        
+        int count = s.length(); // 文字列の長さがそのまま本数になる
+        int required = 11;
+        
+        if (count >= required) {
+            System.out.println("OK");
+        } else {
+            System.out.println(required - count);
+        }
+    }
+}
+
 // D055 ワインのキャッチコピー
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String s1 = scanner.next();
+        String s2 = scanner.next();
+        scanner.close();
+        
+        System.out.println("Best in " + s1 + " " + s2);
+    }
+}
+
 // D056 かまくらづくり
 // D057 プレゼント選び
 // D058 初詣で
@@ -1088,16 +1149,16 @@ public class Main {
 // D209 数字探し
 // D210 年間の料金
 --------------------------------------------- D211　※欠番 ◆
-// D 
-// D 
-// D 
-// D 
-// D 
-// D 
-// D 
-// D 
-// D 
-// D 
+// D211 飴の余り 
+// D212 繋げた長さ
+// D213 タイプ数の予想
+// D214 身長差
+// D215 金庫のパスワード
+// D216 夏休みの宿題
+// D217 キャラクターの名前
+// D218 買い物
+// D219 犬猿の仲
+// D220 従業員の数
 --------------------------------------------- D221　※欠番 ◆
 // D 
 // D 
