@@ -105,16 +105,294 @@ class Player {
 
 // paizaの森練習問題コンテスト過去問題2　★
 // Q.　競輪のユニフォーム
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = Integer.parseInt(scanner.nextLine().trim());
+        scanner.close();
+
+        String[] colors = {"white", "black", "red", "blue", "yellow", "green", "orange", "pink", "purple"};
+        
+        System.out.println(colors[n - 1]);
+    }
+}
+/*colors の配列にあらかじめ、番号順に対応する色を格納します。
+入力を受け取り n - 1 を出力することで、解を導くことができます。*/
+
 // Q.　エレベーターの行き先
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String f1 = scanner.next(); // 現在の階
+        String f2 = scanner.next(); // 移動したい階
+        scanner.close();
+        
+        // "F" を取り除き数値に変換
+        int currentFloor = Integer.parseInt(f1.replace("F", ""));
+        int targetFloor = Integer.parseInt(f2.replace("F", ""));
+        
+        // 比較して出力
+        if (currentFloor < targetFloor) {
+            System.out.println("up");
+        } else {
+            System.out.println("down");
+        }
+    }
+}
+/*f1, f2 の１文字目について大小比較を行います。
+f2 の方が大きければ、up、そうれなければ down を出力することで答えを導くことができます。*/
+
 // Q.　長方形の面積
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 入力を受け取る
+        int e1 = scanner.nextInt();
+        int e2 = scanner.nextInt();
+        scanner.close();
+        
+        // いずれかの辺が0なら "invalid" を出力
+        if (e1 == 0 || e2 == 0) {
+            System.out.println("invalid");
+        } else {
+            // 面積を計算して出力
+            System.out.println(e1 * e2);
+        }
+    }
+}
+/*e1, e2 のうち、どちらかが 0 であれば invalid を出力します。そうでなければ、２つの値をかけて出力することで答えを導くことができます。*/
+
 // Q.　セール販売
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int n = Integer.parseInt(scanner.nextLine()); // 購入アイテム数
+        int totalPrice = 0;
+        boolean hasPants = false;
+        
+        for (int i = 0; i < n; i++) {
+            String[] item = scanner.nextLine().split(" ");
+            String category = item[0];
+            int price = Integer.parseInt(item[1]);
+            
+            totalPrice += price;
+            if (category.equals("pants")) {
+                hasPants = true;
+            }
+        }
+        
+        scanner.close();
+        
+        // 割引の適用条件を満たす場合、500円引き
+        if (hasPants && totalPrice >= 2000) {
+            totalPrice -= 500;
+        }
+        
+        System.out.println(totalPrice);
+    }
+}
+/*bool型を持つ pants を初期値では False に設定しておき、入力 c に pants が含まれている場合には pants を True にします。
+最終的に合計金額が 2000 円以上であり、かつ pants が True である場合に、合計金額から 500 円引くことで答えを導くことができました。*/
 
 // paizaの森練習問題コンテスト過去問題3　★
 // Q.　文字列の逆順
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine().trim(); // 改行を考慮してトリム
+        scanner.close();
+        
+        String reversed = new StringBuilder(s).reverse().toString();
+        System.out.println(reversed);
+    }
+}
+/*Scanner を使用して標準入力から文字列を受け取る。
+trim() を使って余分な空白や改行を削除。
+StringBuilder の reverse() メソッドを使用して文字列を反転。
+結果を System.out.println で出力。*/
+
 // Q.　英単語の生成（連結）
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使って標準入力を読み込む
+        Scanner scanner = new Scanner(System.in);
+        
+        // 2つの文字列s1とs2をスペース区切りで入力として受け取る
+        String s1 = scanner.next();
+        String s2 = scanner.next();
+        
+        // 2つの文字列を連結して出力する
+        System.out.println(s1 + s2);
+        
+        // スキャナーを閉じる
+        scanner.close();
+    }
+}
+/*Scannerを使用して標準入力から2つの文字列を受け取ります。
+scanner.next()を使用することで、スペースで区切られた文字列をそれぞれString s1、String s2として取得します。
+取得した文字列s1とs2を+演算子で連結し、System.out.println()でそのまま出力します。*/
+
 // Q.　小文字にする
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scannerを使って入力を受け取る
+        Scanner scanner = new Scanner(System.in);
+        
+        // 文字列を読み込む
+        String s = scanner.nextLine();
+        
+        // 文字列を小文字に変換
+        String result = s.toLowerCase();
+        
+        // 結果を出力
+        System.out.println(result);
+        
+        // Scannerを閉じる
+        scanner.close();
+    }
+}
+/*Scannerを使って標準入力から文字列を受け取ります。
+StringクラスのtoLowerCase()メソッドで、文字列のすべての大文字を小文字に変換します。
+結果を標準出力に出力します。*/
+
 // Q.　キーボードのシミュレーション
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // 入力の数nを取得
+        int n = sc.nextInt();
+        sc.nextLine(); // 改行を読み飛ばし
+        
+        boolean capslock = false; // capslockの状態
+        StringBuilder output = new StringBuilder();
+        
+        for (int i = 0; i < n; i++) {
+            String input = sc.nextLine().trim();
+            
+            if (input.equals("capslock")) {
+                // capslockが押された場合、状態を反転
+                capslock = !capslock;
+            } else if (input.startsWith("shift")) {
+                // shift+キーの場合
+                char key = input.charAt(6); // 7文字目（index 6）を取り出す
+                if (capslock) {
+                    // capslockが有効な場合は、小文字に変換
+                    output.append(Character.toLowerCase(key));
+                } else {
+                    // 通常は大文字
+                    output.append(Character.toUpperCase(key));
+                }
+            } else {
+                // 普通のキー入力（小文字）
+                char key = input.charAt(0);
+                if (capslock) {
+                    // capslockが有効な場合は大文字に変換
+                    output.append(Character.toUpperCase(key));
+                } else {
+                    // 小文字のままで出力
+                    output.append(key);
+                }
+            }
+        }
+        
+        // 結果を出力
+        System.out.println(output.toString());
+        
+        sc.close();
+    }
+}
+/*nを読み込み、次に押されたキーの入力を順に処理します。
+capslockの状態を管理するためのブール変数を用意します。capslockが押されると、この状態を反転させます。
+shiftキーが押されると、その後に続くキーは大文字になります。shift+xのような入力を処理しています。
+普通のキー（aからz）は、そのまま小文字として処理します。ただし、capslockが有効な場合は、大文字に変換されます。
+最終的な文字列を作成し、出力します。*/
+
 // Q.  ラッキーナンバー
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 入力の受け取り
+        int n = scanner.nextInt();
+        int[] numbers = new int[n];
+        for (int i = 0; i < n; i++) {
+            numbers[i] = scanner.nextInt();
+        }
+
+        // 組み合わせを保存するリスト
+        List<List<Integer>> allCombinations = new ArrayList<>();
+
+        // 全ての組み合わせを列挙
+        findCombinations(numbers, 0, new ArrayList<>(), allCombinations);
+
+        // 足して777になる組み合わせを検索
+        List<String> validCombinations = new ArrayList<>();
+        for (List<Integer> combination : allCombinations) {
+            int sum = 0;
+            for (int num : combination) {
+                sum += num;
+            }
+            if (sum == 777) {
+                combination.sort(Integer::compareTo);  // 昇順にソート
+                validCombinations.add(combination.toString().replaceAll("[\\[\\],]", ""));
+            }
+        }
+
+        // 結果の出力
+        if (validCombinations.size() == 0) {
+            System.out.println("no answer");
+        } else if (validCombinations.size() == 1) {
+            System.out.println(validCombinations.get(0));
+        } else {
+            System.out.println("multiple answers");
+        }
+    }
+
+    // 再帰的に組み合わせを探すメソッド
+    private static void findCombinations(int[] numbers, int start, List<Integer> current, List<List<Integer>> allCombinations) {
+        allCombinations.add(new ArrayList<>(current));  // 現在の組み合わせを追加
+        for (int i = start; i < numbers.length; i++) {
+            current.add(numbers[i]);
+            findCombinations(numbers, i + 1, current, allCombinations);  // 次の組み合わせを探索
+            current.remove(current.size() - 1);  // 最後の要素を削除して次の探索
+        }
+    }
+}
+/*入力の読み込み
+n と与えられた数 x_1, x_2, ..., x_n を numbers 配列に格納します。
+組み合わせの列挙
+findCombinations メソッドは、再帰的に numbers 配列からすべての部分集合（組み合わせ）を求めます。
+組み合わせを allCombinations リストに追加します。
+777になる組み合わせの探索
+allCombinations から各組み合わせの和を計算し、777になるものを validCombinations に保存します。
+各組み合わせを昇順にソートし、出力用にリストに追加します。
+結果の出力
+validCombinations が空であれば "no answer" と出力します。
+一つの組み合わせしかなければ、その組み合わせを出力します。
+複数の組み合わせがあれば "multiple answers" と出力します。*/
 
 // paizaの森練習問題コンテスト過去問題4　★
 // Q.　花言葉
