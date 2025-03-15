@@ -181,15 +181,181 @@ public class Main {
 
 //【半角スペース区切りでの文字列の分割】5つの文字列の半角スペース区切りでの分割
 step1 2つの文字列の半角スペース区切りでの分割
+public class Main {
+
+    public static void main(String[] args) {
+        String s = "Hello paiza";
+        String[] values = s.split(" ");
+
+        System.out.println(values[0]);
+        System.out.println(values[1]);
+    }
+}
+/*文字列を分割する際、split メソッドを使います。
+split メソッドについて
+split メソッドは文字列を分割する目的で使います。
+引数で 「何を区切り文字として文字列を分割するか」 を指定します。
+返り値は区切り文字によって区切られた文字列が先頭から順に格納された配列です。
+今回、半角スペースで分割したあと、要素数 2 の配列が生成されるので、それぞれの要素を改行区切りで出力します。*/
+
 step2 3つの文字列の半角スペース区切りでの分割
+public class Main {
+
+    public static void main(String[] args) {
+        String s = "He likes paiza";
+        String[] values = s.split(" ");
+
+        for (String t : values) {
+            System.out.println(t);
+        }
+    }
+}
+/*分割した後、ループなどを用いて各文字列を出力します。前問と同様に split メソッドを用いて文字列を分割します。
+分割後、拡張 for 文を用いてそれぞれの要素を出力することで、System.out.println() を 1 回書くだけで済みます。*/
+
 final 5つの文字列の半角スペース区切りでの分割
+public class Main {
+
+    public static void main(String[] args) {
+        String s = "one two three four five";
+        String[] values = s.split(" ");
+
+        for (String t : values) {
+            System.out.println(t);
+        }
+    }
+}
+/*前問と同様の要領で split メソッドを使って解きます。
+分割後、拡張 for 文を用いてそれぞれの要素を出力することで、System.out.println() を 1 回書くだけで済みます。*/
 
 // 【半角スペース区切りの入力】半角スペース区切りの 1,000 個の入力
 step1 1つの整数の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+        System.out.println(s);
+
+        sc.close();
+    }
+}
+/*半角スペースを含まない 1 つの文字列なので、s にそのまま入力します。
+次に s をそのまま出力します。入力される文字列に空白文字が含まれないことが保証されているので、next() メソッドを用いて入力される文字列を受け取ります。
+受け取ったら、そのまま System.out.println() を用いて出力します。*/
+
 step2 2つの整数の半角スペース区切りの入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+        String t = sc.next();
+
+        System.out.println(s);
+        System.out.println(t);
+
+        sc.close();
+    }
+}
+/*半角スペース区切りで分割し、変数 s, t に代入します。それぞれ改行して出力します。
+Scanner クラスの next メソッドは特に指定しない限り、入力を空白文字区切りで受け取ります。
+なにが空白文字か、については Oracle の API に書かれています。
+今回の場合、2 回 next メソッドを用いることで、入力されるすべての文字列を受け取ることができます。*/
+
 step3 5つの整数の半角スペース区切りの入力
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        for(int i = 0; i < 3; i++) {
+            String s = sc.next();
+
+            System.out.println(s);
+        }
+        
+        sc.close();
+    }
+}
+/*配列を使わない
+半角スペース区切りで分割し、変数 s, t, u または 配列 s に代入します。
+それぞれ改行して出力します。「入力を受け取る」 -> 「出力する」の繰り返しで求められている出力ができるので、for 文を使うことで簡潔に書けます。
+
+配列を使う
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] s = new String[3];
+        for(int i = 0; i < 3; i++) {
+            s[i] = sc.next();
+        }
+
+        for(String t: s) {
+            System.out.println(t);
+        }
+        
+        sc.close();
+    }
+}
+配列を用いて入力値を格納すると、上記のコードの様になります。
+配列を用いると、それぞれの文字列に対して個別に変数を用意するよりも簡潔に書けます。*/
+
 step4 10個の整数の半角スペース区切りの入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] s = new String[10];
+        for (int i = 0; i < 10; i++) {
+            s[i] = sc.next();
+        }
+
+        for (String t : s) {
+            System.out.println(t);
+        }
+
+        sc.close();
+    }
+}
+/*半角スペース区切りで分割し、各文字列を配列 s に代入します。それぞれ改行して出力します。
+next メソッドは特に指定しない限り、空白文字 区切りで入力を受け取るので、今回の場合、next メソッドを 10 回使うことで、すべての入力を受け取れます。*/
+
 final 1,000個の整数の半角スペース区切りの入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] s = new String[1000];
+        for (int i = 0; i < 1000; i++) {
+            s[i] = sc.next();
+        }
+
+        for (String t : s) {
+            System.out.println(t);
+        }
+
+        sc.close();
+    }
+}
+/*スペース区切りで分割し、各文字列を配列 s に代入します。それぞれ改行して出力します。
+1000 個の変数を用意して入力を受け取るのは現実的ではないので、配列と for 文を用います。*/
 
 // 【整数の行入力】1,000行の整数の入力
 step1 1行の整数の入力
