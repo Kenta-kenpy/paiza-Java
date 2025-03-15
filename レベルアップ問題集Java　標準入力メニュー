@@ -1,9 +1,183 @@
 // 【行入力】1,000 行の入力
 step1 1行の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+        System.out.println(s);
+
+        sc.close();
+    }
+}
+/*まず入力を受け取って変数 s に代入します。
+次に s をそのまま出力します。
+この解答例では、標準入力の受け取りに Scanner を用います。
+そして、Scanner クラスのメソッドを用いて、入力を受け取ります。
+Scanner クラスは java.util にあるので、
+import java.util.Scanner;
+または
+import java.util.*;
+でインポートして使います。
+後者の import 文は java.util 直下にあるクラスをすべてインポートして使える様にすることができます。
+Scanner クラスで標準入力を文字列で受け取るためには、next メソッドを使います。
+受け取った文字列を System.out.println() を用いて出力します。これは、() に挟まれた値を末尾に改行を入れて出力します。*/
+
 step2 2行の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+        String t = sc.next();
+
+        System.out.println(s);
+        System.out.println(t);
+
+        sc.close();
+    }
+}
+/*まず入力を受け取って変数 s, t に代入します。次に s, t をそのまま出力します。
+Scanner クラスの next メソッドはデフォルトで、入力を空白文字区切り (※1) で受け取ることができます。
+今回は 2 度 next メソッドを使うことで、2 つの入力値を受け取ることができます。
+出力には System.out.println() を使います。これは () に挟まれた値を末尾に改行を入れて出力します。
+【 ※1 Java での空白文字 】
+Java での空白文字は「スペース (半角、全角問わず)」「改行」「タブ」などのことを指します。
+具体的には Character.isWhitespace(文字) で true が返ってくる 文字 が空白文字です。*/
+
 step3 3行の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+        String t = sc.next();
+        String u = sc.next();
+
+        System.out.println(s);
+        System.out.println(t);
+        System.out.println(u);
+
+        sc.close();
+    }
+}
+/*まず入力を受け取って変数 s, t, u に代入します。
+次に s, t, u をそのまま出力します。
+Scanner クラスの next メソッドを 3 回使うことで、今回の入力を受け取ることができます。
+出力には、System.out.println() を使います。*/
+
 step4 10行の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        for (int i = 0; i < 10; i++) {
+            String s = sc.next();
+
+            System.out.println(s);
+        }
+
+        sc.close();
+    }
+}
+/*配列を使わない
+文字列が一つ与えられたら、与えられた文字列をそのまま出力します。
+ループを使うことで、10個の文字列について、それぞれ標準入力から受け取ってそのまま出力する操作を繰り返すことができます。
+
+配列を使う
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        String[] s = new String[10];
+        for(int i = 0; i < 10; i++) {
+            s[i] = sc.next();
+        }
+        
+        for(String t : s) {
+            System.out.println(t);
+        }
+        
+        sc.close();
+    }
+配列を使う方法です。
+長さが 10 である配列を用意して、それぞれに入力を代入して保持します。
+その後、拡張 for 文で配列の各要素を取得して、出力します。
+【 拡張 for 文について 】
+拡張 for 文は配列やリストなどのオブジェクトの各要素を順に変数に代入して繰り返し処理ができる for 文のことです。
+【 書き方 】
+for(要素の型 変数名 : 配列など) {処理} のように書きます。
+配列などのオブジェクトに格納されている値の型に応じた変数を用意する必要があります。
+【 動作 】
+配列などのオブジェクトの先頭の要素から順に変数に代入され、繰り返し処理が行われます。
+たとえば、要素数 n の整数型配列 a に対して
+for(int i : a) {System.out.println(i)}
+と記述した for 文の実行結果は以下のようになります。
+a_1 
+a_2
+a_3
+...
+a_n */
+
 final 1000行の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] s = new String[1000];
+        for (int i = 0; i < 1000; i++) {
+            s[i] = sc.next();
+        }
+
+        for (String t : s) {
+            System.out.println(t);
+        }
+
+        sc.close();
+    }
+}
+/*要素が 1,000 個あるので、ループを用いて各行の文字列を入力を受け取り、そのたびに出力します。
+配列を使わない
+入力される文字列の数だけループ処理をする for 文を書きます。
+
+配列を使う
+import java.util.*;
+
+public class Main {
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    String[] s = new String[1000];
+    for (int i = 0; i < 1000; i++) {
+      s[i] = sc.next();
+    }
+
+    for (String t : s) {
+      System.out.println(t);
+    }
+
+    sc.close();
+  }
+}
+配列と拡張 for 文を用いると上記の様に書けます。*/
 
 //【半角スペース区切りでの文字列の分割】5つの文字列の半角スペース区切りでの分割
 step1 2つの文字列の半角スペース区切りでの分割
