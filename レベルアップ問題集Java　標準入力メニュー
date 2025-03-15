@@ -378,6 +378,26 @@ Scanner クラスの nextInt メソッドを用います。
 nextInt メソッドは next メソッドと同様のルールで入力値を受け取りますが、それを整数型に変換して受け取ります。*/
 
 step2 2行の整数の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        System.out.println(a);
+        System.out.println(b);
+
+        sc.close();
+    }
+}
+/*まず入力を受け取り、変数 a, b に代入します。その次に、a, b を 2 行で出力します。
+入力値を整数値で受け取るために、nextInt メソッドを使います。
+出力は System.out.println() を使います。*/
+
 step3 5行の整数の入力
 step4 100行の整数の入力
 final 1000行の整数の入力
