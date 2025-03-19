@@ -471,10 +471,121 @@ public class Main {
 
 // 【整数の半角スペース区切りの入力】1,000個の整数の半角スペース区切りの入力
 step1 1つの整数の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+
+        System.out.println(a);
+
+        sc.close();
+    }
+}
+/*まず入力を受け取り、変数 a に代入します。その次に、a を出力します。
+Java では、入力を整数で受け取りたいとき、Scanner クラスの nextInt メソッドを使うと便利です。
+受け取った整数をそのまま出力すれば解けます。*/
+
 step2 2つの整数の半角スペース区切りの入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        System.out.println(a);
+        System.out.println(b);
+
+        sc.close();
+    }
+}
+/*まず入力を受け取り、変数 a, b に代入します。その次に、a, b を改行区切りで出力します。
+Java では、入力を整数で受け取るとき、Scanner クラスの nextInt メソッドを使うと便利です。
+nextInt メソッドは next メソッドと同様に、空白文字区切りで入力を受け取ります。
+受け取った値を変数に代入して、それを System.out.println() で出力することで解けます。*?
+
 step3 5つの整数の半角スペース区切りの入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] a = new int[5];
+        for (int i = 0; i < 5; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*まず整数型の変数を 5 個宣言するか、配列を宣言し、入力を受け取って代入します。その次に、a_1 から a_5 を改行区切りで出力します。
+入力値が 5 つとなり、少し多くなってきたので、配列を利用します。
+nextInt メソッドは next メソッドと同様に、空白文字区切りで入力を受け取るので、5 回実行すれば、半角スペース区切りで入力される 5 つの整数を受け取ることができます。
+出力は拡張 for 文を用いることで System.out.println() を 1 つ書くだけで済みます。
+拡張 for 文は配列やリストなどのオブジェクトの各要素を、用意した変数に代入しながら繰り返し処理を行う for 文です。*/
+
 step4 10個の整数の半角スペース区切りの入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] a = new int[10];
+        for (int i = 0; i < 10; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*配列を宣言し、入力を受け取って代入します。その次に、a_1 から a_10 を改行区切りで出力します。
+10 個の整数が入力されるので、配列を用いることを考えます。
+出力は拡張 for 文を用いることで System.out.println() を 1 つ書くだけで済みます。
+拡張 for は配列やリストなどのオブジェクトの各要素を、用意した変数に代入しながら繰り返し処理を行う for 文です。*/
+
 final 1000個の整数の半角スペース区切りの入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] a = new int[1000];
+        for (int i = 0; i < 1000; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*配列を宣言し、入力を受け取って代入します。その次に、a_1 から a_1000 を改行区切りで出力します。
+1000 個の整数を受け取らなくてはならないので、配列と for 文を用いることを考えます。
+出力は拡張 for 文を用いることで System.out.println() を 1 つ書くだけで済みます。
+拡張 for は配列やリストなどのオブジェクトの各要素を、用意した変数に代入しながら繰り返し処理を行う for 文です。*/
 
 // 【N個の整数の入力】1行目で与えられるN個の整数の入力 (large)
 step1 改行区切りでのN個の整数の入力
