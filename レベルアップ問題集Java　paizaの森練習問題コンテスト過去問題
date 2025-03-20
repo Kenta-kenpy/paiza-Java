@@ -396,14 +396,210 @@ validCombinations が空であれば "no answer" と出力します。
 
 // paizaの森練習問題コンテスト過去問題4　★
 // Q.　花言葉
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 花の名前と花言葉をマッピング
+        Map<String, String> flowerMap = new HashMap<>();
+        flowerMap.put("rose", "I love you");
+        flowerMap.put("cosmos", "harmony");
+        flowerMap.put("tulip", "perfect lover");
+        flowerMap.put("hydrangea", "heartlessness");
+        flowerMap.put("jasmine", "amiability");
+
+        // 標準入力から花の名前を取得
+        Scanner scanner = new Scanner(System.in);
+        String flowerName = scanner.nextLine().trim();
+        scanner.close();
+
+        // 花の名前に対応する花言葉を出力
+        System.out.println(flowerMap.get(flowerName));
+    }
+}
+/*HashMap の使用:
+花の名前とその花言葉を HashMap<String, String> に格納。
+キーとして花の名前、値として花言葉を保存。
+入力の取得:
+Scanner を使用して標準入力から花の名前を取得。
+trim() を用いて余分な空白や改行を削除。
+出力:
+入力された花の名前をキーとして HashMap から対応する花言葉を取得し、出力。*/
+
 // Q.　じゃんけん
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        char h = sc.next().charAt(0);
+
+        if (h == 'R') {
+            System.out.println('P');
+        } else if (h == 'P') {
+            System.out.println('S');
+        } else if (h == 'S') {
+            System.out.println('R');
+        }
+    }
+}
+/*入力された相手の手 h に勝つ手を出力します． G なら P P なら S S なら G です．*/
+
 // Q.　四季
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int m = sc.nextInt();
+
+        if (3 <= m && m <= 5) {
+            System.out.println("spring");
+        } else if (6 <= m && m <= 8) {
+            System.out.println("summer");
+        } else if (9 <= m && m <= 11) {
+            System.out.println("autumn");
+        } else {
+            System.out.println("winter");
+        }
+    }
+}
+
 // Q.　オルタネーティングキャップス
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+        String answer = s.toLowerCase();
+
+        System.out.println(answer);
+    }
+}
+/*入力された月によって，条件分岐をすることを考えます．*/
+
 // Q.  パワー100倍
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String p = sc.next();
+        System.out.println(p + "00");
+    }
+}
+
 // Q.  おつり
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int p = sc.nextInt();
+        int[] coins = { 500, 100, 50, 10, 5, 1 };
+
+        int answer = 0;
+        for (int c : coins) {
+            while (p >= c) {
+                p -= c;
+                answer++;
+            }
+        }
+
+        System.out.println(answer);
+    }
+}
+/*500円，100円，50円，10円，5円，1円と金額の大きい硬貨からお釣りの値段を越さない限り払う方法が，払う硬貨の数を最小にします．例えば500円のおつりを払うとき，500円玉だったら1枚で払うことができますが，500円玉以外の硬貨だと1枚より多い枚数を出さないといけません．
+500円玉で払うのが最小です．また，お釣りが500円を下回ると500円玉で払うことはできないため，100円玉などの硬貨で，お釣りの金額を越さないできるだけ金額の大きい硬貨で払う方法が最小です．金額の大きい硬貨からお釣りの値段を越さない限り払う方法が，払う硬貨の数を最小にします．*/
+
 // Q.  ゾロ目
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int x = sc.nextInt();
+        System.out.println(x / 11 * 11);
+    }
+}
+/*食べることができる大豆は11の倍数です．よって，大豆の数を11で割った商を求めて，11倍したものが答えです．*/
+
+// Q.  いちばんお得
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int g1 = sc.nextInt();
+        int p1 = sc.nextInt();
+        int g2 = sc.nextInt();
+        int p2 = sc.nextInt();
+
+        if (p1 * g2 < p2 * g1) {
+            System.out.println(1);
+        } else {
+            System.out.println(2);
+        }
+    }
+}
+/*入力を受け取って，グラム当たりの重さを比較します．*/
+
 // Q.  重さの計算
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int x = sc.nextInt();
+
+        System.out.println(x * n / k);
+    }
+}
+/*1 個当たりの重さは [x/k] となり，それに n をかけることでn個分のボールの重さになります．*/
+
 // Q.  寒暖差
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int bef = sc.nextInt();
+        for (int i = 0; i < 9; i++) {
+            int now = sc.nextInt();
+            if (Math.abs(now - bef) >= 3) {
+                System.out.println("Yes");
+                System.exit(0);
+            }
+            bef = now;
+        }
+
+        System.out.println("No");
+    }
+}
+/*入力を受け取って1日前の気温と3℃以上差があったら Yes , それ以外の時 No と出力します．*/
 
 // paizaの森練習問題コンテスト過去問題5　★
 // Q.　3割打者
