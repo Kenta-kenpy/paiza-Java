@@ -589,35 +589,756 @@ public class Main {
 
 // 【N個の整数の入力】1行目で与えられるN個の整数の入力 (large)
 step1 改行区切りでのN個の整数の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*まずは、2 行目以降に入力される整数の数 n を受け取ります。
+その後、長さ n の配列を用意して、for 文でそれぞれ代入していきます。
+出力は拡張 for 文を用いると簡潔に書けます。*/
+
 step2 2行目で与えられるN個の整数の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*まず N を受け取ります。
+n 個の整数が入る配列を用意し、N 個の整数をループを用いて受け取ります。ループを用いて a_1 から a_N までループを用いて出力します。
+その後、要素数 n の配列を用意して、for 文でそれぞれ代入していきます。出力は拡張 for 文を用いると簡潔に書けます。
+nextInt メソッドは next メソッド同様に、空白文字区切りで入力を受け取るので、前問の解答と同様のコードで解けます。*/
+
 step3 1行目で与えられるN個の整数の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*まず N を受け取ります。N 個の整数が入る配列を用意し、N 個の整数をループを用いて受け取ります。
+まずは、入力される整数列 a の要素数 n を受け取ります。
+その後、要素数 n の配列を用意して、for 文でそれぞれ代入していきます。出力は拡張 for 文を用いると簡潔に書けます。
+nextInt メソッドは next メソッド同様のルールで入力を受け取るので、前問の解答と同様のコードで解けます。*/
+
 step4 2行目で与えられるN個の整数の入力 (large)
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*まず N を受け取ります。
+N 個の整数が入る配列を用意し、N 個の整数をループを用いて受け取ります。
+ループを用いて a_1 から a_N を出力します。
+まずは、2 行目で入力される整数の数 n を受け取ります。
+その後、n に基づいて配列を用意して、for 文でそれぞれ代入していきます。
+出力は拡張 for 文で書くと簡潔に書けます。
+nextInt メソッドは next メソッド同様のルールで入力を受け取る。*/
+
 final 1行目で与えられるN個の整数の入力 (large)
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*まず N を受け取ります。
+N 個の整数が入る配列を用意し、N 個の整数をループを用いて受け取ります。a_1 から a_N までループを用いて出力します。
+まずは、2 行目で入力される整数の数 n を受け取ります。
+その後、要素数 n の配列を用意して、for 文でそれぞれ代入していきます。出力は拡張 for 文を用いて書くと簡潔に書けます。*/
 
 // 【N個の文字列の入力】1行目で与えられるN個の文字列の入力 (large)
 step1 改行区切りでのN個の文字列の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        String[] s = new String[n];
+        for (int i = 0; i < n; i++) {
+            s[i] = sc.next();
+        }
+
+        for (String t : s) {
+            System.out.println(t);
+        }
+
+        sc.close();
+    }
+}
+/*まず整数 N を受け取ります。文字列型の配列を用意し、N 個の文字列を受け取ります。
+ループを用いて 1 個目の文字列から N 個目の文字列を出力します。まずは、2 行目以降に入力される文字列の数 n を受け取ります。
+その後、要素数 n の配列を用意して、for 文でそれぞれ代入していきます。next メソッドは、空白文字区切りで入力を受け取ります。出力は拡張 for 文を用いると簡潔に書けます。*/
+
 step2 2行目で与えられるN個の文字列の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        String[] s = new String[n];
+        for (int i = 0; i < n; i++) {
+            s[i] = sc.next();
+        }
+
+        for (String t : s) {
+            System.out.println(t);
+        }
+
+        sc.close();
+    }
+}
+/*まず整数 N を受け取ります。文字列型の配列を用意し、N 個の文字列をループを用いて受け取ります。ループを用いて s_1 から s_N まで出力します。
+まずは、2 行目で入力される文字列の数を表す整数 n を受け取ります。その後、要素数 n の配列を用意して、for 文でそれぞれ代入していきます。
+出力は拡張 for 文を用いると簡潔に書けます。*/
+
 step3 1行目で与えられるN個の文字列の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        String[] s = new String[n];
+        for (int i = 0; i < n; i++) {
+            s[i] = sc.next();
+        }
+
+        for (String t : s) {
+            System.out.println(t);
+        }
+
+        sc.close();
+    }
+}
+/*まず N を受け取ります。
+N 個の文字列が入る配列を用意し、N 個の文字列をループを用いて受け取ります。
+ループを用いて s_1 から s_N まで出力します。まずは、入力される文字列 s の数を表す整数 n を受け取ります。
+その後、要素数 n の配列を用意して、for 文でそれぞれ代入していきます。
+出力は拡張 for 文を用いると簡潔に書けます。next メソッドは、空白文字区切りで入力を受け取る。*/
+
 step4 2行目で与えられるN個の文字列の入力 (large)
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        String[] s = new String[n];
+        for (int i = 0; i < n; i++) {
+            s[i] = sc.next();
+        }
+
+        for (String t : s) {
+            System.out.println(t);
+        }
+
+        sc.close();
+    }
+}
+/*まず N を受け取ります。N 個の文字列が入る配列を用意し、ループを用いて受け取ります。
+ループを用いて s_1 から s_N を出力します。
+まずは、2 行目で入力される文字列の数を表す整数 n を受け取ります。
+その後、要素数 n の配列を用意して、for 文でそれぞれ代入していきます。出力は拡張 for 文を用いると簡潔に書けます。
+next メソッドは、空白文字区切りで入力を受け取るので、前問と同様のコードで解けます。*/
+
 final 1行目で与えられるN個の文字列の入力 (large)
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        String[] s = new String[n];
+        for (int i = 0; i < n; i++) {
+            s[i] = sc.next();
+        }
+
+        for (String t : s) {
+            System.out.println(t);
+        }
+
+        sc.close();
+    }
+}
+/*まず N を受け取ります。
+N 個の文字列が入る配列を用意し、N 個の文字列をループを用いて受け取ります。s_1 から s_N までループを用いて出力します。
+まずは、入力される文字列 s の数を表す整数 n を受け取ります。
+その後、要素数 n の配列を用意して、for 文でそれぞれ代入していきます。出力は拡張 for 文を用いると簡潔に書けます。
+next メソッドは、空白文字区切りで入力を受け取るので、前問と同様のコードで解けます。*/
 
 // 【N個の文字列の入力】1行目で与えられるN個の実数の入力 (large)
 step1 改行区切りでのN個の実数の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        double[] a = new double[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextDouble();
+        }
+
+        for (double r : a) {
+            System.out.println(r);
+        }
+
+        sc.close();
+    }
+}
+/*まず整数 N を受け取ります。浮動小数点数型の配列を用意し、N 個の実数を受け取ります。
+まず、2 行目以降で入力される実数の数を表す整数 n を受け取ります。次に、要素数 n の配列を用意して、for 文の中で代入していきます。
+実数値の受け取りは Scanner クラスの nextDouble メソッドを使います。nextDoubleメソッド は next メソッドや nextInt メソッド同様のルールで入力を受け取ります。
+Java では、実数を扱うときは基本的に double 型が使われます。出力は拡張 for 文を用いると、簡潔に書けます。ループを用いて a_1 から a_N までを出力します。*/
+
 step2 2行目で与えられるN個の実数の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        double[] a = new double[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextDouble();
+        }
+
+        for (double r : a) {
+            System.out.println(r);
+        }
+
+        sc.close();
+    }
+}
+/*まず整数 N を受け取ります。浮動小数点数型の配列を用意し、N 個の実数をループを用いて受け取ります。
+ループを用いて a_1 から a_N まで出力します。
+まず、2 行目で入力される実数の数を表す整数 n を受け取ります。次に、要素数 n の配列を用意して、for 文の中で代入していきます。
+Java では、実数を扱うときは基本的に double 型が使われます。出力は拡張 for 文を用いることで、簡潔に書けます。
+nextDoubleメソッド は next メソッドや nextInt メソッド同様のルールで入力を受け取るので、前問と同様のコードで解けます。*/
+
 step3 1行目で与えられるN個の実数の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        double[] a = new double[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextDouble();
+        }
+
+        for (double r : a) {
+            System.out.println(r);
+        }
+
+        sc.close();
+    }
+}
+/*まず N を受け取ります。N 個の実数が入る配列を用意し、N 個の実数をループを用いて受け取ります。
+ループを用いて a_1 から a_N まで出力します。
+まず、入力される実数 a の数を表す整数 n を受け取ります。次に、要素数 n の配列を用意して、for 文の中で代入していきます。
+Java では、実数を扱うときは基本的に double 型が使われます。出力は拡張 for 文を用いることで、簡潔に書けます。
+nextDoubleメソッド は next メソッドや nextInt メソッド同様のルールで入力を受け取るので、前問と同様のコードで解けます。*/
+
 step4 2行目で与えられるN個の実数の入力 (large)
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        double[] a = new double[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextDouble();
+        }
+
+        for (double r : a) {
+            System.out.println(r);
+        }
+
+        sc.close();
+    }
+}
+/*まず整数 N を受け取ります。浮動小数点数型の配列を用意し、N 個の実数をループを用いて受け取ります。
+ループを用いて a_1 から a_N まで出力します。まず、2 行目で入力される実数の数を表す整数 n を受け取ります。
+次に、要素数 n の配列を用意して、for 文の中で代入していきます。Java では、実数を扱うときは基本的に double 型が使われます。
+出力は拡張 for 文を用いることで、簡潔に書けます。nextDoubleメソッド は next メソッドや nextInt メソッド同様のルールで入力を受け取るので、前問と同様のコードで解けます。*/
+
 final 1行目で与えられるN個の実数の入力 (large)
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        double[] a = new double[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextDouble();
+        }
+
+        for (double r : a) {
+            System.out.println(r);
+        }
+
+        sc.close();
+    }
+}
+/*まず N を受け取ります。N 個の実数が入る配列を用意し、N 個の実数をループを用いて受け取ります。
+ループを用いて a_1 から a_N まで出力します。まず、入力される実数 a の数 を表す整数 n を受け取ります。
+次に、要素数 n の配列を用意して、for 文の中で代入していきます。Java では、実数を扱うときは基本的に double 型が使われます。
+出力は拡張 for 文で書くことで、簡潔に書けます。nextDoubleメソッド は next メソッドや nextInt メソッド同様のルールで入力を受け取るので、前問と同様のコードで解けます。*/
 
 // 【組になったデータの入力】文字列と整数の組からの選択
 step1 1つの整数の組の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        System.out.println(a + " " + b);
+
+        sc.close();
+    }
+}
+/*整数 a と b を受け取ります。a と b をそのまま出力します。
+Scanner クラスの nextIntメソッド を使います。
+このメソッドは next メソッド同様のルールで入力を受け取ります。
+従って、今回は 2 回 nextInt メソッドを使うことで、すべての入力値を受け取ることができます。
+半角スペース区切りで出力するためには、幾つか方法がありますが、今回は + を用いて a と b を半角スペース区切りで出力しています。
++ は左結合 (下で説明) で、文字列と数値を結合しようとするとき、数値は文字列に変換されてから結合されます。
+【 「左結合」とは何か 】
+演算子の左側と右側どちらを先に処理するかを意味する、左結合、右結合、という用語があります。
+左結合は演算子の左側を先に処理します。
+演算子 + は A + B + C を (A + B) + C として処理する左結合の演算子です。
+因みに、右結合の演算子の例としては = が挙げられます。
+A = B = C は A = (B = C) のように演算される (C に A の値が代入されるのではなく、A に C の値が代入される) ので、右結合です。*/
+
 step2 N組の整数の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] a = new int[n];
+        int[] b = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+            b[i] = sc.nextInt();
+        }
+
+        for (int i = 0; i < n; i++) {
+            System.out.println(a[i] + " " + b[i]);
+        }
+
+        sc.close();
+    }
+}
+/*整数 N を受け取ります。ループを用いて、a_i と b_i を受け取ります。a_i と b_i をループを用いて改行区切りで出力します。
+まず、2 行目以降に入力される整数組 を表す整数 n を受け取ります。
+続く n 行の各行の入力は a_i b_i の形式なので、nextInt メソッドで a_i, b_i の順に受け取ります。
+今回、出力すべき要素を持った配列が 2 つあるので、拡張 for 文を使うより、普通の for 文で i=0 から i=n-1 まで繰り返し処理をした方が簡潔に書けます。*/
+
 step3 整数の組からの選択
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] a = new int[n];
+        int[] b = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+            b[i] = sc.nextInt();
+        }
+
+        System.out.println(a[7] + " " + b[7]);
+
+        sc.close();
+    }
+}
+/*整数 N を受け取ります。ループを用いて、a_i と b_i を受け取ります。a_8 と b_8 を出力します。
+まず、2 行目以降で入力される整数組の数を表す整数 n を受け取ります。
+続く n 行の各行の入力は a_i b_i の形式なので、nextInt メソッドで a_i, b_i の順で受け取ります。
+8 番目の要素を出力するとき、配列のインデックスが 0 から始まることに注意が必要です。
+n が 8 以上であることが問題文で保証されているので、配列外参照 (ArrayIndexOutOfBoundsException) を気にする必要はありません。*/
+
 step4 文字列と整数の組の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        String[] s = new String[n];
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            s[i] = sc.next();
+            a[i] = sc.nextInt();
+        }
+
+        for (int i = 0; i < n; i++) {
+            System.out.println(s[i] + " " + a[i]);
+        }
+
+        sc.close();
+    }
+}
+/*整数 N を受け取ります。ループを用いて、s_i と a_i を受け取ります。s_i と a_i をループを用いて改行区切りで出力します。
+まず、2 行目以降で入力される値の組の数を表す整数 n を受け取ります。
+続く n 行の各行の入力は s_i a_i の形式なので、next〇〇 メソッドで受け取る入力値の順は s_i, a_i です。
+つまり、今回は next メソッド、nextInt メソッドの順で受け取り、それぞれ適切な配列に代入することで、正常に入力を受け取れます。
+今回、出力すべき要素を持った配列が 2 つあるので、拡張 for 文を使うより、普通の for 文で i=0 から i=n-1 まで繰り返し処理をした方が簡潔に書けます。*/
+
 final 文字列と整数の組からの選択
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        String[] s = new String[n];
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            s[i] = sc.next();
+            a[i] = sc.nextInt();
+        }
+
+        System.out.println(s[7] + " " + a[7]);
+
+        sc.close();
+    }
+}
+/*整数 N を受け取ります。ループを用いて、s_i と a_i を受け取ります。s_8 と a_8 を出力します。
+まず、2 行目以降に入力される値の組の数を表す整数 n を受け取ります。
+続く n 行の各行の入力は s_i a_i の形式なので、next〇〇 メソッドで受け取る入力値の順は s_i, a_i です。
+つまり、今回は next メソッド、nextInt メソッドの順で受け取り、それぞれ適切な配列に代入することで、正常に入力を受け取れます。
+8 番目の要素を出力するとき、配列のインデックスが 0 から始まることに注意が必要です。
+n が 8 以上であることが問題文で保証されているので、配列外参照 (ArrayIndexOutOfBoundsException) を気にする必要はありません。*/
 
 // 【N 行 M 列のデータの入力】行ごとに要素数の異なる整数列の入力
 step1 3行3列の整数の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[][] a = new int[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                a[i][j] = sc.nextInt();
+            }
+        }
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(a[i][j]);
+                if (j < 2) {
+                    System.out.print(" ");
+                } else {
+                    System.out.println();
+                }
+            }
+        }
+
+        sc.close();
+    }
+}
+/*3 行 3 列の行列を二次元配列と二重ループを用いて受け取ります。
+二次元配列と二重ループを用いて 3 行 3 列の形で出力します。1 列のデータを管理するときは、1 次元配列で十分ですが、横に加えて縦にも連なるデータを管理するときは、2 次元配列を使うと便利です。
+2 重ループで入力を 2 次元配列に代入していきます。
+nextInt メソッドは、入力を空白文字区切りで受け取るので、今回の場合は 2 重ループ内で 9 回使われる様に記述します。
+出力も 2 重ループを用います。
+拡張 for 文だと「改行の問題」「空白の問題」の 2 つの問題があるので、今回は普通の for 文で書くことで簡潔に書きます。
+どこで改行するか、どこで空白を入れるか、は上記のコードで j に注目して判定すれば上手くいきます。
+配列のインデックスは 0 から始まることに注意して if 文を書いて下さい。*/
+
 step2 N行3列の整数の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[][] a = new int[n][3];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < 3; j++) {
+                a[i][j] = sc.nextInt();
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(a[i][j]);
+                if (j < 2) {
+                    System.out.print(" ");
+                } else {
+                    System.out.println();
+                }
+            }
+        }
+
+        sc.close();
+    }
+}
+/*2 重ループで入力を 2 次元配列に代入していきます。
+2 重ループを作る際、外側のループが「縦」、内側のループが「横」、と意識して考えると考えやすいです。
+nextInt メソッドは、入力を空白文字区切りで受け取るので、今回の場合は 2 重ループ内で n*3 回使われる様に記述します。
+出力も 2 重ループを用います。
+拡張 for 文だと「改行の問題」「空白の問題」の 2 つの問題があるので、今回は普通の for 文で書くことで簡潔に書きます。
+どこで改行するか、どこで空白を入れるか、は上記のコードで j に注目して判定すれば上手くいきます。
+配列のインデックスは 0 から始まることに注意して if 文を書いて下さい。*/
+
 step3 3行M列の整数の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int m = sc.nextInt();
+
+        int[][] a = new int[3][m];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < m; j++) {
+                a[i][j] = sc.nextInt();
+            }
+        }
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < m; j++) {
+                System.out.print(a[i][j]);
+                if (j < m - 1) {
+                    System.out.print(" ");
+                } else {
+                    System.out.println();
+                }
+            }
+        }
+
+        sc.close();
+    }
+}
+/*整数 M を受け取ります。3 行 M 列の行列を二次元配列と二重ループを用いて受け取ります。
+二次元配列と二重ループを用いて 3 行 M 列の形で出力します。2 重ループで入力を 2 次元配列に代入していきます。
+2 重ループを作る際、外側のループが「縦」、内側のループが 「横」、と意識して考えると考えやすいです。
+nextInt メソッドは、入力を空白文字区切りで受け取るので、今回の場合は 2 重ループ内で 3*m 回使われる様に記述します。出力も 2 重ループを用います。
+拡張 for 文だと「改行の問題」「空白の問題」の 2 つの問題があるので、今回は普通の for 文で書くことで簡潔に書きます。
+どこで改行するか、どこで空白を入れるか、は上記のコードで j に注目して判定すれば上手くいきます。
+配列のインデックスは 0 から始まることに注意して if 文を書いて下さい。*/
+
 step4 N行M列の整数の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        int[][] a = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                a[i][j] = sc.nextInt();
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                System.out.print(a[i][j]);
+                if (j < m - 1) {
+                    System.out.print(" ");
+                } else {
+                    System.out.println();
+                }
+            }
+        }
+
+        sc.close();
+    }
+}
+/*整数 N と整数 M を受け取ります。N 行 M 列の行列を二次元配列と二重ループを用いて受け取ります。二次元配列と二重ループを用いて N 行 M 列の形で出力します。
+2 重ループで入力を 2 次元配列に代入していきます。
+2 重ループを作る際、外側のループが「縦」、内側のループが「横」、と意識して考えると考えやすいです。
+nextInt メソッドは、入力を空白文字区切りで受け取るので、今回の場合は 2 重ループ内で n*m 回使われる様に記述します。
+出力も 2 重ループを用います。
+拡張 for 文だと「改行の問題」「空白の問題」の 2 つの問題があるので、今回は普通の for 文で書くことで簡潔に書きます。
+どこで改行するか、どこで空白を入れるか、は上記のコードで j に注目して判定すれば上手くいきます。
+配列のインデックスは 0 から始まることに注意して if 文を書いて下さい。*/
+
 final 行ごとに要素数の異なる整数列の入力
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            int m = sc.nextInt();
+            for (int j = 0; j < m; j++) {
+                int a = sc.nextInt();
+
+                System.out.print(a);
+                if (j < m - 1) {
+                    System.out.print(" ");
+                } else {
+                    System.out.println();
+                }
+            }
+        }
+
+        sc.close();
+    }
+}
+/*整数 N を受け取ります。各行の先頭にある整数 M を受け取ります。
+M 個の整数を受け取ります。受け取った整数を出力します。
+今回は行ごとに入力される数列の要素数が異なるので、2 次元配列では管理できません。
+そこで、今回は配列で受け取らずに、受け取った値をそのまま出力することを考えます。
+まず、2 行目以降に入力される値の行数を表す整数 n を受け取ります。
+そこから n 行に亘っての入力は for 文で処理します。
+行の先頭で 入力される整数 a の数を表す整数 m_i が与えられるので、これを元に for 文を作ります。
+m_i 回繰り返す for 文内で a_ij を受け取り、出力します。
+どこで改行するか、どこで空白を入れるか、は上記のコードで j に注目して判定すれば上手くいきます。
+配列のインデックスは 0 から始まることに注意して if 文を書いて下さい。*/
+
