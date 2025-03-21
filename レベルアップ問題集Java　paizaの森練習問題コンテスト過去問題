@@ -603,10 +603,110 @@ public class Main {
 
 // paizaの森練習問題コンテスト過去問題5　★
 // Q.　3割打者
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        if (10 * m >= 3 * n) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
 // Q.　テレワーク可能か
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        String b = sc.next();
+
+        if (a >= 30 || b.equals("rainy")) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
 // Q.　文字列の反転
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+        String reversed = new StringBuffer(s).reverse().toString();
+
+        System.out.println(reversed);
+    }
+}
+
 // Q.　サイクルヒット
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int seconds = 0;
+        for (int i = 0; i < n; i++) {
+            int m = sc.nextInt(), s = sc.nextInt();
+            seconds += 60 * m + s;
+        }
+
+        if (seconds <= 74 * 60) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
 // Q.  条件を満たす最小の整数
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        boolean[] v = new boolean[5];
+
+        for (int i = 0; i < 5; i++) {
+            int m = sc.nextInt();
+            v[m] = true;
+        }
+
+        boolean res = true;
+        for (int i = 1; i < 5; i++) {
+            if (v[i] == false) {
+                res = false;
+                break;
+            }
+        }
+        if (res) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
 
 // paizaの森練習問題コンテスト過去問題6　★
 // Q.　球数制限
