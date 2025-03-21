@@ -654,6 +654,30 @@ public class Main {
     }
 }
 
+// Q.　CD
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int seconds = 0;
+        for (int i = 0; i < n; i++) {
+            int m = sc.nextInt(), s = sc.nextInt();
+            seconds += 60 * m + s;
+        }
+
+        if (seconds <= 74 * 60) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
 // Q.　サイクルヒット
 import java.util.Scanner;
 
@@ -686,25 +710,15 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        boolean[] v = new boolean[5];
+        int x = sc.nextInt();
+        int y = sc.nextInt();
+        int z = sc.nextInt();
 
-        for (int i = 0; i < 5; i++) {
-            int m = sc.nextInt();
-            v[m] = true;
+        while (x % y != z) {
+            x++;
         }
 
-        boolean res = true;
-        for (int i = 1; i < 5; i++) {
-            if (v[i] == false) {
-                res = false;
-                break;
-            }
-        }
-        if (res) {
-            System.out.println("Yes");
-        } else {
-            System.out.println("No");
-        }
+        System.out.println(x);
     }
 }
 
