@@ -94,7 +94,7 @@ System.out.println(d.contains("x") ? d.indexOf("x") : "nothing");
 System.out.println(e.length() == 5 ? "five" : e.charAt(0));
 文字列eの長さが5の場合は"five"を出力し、それ以外の場合はeの最初の1文字を出力します。*/
 
-<総和の計算>
+<数の並び替え>
 import java.util.*;
 
 public class Main {
