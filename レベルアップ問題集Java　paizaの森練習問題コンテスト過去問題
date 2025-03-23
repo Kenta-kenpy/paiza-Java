@@ -851,12 +851,167 @@ public class Main {
 
 // paizaの森練習問題コンテスト過去問題7　★
 // Q.　占い
+import java.util.*;
+import javax.lang.model.util.ElementScanner6;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        if (n == 7) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
 // Q.　年収計算
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+
+        System.out.println(a + c / 5 * b);
+    }
+}
+
 // Q.　気温
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int x = sc.nextInt();
+        if (x >= 35) {
+            System.out.println("extremely hot day");
+        } else if (x >= 30) {
+            System.out.println("hot summer day");
+        } else if (x >= 25) {
+            System.out.println("summer day");
+        } else if (x < 0) {
+            System.out.println("ice day");
+        } else {
+            System.out.println("normal day");
+        }
+    }
+}
+
 // Q.　気温2
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int max_val = -21, min_val = 41;
+        int[] x = new int[n];
+        for (int i = 0; i < n; i++) {
+            x[i] = sc.nextInt();
+            if (x[i] > max_val) {
+                max_val = x[i];
+            }
+            if (x[i] < min_val) {
+                min_val = x[i];
+            }
+        }
+        System.out.println(max_val - min_val);
+    }
+}
+
 // Q.  ブロックの埋め込み
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        System.out.println(n * m / 2);
+    }
+}
+
 // Q.  最も大きな最大公約数
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        System.out.println(n / 2);
+    }
+}
+
 // Q.　三冠王
+import java.util.*;
+import javax.lang.model.util.ElementScanner6;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        double[] b = new double[n];
+        int[] r = new int[n];
+        int[] h = new int[n];
+        for (int i = 0; i < n; i++) {
+            b[i] = sc.nextDouble();
+            r[i] = sc.nextInt();
+            h[i] = sc.nextInt();
+        }
+        int[] flag = new int[n];
+        Arrays.fill(flag, 0);
+        double max_b = 0;
+        for (int i = 0; i < n; i++) {
+            max_b = Math.max(max_b, b[i]);
+        }
+        int max_r = 0;
+        for (int i = 0; i < n; i++) {
+            max_r = Math.max(max_r, r[i]);
+        }
+        int max_h = 0;
+        for (int i = 0; i < n; i++) {
+            max_h = Math.max(max_h, h[i]);
+        }
+        for (int i = 0; i < n; i++) {
+            if (b[i] == max_b) {
+                flag[i]++;
+            }
+            if (r[i] == max_r) {
+                flag[i]++;
+            }
+            if (h[i] == max_h) {
+                flag[i]++;
+            }
+        }
+        int max_flag = 0;
+        for (int i = 0; i < n; i++) {
+            max_flag = Math.max(max_flag, flag[i]);
+        }
+        if (max_flag == 3) {
+            System.out.println("Triple");
+        } else if (max_flag == 2) {
+            System.out.println("Double");
+        } else {
+            System.out.println("Nobody");
+        }
+    }
+}
 
 // paizaの森練習問題コンテスト過去問題8　★
 // Q.　文字数カウント
