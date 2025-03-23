@@ -1015,11 +1015,157 @@ public class Main {
 
 // paizaの森練習問題コンテスト過去問題8　★
 // Q.　文字数カウント
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String m = sc.nextLine();
+        System.out.println(m.length());
+    }
+}
+
 // Q.　乗客人数
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        System.out.println(a - b + c);
+    }
+}
+
+// Q.  OPS
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        double n = sc.nextDouble();
+        double m = sc.nextDouble();
+
+        System.out.printf("%.3f\n", n + m);
+
+        sc.close();
+    }
+}
+
 // Q.　通貨レート
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        double[] m = new double[n];
+        for (int i = 0; i < n; i++) {
+            m[i] = sc.nextInt();
+        }
+        int first = -1, second = -1;
+        double max_diff = 1;
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (m[j] / m[i] > max_diff) {
+                    first = i;
+                    second = j;
+                    max_diff = m[j] / m[i];
+                }
+            }
+        }
+        if (max_diff > 1) {
+            System.out.println(first + 1);
+            System.out.println(second + 1);
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
 // Q.　乗客人数その2
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        int[] b = new int[n];
+        for (int i = 0; i < n; i++) a[i] = sc.nextInt();
+        for (int i = 0; i < n; i++) b[i] = sc.nextInt();
+        int ans = 0;
+        int now = 0;
+        for (int i = 0; i < n; i++) {
+            now -= a[i];
+            now += b[i];
+            ans = Math.max(ans, now);
+        }
+        System.out.println(ans);
+    }
+}
+
 // Q.  OPSその2
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        double ma = 0;
+        int res = 0;
+        for (int i = 0; i < n; i++) {
+            double b = sc.nextDouble();
+            double s = sc.nextDouble();
+            int bi = (int) (b * 1000);
+            int si = (int) (s * 1000);
+            if (ma < bi + si) {
+                res = i + 1;
+                ma = bi + si;
+            }
+        }
+        System.out.println(res);
+    }
+}
+
 // Q.  タスクスケジューリング
+import java.util.Scanner;
+import java.util.TreeMap;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        TreeMap<Integer, Integer> mp = new TreeMap<Integer, Integer>();
+        for (int i = 0; i < n; i++) {
+            int s = sc.nextInt();
+            int t = sc.nextInt();
+            mp.put(t, s);
+        }
+        int ans = 0;
+        int time = 0;
+        for (int key : mp.keySet()) {
+            if (mp.get(key) > time) {
+                ans++;
+                time = key;
+            }
+        }
+        System.out.println(ans);
+    }
+}
 
 // paizaの森練習問題コンテスト過去問題9　★
 // Q.　最大値と最小値
