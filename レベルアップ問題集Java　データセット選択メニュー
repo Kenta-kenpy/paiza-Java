@@ -1,0 +1,164 @@
+// 動的配列
+step1 ランダムアクセス
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        List<Integer> a = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            a.add(sc.nextInt());
+        }
+
+        System.out.println(a.get(m - 1));
+    }
+}
+/*数列の M 番目の値を出力します。
+この問題の回答は、ランダムアクセスを用いると簡潔に記述できます。データの位置がわかっているときに、そのデータに直接アクセスすることをランダムアクセスといいます。配列はランダムアクセスをサポートするデータ型です。
+Java で動的配列を使いたいときは ArrayList を使います。
+List<Integer> a = new ArrayList<>() で空のリストを用意します。これに関しては Java の解説の最後で少し追加説明をします。
+入力値を受け取って add メソッドでリストに追加していきます。
+最後に m 番目の要素を get メソッドを使って取得し、出力します。この際、リストのインデックスは 0 から始まる、ということに注意して下さい。
+【 リストの宣言、初期化についての追加説明 】
+ArrayList で空のリストを用意する方法は以下の 2 通りあります。
+List<Integer> a = new ArrayList<>()
+ArrayList<Integer> a = new ArrayList<>()
+1. でもよい理由は ArrayList が List インターフェースを実装しているクラスだからです。
+1. と 2. の違いは以下の通りです。
+1. で生成される a は List 型で、2. で生成される a はArrayList 型であることが違いです。
+つまり、1. で生成される a は List 型のメソッドしか使えません。
+メリット、デメリットを簡単に説明します。
+1. について
+メリット : List インターフェースを実装した他のオブジェクトを a に代入できることでコードの拡張性が広がる
+デメリット : ArrayList 固有のメソッド (例えば clone など) を使うことができない
+2. については 1. と逆のことが言えます。
+一般的に、コードの拡張性が大事にされるので、1. の宣言方法がよく使われます。*/
+
+step2 複数回のランダムアクセス
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        List<Integer> a = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            a.add(sc.nextInt());
+        }
+
+        int q = sc.nextInt();
+
+        List<Integer> b = new ArrayList<>();
+        for (int i = 0; i < q; i++) {
+            b.add(sc.nextInt());
+        }
+
+        for (int x : b) {
+            System.out.println(a.get(x - 1));
+        }
+    }
+}
+/*Q 回数列の B_i 番目の値を出力します。
+この問題の回答は、ランダムアクセスを用いると簡潔に記述できます。データの位置がわかっているときに、そのデータに直接アクセスすることをランダムアクセスといいます。配列はランダムアクセスをサポートするデータ型です。
+リストへのランダムアクセスは get メソッドを使います。
+解答コードでは拡張 for 文でリスト b の各要素 x を取得して get メソッドで a の x 番目の要素を取得しています。*/
+
+step3 最大値と最小値
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        List<Integer> a = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            a.add(sc.nextInt());
+        }
+
+        Collections.sort(a);
+
+        System.out.println(a.get(2) - a.get(0));
+    }
+}
+/*最大値と最小値をそれぞれ求め、その差を計算します。ソートを用いると簡潔に記述できます。
+リストをソートしたいとき Collections.sort() を使うと簡単です。
+引数でリストを渡すとそのリスト自身がソートされます。引数で渡すリストの要素の順番を直接変更するので、注意が必要です。
+Collections.sort() はデフォルトで昇順にソートします。*/
+
+final 動的配列
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int q = sc.nextInt();
+
+        List<Integer> a = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            a.add(sc.nextInt());
+        }
+
+        for (int i = 0; i < q; i++) {
+            int query = sc.nextInt();
+            if (query == 0) {
+                int x = sc.nextInt();
+                a.add(x);
+            } else if (query == 1) {
+                a.remove(a.size() - 1);
+            } else {
+                for (int j = 0; j < a.size(); j++) {
+                    System.out.print(a.get(j));
+                    if (j < a.size() - 1) {
+                        System.out.print(" ");
+                    } else {
+                        System.out.println();
+                    }
+                }
+            }
+        }
+    }
+}
+/*配列を用意して、これに追加、削除、出力ができるようにします。普通の配列を用いてもよいのですが、動的配列 (C++ における vector など) を用いると、バグを生みにくい実装が可能です。
+リストを使って解いています。
+query の処理について以下で簡単にまとめます。
+【 push_back 】
+add メソッドを使います。
+a.add(e) のように使うとリスト a に要素 e を追加できます。
+【 pop_back 】
+remove メソッドを使います。
+a.remove(a.size()-1) のように使うとリスト a の一番後ろの要素を削除できます。
+【 print 】
+for 文内でリスト a の各要素を出力します。
+ループカウンタ j の値を用いて各要素の後ろの文字が半角スペースか、改行か、を判定します。
+j が端のとき、つまり、j == a.size()-1 のときは改行を、それ以外のときは半角スペースを出力するようにします。*/
+
+// 文字列の配列
+step1 とても大きな数値の入力
+step2 とても小さな数値の入力
+final 文字列の配列
+
+// 商品の検索
+step1 数値の出現率
+step2 英小文字の出現率
+step3 文字列の出現率
+step4 価格の算出
+final 商品の検索
+
+// 集合の結合
+step1 集合の探索
+step2 重複の削除
+step3 重複の判定1
+step4 重複の判定2
+final 集合の結合
