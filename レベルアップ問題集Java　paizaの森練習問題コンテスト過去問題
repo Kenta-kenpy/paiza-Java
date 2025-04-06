@@ -1169,10 +1169,121 @@ public class Main {
 
 // paizaの森練習問題コンテスト過去問題9　★
 // Q.　最大値と最小値
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] a = new int[3];
+        for (int i = 0; i < 3; i++) {
+            a[i] = sc.nextInt();
+        }
+        Arrays.sort(a);
+        System.out.println(a[0] + " " + a[2]);
+    }
+}
+
 // Q.　卵の生産
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int n = sc.nextInt();
+        System.out.println(a * n);
+    }
+}
+
 // Q.　卵の生産の最大量
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+        int ans = 0;
+        for (int i = 0; i < n - k + 1; i++) {
+            int su = 0;
+            for (int j = 0; j < k; j++) {
+                su += a[i + j];
+            }
+            ans = Math.max(ans, su);
+        }
+        System.out.println(ans);
+    }
+}
+
 // Q.　卵の生産の最大量 その2
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+        int ans = 0;
+        int su = 0;
+        for (int i = 0; i < n - k + 1; i++) {
+            if (i == 0) {
+                for (int j = 0; j < k; j++) {
+                    su += a[i + j];
+                }
+            } else {
+                su += a[i + k - 1];
+                su -= a[i - 1];
+            }
+            ans = Math.max(ans, su);
+        }
+        System.out.println(ans);
+    }
+}
+
 // Q.  卵をぴったり生産
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+        int ans = 0;
+        for (int bit = 0; bit < (1 << n); bit++) {
+            int su = 0;
+            for (int j = 0; j < n; j++) {
+                if ((1 & bit >> j) == 1) {
+                    su += a[j];
+                }
+            }
+
+            if (su == k) ans++;
+        }
+        System.out.println(ans);
+    }
+}
 
 // paizaの森練習問題コンテスト過去問題10　★
 // Q.　座席
