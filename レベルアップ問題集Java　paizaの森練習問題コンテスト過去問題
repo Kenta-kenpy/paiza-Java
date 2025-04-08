@@ -1287,11 +1287,123 @@ public class Main {
 
 // paizaの森練習問題コンテスト過去問題10　★
 // Q.　座席
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] s = new String[9];
+        for (int i = 0; i < 9; i++) {
+            s[i] = sc.nextLine();
+        }
+        for (int i = 0; i < 3; i++) {
+            System.out.println(
+                s[i * 3] + " " + s[i * 3 + 1] + " " + s[i * 3 + 2]
+            );
+        }
+    }
+}
+
 // Q.　平均と平均
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        double arithmeticMeanPow = (a + b) * (a + b) / 4.0;
+        double geometricMeanPow = (a * b);
+        if (arithmeticMeanPow > geometricMeanPow) {
+            System.out.println("arithmetic");
+        } else if (arithmeticMeanPow < geometricMeanPow) {
+            System.out.println("geometric");
+        } else {
+            System.out.println("equal");
+        }
+    }
+}
+
 // Q.　親と子
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        if (a * 2 + 1 == b || a * 2 + 2 == b) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
 // Q.　卒論締め切り
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        if (n <= a * Math.min(30, b)) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
 // Q.  WBC
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String w = sc.nextLine();
+        for (int i = 0; i < 3; i++) {
+            if ('A' <= w.charAt(i) && w.charAt(i) <= 'Z') continue;
+            System.out.println("No");
+            return;
+        }
+        System.out.println("Yes");
+    }
+}
+
 // Q.  paizaとタイピング
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.nextLine();
+        int n = s.length();
+        char[] verif = { 'p', 'a', 'i', 'z', 'a' };
+        int cnt = 0;
+        for (int i = 0; i < n; i++) {
+            if (cnt == 5) break;
+            if (s.charAt(i) == verif[cnt]) {
+                cnt++;
+            }
+        }
+        if (cnt == 5) System.out.println("Yes"); else System.out.println("No");
+    }
+}
 
 // paizaの森練習問題コンテスト過去問題11　★
 // Q.　お菓子の合計金額
