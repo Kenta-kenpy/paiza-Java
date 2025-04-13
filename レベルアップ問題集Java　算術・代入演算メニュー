@@ -1,0 +1,77 @@
+<累乗2>
+step1 足し算
+import java.util.*;
+
+public class Main {
+    public static void main(String... args) {
+        
+        System.out.println(1231 + 5178);
+    }
+}
+
+step2 引き算・掛け算
+import java.util.*;
+
+public class Main {
+    public static void main(String... args) {
+        
+        var sc = new Scanner(System.in);
+        
+        var a = sc.nextInt();
+        var b = sc.nextInt();
+        
+        System.out.println((a - b) + " " + (a * b));
+    }
+}
+
+step3 割り算
+import java.util.*;
+
+public class Main {
+    public static void main(String... args) {
+        
+        var a = 437_326;
+        var b = 9_085;
+        
+        System.out.println((a / b) + " " + (a % b));
+    }
+}
+
+step4 掛け算2
+import java.util.*;
+
+public class Main {
+    public static void main(String... args) {
+        
+        var sc = new Scanner(System.in);
+        
+        var a = sc.nextInt();
+        var b = sc.nextInt();
+        var c = sc.nextInt();
+        
+        System.out.println((int) Math.pow(a, 2.0) + " " + ((int) Math.pow(b, 2.0) + (int) Math.pow(c, 2.0)));
+    }
+}
+
+step5 累乗
+import java.util.*;
+
+public class Main {
+    public static void main(String... args) {
+        
+        var a = 202;
+        var b = 134;
+        var c = 107;
+        
+        System.out.println(((a + b) * c) * ((a + b) * c));
+    }
+}
+
+final 累乗2
+
+
+<代入演算4>
+step1 代入演算1
+step2 代入演算2
+step3 代入演算3
+final 代入演算4
