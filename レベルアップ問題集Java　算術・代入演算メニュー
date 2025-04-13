@@ -68,10 +68,92 @@ public class Main {
 }
 
 final 累乗2
+import java.util.*;
 
+public class Main {
+    public static void main(String... args) {
+        
+        var sc = new Scanner(System.in);
+        
+        var a = sc.nextInt();
+        var b = sc.nextInt();
+        var c = sc.nextInt();
+        var d = sc.nextInt();
+        
+        System.out.println(((a + b) * c) * ((a + b) * c) % d);
+    }
+}
 
 <代入演算4>
 step1 代入演算1
+import java.util.*;
+
+public class Main {
+    public static void main(String... args) {
+        
+        var n = 0;
+        
+        n += 3_286;
+        n *= 4_736;
+        n %= 12_312;
+        
+        System.out.println(n);
+    }
+}
+
 step2 代入演算2
+import java.util.*;
+
+public class Main {
+    public static void main(String... args) {
+        
+        var sc = new Scanner(System.in);
+        
+        var a = sc.nextInt();
+        var b = sc.nextInt();
+        var c = sc.nextInt();
+
+        var n = 0;
+        
+        n += a;
+        n *= b;
+        n %= c;
+
+        System.out.println(n);
+    }
+}
+
 step3 代入演算3
+import java.util.*;
+
+public class Main {
+    public static void main(String... args) {
+        
+        var n = 10_000;
+        
+        n /= 361;
+        n %= 28;
+        
+        System.out.println(n);
+    }
+}
+
 final 代入演算4
+import java.util.*;
+
+public class Main {
+    public static void main(String... args) {
+        
+        var sc = new Scanner(System.in);
+        
+        var a = sc.nextInt();
+        var b = sc.nextInt();
+
+        var n = 10_000;
+        
+        n /= a;
+        n %= b;
+        
+        System.out.println(n);
+    }
+}
