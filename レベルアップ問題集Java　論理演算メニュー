@@ -39,19 +39,125 @@ public class Main {
 また、問題文には計算結果を 0 または 1 で出力するように指定されています。この場合、論理演算の結果が真になる場合は 1 を、偽になる場合は 0 を出力します。*/
 
 step3　否定 　      NOT  の基本
+import java.util.*;
 
+public class Main {
+    public static void main(String... args) {
+        
+        var sc = new Scanner(System.in);
+        
+        var a = sc.nextInt();
+        
+        // 1. 三項演算子による判定。
+        // var notA = (a == 0) ? 1 : 0;
+        
+        // 2. XOR演算子(^)を使用して、1との演算。
+        // var notA = a ^ 1; 
+        
+        // 3. NOT演算子(~)を使用して、最下位ビットのみ取得。
+        // ~は、整数のすべてのビットを反転させるため、最上位ビットが1の場合は負の値になります。
+        var notA = ~a & 0b1; 
+        
+        System.out.println(notA);
+    }
+}
+/*否定の基本を学びます。否定は条件 P が真であるとき結果が偽に、偽であるとき結果が真になる論理演算です。
+多くの言語では否定を表す演算子が定義されています。否定演算子は ! , not であることが多いです。
+否定は単純な演算子であるので、多くの実装方法があります。これは実装例の C++ の場合( 2 ), C++ の場合( 3 )で説明します。
+また、問題文には計算結果を 0 または 1 で出力するように指定されています。この場合、論理演算の結果が真になる場合は 1 を、偽になる場合は 0 を出力します。*/
 
 step4　排他的論理和 XOR の基本
+import java.util.*;
 
+public class Main {
+    public static void main(String... args) {
+        
+        var sc = new Scanner(System.in);
+        
+        var a = sc.nextInt();
+        var b = sc.nextInt();
+        
+        System.out.println(a ^ b);
+    }
+}
+/*排他的論理和の基本を学びます。排他的論理和は 2 つの条件 P, Q の片方だけが真であるとき、結果が真になる論理演算です。
+たとえば「 A さんは学生である」、「 A さんは paiza を利用している」の 2 つの条件があったとします。この 2 つの条件の排他的論理和が真になる条件は「 A さんは学生ではない かつ paiza を利用している」または「 A さんは学生である かつ paiza を利用していない」です。
+多くの言語では排他的論理和を表す演算子が定義されています。排他的論理和は ^ , xor であることが多いです。
+AND 演算や OR 演算と比較すると少しややこしいですが、コーディング試験やプログラミングコンテストでは頻出される演算です。少しずつ慣れていきましょう。
+
+少し難しいですが、排他的論理和は AND 演算と OR 演算、 NOT 演算だけを用いて計算することもできます。
+X XOR Y = (X AND NOT(Y)) OR (NOT(X) AND Y)
+X AND NOT(Y) は X が真かつ Y が偽であるときに式全体が真になるような論理式です。また、 NOT(X) AND Y は X が偽かつ Y が真であるときに式全体が真になります。この 2 つの OR 演算をとると、 X または Y のうち、どちらか一方のみが真であれば結果が真になるという XOR 演算の論理式になります。*/
 
 step5　NAND　演算の基本
+import java.util.*;
 
+public class Main {
+    public static void main(String... args) {
+        
+        var sc = new Scanner(System.in);
+        
+        var a = sc.nextInt();
+        var b = sc.nextInt();
+        
+        System.out.println((~(a & b)) & 0b1);
+    }
+}
+/*NAND 演算は NOT AND 演算の略で、論理積の否定となります。
+多くの言語において NAND を表現する二項演算子は定義されていませんが、 ド・モルガンの法則 という法則を用いると、これまでに学習した OR, NOT 演算を組み合わせることによって NAND 演算と等価な演算を実現することが可能です。ド・モルガンの法則とは、以下の等式が成り立つ法則です。
+NOT(X AND Y) = NOT(X) OR NOT(Y)
+NOT(X OR Y) = NOT(X) AND NOT(Y)
+これでは少しわかりにくいと思うので、以下の図を活用してください。問題によってはこのように式変形をすることで論理演算が簡潔になることがあります。*/
 
 step6　NOR　 演算の基本
+import java.util.*;
 
+public class Main {
+    public static void main(String... args) {
+        
+        var sc = new Scanner(System.in);
+        
+        var a = sc.nextInt();
+        var b = sc.nextInt();
+        
+        System.out.println((~(a | b)) & 0b1);
+    }
+}
+/*NOR 演算は NOT OR 演算の略で、論理和の否定となります。
+多くの言語において NOR を表現する二項演算子は定義されていませんが、 ド・モルガンの法則 という法則を用いると、これまでに学習した AND, NOT 演算を組み合わせることによって NOR 演算と等価な演算を実現することが可能です。ド・モルガンの法則とは、以下の等式が成り立つ法則です。
+NOT(X AND Y) = NOT(X) OR NOT(Y)
+NOT(X OR Y) = NOT(X) AND NOT(Y)*/
 
 step7　XNOR　演算の基本
+import java.util.*;
 
+public class Main {
+    public static void main(String... args) {
+        
+        var sc = new Scanner(System.in);
+        
+        var a = sc.nextInt();
+        var b = sc.nextInt();
+        
+        System.out.println((~(a ^ b)) & 0b1);
+    }
+}
+/*XNOR 演算は NOT XOR 演算の略で、 XOR 演算を計算した後に NOT 演算をおこなう演算になります。 XNOR という名前から先に NOT 演算をとると思いがちですので、注意してください。
+多くの言語において XNOR を表現する二項演算子は定義されていませんが、 ド・モルガンの法則 という法則を用いると、これまでに学習した AND, OR, NOT 演算を組み合わせることによって XNOR 演算と等価な演算を実現することが可能です。ド・モルガンの法則とは、以下の等式が成り立つ法則です。
+NOT(X AND Y) = NOT(X) OR NOT(Y)
+NOT(X OR Y) = NOT(X) AND NOT(Y)
+これを用いて XNOR 演算を変換していきます。
+X XNOR Y
+= NOT(X XOR Y)
+= NOT((X AND NOT(Y)) OR (NOT(X) AND Y)) // ※1
+= NOT(X AND NOT(Y)) AND NOT(NOT(X) AND Y) // 全体に対してド・モルガンの法則を適用
+= (NOT(X) OR Y) AND (X OR NOT(Y)) // 2 つの項に対してそれぞれド・モルガンの法則を適用
+※ 1 ... X AND NOT(Y) は X が真かつ Y が偽であるときに式全体が真になるような論理式です。また、 NOT(X) AND Y は X が偽かつ Y が真であるときに式全体が真になります。この 2 つの OR 演算をとると、 X または Y のうち、どちらか一方のみが真であれば結果が真になるという XOR 演算の論理式になります。
+このように、 XNOR は AND 演算と OR 演算、 NOT 演算だけで計算することが可能です。これは「 C++ の場合( 3 )」で実装します。
+しかし、もっと単純な方法があります。 XNOR 演算は入力値 2 つが等しいときに真となります。そこで、このようにも考えられます。
+X XNOR Y
+= (入力値が両方 0 のときだけ結果が真になる演算) OR (入力値が両方 1 のときだけ結果が真になる演算)
+= ((NOT X) AND (NOT Y)) OR (X AND Y)*/
 
 step8　半加算器
 
