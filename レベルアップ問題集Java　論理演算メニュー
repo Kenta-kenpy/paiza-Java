@@ -1,0 +1,62 @@
+<論理演算を用いた計算のまとめ>
+step1　論理積       AND  の基本
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        
+        var sc = new Scanner(System.in);
+        
+        var a = sc.nextInt();
+        var b = sc.nextInt();
+    
+        System.out.println(a & b);
+    }
+}
+/*論理積の基本を学びます。論理積は 2 つの条件 P, Q が両方とも真であるときのみ結果が真になる論理演算です。
+たとえば「 A さんは学生である」、「 A さんは paiza を利用している」の 2 つの条件があったとします。この 2 つの条件の論理積が真になる条件は「 A さんは学生であり、かつ paiza を利用している」です。
+論理積は 2 つの条件が両方とも真であるときのみ結果が真になるので、条件が片方でも偽であれば結果は偽になります。
+多くの言語では論理積を表す演算子が定義されています。論理積は & , && , and であることが多いです。
+また、問題文には計算結果を 0 または 1 で出力するように指定されています。この場合、論理演算の結果が真になる場合は 1 を、偽になる場合は 0 を出力します。*/
+
+step2　論理和       OR   の基本
+import java.util.*;
+
+public class Main {
+    public static void main(String... args) {
+        
+        var sc = new Scanner(System.in);
+        
+        var a = sc.nextInt();
+        var b = sc.nextInt();
+        
+        System.out.println(a | b);
+    }
+}
+/*論理和の基本を学びます。論理和は 2 つの条件 P, Q のどちらか片方が真であるとき結果が真になる論理演算です。
+たとえば「 A さんは学生である」、「 A さんは paiza を利用している」の 2 つの条件があったとします。この 2 つの条件の論理和が真になる条件は「 A さんは学生である または paiza を利用している」です。
+多くの言語では論理和を表す演算子が定義されています。論理積は | , || , or であることが多いです。
+また、問題文には計算結果を 0 または 1 で出力するように指定されています。この場合、論理演算の結果が真になる場合は 1 を、偽になる場合は 0 を出力します。*/
+
+step3　否定 　      NOT  の基本
+
+
+step4　排他的論理和 XOR の基本
+
+
+step5　NAND　演算の基本
+
+
+step6　NOR　 演算の基本
+
+
+step7　XNOR　演算の基本
+
+
+step8　半加算器
+
+
+step9  全加算器
+
+
+final　論理演算を用いた計算のまとめ
