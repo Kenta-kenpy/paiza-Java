@@ -1,0 +1,107 @@
+// 電話番号
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // 入力を取得する
+        String A = sc.next();
+        String B = sc.next();
+        String C = sc.next();
+        
+        // 出力
+        System.out.println(A + "-" + B + "-" + C);
+        
+        sc.close();
+    }
+}
+
+// 気象観測
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Nの入力を受け取る
+        int N = scanner.nextInt();
+        
+        // 条件に基づいて出力を決定
+        if (N >= 0 && N < 2) {
+            System.out.println("clear");
+        } else if (N >= 2 && N < 9) {
+            System.out.println("sunny");
+        } else if (N >= 9 && N <= 10) {
+            System.out.println("cloudy");
+        }
+
+        scanner.close();
+    }
+}
+
+// 荷物検査
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 最初の行から N と M を取得
+        int N = scanner.nextInt();
+        int M = scanner.nextInt();
+        
+        // 荷物の重さの合計を計算
+        int totalWeight = 0;
+        
+        // 次の N 行で荷物の重さを取得し、合計に加算
+        for (int i = 0; i < N; i++) {
+            totalWeight += scanner.nextInt();
+        }
+        
+        // 合計が基準値 M 以下なら OK, 超えていれば NG
+        if (totalWeight <= M) {
+            System.out.println("OK");
+        } else {
+            System.out.println("NG");
+        }
+        
+        scanner.close();
+    }
+}
+
+// 背の順
+import java.util.*;
+
+public class Main {
+    static class Student {
+        int height;
+        String name;
+
+        Student(int height, String name) {
+            this.height = height;
+            this.name = name;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = Integer.parseInt(scanner.nextLine());
+
+        List<Student> students = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            int height = scanner.nextInt();
+            String name = scanner.next();
+            students.add(new Student(height, name));
+        }
+
+        students.sort((s1, s2) -> Integer.compare(s2.height, s1.height)); // 高い順でソート
+
+        for (Student student : students) {
+            System.out.println(student.name);
+        }
+
+        scanner.close();
+    }
+}
