@@ -160,9 +160,81 @@ X XNOR Y
 = ((NOT X) AND (NOT Y)) OR (X AND Y)*/
 
 step8　半加算器
+import java.util.*;
 
+public class Main {
+    public static void main(String... args) {
+        
+        var sc = new Scanner(System.in);
+        
+        var a = sc.nextInt();
+        var b = sc.nextInt();
+        
+        var c = a & b;
+        var s = a ^ b;
+
+        System.out.println(c + " " + s);
+    }
+}
+/*まず、 C について考えましょう。 C は A と B が両方とも 1 のときだけ 1 になります。これは、以下の表のように AND 演算の結果と等しいです。つまり、 C = A AND B となります。
+次に S について考えます。 S は A と B のどちらか一方のみ 1 のときだけ 1 になります。これは、以下の表のように XOR 演算の結果と等しいです。つまり、 S = A XOR B となります。*/
 
 step9  全加算器
+import java.util.*;
 
+public class Main {
+    
+    static int[] halfAdder(int a, int b) {
+        var c = a & b;
+        var s = a ^ b;
+        return new int[] {c, s};
+    }
+    
+    public static void main(String... args) {
+        
+        var sc = new Scanner(System.in);
+        
+        var a = sc.nextInt();
+        var b = sc.nextInt();
+        var c1 = sc.nextInt();
+        
+        var cxsy = halfAdder(a, b);
+        var cys = halfAdder(cxsy[1], c1);
+        var c2 = cxsy[0] ^ cys[0];
+
+        System.out.println(c2 + " " + cys[1]);
+    }
+}
+/*まず、 問題文に記載されている全加算器の回路図に記載されている、半加算器の出力に名前をつけましょう。下図の左の半加算器の出力を Cx, Sy 、右の半加算器の出力を Cy, S としました。
+半加算器は 2 度計算する必要があるので、関数としてまとめるとプログラムの見栄えが良くなります。
+ヒントがなかった場合、本問題は本当に難しいのでしょうか。そのようなことはありません。順を追って考えてみましょう。まず、 S は A, B, C1 の和です。 A + B + C1 = (A + B) + C1 であるので、 S は半加算器を 2 つ用いれば計算できます。
+次に C2 に関して考えてみます。 C2 が １ になりそうな条件を列挙しましょう。
+A + B で繰り上がりが発生した場合
+(A + B)の 1 けた目 + C1 で繰り上がりが発生した場合
+(A + B) , (A + B)の 1 けた目 + C1 の両方で繰り上がりが発生した場合
+1 、 2 に関しては正しいです。しかし、 3 に関してはあり得ません。 A + B で繰り上がりが発生した場合、 A + B の 1 けた目は 0 であるため、 C1 が何であろうと (A + B)の 1 けた目 + C1 で繰り上がることはありません。
+よって A + B 、 (A + B)の 1 けた目 + C1 のどちらか片方の半加算器の結果 C が 1 になった場合、 C2 を 1 にすればよいです。これは XOR 演算または OR 演算で実現可能です。*/
 
 final　論理演算を用いた計算のまとめ
+import java.util.*;
+
+public class Main {
+    
+    public static void main(String... args) {
+        
+        var sc = new Scanner(System.in);
+        
+        var a = sc.nextInt();
+        var b = sc.nextInt();
+        var c = sc.nextInt();
+        var d = sc.nextInt();
+
+        // 1. 問題の式をそのまま実装
+        // System.out.println((~((~a & ~b) | ~c) ^ d) & 0b1);
+        
+        // 2. ド・モルガンの法則
+        System.out.println((((a | b) & c) ^ d) & 0b1);
+    }
+}
+/*複雑な式ですが、それぞれの演算子はすべて他の問題で出てきたものです。ここではそれぞれの演算の解説は省略させていただきます。
+ただし、この問題は ド・モルガンの法則 という法則を用いると式を簡潔に変換できます。これにより、問題の式から否定がなくなります。*/
