@@ -68,10 +68,37 @@ public class Main {
 }
 
 // 文字の検索
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        String S = sc.next();
+
+        System.out.println(S.length());
+    }
+}
 
 // 文字列の連結
+import java.util.*;
 
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        var S = sc.next();
+        var c = sc.next();
+
+        for (var i = 0; i < S.length(); i++) {
+            if (c.equals(Character.toString(S.charAt(i)))) {
+                System.out.println(i + 1);
+            }
+        }
+    }
+}
 
 // 部分文字列
 
@@ -116,7 +143,6 @@ public class Main {
 
 
 // 数値判定
-// utf-8
 
     
 // 重複の削除
