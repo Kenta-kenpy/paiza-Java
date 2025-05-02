@@ -1,14 +1,71 @@
 // 文字列の出力
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("paiza");
+    }
+}
 
 // 文字列の受け取り
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        var sc = new Scanner(System.in);
+        
+        var s = sc.next();
+
+        System.out.println(s);
+    }
+}
 
 // i文字目の出力
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        var sc = new Scanner(System.in);
+        
+        var S = sc.next();
+        var i = sc.nextInt();
+
+        System.out.println(S.charAt(i - 1));
+    }
+}
 
 // 文字列の文字数
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        var sc = new Scanner(System.in);
+        
+        var S = sc.next();
+        
+        //---------------------------------------------
+        // 1. 文字列比較は equals メソッドでおこなう
+        // if ("paiza".equals(S)) {
+        //     System.out.println("YES");
+        // } else {
+        //     System.out.println("NO");
+        // }
+        //---------------------------------------------
+        
+        //---------------------------------------------
+        // 2. Java7 からは switch でも文字列の比較が可能
+        //    まｔ Java12 からは swtich 式としても利用可能
+        System.out.println(
+            switch (S) {
+                case "paiza" -> "YES";
+                default -> "NO";
+            });
+        //---------------------------------------------
+    }
+}
 
 // 文字の検索
 
