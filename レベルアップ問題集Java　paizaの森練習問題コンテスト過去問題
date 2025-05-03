@@ -1407,12 +1407,146 @@ public class Main {
 
 // paizaの森練習問題コンテスト過去問題11　★
 // Q.　お菓子の合計金額
+import java.util.Scanner;
+import java.util.TreeMap;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        System.out.println(a + b);
+    }
+}
+
 // Q.　フィボナッチ数列
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        int a = 1;
+        int b = 1;
+        System.out.println(a);
+        System.out.println(b);
+        for (int i = 3; i <= 10; i++) {
+            int f = a + b;
+            System.out.println(f);
+            b = a;
+            a = f;
+        }
+    }
+}
+
 // Q.　素数判定
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        if (n == 1) {
+            System.out.println("No");
+            return;
+        }
+        for (int i = 2; i < n; i++) {
+            if (n % i == 0) {
+                System.out.println("No");
+                return;
+            }
+        }
+        System.out.println("Yes");
+    }
+}
+
 // Q.　残業時間
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int sum = 0;
+
+        for (int i = 0; i < 30; i++) {
+            int m = sc.nextInt();
+            sum += m;
+        }
+
+        System.out.println(sum - 8 * 30);
+    }
+}
+
 // Q.  ロボットの移動-その2
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int x = sc.nextInt();
+        int y = sc.nextInt();
+        if (x != y) {
+            System.out.println(Math.max(Math.abs(x), Math.abs(y)) * 2 - 1);
+        } else {
+            System.out.println(Math.abs(x) * 2);
+        }
+    }
+}
+
 // Q.  辞書順で最も小さい文字列
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        String s = sc.next();
+
+        char[] tmp_c = s.toCharArray();
+        Arrays.sort(tmp_c);
+        String sorted_s = new String(tmp_c);
+        System.out.println(sorted_s);
+    }
+}
+
 // Q.  全員が正当
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int c[][] = new int[m][n];
+        int ans[] = new int[n];
+        for (int i = 0; i < n; i++) ans[i] = 1;
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                c[i][j] = sc.nextInt();
+                ans[j] &= c[i][j];
+                if (i == m - 1) {
+                    if (ans[j] == 1) {
+                        System.out.println("Yes");
+                        return;
+                    }
+                }
+            }
+        }
+        System.out.println("No");
+    }
+}
 
 // paizaの森練習問題コンテスト過去問題12　★
 // Q.　文字列の一致
