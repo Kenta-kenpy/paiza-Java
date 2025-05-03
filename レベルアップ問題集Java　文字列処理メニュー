@@ -83,37 +83,141 @@ public class Main {
 
 // 文字列の連結
 import java.util.*;
+import java.util.stream.*;
 
 public class Main {
-
     public static void main(String[] args) {
+        
         Scanner sc = new Scanner(System.in);
-
-        var S = sc.next();
-        var c = sc.next();
-
-        for (var i = 0; i < S.length(); i++) {
-            if (c.equals(Character.toString(S.charAt(i)))) {
-                System.out.println(i + 1);
-            }
+        var n = sc.nextInt();
+        
+        // 1. 文字列連結
+        var ans = "";
+        for (var i = 0; i < n; i++) {
+            ans += sc.next();
         }
+        System.out.println(ans);
     }
 }
 
 // 部分文字列
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        var S = sc.next();
+        var i = sc.nextInt();
+        var j = sc.nextInt();
+        
+        System.out.println(S.substring(i - 1, j));
+    }
+}
 
 // 文字列の挿入
+import java.util.*;
 
+public class Main {
+    public static void main(String... args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        var S = sc.next();
+        var T = sc.next();
+        var N = sc.nextInt();
+
+        //---------------------------------
+        // 1. String#substring
+        var ans = S.substring(0, N) + T + S.substring(N);
+        System.out.println(ans);
+        //---------------------------------
+        
+        //---------------------------------
+        // 2. StringBuilder
+        // var ans = new StringBuilder(S);
+        // ans.insert(N, T);
+        // System.out.println(ans);
+        //---------------------------------
+        
+    }
+}
+/*文字列の指定の位置に文字列を挿入する関数を利用・実装して、今回の問題を解いてください。
+文字列に文字を挿入するような操作（破壊的な操作）のできない言語であっても、文字を挿入する位置で元の文字列を分割したのち、それらを連結することで文字の挿入を再現することができます。
+答えは次のような文字列になります。
+元の文字列の挿入する位置より前の部分 + 挿入した文字 + 元の文字列の挿入する位置より後ろの部分*/
 
 // 文字列の書き換え
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        var S = sc.next();
+        var i = sc.nextInt();
+        var c = sc.next();
+
+        //---------------------------------
+        // 1. String#substring
+        var ans = S.substring(0, i - 1) + c + S.substring(i);
+        System.out.println(ans);
+        //---------------------------------
+        
+        //---------------------------------
+        // 2. StringBuilder
+        // var ans = new StringBuilder(S);
+        // ans.replace(i - 1, i, c);
+        // System.out.println(ans);
+        //---------------------------------
+        
+    }
+}
+/*文字列の文字を変更するような操作（破壊的な操作）のできない言語であっても、変更する文字の位置で元の文字列を分割したのち、それらを連結することで文字の挿入を再現することができます。
+答えとなる文字列は次の通りになります。
+元の文字列の変更する文字の位置より前の部分 + 変更した文字 + 元の文字列の変更する文字の位置より後ろの部分*/
 
 // 文字列から数値への変換
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        //---------------------------------
+        // 1. Integer#parseInt
+        var S = sc.next();
+        System.out.println(Integer.parseInt(S) - 813);
+        //---------------------------------
+        
+        //---------------------------------
+        // 2. Scanner
+        // System.out.println(sc.nextInt() - 813);
+        //---------------------------------
+        
+    }
+}
+/*文字列を数値に変換する関数を利用・実装することで、計算をおこなってください。*/
 
 // 数値から文字列への変換
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        var X = sc.nextInt();
+        var Y = sc.nextInt();
+        var N = sc.nextInt();
+        
+        System.out.println(String.valueOf(X + Y).charAt(N - 1));
+    }
+}
+/*数値の各桁の数字を取り出す操作は大変になってしまうので、X + Y の結果を数値から文字列に変換するように考えましょう。*/
 
 // 大文字から小文字への変換
 
