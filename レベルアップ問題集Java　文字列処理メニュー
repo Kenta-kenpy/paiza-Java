@@ -220,10 +220,34 @@ public class Main {
 /*数値の各桁の数字を取り出す操作は大変になってしまうので、X + Y の結果を数値から文字列に変換するように考えましょう。*/
 
 // 大文字から小文字への変換
+import java.util.*;
 
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        var S = sc.next();
+
+        System.out.println(S.toLowerCase());
+    }
+}
+/*文字列を小文字に変換する関数を利用・実装するなどするして変換を行います。*/
 
 // 小文字から大文字への変換
+import java.util.*;
 
+public class Main {
+
+    public static void main(String... args) {
+        Scanner sc = new Scanner(System.in);
+
+        var S = sc.next();
+
+        System.out.println(S.toUpperCase());
+    }
+}
+/*文字列を大文字に変換する関数を利用・実装するなどするして変換を行います。*/
 
 // 大文字小文字の反転
 
