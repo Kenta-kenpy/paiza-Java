@@ -250,19 +250,113 @@ public class Main {
 /*文字列を大文字に変換する関数を利用・実装するなどするして変換を行います。*/
 
 // 大文字小文字の反転
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        var S = sc.next().toCharArray();
+        
+        for (char c : S) {
+            if (Character.isUpperCase(c)) {
+                System.out.print(Character.toLowerCase(c));
+            } else {
+                System.out.print(Character.toUpperCase(c));
+            }
+        }
+        
+        System.out.println();
+    }
+}
+/*各言語について、大文字小文字を判定・変換する関数などを利用・実装して変換を行ってください。*/
 
 // 文字列の検索
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        var S = sc.next();
+        var T = sc.next();
+        
+        if (S.indexOf(T) == -1) {
+            System.out.println("NO");
+        } else {
+            System.out.println("YES");
+        }
+    }
+}
+/*部分文字列の検索の関数を利用・実装することで判定をおこなってください。
+|S| < |T| のとき明らかに条件を満たさないことに注意してください。*/
 
 // 文字列の反転
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        var S = new StringBuilder(sc.next());
+
+        System.out.println(S.reverse());
+    }
+}
+/*文字列を反転させる関数を利用・実装することで、反転を行ってください。*/
 
 // 回文判定
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        var S = sc.next();
+        var T = (new StringBuilder(S)).reverse();
+
+        if (S.equals(T.toString())) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+        
+    }
+}
+/*回文は前から読んでも後ろから読んでも同じ文字列のことなので、元の文字列とそれを反転した文字列 が一致するとその文字列が回文であると判定することができます。
+文字列を反転させる関数を利用・実装することで、元の文字列と反転後の文字列を比較することで回文か判定してください。*/
     
 // 文字列の分割
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        //-------------------------------------
+        // 1. String#split
+        var S = sc.next().split(",");
+        for (var ele : S) {
+            System.out.println(ele);
+        }
+        //-------------------------------------
+        
+        //-------------------------------------
+        // 2. Scanner#useDelimiter
+        // sc.useDelimiter(",");
+        // while (sc.hasNext()) {
+        //     System.out.println(sc.next());
+        // }
+        //-------------------------------------
+    }
+}
+/*文字列分割の関数や、部分文字列の関数を実装・使用して区切った後の文字列を出力してください。
+最後の要素の出力を忘れないようにしてください。*/
     
 // 日時データの変換その1
 
