@@ -359,16 +359,115 @@ public class Main {
 最後の要素の出力を忘れないようにしてください。*/
     
 // 日時データの変換その1
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        var S = sc.next();
+        
+        System.out.println(S.substring(0, 4));
+        System.out.println(S.substring(5, 7));
+        System.out.println(S.substring(8, 10));
+        System.out.println(S.substring(11, 13));
+        System.out.println(S.substring(14));
+    }
+}
+/*区切りの文字などに気を取られがちですが、どの文字からどの文字までが何を表すのかが決まっているのでその通りに部分文字列を出力したり、文字列の分割を行ったりすれば良いです。
+各文字と情報の対応は次の通りになっています。
+1-4 文字め 年
+6-7 文字め 月
+9-10 文字め 日
+12-13 文字め 時
+15-16 文字め 分*/
 
 // 日時データの変換その2
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        var S1 = sc.next();
+        var S2 = sc.next();
+        
+        System.out.println(S1.substring(0, 4));
+        System.out.println(S1.substring(5, 7));
+        System.out.println(S1.substring(8, 10));
+        System.out.println(S2.substring(0, 2));
+        System.out.println(S2.substring(3, 5));
+    }
+}
+/*区切りの文字などに気を取られがちですが、どの文字からどの文字までが何を表すのかが決まっているので、その通りに部分文字列を出力したり、文字列の分割を行ったりすれば良いです。
+各文字と情報の対応は次の通りになっています。
+1-4 文字め 年
+6-7 文字め 月
+9-10 文字め 日
+12-13 文字め 時
+15-16 文字め 分
+間に半角スペースがあるので、半角スペースまたは改行区切りで入力を受け取るタイプの関数を使っている場合は、文字列を 2 つ用意するなどの工夫が必要です。
+その場合の各文字と情報の対応は次の通りになります。
+1 つ目の文字列の 1-4 文字め 年
+1 つ目の文字列の 6-7 文字め 月
+1 つ目の文字列の 9-10 文字め 日
+2 つ目の文字列の 1-2 文字め 時
+2 つ目の文字列の 4-5 文字め 分*/
 
 // 数値判定
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        var S = sc.next().toCharArray();
+        for (var c : S) {
+            if (!Character.isDigit(c)) {
+                System.out.println("NO");
+                return;
+            }
+        }
+        System.out.println("YES");
+    }
+}
+/*文字列の各文字について、0 ... 9　かどうかを各言語に合わせた方法で判定してください。*/
     
 // 重複の削除
+import java.util.*;
+import java.util.stream.*;
 
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        //-------------------------------------
+        // 1. Set
+        var S = sc.next().toCharArray();
+        var set = new HashSet<Character>();
+        for (var ele : S) {
+            if (!set.contains(ele)) {
+                set.add(ele);
+                System.out.print(ele);
+            }
+        }
+        System.out.println();
+        //-------------------------------------
+
+        //-------------------------------------
+        // 2. Stream
+        // Arrays.stream(sc.next().split("")).distinct().forEach(System.out::print);
+        // System.out.println();
+        //-------------------------------------
+    }
+}
+/*先頭から順に S の各文字について、既に現れたかどうかを判定し、
+「1 回めの出現の場合、答えである文字列の末尾にその数字を追加する」
+という処理を繰り返すことでこの問題を解くことができます。*/
 
 // パスワード作成
 
