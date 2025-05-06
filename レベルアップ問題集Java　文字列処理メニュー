@@ -470,21 +470,354 @@ public class Main {
 という処理を繰り返すことでこの問題を解くことができます。*/
 
 // パスワード作成
+import java.util.*;
+import java.util.stream.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        var N = sc.nextInt();
+        var Q = sc.nextInt();
+        var n = new int[Q];
+        var c = new String[Q];
+        
+        for (var i = 0; i < Q; i++) {
+            n[i] = sc.nextInt();
+            c[i] = sc.next();
+            n[i]--;
+        }
+        
+        var C = sc.next();
+        
+        var ans = new StringBuilder();
+        
+        for (var i = 0; i < N; i++) {
+            for (var j = 0; j < Q; j++) {
+                if (i == n[j]) {
+                    ans.append(c[j]);
+                    break;
+                }
+                if (j == (Q - 1)) {
+                    ans.append(C);
+                }
+            }
+        }
+        
+        System.out.println(ans);
+        
+    }
+}
+/*パスワードの 1 文字目から順に検証しながら、答えとなる文字列の後ろに 1 文字ずつ足していくという方針で上手く実装することができます。
+1 ≦ i ≦ N の i について
+i が n[i] のいずれかであった場合
+パスワードの i 文字目を c[i] にする。（末尾に c[i] を追加する）
+それ以外の場合
+パスワードの i 文字目を C にする。（末尾に C を追加する）
+既定の文字列を作成するような問題の場合、初めに文字列を用意して、そこに文字を追加していき文字列を作成すると楽なことが多いです。
+N 文字のパスワードを全探索すると実行時間制限に間に合わなくなってしまうので気をつけてください。*/
 
 // 表記の訂正
+import java.util.*;
+import java.util.stream.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        var S = sc.next();
+        
+        var nonzero = -1;
+        var nopoint = true;
+        
+        for (var i = S.length() - 1; 0 <= i; i--) {
+            if (S.charAt(i) == '.') {
+                nopoint = false;
+            } else if (S.charAt(i) != '0') {
+                nonzero = i;
+            }
+        }
+        
+        if (nopoint) {
+            if (nonzero == -1) {
+                System.out.println(S.charAt(0));
+            } else {
+                System.out.println(S.substring(nonzero));
+            }
+            return;
+        }
+        
+        var ans = new StringBuilder();
+        var start = 0;
+        
+        for (var i = 0; i < S.length(); i++) {
+            if (S.charAt(i) != '0') {
+                if (S.charAt(i) == '.') {
+                    ans.append("0");
+                }
+                start = i;
+                break;
+            }
+        }
+        
+        var until = true;
+        
+        for (var i = start; i < S.length(); i++) {
+            if (S.charAt(i) != '.') {
+                ans.append(S.charAt(i));
+            } else {
+                if (until) {
+                    ans.append(S.charAt(i));
+                    until = false;
+                }
+            }
+        }
+        
+        var last = 0;
+        
+        for (var i = 0; i < ans.length(); i++) {
+            if (ans.charAt(i) != '0') {
+                last = i;
+            }
+        }
+        
+        System.out.println(ans.substring(0, last + 1));
+        
+    }
+}
+/*ミスの種類は 3 つありますが、 1 つずつ丁寧に判別していきましょう。
+まずは数値が小数かどうかを「文字列に . が含まれるかどうか」で判定しましょう。
+条件 1 「先頭に必要のない 0 がいくつかついてしまう」
+文字列が整数のとき
+先頭の不要な 0 を取りのぞければ良いので、一番左の 0 でない数字以降の数字を出力すれば良いです。
+全ての数字が 0 であるときには 0 を出力するような例外処理をしましょう。
+文字列が小数のとき
+12.345 のような整数部が 0 でない時は、上と同様にして処理することができます。
+0.123 のような場合は、小数点の位置を基準にして 0 を 1 つつけることで処理します。
+条件 2 「小数である数値の末尾に必要のない 0 がいくつかついてしまう」
+条件 1 を逆向きに利用します。
+最後の 0 でない数字以降の文字は全て 0 で不要であるから読み飛ばすという処理を行います。
+条件 3 「小数である数値に小数点が複数個ついてしまうただし、 1 つめの小数点の位置が正しい小数点の位置であるものとします」
+これは、文字列中に現れる小数点のうち、最初のもの以外を読み飛ばすことで実現できます。*/
     
 // 数式の計算(1桁)
+import java.util.*;
 
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        var S = sc.next();
+
+        var add = true;
+        var ans = 0;
+
+        for (var i = 0; i < S.length(); i++) {
+            if (i % 2 == 0) {
+                if (add) {
+                    ans += Character.digit(S.charAt(i), 10);
+                } else {
+                    ans -= Character.digit(S.charAt(i), 10);
+                }
+            } else {
+                if (S.charAt(i) == '+') {
+                    add = true;
+                } else {
+                    add = false;
+                }
+            }
+        }
+
+        System.out.println(ans);
+    }
+}
+/*問題を一気に考えずに、いくつかのステップに分けることが大切です。
+この問題を解くには次のようなステップが必要です。
+文字列を、数字を表す文字列と演算子を表す文字列に分ける。
+分けた後の数字を表す文字列を数値に変換したのち、演算子に従って計算を行う。
+数式に出てくる数値が全て 1 桁であるので、文字列 S には、各文字が （数値）（演算子）（数値）（演算子）...　といった順番で現れることがわかります。
+よって、0-index であるような文字列 S の各文字について、次のような処理を行うことで答えを求めることができます。
+S の i 文字目 (i % 2 == 0) を数値として覚えておき、i == 0 以外の時は、直前に出てきた演算子に従って計算を行う。
+S の i 文字目 (i % 2 == 1) を演算子として覚えておき、後ろに出てくる数値とセットで演算に用いる。
+なお、初めの数値の扱いに気をつけてください。
+計算の値を初期化するなり、0 + (最初の数値) と捉えるなどして、処理を行ってください。*/
 
 // 数式の計算
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        var S = sc.next();
+        
+        var now = 0;
+        var last = S.length();
+
+        for (var i = S.length() - 1; 0 <= i; i--) {
+            if (S.charAt(i) == '+'){
+                now += Integer.parseInt(S.substring(i + 1, last));
+                last = i;
+            } else if (S.charAt(i) == '-') {
+                now -= Integer.parseInt(S.substring(i + 1, last));
+                last = i;
+            }
+        }
+    
+        now += Integer.parseInt(S.substring(0, last));
+    
+        System.out.println(now);
+    }
+}
+/*問題を一気に考えずに、いくつかのステップに分けることが大切です。
+この問題を解くには次のようなステップが必要です。
+文字列を、数字を表す文字列と演算子を表す文字列に分ける。
+分けた後の数字を表す文字列を数値に変換したのち、演算子に従って計算を行う。
+1 つ目の処理は「指定の文字で文字列を分割する操作」であるので、文字列分割や部分文字列の処理を行えば良いです。
+2 つ目の処理は「文字列から数値への変換」の操作であるので、変換の処理を行ったのち、数値の直前についている演算子に従って普通の数値の計算を行えば良いです。*/
 
 // 巨大な数の足し算(繰り上がりなし)
+import java.util.*;
+import java.math.*;
 
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        //-------------------------------------
+        // 1. 解説通り
+        var S = sc.next();
+        var T = sc.next();
+        
+        var ans = new StringBuilder();
+        for (var i = 0; i < S.length(); i++){
+            ans.append(String.valueOf((Character.digit(S.charAt(i), 10) + Character.digit(T.charAt(i), 10))));
+        }
+        
+        System.out.println(ans);
+        //-------------------------------------
+        
+        //-------------------------------------
+        // 2. BigInteger
+        // var S = new BigInteger(sc.next());
+        // var T = new BigInteger(sc.next());
+        // System.out.println(S.add(T));
+        //-------------------------------------
+    }
+}
+/*S , T を数値として扱うとオーバーフローが発生します。
+そこで、S , T をそれぞれ文字列として受け取り計算を行います。
+今回の計算では、繰り上がりはおこらないので S + T の答え ans の各桁の値 ans[i] について次の関係が成り立ちます。
+ans[i] = S[i] + T[i] この計算を愚直に文字列 → 数値の変換を用いて行えば良いです。
+答えとなる値も数値として扱うことはできないので、答えとなる数字も文字列として扱うことでこの問題を解くことができます。*/
 
 // 巨大な数の足し算
+import java.math.*;
+import java.util.*;
 
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        //-------------------------------------
+        // 1. 解説通り
+        var S = sc.next();
+        var T = sc.next();
+
+        var add = 0;
+        var up = 0;
+        var ans = new StringBuilder();
+
+        for (var i = S.length() - 1; 0 <= i; i--) {
+            add =
+                Character.digit(S.charAt(i), 10) +
+                Character.digit(T.charAt(i), 10) +
+                up;
+            up = add / 10;
+            ans.append(add % 10);
+        }
+
+        if (0 < up) {
+            ans.append(up);
+        }
+
+        System.out.println(ans.reverse());
+        //-------------------------------------
+
+        //-------------------------------------
+        // 2. BigInteger
+        // var S = new BigInteger(sc.next());
+        // var T = new BigInteger(sc.next());
+        // System.out.println(S.add(T));
+        //-------------------------------------
+    }
+}
+/*S , T を数値として扱うとオーバーフローが発生します。
+そこで、S , T を それぞれ文字列として受け取り計算を行います。
+また、答えとなる値も数値として扱うことはできないので、答えとなる数字も文字列として扱う必要があります。
+今回の計算では、繰り上がりはおこる可能性があるので S + T の答え ans の各桁の計算結果である ans[i] について次の関係が成り立ちます。
+ans[i] = S[i] + T[i] + (下位からの繰り上がり）
+10 <= ans[i] の時、繰り上がりが発生します。
+上位の桁への繰り上がりは ans[i] の 10 の位、すなわち ans[i]/10
+計算結果のその桁の答えとなる数字は ans[i] の 1 の位、すなわち ans[i]%10 です。
+繰り上がりの値を保持して計算を行うことで、順に繰り上がりを処理することができます。
+繰り上がりは下位の位から順に発生するので、下位から順に足し算を行う必要があります。
+最上位の桁の計算結果に注意する必要があります。
+最上位の桁の足し算で繰り上がりが発生した場合、最後にその繰り上がりの数字を新たに答えに追加する必要があるので気をつけてください。
+例) 345 + 785 = `1`130*/
 
 // 巨大な数のかけ算
+import java.util.*;
+import java.math.*;
+
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        //-------------------------------------
+        // 1. 解説通り
+        var S = sc.next();
+        var T = sc.nextInt();
+        var add = 0;
+        var ans = new StringBuilder();
+
+        if (T == 0) {
+            System.out.println(0);
+            return;
+        }
+
+        for (var i = S.length() - 1; 0 <= i; i--){
+            var x = (Character.digit(S.charAt(i), 10)) * T + add;
+            add = x / 10;
+            ans.append(x % 10);
+        }
+    
+        if (0 < add) {
+            ans.append(add);
+        }
+
+        System.out.println(ans.reverse());
+        //-------------------------------------
+        
+        //-------------------------------------
+        // 2. BigInteger
+        // var S = new BigInteger(sc.next());
+        // var T = new BigInteger(sc.next());
+        // System.out.println(S.multiply(T));
+        //-------------------------------------
+    }
+}
+/*普通に S を数値として計算を行うとオーバーフローが発生します。
+そこで、S を文字列として受け取り、かけ算の処理を各桁ごとに分割します。
+小さい位から順に、各桁の数字について S[i]*T を行って順に繰り上がりの処理を行います。
+計算結果を数値として格納することもできないので、計算結果の各桁の数字を文字列として覚えておきます。
+文字列から数値、数値から文字列の変換が重要な操作になります。
+どちらかに考えを引っ張られることなく、柔軟に変換ができることを意識してください。
+T == 0 の時は、答えが 0....0 の形式になってしまうので、例外的に処理してください。*/
