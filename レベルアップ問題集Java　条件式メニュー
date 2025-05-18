@@ -1,10 +1,86 @@
 <文字列の比較>
 step1 比較演算子：==
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int A = scanner.nextInt();
+        int B = scanner.nextInt();
+        System.out.println(A == B ? 1 : 0);
+    }
+}
+
 step2 比較演算子：!=
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int A = scanner.nextInt();
+        int B = scanner.nextInt();
+        System.out.println(A != B ? 1 : 0);
+    }
+}
+
 step3 比較演算子：<
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int A = scanner.nextInt();
+        int B = scanner.nextInt();
+        System.out.println(A < B ? 1 : 0);
+    }
+}
+
 step4 比較演算子：<=
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int A = scanner.nextInt();
+        int B = scanner.nextInt();
+        System.out.println(A <= B ? 1 : 0);
+    }
+}
+
 step5 式の比較
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int A = scanner.nextInt();
+        int B = scanner.nextInt();
+        int C = scanner.nextInt();
+        int D = scanner.nextInt();
+        System.out.println((A + B) == (C * D) ? 1 : 0);
+    }
+}
+
 final 文字列の比較
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        String S = scanner.next();
+        String T = scanner.next();
+
+        System.out.println(S.equals(T));
+    }
+}
+/*比較演算子 == は多くの場合、数値の比較だけでなく文字列などの比較にも利用できます。
+ただし、Java など一部の言語では文字列の比較に比較演算子 == を用いると意図した結果にならない場合があるため注意が必要です。
+Java では == で文字列の比較を正しく行うことができないため、代わりに equals メソッドを使う必要があります。
+以下の順で処理をおこないます。
+文字列 S, T を標準入力より受け取る
+条件式 S == T の真偽を出力する
+　　Java など一部の言語では、各言語に用意されている文字列の比較用の演算子・メソッドなどを使う必要があります。*/
 
 <論理演算子の組み合わせ 3>
 step1 AND 演算子
