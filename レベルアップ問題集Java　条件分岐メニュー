@@ -1,0 +1,23 @@
+<0が含まれていないか判定>
+step1 単純な条件分岐
+step2 数値の分岐
+step3 数値演算結果で分岐
+step4 ゼロ以外
+final 0が含まれていないか判定
+
+<AND+OR>
+step1 AND
+step2 大文字判定
+step3 OR
+step4 NOT
+step5 AND+NOT
+final AND+OR
+
+<FizzBuzz>
+step1 3の倍数判定
+step2 2つの倍数判定
+step3 偶奇の判定
+step4 曜日の判定
+final FizzBuzz
+
+<積の最小化>
