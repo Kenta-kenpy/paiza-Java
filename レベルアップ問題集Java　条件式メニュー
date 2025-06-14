@@ -84,9 +84,200 @@ Java では == で文字列の比較を正しく行うことができないた�
 
 <論理演算子の組み合わせ 3>
 step1 AND 演算子
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // A, B, C, D の入力を受け取りますわ
+        int A = scanner.nextInt();
+        int B = scanner.nextInt();
+        int C = scanner.nextInt();
+        int D = scanner.nextInt();
+        
+        // （A と B が等しい）かつ（C と D が等しい）条件を判定いたします
+        if ((A == B) && (C == D)) {
+            System.out.println(1);
+        } else {
+            System.out.println(0);
+        }
+        
+        scanner.close();
+    }
+}
+/*Scanner を用いて A, B, C, D を空白区切りで入力いたします。
+(A == B) && (C == D) の条件式で、両方の比較が成り立つかどうかを判定いたします。
+条件が真なら 1、偽なら 0 を出力いたします。*/
+
 step2 OR 演算子
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // A, B, C, D を入力いたしますの
+        int A = scanner.nextInt();
+        int B = scanner.nextInt();
+        int C = scanner.nextInt();
+        int D = scanner.nextInt();
+        
+        // （A と B が等しい）または（C と D が等しい）を判定いたします
+        if ((A == B) || (C == D)) {
+            System.out.println(1);
+        } else {
+            System.out.println(0);
+        }
+        
+        scanner.close();
+    }
+}
+/*Scanner を使って整数 A, B, C, D を順に読み取ります。
+|| （論理 OR）で、A と B が等しいか、または C と D が等しいかを判定いたします。
+条件が真なら 1、偽なら 0 を出力いたします。*/
+
 step3 NOT 演算子
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // A と B を読み取りますわ
+        int A = scanner.nextInt();
+        int B = scanner.nextInt();
+        
+        // NOT 演算子を使って (A == B) の反対を評価いたしますの
+        if (!(A == B)) {
+            System.out.println(1);
+        } else {
+            System.out.println(0);
+        }
+        
+        scanner.close();
+    }
+}
+/*!(A == B) により、A と B が等しい場合は偽、等しくない場合は真となります。
+出力は条件が真なら 1、偽なら 0。*/
+
 step4 NOT 演算子 2
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // A, B, C, D を読み取りますの
+        int A = scanner.nextInt();
+        int B = scanner.nextInt();
+        int C = scanner.nextInt();
+        int D = scanner.nextInt();
+
+        // NOT を用いた条件式ですわ
+        boolean result = !( (A == B) && (C == D) );
+
+        // 真偽を 1 または 0 で出力いたします
+        if (result) {
+            System.out.println(1);
+        } else {
+            System.out.println(0);
+        }
+
+        scanner.close();
+    }
+}
+/*!( (A == B) && (C == D) ) により、両方の条件が真のときだけ偽、それ以外は真でございます。
+出力は条件が真なら 1、偽なら 0。*/
+
 step5 論理演算子の組み合わせ
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // A, B, C, D を読み取りますの
+        int A = scanner.nextInt();
+        int B = scanner.nextInt();
+        int C = scanner.nextInt();
+        int D = scanner.nextInt();
+
+        // 論理 AND を2つ用いた条件式でございます
+        boolean result = (A == B) && (B == C) && (C == D);
+
+        // 出力いたしますの
+        if (result) {
+            System.out.println(1);
+        } else {
+            System.out.println(0);
+        }
+
+        scanner.close();
+    }
+}
+/*条件式は A == B && B == C && C == D の形で、比較演算を正しく繋げております。
+A == B == C == D のように連続で == を並べるのは Java では無効ですので、このように分けるのが正統派でございます。
+出力は真なら 1、偽なら 0。*/
+
 step6 論理演算子の組み合わせ 2
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // A, B, C, D を読み取ります
+        int A = scanner.nextInt();
+        int B = scanner.nextInt();
+        int C = scanner.nextInt();
+        int D = scanner.nextInt();
+
+        // AND と OR の組み合わせで条件式を作成いたします
+        boolean result = ((A == B) && (C == D)) || ((A == C) && (B == D));
+
+        // 出力いたしますわ
+        if (result) {
+            System.out.println(1);
+        } else {
+            System.out.println(0);
+        }
+
+        scanner.close();
+    }
+}
+/*条件式は
+((A == B) && (C == D)) || ((A == C) && (B == D))
+と書くことで、二つの条件のどちらか一方、または両方が真であれば真となります。
+出力は問題のご指示通り、真のときは 1、偽のときは 0 にいたしました。*/
+
 final 論理演算子の組み合わせ 3
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // A, B, C, D を読み取ります
+        int A = scanner.nextInt();
+        int B = scanner.nextInt();
+        int C = scanner.nextInt();
+        int D = scanner.nextInt();
+
+        // 正しい条件式: (A == B || C == D) && (A == C)
+        boolean result = ( (A == B) || (C == D) ) && (A == C);
+
+        // 出力
+        if (result) {
+            System.out.println(1);
+        } else {
+            System.out.println(0);
+        }
+
+        scanner.close();
+    }
+}
+/*AND より OR を先に評価する必要がございますので、
+((A == B) || (C == D)) && (A == C) と括弧をきちんと付けてございますわ。
+
+出力はご指定の通り、1 または 0 に整えてございますの。*/
