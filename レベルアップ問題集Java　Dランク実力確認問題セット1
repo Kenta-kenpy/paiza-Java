@@ -1,0 +1,220 @@
+// ダウンロード(Easy)
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 入力値の読み込み
+        int S = scanner.nextInt(); // 総ファイル数
+        int A = scanner.nextInt(); // 各ファイルのサイズ (MB)
+        int T = scanner.nextInt(); // ダウンロード済みファイル数
+        
+        // 総ダウンロード済みデータ量
+        int alreadyDownloaded = T * A;
+        // 総データ量
+        int allData = S * A;
+        
+        // 進捗率計算（小数点以下切り捨て）
+        int progress = (100 * alreadyDownloaded) / allData;
+        
+        // 結果出力
+        System.out.println(progress);
+        
+        scanner.close();
+    }
+}
+/*このプログラムは、ダウンロード進捗率を計算し、整数（小数点以下切り捨て）で出力するものでございます。
+与えられたファイルの総数・ファイルサイズ・ダウンロード済みのファイル数を元に、全体の何パーセントが完了したかを計算いたしますの。
+
+🌸 各部分の説明
+1️⃣ import java.util.Scanner;
+標準入力から値を読み取るための Scanner クラスをインポートしております。これでユーザーの入力を受け付ける準備が整いますわ。
+
+2️⃣ public class Main {
+Java プログラムのエントリポイントとなるクラスでございます。プログラムはこの Main クラスの中の main メソッドから始まりますの。
+
+3️⃣ public static void main(String[] args) {
+プログラムの実行開始地点であり、ここから処理が順に進みますわ。
+
+4️⃣ Scanner scanner = new Scanner(System.in);
+キーボード入力を受け取るための Scanner オブジェクトを生成しております。これで標準入力からデータを受け取れるようになりますの。
+
+5️⃣ int S = scanner.nextInt();
+最初の入力値（総ファイル数 S）を読み取って整数として保存いたしますわ。
+
+6️⃣ int A = scanner.nextInt();
+次の入力値（ファイルサイズ A MB）を読み取りますの。
+
+7️⃣ int T = scanner.nextInt();
+最後の入力値（ダウンロードが終わったファイル数 T）を読み取ります。
+
+8️⃣ int alreadyDownloaded = T * A;
+ダウンロード済みのデータ量（MB）を計算します。
+これは「ダウンロード済みファイル数 × ファイルサイズ」で求めますの。
+
+9️⃣ int allData = S * A;
+全ファイルのデータ量（MB）を計算します。
+こちらも「総ファイル数 × ファイルサイズ」で求めますの。
+
+🔟 int progress = (100 * alreadyDownloaded) / allData;
+進捗率を計算いたします。
+ダウンロード済みのデータ量を全データ量で割り、100を掛けて百分率に直しますの。
+Java の整数演算ですので、小数点以下は自動的に切り捨てられますわ。
+
+1️⃣1️⃣ System.out.println(progress);
+計算した進捗率を標準出力に表示いたします。余計な文字や空白は一切なく、条件に合った形で結果だけが表示されますの。
+
+1️⃣2️⃣ scanner.close();
+使い終わった Scanner を閉じて、リソースをきちんと解放いたします。お行儀の良いコードでございますわね。*/
+
+// オリンピックのスコア
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int[] S = new int[5];
+        
+        // 得点の読み込み
+        for (int i = 0; i < 5; i++) {
+            S[i] = scanner.nextInt();
+        }
+
+        // 初期値を設定
+        int max = -1;         // 最大値探索用
+        int min = 1000000000; // 最小値探索用（十分大きな値）
+        int sum = 0;          // 総和
+
+        // 最大・最小・総和を同時に計算
+        for (int i = 0; i < 5; i++) {
+            sum += S[i];
+
+            if (S[i] > max) {
+                max = S[i];
+            }
+
+            if (S[i] < min) {
+                min = S[i];
+            }
+        }
+
+        // 最終得点（最大値・最小値を引く）
+        int finalScore = sum - max - min;
+
+        System.out.println(finalScore);
+
+        scanner.close();
+    }
+}
+/*1️⃣ 標準入力から 5 つの整数を読み込み、配列 S に格納いたします。
+これで審査員の得点が揃います。
+
+2️⃣ max, min, sum の初期化
+・max は最小値から開始（-1）
+・min は十分に大きい値（10^9）から開始
+・sum は総和を計算するため 0 にいたします。
+
+3️⃣ ループで最大値・最小値・総和を一度に求めます
+各得点を見て、必要があれば最大値・最小値を更新し、総和に加算します。
+
+4️⃣ 最大値・最小値を除外した総和を計算し、出力いたします。
+余計な文字や空行は一切なく、条件に忠実です。*/
+
+// 次のごはん
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // 入力値の読み込み
+        int H = scanner.nextInt();
+        int M = scanner.nextInt();
+
+        // 判定
+        if (7 <= H && H <= 12) {
+            System.out.println("lunch");
+        } else if (13 <= H && H <= 18) {
+            System.out.println("dinner");
+        } else {
+            System.out.println("breakfast");
+        }
+
+        scanner.close();
+    }
+}
+/*1️⃣ Scanner で標準入力から H（時）、M（分）を受け取ります。
+例: 23 56 のような入力です。
+
+2️⃣ 条件分岐で次のごはんを判定いたします。
+
+7 <= H <= 12 の場合は次が昼ごはん(lunch)。
+
+13 <= H <= 18 の場合は次が晩ごはん(dinner)。
+
+それ以外の時間（つまり、19時以降または0時から6時まで）は次が朝ごはん(breakfast)。
+
+3️⃣ 最後に結果を余計な文字や空行なく、1行だけ出力します。
+
+4️⃣ scanner.close(); でリソースを閉じてます。*/
+
+// ダウンロード(Hard)
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int[] A = new int[5];   // 各ファイルのサイズ
+        String[] T = new String[5]; // 各ファイルのダウンロード状況
+
+        // ファイルサイズの入力
+        for (int i = 0; i < 5; i++) {
+            A[i] = scanner.nextInt();
+        }
+
+        // 改行文字の読み飛ばし
+        scanner.nextLine();
+
+        // ダウンロード状況の入力
+        T = scanner.nextLine().split(" ");
+
+        int alreadyDownloaded = 0;  // ダウンロード済みデータ量の総和
+        int allDownloaded = 0;      // 全データ量の総和
+
+        // 総データ量計算
+        for (int i = 0; i < 5; i++) {
+            allDownloaded += A[i];
+        }
+
+        // ダウンロード済みデータ量の計算
+        for (int i = 0; i < 5; i++) {
+            if (T[i].equals("o")) {
+                alreadyDownloaded += A[i];
+            }
+        }
+
+        // 進捗率の計算（小数点以下切り捨て）
+        int progress = (100 * alreadyDownloaded) / allDownloaded;
+
+        // 出力
+        System.out.println(progress);
+
+        scanner.close();
+    }
+}
+/*1️⃣ 最初にファイルサイズ5つの入力を読み取ります。
+→ A[i] に格納いたします。
+
+2️⃣ 次にダウンロード状況の入力を読み取ります。
+→ 空白区切りの文字列を split(" ") で配列 T に格納します。
+
+3️⃣ 全データ量の総和を計算いたします。
+
+4️⃣ ダウンロード済みのデータ量を計算いたします。
+→ 各 T[i] が "o" のとき、そのファイルサイズを足し込みます。
+
+5️⃣ 進捗率を整数で計算し、出力いたします。
+→ (100 * alreadyDownloaded) / allDownloaded にて小数点以下切り捨ての整数値が得られます。*/
