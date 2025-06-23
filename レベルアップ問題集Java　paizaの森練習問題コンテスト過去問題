@@ -1550,12 +1550,129 @@ public class Main {
 
 // paizaの森練習問題コンテスト過去問題12　★
 // Q.　文字列の一致
-// Q.　部分文字列
-// Q.　グラフの連結
-// Q.　拡張子
-// Q.　日程調整
+import java.util.Scanner;
+import java.util.TreeMap;
 
-// paizaの森練習問題コンテスト過去問題13　★
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String a = sc.nextLine();
+        String b = sc.nextLine();
+        System.out.println(a.equals(b) ? "Yes" : "No");
+    }
+}
+
+// Q.　部分文字列
+import java.util.Scanner;
+import java.util.TreeMap;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String a = sc.nextLine();
+        String b = sc.nextLine();
+        System.out.println(a.contains(b) ? "Yes" : "No");
+    }
+}
+
+// Q.　グラフの連結
+import java.util.Scanner;
+import java.util.TreeMap;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        boolean[][] t = new boolean[3][3];
+        for (int i = 0; i < n; i++) {
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            t[a][b] = t[b][a] = true;
+        }
+        System.out.println(t[0][2] || t[0][1] && t[1][2] ? "Yes" : "No");
+    }
+}
+
+// Q.　拡張子
+import java.util.Scanner;
+import java.util.TreeMap;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.nextLine();
+        int idx_jpg = s.indexOf(".jpg");
+        int idx_png = s.indexOf(".png");
+        if (idx_png == -1) {
+            System.out.println(idx_jpg);
+        } else if (idx_jpg == -1) {
+            System.out.println(idx_png);
+        } else if (idx_jpg < idx_png) {
+            System.out.println(idx_jpg);
+        } else {
+            System.out.println(idx_png);
+        }
+    }
+}
+
+// Q.　日程調整
+import java.lang.Math;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int l1 = sc.nextInt();
+        int r1 = sc.nextInt();
+        int l2 = sc.nextInt();
+        int r2 = sc.nextInt();
+        System.out.println(
+            Math.max(0, Math.min(r1, r2) - Math.max(l1, l2) + 1)
+        );
+    }
+}
+
+// Q.  プレゼントの好み
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int[] a = new int[n + 1];
+        int ma = -1;
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+            if (ma < a[i]) {
+                ma = a[i];
+            }
+        }
+        for (int i = 0; i < k; i++) {
+            int b = sc.nextInt();
+            b--;
+            if (a[b] == ma) {
+                System.out.println("Yes");
+                return;
+            }
+        }
+        System.out.println("No");
+    }
+}
+
+問題コンテスト過去問題13　★
 // Q.　先頭が一致
 // Q.　合計と平均
 // Q.　二等辺三角形
