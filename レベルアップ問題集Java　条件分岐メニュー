@@ -21,3 +21,12 @@ step4 曜日の判定
 final FizzBuzz
 
 <積の最小化>
+step1 けた数の測定
+step2 足したり引いたり
+step3 同値判定
+step4 終了判定
+step5 終了判定2
+step6 池の周回
+step7 崖に落ちるか判定
+step8 タイルの敷き詰め
+final 積の最小化
