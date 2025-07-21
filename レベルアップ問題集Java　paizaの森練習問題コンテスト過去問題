@@ -1674,11 +1674,163 @@ public class Main {
 
 問題コンテスト過去問題13　★
 // Q.　先頭が一致
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String a = scanner.nextLine().trim();
+        String b = scanner.nextLine().trim();
+
+        // b の先頭に a が現れるか
+        if (b.startsWith(a)) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+
+        // a の先頭に b が現れるか
+        if (a.startsWith(b)) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
 // Q.　合計と平均
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int sum = 0;
+        for (int i = 0; i < n; i++) sum += sc.nextInt();
+
+        int avg = sum / n;
+
+        System.out.println(sum);
+        System.out.println(avg);
+    }
+}
+
 // Q.　二等辺三角形
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+
+        if (a == b || b == c || c == a) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
 // Q.　飽き性
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        System.out.println(Math.min(a, b) + " " + Math.abs(a - b) / 2);
+    }
+}
+
 // Q.　占い その2
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            int tmp = sc.nextInt();
+            sum += tmp;
+        }
+        if (sum % 7 == 0) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
 // Q.  連結判定
+import java.util.*;
+
+public class Main {
+    static ArrayList<ArrayList<Integer>> graph;
+    static boolean[] visited;
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); // 頂点数
+        int m = sc.nextInt(); // 辺の数
+
+        // 隣接リストの初期化
+        graph = new ArrayList<>();
+        for (int i = 0; i <= n; i++) {
+            graph.add(new ArrayList<>());
+        }
+
+        // 辺の情報を格納（無向グラフなので双方向に追加）
+        for (int i = 0; i < m; i++) {
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            graph.get(a).add(b);
+            graph.get(b).add(a);
+        }
+
+        visited = new boolean[n + 1];
+        dfs(1); // 頂点1から探索開始
+
+        // すべての頂点が訪問されているか確認（1からnまで）
+        for (int i = 1; i <= n; i++) {
+            if (!visited[i]) {
+                System.out.println("No");
+                return;
+            }
+        }
+        System.out.println("Yes");
+    }
+
+    // 深さ優先探索
+    static void dfs(int v) {
+        visited[v] = true;
+        for (int u : graph.get(v)) {
+            if (!visited[u]) {
+                dfs(u);
+            }
+        }
+    }
+}
+/*標準入力やリスト操作などに必要なユーティリティクラス（Scanner, ArrayList など）を読み込む。Javaのエントリーポイント（実行開始点）となるクラス Main を宣言します。
+graph は隣接リスト形式のグラフ構造（頂点ごとの隣接頂点を格納）です。visited は各頂点をすでに訪問したかを記録する 真偽値配列 です。入力を受け取るための Scanner インスタンスを作成します。
+最初の入力行から、頂点数 n と辺の数 m を受け取ります。グラフの構造を初期化します。graph.get(i) は、頂点 i に隣接する頂点を格納するリストです。添字が 1 から n を使えるように、0 番目も空で確保します。
+各辺の情報を受け取り、無向グラフとして graph に追加していきますわ。a から b へ、また b から a への接続を双方向に登録いたします。自己ループ（a = b）や多重辺もそのまま追加して問題ございません。頂点番号に対応した訪問記録配列 visited を初期化いたします。
+デフォルトで全て false（未訪問）となりますの。頂点1から、深さ優先探索（DFS）を開始します。この操作によって、1から到達できるすべての頂点が visited に記録されますわ。
+DFSの後、頂点1〜nまでを確認し、1つでも未訪問の頂点があれば「No」と出力して終了します。これは「どこか孤立した頂点がある」ことを意味し、グラフが非連結であると判断されます。
+すべての頂点が訪問済みであれば、グラフは連結であると判断し、「Yes」を出力いたします。こちらがDFSの本体でございます。頂点 v を訪問済みにしたうえで、隣接する頂点 u に対して再帰的に探索を行います。
+すでに訪問済みの頂点はスキップして、無限ループを回避しております。*/
 
 // paizaの森練習問題コンテスト過去問題14　★
 // Q.　回文
