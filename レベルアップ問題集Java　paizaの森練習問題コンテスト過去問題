@@ -1834,7 +1834,29 @@ DFSの後、頂点1〜nまでを確認し、1つでも未訪問の頂点があ�
 
 // paizaの森練習問題コンテスト過去問題14　★
 // Q.　回文
+import java.util.Scanner;
+import java.util.TreeMap;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+        for (int i = 0; i < s.length() / 2; i++) {
+            if (s.charAt(i) != s.charAt(s.length() - 1 - i)) {
+                System.out.println("No");
+                return;
+            }
+        }
+
+        System.out.println("Yes");
+    }
+}
+
 // Q.　区間の三分割
+
+
 // Q.　割り切れる数の個数
 // Q.　パイプを切る
 // Q.　好みのピザ
