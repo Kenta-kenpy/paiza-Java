@@ -2548,11 +2548,185 @@ public class Main {
 
 // paizaの森練習問題コンテスト過去問題18　★
 // Q.　値の整列
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] a = new int[4];
+        for (int i = 0; i < 4; i++) {
+            a[i] = sc.nextInt();
+        }
+        Arrays.sort(a);
+        for (int i = 0; i < 4; i++) {
+            System.out.println(a[i]);
+        }
+    }
+}
+
 // Q.  シープラスプラスプラス
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        System.out.print("C");
+        for (int i = 0; i < n; i++) {
+            System.out.print("+");
+        }
+        System.out.println();
+    }
+}
+
 // Q.  大晦日
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String date = sc.nextLine();
+        int y = Integer.parseInt(date.substring(0, 4));
+        int m = Integer.parseInt(date.substring(5, 7));
+        int d = Integer.parseInt(date.substring(8, 10));
+        if (m == 12 && d == 31) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
 // Q.  背の順に並んでいるか
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        int[] b = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = b[i] = sc.nextInt();
+        }
+
+        Arrays.sort(a);
+
+        boolean yes = true;
+        for (int i = 0; i < n; i++) {
+            if (a[i] != b[i]) {
+                yes = false;
+            }
+        }
+
+        if (yes) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
 // Q.  遠足のお菓子
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int x = sc.nextInt();
+
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += sc.nextInt();
+        }
+
+        if (sum <= x) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
 // Q.  陣取りゲーム
+import java.util.*;
+
+public class Main {
+    static int H, W;
+    static char[][] grid;
+    static Queue<int[]> queueA = new LinkedList<>();
+    static Queue<int[]> queueB = new LinkedList<>();
+    static int[] dx = {1, -1, 0, 0};
+    static int[] dy = {0, 0, 1, -1};
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        H = sc.nextInt();
+        W = sc.nextInt();
+        String firstPlayer = sc.next();
+        sc.nextLine();
+
+        grid = new char[H][W];
+        for (int i = 0; i < H; i++) {
+            String line = sc.nextLine();
+            for (int j = 0; j < W; j++) {
+                grid[i][j] = line.charAt(j);
+                if (grid[i][j] == 'A') queueA.add(new int[]{i, j});
+                if (grid[i][j] == 'B') queueB.add(new int[]{i, j});
+            }
+        }
+
+        boolean turnA = firstPlayer.equals("A");
+
+        while (!queueA.isEmpty() || !queueB.isEmpty()) {
+            if (turnA) {
+                queueA = expand(queueA, 'A');
+            } else {
+                queueB = expand(queueB, 'B');
+            }
+            turnA = !turnA; // プレイヤー交代
+        }
+
+        int countA = 0, countB = 0;
+        for (int i = 0; i < H; i++) {
+            for (int j = 0; j < W; j++) {
+                if (grid[i][j] == 'A') countA++;
+                if (grid[i][j] == 'B') countB++;
+            }
+        }
+
+        System.out.println(countA + " " + countB);
+        System.out.println(countA > countB ? "A" : "B");
+    }
+
+    static Queue<int[]> expand(Queue<int[]> queue, char player) {
+        Queue<int[]> next = new LinkedList<>();
+        while (!queue.isEmpty()) {
+            int[] cur = queue.poll();
+            for (int k = 0; k < 4; k++) {
+                int nx = cur[0] + dx[k];
+                int ny = cur[1] + dy[k];
+                if (nx < 0 || ny < 0 || nx >= H || ny >= W) continue;
+                if (grid[nx][ny] == '.') {
+                    grid[nx][ny] = player;
+                    next.add(new int[]{nx, ny});
+                }
+            }
+        }
+        return next;
+    }
+}
 
 // paizaの森練習問題コンテスト過去問題19　★
 // Q.  paiza2025
