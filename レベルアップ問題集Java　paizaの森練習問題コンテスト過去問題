@@ -2376,11 +2376,175 @@ public class Main {
 
 // paizaの森練習問題コンテスト過去問題17　★
 // Q.　最大値と最小値
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        System.out.println(Math.max(a, Math.max(b, c)));
+        System.out.println(Math.min(a, Math.min(b, c)));
+    }
+}
+
 // Q.  神経衰弱
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] cards = new int[4];
+        for (int i = 0; i < 4; i++) {
+            cards[i] = sc.nextInt();
+        }
+        Arrays.sort(cards);
+
+        if (cards[0] == cards[1] && cards[2] == cards[3]) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
 // Q.  じゃんけん(忖度)
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int y = sc.nextInt();
+        char h = sc.next().charAt(0);
+
+        String rps = "RPS";
+        int ansIndex = rps.indexOf(h);
+
+        if (y < 10) {
+            ansIndex--;
+        } else {
+            ansIndex++;
+        }
+
+        ansIndex = (ansIndex + 3) % 3;
+
+        System.out.println(rps.charAt(ansIndex));
+    }
+}
+
 // Q.  n→10進法
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        String a = sc.next();
+        int ans = Integer.parseInt(a, n);
+
+        System.out.println(ans);
+    }
+}
+
 // Q.  お菓子の価格帯
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+        int q = sc.nextInt();
+        for (int t = 0; t < q; t++) {
+            int ans = 0;
+            int l = sc.nextInt();
+            int r = sc.nextInt();
+            for (int i = 0; i < n; i++) {
+                if (l <= a[i] && a[i] <= r) ans++;
+            }
+            System.out.println(ans);
+        }
+    }
+}
+
 // Q.  ぴったり卵を生産 その2
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        long k = sc.nextLong();
+        long[] a = new long[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextLong();
+        }
+
+        ArrayList<Long> P = new ArrayList<Long>();
+        for (int bit = 0; bit < (1 << n / 2); bit++) {
+            long sum = 0;
+            for (int j = 0; j < n / 2; j++) {
+                if ((1 & bit >> j) == 1) {
+                    sum += a[j];
+                }
+            }
+            P.add(sum);
+        }
+        ArrayList<Long> Q = new ArrayList<Long>();
+        for (int bit = 0; bit < (1 << n - n / 2); bit++) {
+            long sum = 0;
+            for (int j = 0; j < n - n / 2; j++) {
+                if ((1 & bit >> j) == 1) {
+                    sum += a[j + n / 2];
+                }
+            }
+            Q.add(sum);
+        }
+
+        Collections.sort(Q);
+        ArrayList<Long> Q_mi = new ArrayList<Long>();
+        for (int i = 0; i < Q.size(); i++) {
+            Q_mi.add(-Q.get(i));
+        }
+        Collections.sort(Q_mi);
+        long ans = 0;
+        for (int i = 0; i < P.size(); i++) {
+            int pos1 = ~Collections.binarySearch(
+                Q,
+                k - P.get(i),
+                (x, y) -> x.compareTo(y) >= 0 ? 1 : -1
+            );
+            if (pos1 < Q.size() && Q.get(pos1) == k - P.get(i)) {
+                int pos2 =
+                    Q_mi.size() -
+                    1 -
+                    ~Collections.binarySearch(
+                        Q_mi,
+                        -(k - P.get(i)),
+                        (x, y) -> x.compareTo(y) >= 0 ? 1 : -1
+                    );
+                ans += pos2 - pos1 + 1;
+            }
+        }
+        System.out.println(ans);
+    }
+}
 
 // paizaの森練習問題コンテスト過去問題18　★
 // Q.　値の整列
