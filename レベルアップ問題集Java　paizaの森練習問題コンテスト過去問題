@@ -2181,11 +2181,198 @@ public class Main {
 
 // paizaの森練習問題コンテスト過去問題16　★
 // Q.　3つの数
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println(8);
+        System.out.println(1);
+        System.out.println(3);
+    }
+}
+
 // Q.　税込価格
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int p = sc.nextInt();
+        char s = sc.next().charAt(0);
+        if (s == 'T') {
+            System.out.println((int)(p * 1.1));
+        } else {
+            System.out.println((int)(p * 1.08));
+        }
+    }
+}
+
 // Q.　パターン検出
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // N 個の文字列
+        int N = sc.nextInt();
+        sc.nextLine(); // 改行を読み飛ばす
+
+        String[] S = new String[N];
+        for (int i = 0; i < N; i++) {
+            S[i] = sc.nextLine();
+        }
+
+        // 判定対象の文字列 T
+        String T = sc.nextLine();
+
+        boolean found = false;
+
+        for (int i = 0; i < N; i++) {
+            if (T.contains(S[i])) {
+                found = true;
+                break;
+            }
+        }
+
+        System.out.println(found ? "Yes" : "No");
+
+        sc.close();
+    }
+}
+
 // Q.　連続ホームラン
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();  // n 打席に 1 度
+        int m = sc.nextInt();  // m 打席連続
+
+        // 確率計算
+        double probability = Math.pow(1.0 / n, m);
+
+        // 誤差許容 → 小数点以下6桁程度で出力
+        System.out.printf("%.6f%n", probability);
+    }
+}
+
 // Q.　辞書順で 3 番目に小さい文字列
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        String s = sc.next();
+        
+        char[] chars = s.toCharArray();
+        Arrays.sort(chars);  // 最小の辞書順に並べ替え
+        int count = 1; // 現在の順列の順位（1番目）
+        
+        while (count < 3) {
+            nextPermutation(chars);
+            count++;
+        }
+        
+        System.out.println(new String(chars));
+    }
+    
+    // 次の辞書順の順列を生成する
+    static boolean nextPermutation(char[] arr) {
+        int i = arr.length - 2;
+        while (i >= 0 && arr[i] >= arr[i + 1]) {
+            i--;
+        }
+        if (i < 0) {
+            return false; // 最後の順列
+        }
+        
+        int j = arr.length - 1;
+        while (arr[j] <= arr[i]) {
+            j--;
+        }
+        
+        swap(arr, i, j);
+        
+        // i+1 以降を反転
+        reverse(arr, i + 1, arr.length - 1);
+        
+        return true;
+    }
+    
+    static void swap(char[] arr, int i, int j) {
+        char temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    
+    static void reverse(char[] arr, int start, int end) {
+        while (start < end) {
+            swap(arr, start++, end--);
+        }
+    }
+}
+
 // Q.  村人の友好関係(easy)
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+        int Q = sc.nextInt();
+
+        int[][] friendship = new int[N + 1][N + 1];
+
+        // 友好度を読み込む
+        for (int i = 0; i < M; i++) {
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            int f = sc.nextInt();
+            friendship[a][b] = f;
+            friendship[b][a] = f;
+        }
+
+        // 同好会メンバーを管理
+        Set<Integer> group = new HashSet<>();
+
+        // ログを処理
+        for (int i = 0; i < Q; i++) {
+            String op = sc.next();
+            int q = sc.nextInt();
+            if (op.equals("+")) {
+                group.add(q);
+            } else {
+                group.remove(q);
+            }
+        }
+
+        // グループが空か全員 → 人気度 0
+        if (group.size() == 0 || group.size() == N) {
+            System.out.println(0);
+            return;
+        }
+
+        // 人気度を計算
+        int maxFriendship = 0;
+        for (int inMember : group) {
+            for (int outMember = 1; outMember <= N; outMember++) {
+                if (!group.contains(outMember)) {
+                    maxFriendship = Math.max(maxFriendship, friendship[inMember][outMember]);
+                }
+            }
+        }
+
+        System.out.println(maxFriendship);
+    }
+}
 
 // paizaの森練習問題コンテスト過去問題17　★
 // Q.　最大値と最小値
