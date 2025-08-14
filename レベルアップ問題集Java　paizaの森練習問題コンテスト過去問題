@@ -2730,8 +2730,190 @@ public class Main {
 
 // paizaの森練習問題コンテスト過去問題19　★
 // Q.  paiza2025
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println("paiza2025");
+    }
+}
+
 // Q.  ABCカウント
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int a = 0;
+        int b = 0;
+        int c = 0;
+        for (int i = 0; i < n; i++) {
+            char chr = sc.next().charAt(0);
+            if (chr == 'A') {
+                a++;
+            } else if (chr == 'B') {
+                b++;
+            } else if (chr == 'C') {
+                c++;
+            }
+        }
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
+    }
+}
+
 // Q.  円卓のk番目
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+
+        System.out.println((k - 1) % n + 1);
+    }
+}
+
 // Q.  素数
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        Boolean res = true;
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) res = false;
+        }
+        if (res) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
 // Q.  視界の広さ
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int h = sc.nextInt();
+        int w = sc.nextInt();
+        char[][] s = new char[h][w];
+
+        for (int i = 0; i < h; i++) {
+            s[i] = sc.next().toCharArray();
+        }
+
+        int ai = -1, aj = -1;
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                if (s[i][j] == 'A') {
+                    ai = i;
+                    aj = j;
+                }
+            }
+        }
+
+        // 南
+        for (int i = ai + 1; i < h; i++) {
+            if (s[i][aj] == '.') {
+                s[i][aj] = 'V';
+            } else {
+                break;
+            }
+        }
+
+        // 北
+        for (int i = ai - 1; i >= 0; i--) {
+            if (s[i][aj] == '.') {
+                s[i][aj] = 'V';
+            } else {
+                break;
+            }
+        }
+
+        // 東
+        for (int j = aj + 1; j < w; j++) {
+            if (s[ai][j] == '.') {
+                s[ai][j] = 'V';
+            } else {
+                break;
+            }
+        }
+
+        // 西
+        for (int j = aj - 1; j >= 0; j--) {
+            if (s[ai][j] == '.') {
+                s[ai][j] = 'V';
+            } else {
+                break;
+            }
+        }
+
+        for (int i = 0; i < h; i++) {
+            System.out.println(s[i]);
+        }
+    }
+}
+
 // Q.  集合体の数
+import java.util.Scanner;
+
+public class Main {
+
+    static final int[] di = { 0, 1, 0, -1 };
+    static final int[] dj = { -1, 0, 1, 0 };
+
+    static int h, w;
+    static char[][] s;
+
+    static void fill(char c, int ci, int cj) {
+        s[ci][cj] = '.';
+        for (int k = 0; k < 4; k++) {
+            int i = ci + di[k];
+            int j = cj + dj[k];
+            if (0 <= i && i < h && 0 <= j && j < w && s[i][j] == c) {
+                fill(c, i, j);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        h = sc.nextInt();
+        w = sc.nextInt();
+        s = new char[h][w];
+
+        for (int i = 0; i < h; i++) {
+            s[i] = sc.next().toCharArray();
+        }
+
+        int connected_components = 0;
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                if (s[i][j] != '.') {
+                    fill(s[i][j], i, j);
+                    connected_components++;
+                }
+            }
+        }
+
+        System.out.println(connected_components);
+    }
+}
