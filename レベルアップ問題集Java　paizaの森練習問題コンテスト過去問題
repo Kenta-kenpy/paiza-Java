@@ -2021,11 +2021,163 @@ public class Main {
 
 // paizaの森練習問題コンテスト過去問題15　★
 // Q.　出力の練習
+public class Main {
+    public static void main(String[] args) {
+        // 好きな文字列をここに記入します
+        String favorite = "test";
+        
+        // 1行で出力
+        System.out.println(favorite);
+    }
+}
+
 // Q.　red があるか調べてみよう
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 1行の文字列を読み込む
+        String line = sc.nextLine();
+        
+        // 半角スペースで分割して配列にする
+        String[] words = line.split(" ");
+        
+        // "red" が含まれるかチェック
+        boolean found = false;
+        for (String word : words) {
+            if (word.equals("red")) {
+                found = true;
+                break;
+            }
+        }
+        
+        // 結果出力
+        System.out.println(found ? "Yes" : "No");
+
+        sc.close();
+    }
+}
+
 // Q.　階乗
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 整数 n を1行で読み込む
+        int n = sc.nextInt();
+        int factorial = 1;
+
+        // 1からnまで掛け算
+        for (int i = 1; i <= n; i++) {
+            factorial *= i;
+        }
+
+        // 結果を1行で出力
+        System.out.println(factorial);
+
+        sc.close();
+    }
+}
+
 // Q.　単語のカウント
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 入力行を読み込む
+        String line = sc.nextLine();
+        String[] words = line.split(" ");
+
+        // 出現順を保持する LinkedHashMap を使用
+        Map<String, Integer> countMap = new LinkedHashMap<>();
+
+        for (String word : words) {
+            countMap.put(word, countMap.getOrDefault(word, 0) + 1);
+        }
+
+        // 出現順に出力
+        for (Map.Entry<String, Integer> entry : countMap.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+
+        sc.close();
+    }
+}
+
 // Q.　倍数の存在
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // a, b, c を読み込む
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+
+        // b 以上の最小の a の倍数
+        int minMultiple = ((b + a - 1) / a) * a;
+
+        // その倍数が c 以下なら Yes、そうでなければ No
+        if (minMultiple <= c) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+
+        sc.close();
+    }
+}
+
 // Q.  全員が不正答
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // n: 問題数, m: 生徒数
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        int[][] answers = new int[m][n];
+
+        // 生徒ごとの解答を読み込む
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                answers[i][j] = sc.nextInt();
+            }
+        }
+
+        boolean allIncorrectExists = false;
+
+        // 各問題ごとにチェック
+        for (int j = 0; j < n; j++) {
+            boolean allIncorrect = true;
+            for (int i = 0; i < m; i++) {
+                if (answers[i][j] == 1) { // 正答者がいれば
+                    allIncorrect = false;
+                    break;
+                }
+            }
+            if (allIncorrect) {
+                allIncorrectExists = true;
+                break;
+            }
+        }
+
+        System.out.println(allIncorrectExists ? "Yes" : "No");
+
+        sc.close();
+    }
+}
 
 // paizaの森練習問題コンテスト過去問題16　★
 // Q.　3つの数
