@@ -299,10 +299,164 @@ x と y の少なくとも一方が 10 未満であった場合 (上記の if �
 
 <FizzBuzz>
 step1 3の倍数判定
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        if (n % 3 == 0) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+        sc.close();
+    }
+}
+/*整数Nが 3 の倍数か判定します。
+Nが 3 の倍数である、というのはNを 3 で割ったあまりが 0 であることと同義です。たとえばC++の場合はn % 3 == 0と条件式を記述すればよいです。
+他にも、Nが非常に大きい場合(具体的には 10^{ 1,000 } など)、Nが 3 の倍数である条件として各けたの和が 3 の倍数であることを利用する解法もありますが、ここでは割愛します。
+「n が 3 の倍数か」は「n は 3 で割り切れるか」で考えます。
+n が 3 で割り切れるとき (n を 3 で割った余りが 0 のとき) n は 3 の倍数です。
+Java では n を r で割った余りは n % r で表します。
+よって今回は if(n % 3 == 0) とすることで処理を適切に分岐できます。*/
+
 step2 2つの倍数判定
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        if (n % 3 == 0 && n % 5 == 0) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+        sc.close();
+    }
+}
+/*整数Nが 3 の倍数かつ 5 の倍数か判定します。
+Nが 3 の倍数とはNを 3 で割ったあまりが 0 であるということです。
+また同様に、Nが 5 の倍数とはNを 5 で割ったあまりが 0 であるということです。
+この 2 つの条件を両方満たすときYESと出力する必要があるため、論理積(&&)で 2 つの条件式をつなげればよいです。
+また、「整数Nが 3 の倍数かつ 5 の倍数」というのは「整数Nが 15 の倍数」と同義であるため、n % 15 == 0と記述してもよいです。
+3 の倍数 かつ 5 の倍数 である整数は 3 で割っても 5 で割っても余りは 0 です。
+よって今回は if(n % 3 ==0 && n % 5 == 0) とすることで処理を適切に分岐できます。*/
+
 step3 偶奇の判定
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        int even = 0;
+        for (int x : a) {
+            if (x % 2 == 0) {
+                even += 1;
+            }
+        }
+        System.out.println(even + " " + (n - even));
+
+        sc.close();
+    }
+}
+/*まず、ある数Mが奇数かどうか判定します、これはMを 2 で割ったあまりが 1 のとき、Mは奇数です。
+同じように、Mを 2 で割ったあまりが 0 のとき、Mは偶数です。数列 a を整数型の配列で受け取ります。
+偶数の要素数を保持する変数 even を用意します。
+for 文を使って配列の各要素についての以下の 【処理】 を行います。
+【処理】
+配列の要素が偶数か判定する
+if 文は if(x % 2 == 0) が挙げられる
+偶数だったとき、even に +1 する
+奇数の数は n-even で求めることができます。*/
+
 step4 曜日の判定
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int x = sc.nextInt();
+
+        if (x % 7 == 1) {
+            System.out.println("Sun");
+        } else if (x % 7 == 2) {
+            System.out.println("Mon");
+        } else if (x % 7 == 3) {
+            System.out.println("Tue");
+        } else if (x % 7 == 4) {
+            System.out.println("Wed");
+        } else if (x % 7 == 5) {
+            System.out.println("Thu");
+        } else if (x % 7 == 6) {
+            System.out.println("Fri");
+        } else {
+            System.out.println("Sat");
+        }
+
+        sc.close();
+    }
+}
+/*曜日は 7 日で周期になっています。たとえば 1 日が日曜日なら 8 日も日曜日です。
+これにより、X日は 7 で割った値によって曜日を確認することができます。
+1 日が日曜日の場合、ある特定の日の曜日は 7 で割ったあまりが、 0 の場合は土曜日、 1 の場合は日曜日、 2 の場合は月曜日、 3 の場合は火曜日、 4 の場合は水曜日、 5 の場合は木曜日、 6 の場合は金曜日となります。
+1 週間は 7 日なので、7 日間隔で曜日が回ってきます。
+よって、x を 7 で割ったときの余りで x 日は何曜日かを知ることができます。
+この問題では 1 日が日曜日なので 7 で割って 1 余る日付が日曜日になります。
+この要領で全ての曜日と余りを対応づけると解答コードのような条件分岐が出来上がります。*/
+
 final FizzBuzz
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        if (n % 3 == 0 && n % 5 == 0) {
+            System.out.println("FizzBuzz");
+        } else if (n % 3 == 0) {
+            System.out.println("Fizz");
+        } else if (n % 5 == 0) {
+            System.out.println("Buzz");
+        } else {
+            System.out.println(n);
+        }
+
+        sc.close();
+    }
+}
+/*今回の問題の分岐は 4 つです。
+3 で割りきれる場合
+5 で割りきれる場合
+3 でも 5 でも割り切れる場合
+上記のどれでもない場合
+これを区別して、条件分岐をする必要があります。まず、 3 でも 5 でも割り切れる場合というのは、言い換えると 15 で割り切れる場合のことです。
+3 で割りきれるかどうかはというのは、 3 で割ったあまりが 0 かどうかで判定することができます。
+最初に if(n % 3 == 0 && n % 5 == 0) の判定に通します。
+なぜかというと、この判定の前に if(n % 3 == 0) や if(n % 5 == 0) の判定に通すとそこで引っかかってしまって「3 の倍数 かつ 5 の倍数」の判定をすることができなくなるからです。
+よって if(n % 3 == 0 && n % 5 == 0) の判定を最初に通します。
+この次に続く if(n % 3 == 0) と if(n % 5 == 0) の判定の順番はどちらでも構いません。
+最後にどの判定にも引っかからなかったとき (else 節) の処理を用意すれば解けます。
+また、「3 の倍数 かつ 5 の倍数」は「15 の倍数」と同値なので if(n % 3 == 0 && n % 5 == 0) は if(n % 15 == 0) とすることもできます。*/
 
 <積の最小化>
 step1 けた数の測定
