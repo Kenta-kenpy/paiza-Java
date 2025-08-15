@@ -1,17 +1,301 @@
 <0が含まれていないか判定>
 step1 単純な条件分岐
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+        if (s.equals("paiza")) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+        sc.close();
+    }
+}
+
 step2 数値の分岐
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        if (n <= 100) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+        sc.close();
+    }
+}
+/*n = sc.nextInt() で標準入力を整数型で受け取ります。
+n が 100 以下であるか、は if(n <= 100) の条件分岐で判定します。
+<= は左辺が右辺以下であるか、を判定したいときに使います。*/
+
 step3 数値演算結果で分岐
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+
+        if (a * b <= c) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+        sc.close();
+    }
+}
+/*以下の順で処理をおこないます。
+整数A, B, Cを標準入力より受け取る
+A × B ≦ C か判定する
+a * b <= cという式は条件式なので、多くの言語ではif文の中にそのまま記述することができます。たとえば、Pythonの場合はif a * b <= c:と、条件式の中で計算させるよう記述することができます。
+方針の通り、if 文の中に計算式と条件式を書きます。a * b <= c が今回の条件式として挙げられます。*/
+
 step4 ゼロ以外
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        if (n == 0) {
+            System.out.println("NO");
+        } else {
+            System.out.println("YES");
+        }
+
+        sc.close();
+    }
+}
+/*Nが 0 以外かどうか判定します。
+Nが 0 以外かどうか判定するためには、まずNが 0 かどうか判定できればよいです。よって、Nが 0 の場合はNOを、そうではない場合はYESを出力すればよいです。
+方針の通り、入力される整数が 0 か判定して true のときに "NO" を、false のときに "YES" を出力するように書きます。*/
+
 final 0が含まれていないか判定
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        for (int x : a) {
+            if (x == 0) {
+                System.out.println("NO");
+                sc.close();
+                return;
+            }
+        }
+
+        System.out.println("YES");
+
+        sc.close();
+    }
+}
+/*整数列の中に 0 が含まれていないかどうか判定します。
+0 が含まれていない場合はtrue, 含まれている場合はfalseとなる変数を初期値trueで用意しておきます。数列の値をひとつひとつみて、その値が 0 であったらその変数の値をfalseに変更します。
+もう 1 つ解法があります。今回はNおよびAの各要素の値が小さいです。よってAのすべての要素を掛け算した値が 0 かどうかで、 0 が含まれていないか判定することができます。
+数列 a を整数型の配列で受け取ったあとに 0 が含まれているか判定します。
+0 が含まれているかは for 文で各要素が 0 と等しいかを確かめて判定します。
+1 つでも 0 と等しい要素があった場合、NO を出力して return します。
+Java の関数の処理は return が実行された時点で終了します。
+return する前に sc.close() で Scanner を閉じることを忘れないで下さい。
+配列に 0 が含まれていなかった場合は if(x==0) {...} が実行されずにループを抜けるので "YES" が出力されます。*/
+
 
 <AND+OR>
 step1 AND
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        if (a >= 10 && b >= 10) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+        sc.close();
+    }
+}
+/*2 つの入力値が両方とも 10 以上か判定します。
+まずAが 10 以上かどうか判定するにはa >= 10または10 <= aと記述します。
+2 つの条件式の両方が条件を満たす場合はYESを出力したいので、その場合はAND記号を使用します。
+Java では「かつ」を表現するとき、&& を使います。
+また、「a が 10 以上」は a >= 10 で書きます。
+よって今回は if(a >= 10 && b >= 10) とすることで処理を適切に分岐させることができます。*/
+
 step2 大文字判定
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+
+        char c = s.charAt(0);
+        if (Character.isUpperCase(c)) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+        sc.close();
+    }
+}
+/*コンピュータ上では各文字に番号がついています。たとえばAの次はBで、Cの次はDのように定義されています。
+今回は大文字かどうか判定したいので、入力値がA以上Z以下である必要があります。
+A以上Z以下とは、言い換えると、入力値がA以上かつ入力値がZ以下である必要があります。
+また、言語によっては文字が大文字かどうか判定する関数があるので、それを使っても正解することができます。
+文字が大文字かどうかを判定するメソッドを使う方法です。
+Character クラスに char 型の値が大文字かどうかを判定する isUpperCase() メソッドがあるので、これを使います。*/
+
 step3 OR
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        if (a >= 10 || b >= 10) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+        sc.close();
+    }
+}
+/*「Aが 10 以上である」「Bが 10 以上である」それぞれの判定をおこない、少なくとも 1 つが成り立っていればYESと出力します。
+日本語の「少なくとも 1 つ」や「または」をプログラムにするにはOR記号を使用します。C++では||、Pythonではorを使用することで実現できます。
+Java では「または」を表現するとき、|| を使います。
+よって今回は if(a >= 10 || b >= 10) とすることで処理を適切に分岐させることができます。*/
+
 step4 NOT
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int x = sc.nextInt();
+        if (!(x >= 10)) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+        sc.close();
+    }
+}
+/*本問では「Xが 10 以上ではない」というやや複雑な条件式を作成する必要があります。
+「~ではない」という条件は後回しにして、まずは「Xは 10 以上」の条件式を書きましょう。C++ではx >= 10と記述できます。
+「~ではない」というのはNOT記号を使用すると実現できます。たとえばPythonではnot、C++では!を論理式の前に入れます。
+よって、C++では!(x >= 10)と記述すれば「Xが 10 以上ではない」という条件式を作成することができます。
+Java では「否定」を表現するとき、! を使います。
+! は直後のブール値を反転させます。
+よって今回は if(!(x >= 10)) とすることで処理を適切に分岐させることができます。*/
+
 step5 AND+NOT
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        if (a >= 10 && !(b >= 10)) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+        sc.close();
+    }
+}
+/*本問では「Aが 10 以上 かつ Bが 10 以上ではない」という複雑な条件式を作成する必要があります。
+ひとつひとつ分解して考えてみましょう。以下のプログラムはすべてC++です。
+「Aが 10 以上」というのはa >= 10と記述します。
+「Bが 10 以上ではない」というのは「Bが 10 以上」と「~ではない」に分解できます。
+「Bが 10 以上」というのはb >= 10と記述します。
+「Xではない」というのは!xと記述します。
+「かつ」というのは&&と記述します。
+これらより、条件式はa >= 10 && !(b >= 10)となります。方針の通りに条件式を作ると a >= 10 && !(b >= 10) になります。
+以下で部分ごとに説明します。a >= 10 は 「a が 10 以上」!(b >= 10) は「b が 10 以上ではない」*/
+
 final AND+OR
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int x = sc.nextInt();
+        int y = sc.nextInt();
+        int z = sc.nextInt();
+
+        if (z >= 10) {
+            System.out.println("YES");
+        } else {
+            if (x >= 10 && y >= 10) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+        }
+
+        sc.close();
+    }
+}
+/*本問題は「Xが 10 以上かつYが 10 以上」か判定します。ただ、「Zが 10 以上の場合はXとYの値にかかわらず、必ずYESを出力してください。」という条件が少しややこしいと思います。
+「Zが 10 以上」の場合、「Xが 10 以上かつYが 10 以上」の条件は関係ないので、まずは「Zが 10 以上」かどうか判定します。仮に「Zが 10 以上」であった場合はYESを出力します。以下、「Zが 10 以上」ではない場合について考えます。
+「Zが 10 以上」ではない場合は「Xが 10 以上かつYが 10 以上」かどうか判定します。たとえばC++ではx >= 10 && y >= 10と記述します。
+上記よりこの問題が解けました。ですが、本問題はOR記号を用いることで 1 回だけの条件分岐で正解することもできます。
+具体的には(x >= 10 && y >= 10) || z >= 10のように記述します。これなら、「Zが 10 以上」を満たしている場合は、x >= 10 && y >= 10の結果にかかわらず条件式が真を返すことができます。
+z が 10 以上であれば x と y の値に関わらず "YES" を出力するので、まずは if(z >= 10) の条件分岐に通します。
+z が 10 以上でなかった場合 (上記の if 文の else 節) は x と y の値で "YES" を出力するか判定します。
+x と y が共に 10 以上であれば "YES" を出力するので、if(x >= 10 && y >= 10) の条件分岐に通します。
+x と y の少なくとも一方が 10 未満であった場合 (上記の if 文の else 節) は "NO" を出力します。*/
 
 <FizzBuzz>
 step1 3の倍数判定
