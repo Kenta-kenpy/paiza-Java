@@ -460,11 +460,203 @@ public class Main {
 
 <積の最小化>
 step1 けた数の測定
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        if (n <= 9) {
+            System.out.println(1);
+        } else if (n <= 99) {
+            System.out.println(2);
+        } else {
+            System.out.println(3);
+        }
+
+        sc.close();
+    }
+}
+/*Nのけた数を出力します。
+Nの大きさで以下のように場合わけします。
+Nが 9 以下の場合、答えは 1 です。
+Nが 10 以上 99 以下の場合、答えは 2 です。
+Nが 100 以上 999 以下の場合、答えは 3 です。
+入力値は 0 から 999 までの整数と問題文に書いてあるので、解答コードの else 節は else if(n <= 999) と同様の働きをします。*/
+
 step2 足したり引いたり
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        if (n + a + b == 0) {
+            System.out.println("YES");
+        } else if (n + a - b == 0) {
+            System.out.println("YES");
+        } else if (n - a + b == 0) {
+            System.out.println("YES");
+        } else if (n - a - b == 0) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+        sc.close();
+    }
+}
+/*本問題は N ± A ± B が 0 になるか判定する問題です。
+Nが 0 になる場合は全部で 4 通り考えられます。
+N + A + Bが 0 になる場合
+N + A - Bが 0 になる場合
+N - A + Bが 0 になる場合
+N - A - Bが 0 になる場合
+これらをすべて試して、どれかが 0 になる場合はYESを出力します。*/
+
 step3 同値判定
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        int[] b = new int[n];
+        for (int i = 0; i < n; i++) {
+            b[i] = sc.nextInt();
+        }
+
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            if (a[i] == b[i]) {
+                ans += 1;
+            }
+        }
+
+        System.out.println(ans);
+
+        sc.close();
+    }
+}
+/*A_i == B_iである要素の個数を計算します。
+まずは 2 つの配列を用意し、入力を受け取ります。
+次にループを用いて各要素が一緒かどうか比較し、一緒の場合は答え用の変数をカウントアップします。
+2 つの数列をそれぞれ整数型の配列で受け取ります。
+解を保持するために変数 ans を用意します。
+for 文を使って各要素が a[i] = b[i] であるかの判定に通します。
+a[i] == b[i] のとき ans を +1 します。*/
+
 step4 終了判定
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        int ans = 0;
+        for (int x : a) {
+            if (x % 2 == 1) {
+                break;
+            }
+            ans += x;
+        }
+
+        System.out.println(ans);
+
+        sc.close();
+    }
+}
+/*最も左にある奇数の要素の手前までの値の和を求める必要があります。
+これは言い換えると、数列の左から順に要素を見て、それが偶数の要素である間は答えに加算します。
+よって奇数・偶数の判定ができればこの問題が解けます。
+数列を整数型の配列で受け取ります。
+解を保持するために変数 ans を用意します。
+for 文で配列の各要素について以下の処理をします。
+【 処理 】
+if(x % 2 == 1) で要素が奇数か判定する
+奇数だった場合 break で for 文の処理を途中終了させる
+ans に要素を足す
+上記の処理において for 文内で if 文を最初に記述することで、奇数だった場合 ans と奇数の要素との足し算が行われないようにします。*/
+
 step5 終了判定2
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+
+        int m = 0;
+        while (n < k) {
+            n *= 2;
+            m += 1;
+        }
+
+        System.out.println(m);
+
+        sc.close();
+    }
+}
+/*NがK未満である間 2 倍し続け、 2 倍した回数を記録しておけばそれが答えです。
+ですが「NがK未満である間 2 倍し続け」の処理が少し難しいかと思います。
+しかし、C++やPythonなどではwhile文を用いて、while文の条件式を適切に設定すればよいです。
+たとえばPythonの場合はwhile n < k:でNがK未満である間、それより下の処理をおこなうことができるので、そこで「Nを 2 倍にする」、「答えを 1 加算する」をおこなえばよいです。
+何回繰り返し処理を行うか、がよく分からないとき、または求めるのが大変なとき、while 文は便利です。
+while 文は終了条件の否定を条件式に書くことで、終了条件が満たされるまで繰り返し処理を行うことができます。
+終了条件は「n が k 以上になったとき」なので、条件式は n < k が挙げられます。*/
+
 step6 池の周回
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int t = sc.nextInt();
+
+        if (k * t % n == 0) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+        sc.close();
+    }
+}
+/*1 周Nメートルの外周上を歩いて 1 ターンKメートル進めるときにTターン後ちょうど始点に戻っているかどうか判定します。
+まず、京子ちゃんはTターンで合計何メートル進むか計算します。 1 ターンでKメートル進むので、これはK * Tメートルです。
+また、京子ちゃんはNメートル進むごとに地点Pにいます。円の外周上を周るので、 1 周の距離であるNメートル進むと始点に戻るということです。
+よってTターンで進む距離K * TメートルがNの倍数かどうか、つまりNで割ったあまりが 0 かどうかでTターン後にちょうど始点にいるか判定できます。*/
+
 step7 崖に落ちるか判定
 step8 タイルの敷き詰め
 final 積の最小化
