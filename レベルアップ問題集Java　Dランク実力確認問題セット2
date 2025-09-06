@@ -1,0 +1,64 @@
+// 最初のメッセージ
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 標準入力を受け取るための Scanner を用意
+        Scanner sc = new Scanner(System.in);
+
+        // 1行を読み込み、空白で分割
+        String label = sc.next();  // "user_id:" 部分
+        String userId = sc.next(); // S 部分
+
+        // 所望の形式で出力
+        System.out.println("Hello " + userId + " !");
+    }
+}
+
+// 攻撃力の計算
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 標準入力から整数 N を読み込む
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        
+        // N を 5 回掛けた値（N^5）を計算
+        int result = (int) Math.pow(N, 5);
+        
+        // 結果を出力
+        System.out.println(result);
+    }
+}
+
+// 2ケタで表示
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        
+        // 2桁ゼロ埋めで出力
+        System.out.printf("%02d%n", N);
+    }
+}
+
+// N番目のアルファベット
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        
+        // 'A' は文字コード 65。N 番目のアルファベットは 'A' + (N - 1)
+        char result = (char)('A' + (N - 1));
+        
+        // 結果を出力
+        System.out.println(result);
+    }
+}
+
+
