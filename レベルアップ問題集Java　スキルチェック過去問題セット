@@ -46,6 +46,79 @@ public class Main {
 /*Scannerの使用: sc.nextInt() を使用して整数として入力を取得します。Integer.parseIntは文字列を整数に変換しますが、sc.nextInt()を使用すればそのまま整数を取得可能です。
 文字列の繰り返し: Javaでは*のような文字列の繰り返しにString.repeatメソッドを使用します。このメソッドは、指定した回数分文字列を繰り返して新しい文字列を生成します。*/
 
+// 宿泊の日程
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 入力を受け取るための Scanner を用意
+        Scanner sc = new Scanner(System.in);
+
+        // 1 行目: 休暇日数 n
+        int n = sc.nextInt();
+
+        // 2 行目: 移動日数 m
+        int m = sc.nextInt();
+
+        // 宿泊が必要な日数 = 休暇日数 - 移動日数
+        int result = n - m;
+
+        // 結果を1行で出力（末尾に改行）
+        System.out.println(result);
+
+        // Scanner を閉じる（メモリ節約）
+        sc.close();
+    }
+}
+/*Scanner で標準入力から2つの整数を読み取ります。
+宿泊日数は単純に n - m で計算します。
+最後は System.out.println() で出力するので、自動的に改行が入ります。*/
+
+// 水分補給
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 標準入力から整数 n を読み取る
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        // 15分ごとの飲水量(ml)
+        int per15min = 200;
+
+        // 必要な水の量 = (n ÷ 15) × 200
+        int capacity = (n / 15) * per15min;
+
+        // 結果を出力（末尾に改行）
+        System.out.println(capacity);
+
+        sc.close();
+    }
+}
+/*15分あたり200ml必要なので、
+必要量 = (n ÷ 15) ×200*/
+
+// 文字列の最後
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 標準入力から文字列Sを受け取る
+        Scanner sc = new Scanner(System.in);
+        String S = sc.nextLine();
+
+        // 最後の1文字を取得
+        char lastChar = S.charAt(S.length() - 1);
+
+        // 出力（末尾に改行）
+        System.out.println(lastChar);
+
+        sc.close();
+    }
+}
+/*入力文字列 S の長さは S.length() で取得できます。
+最後の1文字はインデックス S.length() - 1 で取得できます。*/
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 <Cランク>
 // 検索履歴
 import java.util.HashSet;
@@ -1309,3 +1382,120 @@ public class Main {
 開始タグと終了タグの間に文字列があればその部分を出力し、終了タグの後から次の開始タグを探し続けます。
 もし開始タグと終了タグの間に文字列がなければ <blank> を出力します。
 繰り返し処理: 次の開始タグを見つけるまで処理を繰り返します。*/
+
+// イルミネーション
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 1行目: N, M を読み取る
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+
+        // LED の明るさを保持する配列（0で初期化）
+        int[] leds = new int[N];
+
+        for (int i = 0; i < M; i++) {
+            int a = sc.nextInt(); // LED番号
+            int b = sc.nextInt(); // 明るさ
+
+            // LEDの明るさを更新（aは1始まりなのでa-1にする）
+            leds[a - 1] = b;
+
+            // すべてのLEDが点灯しているか確認
+            boolean allOn = true;
+            int sum = 0;
+            for (int j = 0; j < N; j++) {
+                if (leds[j] == 0) {
+                    allOn = false;
+                    break;
+                }
+                sum += leds[j];
+            }
+
+            // 初めて全て点灯した瞬間に出力して終了
+            if (allOn) {
+                System.out.println(sum);
+                sc.close();
+                return;
+            }
+        }
+
+        // 問題文に明記がないが、最後まで全点灯しない場合は出力なしのまま終了
+        sc.close();
+    }
+}
+/*入力の受け取り
+　最初に標準入力から、LED の個数 N と信号の回数 M を読み取ります。
+　次に、M 回繰り返しで「LED の番号 a_i」と「明るさ b_i」を読み取ります。
+
+LED の状態を管理する配列を用意
+　長さ N の整数配列 leds を用意して、最初はすべて 0（消灯状態）にしておきます。
+　これは LED ごとの現在の明るさを記録しておくためです。
+
+信号の処理（順番に更新）
+　M 回の信号を順に処理し、指定された LED の明るさを更新します。
+　入力で与えられる LED 番号は 1 から始まるので、配列のインデックスに合わせるために a_i - 1 の位置に b_i を代入します。
+
+全て点灯しているかチェック
+　信号を処理した直後に、LED 全部が点灯しているかどうか（すべての要素が 0 でないか）を調べます。
+　同時に、点灯している LED の明るさの合計も計算します。
+　もし一つでも 0 があれば「まだ全部点灯していない」と判断して、次の信号の処理に移ります。
+
+初めて全点灯した瞬間に出力
+　すべての LED が点灯していることが確認できたら、そのときの合計明るさを System.out.println() で出力して、プログラムを終了します。
+
+最後まで全点灯しなかった場合
+　問題文には明記がないため、最後まで全点灯しなかった場合は何も出力しないで終了します。*/
+
+// 数列の調査
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+        int[] A = new int[N];
+        for (int i = 0; i < N; i++) {
+            A[i] = sc.nextInt();
+        }
+
+        // 等差数列の判定
+        String ansArith = "Yes";
+        for (int i = 0; i < N - 2; i++) {
+            if (A[i + 2] - A[i + 1] != A[i + 1] - A[i]) {
+                ansArith = "No";
+                break;
+            }
+        }
+
+        // 等比数列の判定
+        String ansGeo = "Yes";
+        for (int i = 0; i < N - 2; i++) {
+            // 整数で比較（誤差回避）
+            if ((long) A[i + 2] * A[i] != (long) A[i + 1] * A[i + 1]) {
+                ansGeo = "No";
+                break;
+            }
+        }
+
+        System.out.println(ansArith);
+        System.out.println(ansGeo);
+
+        sc.close();
+    }
+}
+/*等差数列の判定
+　隣接項の差がすべて等しいかをチェックします。
+　
+A i+2 − A i+1 = A i+1 − Ai
+がすべての i (0 ≤ i ≤ N-3) で成り立つか確認します。
+
+等比数列の判定
+　浮動小数点で比を取ると誤差が出るので、整数のまま
+
+A i+2 × Ai = A i+1 × A i+1
+がすべての i で成り立つか確認します。*/
