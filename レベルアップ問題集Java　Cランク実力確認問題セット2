@@ -1,0 +1,143 @@
+// しりとり
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            // 入出力の準備
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            String line = br.readLine();  // 入力は1行のみ（S と T が空白区切りで与えられる）
+
+            if (line == null) {
+                // 万が一入力がない場合は NO を出して優雅に終了
+                System.out.println("NO");
+                return;
+            }
+
+            // トークナイズして S と T を取得
+            StringTokenizer st = new StringTokenizer(line);
+            if (!st.hasMoreTokens()) {
+                System.out.println("NO");
+                return;
+            }
+            String S = st.nextToken();
+
+            if (!st.hasMoreTokens()) {
+                System.out.println("NO");
+                return;
+            }
+            String T = st.nextToken();
+
+            // 仕様では英小文字かつ長さ >= 1 が保障されているが、安全にチェックする
+            if (S.length() == 0 || T.length() == 0) {
+                System.out.println("NO");
+                return;
+            }
+
+            // しりとり成立判定を行う（末尾文字と先頭文字を比較）
+            boolean result = isShiritori(S, T);
+
+            // 結果を出力（最後に改行あり）
+            System.out.println(result ? "YES" : "NO");
+
+        } catch (IOException e) {
+            // 入出力例外が発生したら NO として優雅に終える
+            System.out.println("NO");
+        }
+    }
+
+    /*S の末尾文字と T の先頭文字が同じかどうかを返します。*/
+    private static boolean isShiritori(String s, String t) {
+        char last = s.charAt(s.length() - 1);
+        char first = t.charAt(0);
+        return last == first;
+    }
+}
+
+// 投票サイト
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 標準入力から A, B を読み込む
+        Scanner sc = new Scanner(System.in);
+        int A = sc.nextInt();
+        int B = sc.nextInt();
+        sc.close();
+
+        // 比較して結果を出力
+        if (A > B) {
+            System.out.println(1);
+        } else if (A == B) {
+            System.out.println(0);
+        } else {
+            System.out.println(-1);
+        }
+    }
+}
+
+// 宿題管理
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 1行目：N（生徒数）とM（提出数の基準）を読み込む
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+
+        // 個別指導が必要な生徒の人数をカウントする変数
+        int count = 0;
+
+        // N 行分の提出数を順に読み込む
+        for (int i = 0; i < N; i++) {
+            int A = sc.nextInt(); // i番目の生徒の提出数
+            if (A <= M) {         // M 以下なら個別指導が必要
+                count++;
+            }
+        }
+
+        sc.close();
+
+        // 個別指導が必要な生徒の人数を出力
+        System.out.println(count);
+    }
+}
+/*1 行目で N と M をまとめて読み込みます。
+2 行目以降は for ループで生徒ごとの提出数を読み込み、基準 M 以下かどうかを判定してカウントします。
+最後にカウント結果を出力するだけのシンプルな構造です。*/
+
+// M件目の仕事
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 1行目：メンバー数 N と仕事数 M
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+        sc.nextLine(); // 改行を消費
+
+        // メンバー名を配列に格納
+        String[] members = new String[N];
+        for (int i = 0; i < N; i++) {
+            members[i] = sc.nextLine();
+        }
+
+        sc.close();
+
+        // M件目の担当者のインデックス（0始まり）
+        int index = (M - 1) % N;
+
+        // M件目の仕事を担当するメンバー名を出力
+        System.out.println(members[index]);
+    }
+}
+/*M件目の担当者は (M - 1) % N 番目のメンバーです。
+余計な文字や空行を出さないために、最後に System.out.println だけで出力します。
+nextLine() でメンバー名をきれいに読み込みます。*/
