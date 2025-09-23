@@ -1,42 +1,1233 @@
 <正則表現のエントリーポイント>
-// 正則表現のエントリーポイント D
+# 正則表現のエントリーポイント D
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.next();
+        String t = sc.next();
+
+        System.out.println(s + ";" + t);
+    }
+}
+/*改行で区切られた 2 つの単語の入力を受け取ります。
+受け取った 2 つの単語を 単語 1、単語 2 とすると、
+単語 1 と ; と 単語 2 をこの順で連結させます。*/
 
 <性能解析タイプセーフ>
-// 性能解析タイプセーフ C
+# 性能解析タイプセーフ C
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+        double K = sc.nextDouble();
+
+        int total = 0;
+        for (int i = 0; i < N; i++) {
+            double x = sc.nextDouble();
+            total += (int) Math.round(x * 10);
+        }
+
+        if (total % Math.round(K * 10) == 0) {
+            System.out.println(total / Math.round(K * 10));
+        } else {
+            System.out.println(total / Math.round(K * 10) + 1);
+        }
+    }
+}
+/*【 解答の流れ・考え方 】
+途中で 10 倍したり、直感的でない式が出てきたりしますが、後ほど説明します。
+まず、N と K を受け取ります。
+i=1 から i=N までの round(x_i*10) の合計値を求めます。round() は引数の数値を丸める関数だと考えてください。
+解は次の式で求められる整数部分です。
+(合計 + round(K*10)-1) / round(K*10)
+整数部分を出力することに注意してください。
+【 10 倍する理由 】
+コンピュータ内部では小数を完全に表現することができません。
+そのため、小数演算を繰り返すことで、誤差が発生することが多々あります。
+そこで、今回入力される小数の条件は小数点以下 1 桁の小数だということに注目して、小数を 10 倍することで、小数演算を回避します。
+【 丸める理由 】
+先述の通り、コンピュータ内部では小数を完全に表現することができません。
+そのため、単に 10 倍するだけでは、誤差が残ることがあります。
+そこで、丸めをおこない、その誤差に対応した整数を生成します。
+【 解を求める式について 】
+合計 / round(K*10) の整数部分を出力すると不正解になることがあります。
+この節では、問題点と解決策について説明します。
+【 ここで使う記号について 】
+X: 整数の被除数(割られる数)
+Y: 整数の除数(割る数)
+A: X / Y の整数部分
+C: X / Y の余り
+【 問題点 】
+これは、合計 / round(K*10) の小数部分を無視していることに起因します (式の答えが 1.1 のとき、経験値は 2 必要)
+【 解決策 】
+小数点以下を切り上げることができれば解決できます。
+方法を以下にいくつか示します。
+if 文を使う
+ceiling 関数を使う
+X に Y - 1 を足す
+3. で小数点以下の切り上げが実現できる理由を以下で説明します。
+まず、Y = 3 のとき、表にすると以下のようになります。
+X	2	3	4	5	6
+X / Y の整数部	0	1	1	1	2
+X + Y-1	4	5	6	7	8
+(X + Y-1) / Y の整数部	1	1	2	2	2
+この表から切り上げが成功しているように見えますが、以下で少し数学的に確認します。
+いま、以下の式が成立しています。
+X = A * Y + C
+両辺に Y - 1 を足します。
+X + Y - 1 = A * Y + C + Y - 1
+この式は C の値によって以下のように整理できます。(以下の式に出てくる D は式を整理したあとにでてくる新たな余りを意味します)
+C = 0 のとき: X + Y - 1 = A * Y + D
+C ≠ 0 のとき: X + Y - 1 = (A + 1) * Y + D
+(C ≠ 0 のとき、1 ≦ C ≦ Y-1 であるから、Y ≦ C + Y - 1 ≦ 2(Y - 1) であり、C + Y - 1 は Y でくくることができる)
+上記の D を余りとした式を Y で割ったときの商は、
+C = 0 のとき: A
+C ≠ 0 のとき: A + 1
+となるので、小数点以下の切り上げができることが確認できました。*/
 
 <例外処理のタブーサーチ>
-// step1 整数値の差 D
+step1 整数値の差 D
+import java.util.Scanner;
 
-// step2 数列の差 D
- 
-// step3 整数値の検索 C
+public class Main{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		
+		int a = sc.nextInt();
+		int b = sc.nextInt();
 
-// step4 数列の検索 C
+		System.out.println(b - a);
+	}
+}
+/*2 つの整数 a, b を受け取り、その差 b - a を計算して出力すれば良いです。*/
 
-// final 例外処理のタブーサーチ B
+step2 数列の差 D
+import java.util.Scanner;
+
+public class Main{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+
+		int n = sc.nextInt();
+
+		int[] a = new int[n];
+		for(int i = 0; i < n; i++){
+			a[i] = sc.nextInt();
+		}
+
+		int[] b = new int[n];
+		for(int i = 0; i < n; i++){
+			b[i] = sc.nextInt();
+		}
+		
+		for(int i = 0; i < n; i++){
+			if(i > 0){
+				System.out.print(" ");
+			}
+			System.out.print(b[i]-a[i]);
+		}
+		System.out.println();
+	}
+}
+/*for ループなどを用いて、数列の各要素の差 b_i-a_i を計算しながら出力すればよいです。*/
+
+step3 整数値の検索 C
+import java.util.Scanner;
+
+public class Main{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+
+		int n = sc.nextInt();
+
+		int a[] = new int[n];
+		for(int i = 0; i < n; i++){
+			a[i] = sc.nextInt();
+		}
+
+		int x = sc.nextInt();
+
+		int posOfX = -1;
+		for(int i = 0; i < n; i++){
+			if(a[i] == x){
+				posOfX = i+1;
+				break;
+			}
+		}
+
+		System.out.println(posOfX);
+	}
+}
+/*for ループなどで数列の要素を 1 つずつ取り出し、 x と等しいかどうかを確かめればよいです。*/
+
+step4 数列の検索 C
+import java.util.Scanner;
+
+public class Main{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		
+		int m = sc.nextInt();
+		int n = sc.nextInt();
+
+		int a[][] = new int[m][n];
+		for(int i = 0; i < m; i++){
+			for(int j = 0; j < n; j++){
+				a[i][j] = sc.nextInt();
+			}
+		}
+		
+		int x[] = new int[n];
+		for(int i = 0; i < n; i++){
+			x[i] = sc.nextInt();
+		}
+
+		int posOfX = -1;
+		for(int i = 0; i < m; i++){
+			boolean isX = true;
+			for(int j = 0; j < n; j++){
+				if(a[i][j] != x[j])	isX = false;
+			}
+			if(isX){
+				posOfX = i+1;
+				break;
+			}
+		}
+
+		System.out.println(posOfX);
+	}
+}
+/*与えられた m 個の各数列について、X と等しいかどうかを確かめればよいです。*/
+
+final 例外処理のタブーサーチ B
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int l = sc.nextInt();
+
+        int d[][] = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                d[i][j] = sc.nextInt();
+            }
+        }
+
+        int p[][] = new int[l][m];
+        for (int i = 0; i < l; i++) {
+            for (int j = 0; j < m; j++) {
+                p[i][j] = sc.nextInt();
+            }
+        }
+
+        for (int i = 1; i < l; i++) {
+            int diff[] = new int[m];
+            for (int j = 0; j < m; j++) {
+                diff[j] = p[i][j] - p[i - 1][j];
+            }
+
+            int order = -1;
+            for (int j = 0; j < n; j++) {
+                boolean same = true;
+                for (int k = 0; k < m; k++) {
+                    if (diff[k] != d[j][k]) {
+                        same = false;
+                    }
+                }
+                if (same) {
+                    order = j + 1;
+                    break;
+                }
+            }
+
+            System.out.println(order);
+        }
+    }
+}
+/*各時刻 i について時刻 i -> i+1 のパラメータ変化量を計算し、該当するコマンドを探索します。*/
 
 <進化戦略のプロシージャ>
-// step1 ダンジョンのデッドロック1 C
+step1 ダンジョンのデッドロック1 C
+import java.util.Scanner;
 
-// step2 ダンジョンのデッドロック2 C
+public class Main {
 
-// step3 ダンジョンのデッドロック3 B
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-// step4 ダンジョンのデッドロック4 B
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int q = sc.nextInt();
 
-// step5 ダンジョンのデッドロック5 A
+        int[] room = new int[n + 1];
+        for (int i = 1; i < m + 1; i++) {
+            int s = sc.nextInt();
+            room[i] = s;
+        }
 
-// final 進化戦略のプロシージャ A
+        for (int i = 0; i < q; i++) {
+            int e = sc.nextInt();
+            int t = sc.nextInt();
+
+            if (room[e] == t) {
+                System.out.println("Yes");
+                continue;
+            }
+
+            for (int j = 1; j < m + 1; j++) {
+                if (j != e && room[j] == t) {
+                    System.out.println("No");
+                    break;
+                }
+
+                if (j == m) {
+                    System.out.println("Yes");
+                }
+            }
+        }
+    }
+}
+/*それぞれ E_i 番目のプレイヤー (1 ≦ i ≦ Q) について、部屋を移動できるかの判定を以下のようにします。
+S_{E_i} == T_i なら、部屋を移動しないので "Yes" を出力します。
+S_j == T_i を満たす j (1 ≦ j ≦ M, j ≠ E_i) が存在するなら、部屋を移動できないので "No" を出力します。
+上のどれにも当てはまらないなら、部屋を移動できるので "Yes" を出力します。*/
+
+step2 ダンジョンのデッドロック2 C
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int q = sc.nextInt();
+
+        int[] room = new int[n + 1];
+        for (int i = 1; i < m + 1; i++) {
+            int s = sc.nextInt();
+            room[s] = i;
+        }
+
+        for (int i = 0; i < q; i++) {
+            int e = sc.nextInt();
+            int t = sc.nextInt();
+
+            if (room[t] == 0 || room[t] == e) {
+                System.out.println("Yes");
+            } else {
+                System.out.println("No");
+            }
+        }
+    }
+}
+/*前問の解説で紹介したプログラムでは、各質問に対して N 人のプレイヤーを見ていたため、全体の計算量は O(NQ) になり、この問題の制約では制限時間に間に合いません。
+それぞれ E_i 番目のプレイヤー (1 ≦ i ≦ Q) について、部屋を移動できるかの判定を以下のようにします。
+部屋が空いているかどうかを配列 room[] で管理します。
+room[x] が true なら部屋 x が埋まっていて、false なら部屋が空いています。
+S_{E_i} == T_i であるか、room[T_i] == false であるなら、部屋を移動できるので "Yes" を出力します。そうでないなら、部屋を移動できないので "No" を出力します。
+このようにすることで、各質問に対して数回の計算で答えを求めることができ、全体の計算量は O(N+Q) となり制限時間に間に合います。*/
+
+step3 ダンジョンのデッドロック3 B
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        int[] room = new int[n + 1];
+        int[] req = new int[m + 1];
+        for (int i = 1; i < m + 1; i++) {
+            int s = sc.nextInt();
+            int t = sc.nextInt();
+            room[s] = i;
+            req[i] = t;
+        }
+
+        List<Integer> q = new ArrayList<>();
+        int p = 1;
+        q.add(p);
+        while (true) {
+            if (room[req[p]] == 0) {
+                break;
+            }
+            if (room[req[p]] == p) {
+                break;
+            }
+
+            p = room[req[p]];
+            q.add(p);
+        }
+
+        for (int i = q.size() - 1; i >= 0; i--) {
+            System.out.print(q.get(i));
+            if (i > 0) {
+                System.out.print(" ");
+            } else {
+                System.out.println();
+            }
+        }
+    }
+}
+/*答えを表す配列 players を用意し、部屋の移動をするプレイヤーを変数 P で保存します。P の初期値は 1 とします。
+移動先の部屋が空くまで、players に P を追加し、P に "移動先の部屋に滞在しているプレイヤー" を代入することを繰り返します。
+部屋を移動できるかの判定や、移動先の部屋に滞在しているプレイヤーの番号の取得は、以下のようにします。
+それぞれの席に滞在しているプレイヤーの番号を配列 room[] で管理します。
+room[T_P] で、移動先の部屋に滞在しているプレイヤーの番号が得られます。
+room[T_P] == 0 で、移動先の部屋にプレイヤーが滞在していないことを判定できます。
+移動先のプレイヤーから順に部屋の移動をするため、players は逆順で出力します。*/
+
+step4 ダンジョンのデッドロック4 B
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        int[] room = new int[n + 1];
+        int[] req = new int[m + 1];
+        for (int i = 1; i < m + 1; i++) {
+            int s = sc.nextInt();
+            int t = sc.nextInt();
+            room[s] = i;
+            req[i] = t;
+        }
+
+        boolean ans = false;
+        List<Integer> q = new ArrayList<>();
+        int p = 1;
+        q.add(p);
+        while (true) {
+            if (room[req[p]] == 0) {
+                break;
+            }
+            if (room[req[p]] == p) {
+                break;
+            }
+            if (room[req[p]] == 1) {
+                ans = true;
+                break;
+            }
+
+            p = room[req[p]];
+            q.add(p);
+        }
+
+        if (ans) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+            for (int i = q.size() - 1; i >= 0; i--) {
+                System.out.print(q.get(i));
+                if (i > 0) {
+                    System.out.print(" ");
+                } else {
+                    System.out.println();
+                }
+            }
+        }
+    }
+}
+/*問題文の条件 S_i ≠ S_j, T_i ≠ T_j (i ≠ j) から、次のことが言えます。
+入力を (S_i, T_i) (1 ≦ i ≦ M) を辺とする、頂点が N 個で、 辺が M 本のグラフとしてみたとき、
+デッドロックが発生していない ⇔ 頂点 1 を含む連結成分が直線型のグラフ (パス) になっている
+デッドロックが発生している ⇔ 頂点 1 を含む連結成分が円形のグラフ (ループ) になっている
+つまり, 1 番目のプレイヤーから始めて部屋の移動先にいるプレイヤーをたどっていったときに、1 番目のプレイヤーの元の部屋に戻ってきてしまうかどうかでデッドロックの発生を判定できます。
+答えを表す配列 players を用意し、部屋の移動をするプレイヤーを変数 P で保存します。P の初期値は 1 とします。
+デッドロックが発生するか、部屋を移動できることが確定するまで、players に P を追加し、P に "移動先の部屋に滞在しているプレイヤー" を代入することを繰り返します。
+デッドロックの発生の判定、部屋を移動できるかの判定や、移動先の部屋に滞在しているプレイヤーの番号の取得は、以下のようにします。
+それぞれの部屋に滞在しているプレイヤーの番号を配列 room[] で管理します。
+room[T_P] で、移動先の部屋に滞在しているプレイヤーの番号が得られます。
+room[T_P] == 0 で、移動先の部屋にプレイヤーが滞在していないことを判定できます。
+room[T_P] == 1 で、1 番目のプレイヤーの元の部屋に戻ってきてしまったことを判定できます。特に P ≠ 1 のとき、これはデッドロックを表します。
+移動先の部屋のプレイヤーから順に部屋の移動をするため、players は逆順で出力します。*/
+
+step5 ダンジョンのデッドロック5 A
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        int[] room = new int[n + 1];
+        int[] req = new int[m + 1];
+        for (int i = 1; i < m + 1; i++) {
+            int s = sc.nextInt();
+            int t = sc.nextInt();
+            room[s] = i;
+            req[i] = t;
+        }
+
+        boolean ans = false;
+        for (int i = 1; i < m + 1; i++) {
+            int p = i;
+            while (true) {
+                if (room[req[p]] == 0) {
+                    break;
+                }
+                if (room[req[p]] == p) {
+                    break;
+                }
+                if (room[req[p]] == i) {
+                    ans = true;
+                    break;
+                }
+
+                p = room[req[p]];
+            }
+        }
+
+        if (ans) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+/*問題文の条件 S_i ≠ S_j, T_i ≠ T_j (i ≠ j) から、次のことが言えます。
+入力を (S_i, T_i) (1 ≦ i ≦ M) を辺とする、頂点が N 個で、辺が M 本のグラフとしてみたとき、
+連結成分でデッドロックが発生していない ⇔ 連結成分が直線型のグラフ (パス) になっている
+連結成分でデッドロックが発生している ⇔ 連結成分が円形のグラフ (ループ) になっている
+つまり, それぞれのプレイヤーから始めて移動先にいるプレイヤーをたどっていったときに、最初のプレイヤーの元の部屋に戻ってきてしまうかどうかでデッドロックの発生を判定できます。
+すべてのプレイヤーについて、以下のような探索をおこないます。プレイヤーの代わりに部屋について探索してもかまいません。
+選んだプレイヤーから始めて、デッドロックの発生の判定、部屋を移動できるかの判定をしながら、プレイヤーをたどって見ていきます。*/
+
+final 進化戦略のプロシージャ A
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        int[] room = new int[n + 1];
+        int[] req = new int[m + 1];
+        for (int i = 1; i < m + 1; i++) {
+            int s = sc.nextInt();
+            int t = sc.nextInt();
+            room[s] = i;
+            req[i] = t;
+        }
+
+        boolean ans = false;
+        boolean[] visit = new boolean[m + 1];
+        for (int i = 1; i < m + 1; i++) {
+            int p = i;
+            while (true) {
+                if (visit[p]) {
+                    break;
+                }
+
+                visit[p] = true;
+
+                if (room[req[p]] == 0) {
+                    break;
+                }
+                if (room[req[p]] == p) {
+                    break;
+                }
+                if (room[req[p]] == i) {
+                    ans = true;
+                    break;
+                }
+
+                p = room[req[p]];
+            }
+        }
+
+        if (ans) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+/*問題文の条件 S_i ≠ S_j, T_i ≠ T_j (i ≠ j) から、次のことが言えます。
+入力を (S_i, T_i) (1 ≦ i ≦ M) を辺とする、頂点が N 個で、辺が M 本のグラフとしてみたとき、
+連結成分でデッドロックが発生していない ⇔ 連結成分が直線型のグラフ (パス) になっている
+連結成分でデッドロックが発生している ⇔ 連結成分が円形のグラフ (ループ) になっている
+つまり, それぞれのから始めて移動先にいるプレイヤーをたどっていったときに、最初のプレイヤーに戻ってきてしまうかどうかでデッドロックの発生を判定できます。
+すべてのプレイヤーについて、以下のような探索をおこないます。プレイヤーの代わりに部屋について探索してもかまいません。
+選んだプレイヤーから始めて、デッドロックの発生の判定、部屋を移動できるかの判定をしながら、プレイヤーをたどって見ていきます。
+すでにプレイヤーが探索済みのときに探索をしないことで、全体での探索の回数がプレイヤーの数を超えることがなくなり、制限時間に間に合います。*/
 
 <ネット・ガーディアンの奮闘>
-// step1 最大連結成分(4×4) A
+step1 最大連結成分(4×4) A
+import java.util.ArrayDeque;
+import java.util.Scanner;
 
-// step2 塊を作ろう A
+public class Main {
 
-// step3 セルとセルを繋ごう A
+    static class Cell {
 
-// step4 塊と塊を繋ごう A
+        int i, j;
 
-// step5 ネット・ガーディアンの奮闘(易) A
+        Cell(int i, int j) {
+            this.i = i;
+            this.j = j;
+        }
+    }
 
-// final ネット・ガーディアンの奮闘 A
+    static int di[] = { -1, 1, 0, 0 };
+    static int dj[] = { 0, 0, -1, 1 };
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int g[][] = new int[4][4];
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                g[i][j] = sc.nextInt();
+            }
+        }
+
+        int maxScore = 0;
+        int maxBit = 0;
+
+        for (int bit = 1; bit < (1 << 16); bit++) {
+            int choice[][] = new int[4][4];
+            int si = -1, sj = -1, cellNum = 0, score = 0;
+            for (int k = 0; k < 16; k++) {
+                if (((bit >> k) & 1) == 0) {
+                    continue;
+                }
+                cellNum++;
+                si = k / 4;
+                sj = k % 4;
+                choice[si][sj] = 1;
+                score += g[si][sj];
+            }
+
+            if (score <= maxScore) {
+                continue;
+            }
+
+            ArrayDeque<Cell> q = new ArrayDeque<>();
+            choice[si][sj] = 0;
+            q.add(new Cell(si, sj));
+            while (!q.isEmpty()) {
+                Cell now = q.poll();
+                cellNum--;
+                for (int k = 0; k < 4; k++) {
+                    int ni = now.i + di[k];
+                    int nj = now.j + dj[k];
+                    if (
+                        0 <= ni &&
+                        ni < 4 &&
+                        0 <= nj &&
+                        nj < 4 &&
+                        choice[ni][nj] == 1
+                    ) {
+                        choice[ni][nj] = 0;
+                        q.add(new Cell(ni, nj));
+                    }
+                }
+            }
+
+            if (cellNum == 0) {
+                maxBit = bit;
+                maxScore = score;
+            }
+        }
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                System.out.print((maxBit >> (i * 4 + j)) & 1);
+            }
+            System.out.println();
+        }
+    }
+}
+/*再帰やビット全探索を用いて、集合の選び方を全探索します。
+各集合に対して、連結かどうかを判定し、連結であれば暫定解の更新をおこないます。*/
+
+step2 塊を作ろう A
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+
+    static class Cell {
+
+        int i, j;
+
+        Cell(int i, int j) {
+            this.i = i;
+            this.j = j;
+        }
+    }
+
+    static int di[] = { -1, 1, 0, 0 };
+    static int dj[] = { 0, 0, -1, 1 };
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int h = sc.nextInt();
+        int w = sc.nextInt();
+        int g[][] = new int[h][w];
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                g[i][j] = sc.nextInt();
+            }
+        }
+
+        boolean visit[][] = new boolean[h][w];
+        for (boolean[] v : visit) {
+            Arrays.fill(v, false);
+        }
+
+        int answer = 0;
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                if (g[i][j] < 0 || visit[i][j]) {
+                    continue;
+                }
+
+                answer++;
+
+                ArrayDeque<Cell> q = new ArrayDeque<>();
+                visit[i][j] = true;
+                q.add(new Cell(i, j));
+                while (!q.isEmpty()) {
+                    Cell now = q.poll();
+                    for (int k = 0; k < 4; k++) {
+                        int ni = now.i + di[k];
+                        int nj = now.j + dj[k];
+                        if (
+                            0 <= ni &&
+                            ni < h &&
+                            0 <= nj &&
+                            nj < w &&
+                            !visit[ni][nj] &&
+                            g[ni][nj] >= 0
+                        ) {
+                            visit[ni][nj] = true;
+                            q.add(new Cell(ni, nj));
+                        }
+                    }
+                }
+            }
+        }
+
+        System.out.println(answer);
+    }
+}
+/*幅優先探索や深さ優先探索を用いて、0 以上の整数が書かれたセルのみからなる連結成分の数を数えます。*/
+
+step3 セルとセルを繋ごう A
+import java.util.Arrays;
+import java.util.PriorityQueue;
+import java.util.Scanner;
+
+public class Main {
+
+    static class State implements Comparable<State> {
+
+        int i, j, d;
+
+        State(int i, int j, int d) {
+            this.i = i;
+            this.j = j;
+            this.d = d;
+        }
+
+        @Override
+        public int compareTo(State other) {
+            return this.d - other.d;
+        }
+    }
+
+    static int di[] = { -1, 1, 0, 0 };
+    static int dj[] = { 0, 0, -1, 1 };
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int h = sc.nextInt();
+        int w = sc.nextInt();
+        int si = sc.nextInt() - 1;
+        int sj = sc.nextInt() - 1;
+        int gi = sc.nextInt() - 1;
+        int gj = sc.nextInt() - 1;
+
+        int g[][] = new int[h][w];
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                g[i][j] = -sc.nextInt();
+            }
+        }
+
+        int dist[][] = new int[h][w];
+        for (int[] d : dist) {
+            Arrays.fill(d, 1 << 30);
+        }
+
+        dist[si][sj] = g[si][sj];
+
+        PriorityQueue<State> pq = new PriorityQueue<>();
+        pq.add(new State(si, sj, dist[si][sj]));
+
+        while (!pq.isEmpty()) {
+            State now = pq.poll();
+            if (dist[now.i][now.j] != now.d) {
+                continue;
+            }
+
+            for (int k = 0; k < 4; k++) {
+                int ni = now.i + di[k];
+                int nj = now.j + dj[k];
+                if (
+                    0 <= ni &&
+                    ni < h &&
+                    0 <= nj &&
+                    nj < w &&
+                    now.d + g[ni][nj] < dist[ni][nj]
+                ) {
+                    dist[ni][nj] = now.d + g[ni][nj];
+                    pq.add(new State(ni, nj, dist[ni][nj]));
+                }
+            }
+        }
+
+        System.out.println(-dist[gi][gj]);
+    }
+}
+/*セルに書かれた整数を正負反転させると、グリッドグラフ上の最短経路問題として解くことができるようになります。
+距離の初期値として、非常に大きな値 2^30 を設定しています。
+優先度つきキュー PriorityQueue を用いて、ダイクストラ法によって最短経路問題を解いています。*/
+
+step4 塊と塊を繋ごう A
+import java.util.Arrays;
+import java.util.PriorityQueue;
+import java.util.Scanner;
+
+public class Main {
+
+    static class State implements Comparable<State> {
+
+        int i, j, d;
+
+        State(int i, int j, int d) {
+            this.i = i;
+            this.j = j;
+            this.d = d;
+        }
+
+        @Override
+        public int compareTo(State other) {
+            return this.d - other.d;
+        }
+    }
+
+    static int di[] = { -1, 1, 0, 0 };
+    static int dj[] = { 0, 0, -1, 1 };
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int h = sc.nextInt();
+        int w = sc.nextInt();
+
+        int g[][] = new int[h][w];
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                g[i][j] = sc.nextInt();
+                if (g[i][j] > 0) {
+                    g[i][j] = 0;
+                } else {
+                    g[i][j] = -g[i][j];
+                }
+            }
+        }
+
+        int dist[][] = new int[h][w];
+        for (int[] d : dist) {
+            Arrays.fill(d, 1 << 30);
+        }
+
+        dist[0][0] = 0;
+
+        PriorityQueue<State> pq = new PriorityQueue<>();
+        pq.add(new State(0, 0, dist[0][0]));
+
+        while (!pq.isEmpty()) {
+            State now = pq.poll();
+            if (dist[now.i][now.j] != now.d) {
+                continue;
+            }
+
+            for (int k = 0; k < 4; k++) {
+                int ni = now.i + di[k];
+                int nj = now.j + dj[k];
+                if (
+                    0 <= ni &&
+                    ni < h &&
+                    0 <= nj &&
+                    nj < w &&
+                    now.d + g[ni][nj] < dist[ni][nj]
+                ) {
+                    dist[ni][nj] = now.d + g[ni][nj];
+                    pq.add(new State(ni, nj, dist[ni][nj]));
+                }
+            }
+        }
+
+        System.out.println(-dist[h - 1][w - 1]);
+    }
+}
+/*正連結成分に含まれるセルの値を 0 に、正連結成分に含まれないセルの値を正負逆にしたグリッドグラフ上で、セル (1, 1) からセル (H, W) までの最短経路問題を解けばよいです。*/
+
+step5 ネット・ガーディアンの奮闘(易) A
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+
+    static class Cell {
+
+        int i, j;
+
+        Cell(int i, int j) {
+            this.i = i;
+            this.j = j;
+        }
+    }
+
+    static int di[] = { -1, 1, 0, 0 };
+    static int dj[] = { 0, 0, -1, 1 };
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int h = sc.nextInt();
+        int w = sc.nextInt();
+        int g[][] = new int[h][w];
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                g[i][j] = sc.nextInt();
+            }
+        }
+
+        int group[][] = new int[h][w];
+        for (int[] gr : group) {
+            Arrays.fill(gr, 0);
+        }
+        int groupNum = 1, maxGroupNum = -1, maxScore = 0;
+
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                if (g[i][j] < 0 || group[i][j] != 0) {
+                    continue;
+                }
+
+                ArrayDeque<Cell> q = new ArrayDeque<>();
+                group[i][j] = groupNum;
+                q.add(new Cell(i, j));
+                int score = g[i][j];
+
+                while (!q.isEmpty()) {
+                    Cell now = q.poll();
+                    for (int k = 0; k < 4; k++) {
+                        int ni = now.i + di[k];
+                        int nj = now.j + dj[k];
+                        if (
+                            0 <= ni &&
+                            ni < h &&
+                            0 <= nj &&
+                            nj < w &&
+                            group[ni][nj] == 0 &&
+                            g[ni][nj] >= 0
+                        ) {
+                            group[ni][nj] = groupNum;
+                            score += g[ni][nj];
+                            q.add(new Cell(ni, nj));
+                        }
+                    }
+                }
+
+                if (score > maxScore) {
+                    maxGroupNum = groupNum;
+                    maxScore = score;
+                }
+                groupNum++;
+            }
+        }
+
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                if (group[i][j] == maxGroupNum) {
+                    System.out.print(1);
+                } else {
+                    System.out.print(0);
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+/*前問までの内容を踏まえて、なるべくスコアが大きくなるように工夫してセルを選びましょう。
+正誤判定に用いるスコアが低く設定されているため、例えば 0 以上の値が書かれたセルのみを選択したときにできる連結成分のスコアの最大値 以上のスコアを持つ連結成分を出力すれば、正解することができます。*/
+
+final ネット・ガーディアンの奮闘 A
+import java.util.*;
+
+public class Main {
+
+    static class Cell {
+
+        int i, j;
+
+        Cell(int i, int j) {
+            this.i = i;
+            this.j = j;
+        }
+
+        @Override
+        public boolean equals(Object other) {
+            if (this == other) return true;
+            if (other == null || getClass() != other.getClass()) return false;
+            Cell cell = (Cell) other;
+            return i == cell.i && j == cell.j;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(i, j);
+        }
+    }
+
+    static class State implements Comparable<State> {
+
+        Cell bef, now;
+        int d;
+
+        State(int befI, int befJ, int i, int j, int d) {
+            bef = new Cell(befI, befJ);
+            now = new Cell(i, j);
+            this.d = d;
+        }
+
+        @Override
+        public int compareTo(State other) {
+            return this.d - other.d;
+        }
+    }
+
+    static int di[] = { -1, 1, 0, 0 };
+    static int dj[] = { 0, 0, -1, 1 };
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int h = sc.nextInt();
+        int w = sc.nextInt();
+        int g[][] = new int[h][w];
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                g[i][j] = sc.nextInt();
+            }
+        }
+
+        int group[][] = new int[h][w];
+        for (int[] gr : group) {
+            Arrays.fill(gr, 0);
+        }
+        ArrayList<Integer> groupScore = new ArrayList<>();
+        groupScore.add(-1);
+        int groupNum = 1;
+
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                if (g[i][j] < 0 || group[i][j] != 0) {
+                    continue;
+                }
+
+                ArrayDeque<Cell> q = new ArrayDeque<>();
+                group[i][j] = groupNum;
+                q.add(new Cell(i, j));
+                int score = g[i][j];
+
+                while (!q.isEmpty()) {
+                    Cell now = q.poll();
+                    for (int k = 0; k < 4; k++) {
+                        int ni = now.i + di[k];
+                        int nj = now.j + dj[k];
+                        if (
+                            0 <= ni &&
+                            ni < h &&
+                            0 <= nj &&
+                            nj < w &&
+                            group[ni][nj] == 0 &&
+                            g[ni][nj] >= 0
+                        ) {
+                            group[ni][nj] = groupNum;
+                            score += g[ni][nj];
+                            q.add(new Cell(ni, nj));
+                        }
+                    }
+                }
+
+                groupScore.add(score);
+                groupNum++;
+            }
+        }
+
+        // 連結成分が 1 つだった場合はそれをそのまま出力
+        if (groupNum == 2) {
+            for (int i = 0; i < h; i++) {
+                for (int j = 0; j < w; j++) {
+                    System.out.print(group[i][j]);
+                }
+                System.out.println();
+            }
+            System.exit(0);
+        }
+
+        // つなぐ 2 つの連結成分
+        int group1 = -1, group2 = -1;
+        // つなぐ時に選択するセルの集合
+        boolean shortestPath[][] = new boolean[h][w];
+        // 暫定解のスコア
+        int maxScore = -1000000;
+
+        Set<Integer> groupDone = new HashSet<>();
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                if (group[i][j] == 0 || groupDone.contains(group[i][j])) {
+                    continue;
+                }
+
+                groupDone.add(group[i][j]);
+
+                int dist[][] = new int[h][w];
+                for (int[] d : dist) {
+                    Arrays.fill(d, 1 << 30);
+                }
+
+                dist[i][j] = 0;
+
+                Cell prev[][] = new Cell[h][w];
+                PriorityQueue<State> pq = new PriorityQueue<>();
+                pq.add(new State(i, j, i, j, dist[i][j]));
+
+                Cell bef = new Cell(i, j);
+                Cell now = new Cell(i, j);
+                int si = -1, sj = -1;
+                while (!pq.isEmpty()) {
+                    State s = pq.poll();
+
+                    int d = s.d;
+                    bef = s.bef;
+                    now = s.now;
+
+                    si = now.i;
+                    sj = now.j;
+                    if (dist[now.i][now.j] != d) {
+                        continue;
+                    }
+
+                    prev[si][sj] = bef;
+
+                    if (group[si][sj] != 0 && group[si][sj] != group[i][j]) {
+                        break;
+                    }
+
+                    for (int k = 0; k < 4; k++) {
+                        int ni = si + di[k];
+                        int nj = sj + dj[k];
+                        if (ni < 0 || h <= ni || nj < 0 || w <= nj) {
+                            continue;
+                        }
+                        int nextDist = d - Math.min(0, g[ni][nj]);
+                        if (nextDist < dist[ni][nj]) {
+                            dist[ni][nj] = nextDist;
+                            pq.add(
+                                new State(now.i, now.j, ni, nj, dist[ni][nj])
+                            );
+                        }
+                    }
+                }
+
+                int score =
+                    groupScore.get(group[i][j]) -
+                    dist[si][sj] +
+                    groupScore.get(group[si][sj]);
+
+                if (score <= maxScore) {
+                    continue;
+                }
+
+                // 暫定解の更新
+                group1 = group[i][j];
+                group2 = group[now.i][now.j];
+                maxScore = score;
+                // 最短路の復元
+                for (boolean[] s : shortestPath) {
+                    Arrays.fill(s, false);
+                }
+                while (prev[now.i][now.j] != now) {
+                    now = prev[now.i][now.j];
+                    shortestPath[now.i][now.j] = true;
+                }
+            }
+        }
+
+        // 答えを出力
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                if (
+                    shortestPath[i][j] ||
+                    group[i][j] == group1 ||
+                    group[i][j] == group2
+                ) {
+                    System.out.print(1);
+                } else {
+                    System.out.print(0);
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+/*前問までの内容を踏まえて、なるべくスコアが大きくなるように工夫してセルを選びましょう。
+本問では基準値が前問より少しだけ高く設定してあるため、正解するには多少工夫する必要があります。
+実装例
+この解答例の方針は以下の通りです。
+0 以上の値を持つセルを選択したときにできる連結成分を用意する
+負の値を持つセルについてのみ値の正負を反転させたグリッドグラフ上で、各連結成分 A から他の連結成分への最短経路問題を解く
+最短で到達できる連結成分 B について、セルの集合 (A + B + 最短経路に含まれるセル) を求める
+3 で求めた集合のうち、スコア最大のものを出力する
+この解答例で出力される集合はグリッド全体に対して非常に小さいものとなっており、改善の余地がまだまだあります。*/
+
