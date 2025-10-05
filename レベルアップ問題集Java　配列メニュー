@@ -60,13 +60,74 @@ public class Main {
 インデックス 0 が 1 番目の要素となるので、4 番目の要素のインデックスは 3 になります。*/
 
 step4　配列の入力１
+public class Main {
 
+    public static void main(String[] args) {
+        int[] a = new int[] { 8, 1, 3, 3, 8, 1, 1, 3, 8, 8 };
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+    }
+}
+/*指定された数列を配列を用いて管理します。
+出力の際、拡張 for 文を使いました。*/
 
 step5　配列の入力２
+import java.util.*;
 
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] a = new int[10];
+        for (int i = 0; i < 10; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*vector を与えられた数列で初期化します。
+全要素を改行区切りで出力します。入力される 10 個の整数を管理するために、整数型で長さ 10 の配列を用意します。
+整数型で長さ 10 の配列を用意するには int[] a = new int[10]; のように記述します。
+入力は Scanner クラスの nextInt メソッドで受け取っています。
+nextInt メソッドは入力値を整数型で受け取るために用意されているメソッドです。
+出力は拡張 for 文を利用すると、簡潔に書けます。*/
 
 step6　配列の入力３
+import java.util.*;
 
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*整数 N を受け取ります。
+長さ N の vector を宣言します。
+ループを用いて N 個の整数を受け取ります。
+全要素を改行区切りで出力します。まず、「何個の整数 a_i が入力されるか」を表す整数 n が入力されるので、整数型で長さ n の配列を用意します。
+入力は Scanner クラスの nextInt メソッドで受け取りながら、配列に代入していきます。
+出力は拡張 for 文を利用すると簡潔に書けます。*/
 
 step7  i番目の出力１
 
