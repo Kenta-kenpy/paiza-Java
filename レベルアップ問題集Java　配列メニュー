@@ -47,7 +47,17 @@ a_n
 */
     
 step3　i番目の出力
+public class Main {
 
+    public static void main(String[] args) {
+        int[] a = new int[] { 5, 1, 3, 4, 5, 12, 6, 8, 1, 3 };
+
+        System.out.println(a[3]);
+    }
+}
+/*指定された数列を配列で管理します。
+配列のインデックスは 0 から始まることに注意して下さい。
+インデックス 0 が 1 番目の要素となるので、4 番目の要素のインデックスは 3 になります。*/
 
 step4　配列の入力１
 
