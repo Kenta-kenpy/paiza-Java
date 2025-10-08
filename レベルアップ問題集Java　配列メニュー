@@ -130,13 +130,76 @@ public class Main {
 出力は拡張 for 文を利用すると簡潔に書けます。*/
 
 step7  i番目の出力１
+import java.util.*;
 
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int k = sc.nextInt();
+        int[] a = new int[] { 1, 3, 5, 4, 6, 2, 1, 7, 1, 5 };
+
+        System.out.println(a[k - 1]);
+
+        sc.close();
+    }
+}
+/*整数 K を受け取ります。
+vector を与えられた数列で初期化します。
+K 番目の要素を出力します。
+配列のインデックスは 0 から始まるので、k 番目の要素のインデックスは k-1 であることに注意して下さい。*/
 
 step8　i番目の出力２
+import java.util.*;
 
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int k = sc.nextInt();
+
+        int[] a = new int[10];
+        for (int i = 0; i < 10; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        System.out.println(a[k - 1]);
+
+        sc.close();
+    }
+}
+/*整数 K を受け取ります。
+ループを用いて 10 個の整数を受け取ります。
+K 番目の要素を出力します。入力される 10 個の整数を配列を用いて受け取ります。
+配列のインデックスは 0 から始まるので、k 番目の要素のインデックスは k-1 であることに注意して下さい。*/
 
 final  i番目の出力Boss
+import java.util.*;
 
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        System.out.println(a[k - 1]);
+
+        sc.close();
+    }
+}
+/*整数 N と K を受け取ります。
+ループを用いて N 個の整数を受け取ります。
+K 番目の要素を出力します。n 個の整数を保持するために、整数型で長さ n の配列を用意して入力値を受け取ります。
+配列のインデックスは 0 から始まるので、k 番目の要素のインデックスは k-1 となることに注意して下さい。*/
 
 <【二次元配列の入出力】i番目の出力 Boss>
 step1　要素数の出力
