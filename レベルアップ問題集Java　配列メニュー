@@ -335,16 +335,153 @@ public class Main {
 よって、2 行 3 列目の要素は a[2-1][3-1] に格納されていることがわかります。*/
 
 step7  二次元配列の入力１
+public class Main {
 
+    public static void main(String[] args) {
+        int[][] a = new int[][] { { 1, 3, 5, 7 }, { 8, 1, 3, 8 } };
+
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[i].length; j++) {
+                System.out.print(a[i][j]);
+                if (j < a[i].length - 1) {
+                    System.out.print(" ");
+                } else {
+                    System.out.println();
+                }
+            }
+        }
+    }
+}
+/*vector を与えられた数列で初期化します。各行を半角スペース区切りで出力し、各行の終わりで改行します。
+出力の箇所は 2 重ループで書きます。
+外側のループは 2 次元配列の「行」についての処理をします。
+内側のループは 2 次元配列の「列」についての処理をします。
+j の値に注目して a[i][j] の次に出力する文字が「改行」か「半角スペース」かを判定します。
+j が i 行目の最後の要素のインデックスを示すとき、つまり、j=a[i].length-1 のときは「改行」を、それ以外のときは「半角スペース」を、出力するように書くと上手くいきます。*/
 
 step8　二次元配列の入力２
+import java.util.*;
 
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int m = sc.nextInt();
+
+        int[][] a = new int[5][m];
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < m; j++) {
+                a[i][j] = sc.nextInt();
+            }
+        }
+
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < m; j++) {
+                System.out.print(a[i][j]);
+                if (j < m - 1) {
+                    System.out.print(" ");
+                } else {
+                    System.out.println();
+                }
+            }
+        }
+
+        sc.close();
+    }
+}
+/*vector を与えられた数列で初期化します。
+二重ループを用いて二次元配列を受け取ります。
+各行を半角スペース区切りで出力し、各行の終わりで改行します。
+5 行 m 列の入力値を受け取るために 5 行 m 列の 2 次元配列を用意します。
+入力の受け取りは 2 重 for 文内で行います。
+外側の for 文は「行」についての処理を行います。
+内側の for 文は「列」についての処理を行います。
+これと同様の考え方で出力も行います。
+j の値に注目して a[i][j] の次に出力する文字が「改行」か「半角スペース」かを判定します。
+j は列を示しているインデックスなので、j が端のとき、つまり、j=m-1 のときは「改行」を、それ以外のときは「半角スペース」を、出力するように書くと上手くいきます。*/
  
 step9  二次元配列の入力３
+import java.util.*;
 
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[][] a = new int[n][5];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < 5; j++) {
+                a[i][j] = sc.nextInt();
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < 5; j++) {
+                System.out.print(a[i][j]);
+                if (j < 4) {
+                    System.out.print(" ");
+                } else {
+                    System.out.println();
+                }
+            }
+        }
+
+        sc.close();
+    }
+}
+/*vector を与えられた数列で初期化します。
+二重ループを用いて二次元配列を受け取ります。
+各行を半角スペース区切りで出力し、各行の終わりで改行します。
+前問と同様の考え方で解きます。
+今回は n 行 5 列 の配列を取り扱います。
+これに伴って、for 文の繰り返し範囲や if 文の条件式が前問と少し変わりますが、根本は同じです。
+n 回繰り返す for 文の内側で 5 回繰り返す for 文を書くことで、n 行 5 列の配列に入力値を代入していきます。
+出力の際は「改行」と「半角スペース」に注意して下さい。
+j が列を示しているインデックスなので、j が列の端、つまり、j=4 のとき改行を出力し、それ以外のときは半角スペースを出力するようにします。*/
 
 step10　二次元配列の入力４
+import java.util.*;
 
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        int[][] a = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                a[i][j] = sc.nextInt();
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                System.out.print(a[i][j]);
+                if (j < m - 1) {
+                    System.out.print(" ");
+                } else {
+                    System.out.println();
+                }
+            }
+        }
+
+        sc.close();
+    }
+}
+/*vector を与えられた数列で初期化します。
+二重ループを用いて二次元配列を受け取ります。
+各行を半角スペース区切りで出力し、各行の終わりで改行します。
+前問と同様の考え方で解けます。
+対象が n 行 m 列になったことを前問のコードに反映させれば解ける問題です。
+2 重 for 文の外側は n 回の繰り返し、内側は m 回の繰り返しで n 行 m 列に対応できます。
+出力の際は「改行」と「半角スペース」に注意して下さい。
+j が列を示しているインデックスなので、j が端を示すとき、つまり、j=m-1 のとき改行を出力し、それ以外のときは半角スペースを出力するようにします。*/
 
 step11  i番目の出力１
 
