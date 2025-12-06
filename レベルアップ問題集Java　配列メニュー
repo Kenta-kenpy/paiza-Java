@@ -572,22 +572,271 @@ public class Main {
 
 <【配列の検索】何個ある? Boss>
 step1　配列に含まれている?１
+public class Main {
+
+    public static void main(String[] args) {
+        int[] a = new int[] { 10, 13, 21, 1, 6, 51, 10, 8, 15, 6 };
+
+        for (int x : a) {
+            if (x == 6) {
+                System.out.println("Yes");
+                return;
+            }
+        }
+
+        System.out.println("No");
+    }
+}
+/*事前に与えられた配列を宣言します。
+ループを用いて、6 が含まれているか判別します。
+含まれているなら Yes を、含まれていないなら No を出力します。
+問題文で与えられた数列を配列で管理します。
+拡張 for 文を使って 6 が配列にあるか if 文で確認します。
+「等しいか」を判定したいとき、== 演算子を使います。
+6 が見つかったら Yes を出力して return で main メソッドの処理を終了します。
+No の出力は for 文の処理の後ろに書きます。
+なぜかというと、6 が配列の要素にあったとき return で main メソッドの処理が終了するので、ここに到達するのは 6 が配列に含まれていなかったときだけだからです。*/
 
 step2　配列に含まれている?２
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        sc.close();
+
+        int[] a = new int[] { 5, 12, 6, 84, 14, 25, 44, 3, 7, 20 };
+
+        for (int x : a) {
+            if (x == n) {
+                System.out.println("Yes");
+                return;
+            }
+        }
+
+        System.out.println("No");
+    }
+}
+/*事前に与えられた配列を宣言します。
+N を受け取り、ループを用いて N が含まれているか判別します。
+含まれているなら Yes を、含まれていないなら No を出力します。
+前問と同じ考え方で解けます。
+n と等しいか、を判定したいので、条件式は x == n になります。
+n が配列 a にある場合、つまり x == n の場合、No を出力する箇所に到達する前に return されるため、このように書くことができます。*/
 
 step3　配列に含まれている?３
-    
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        sc.close();
+
+        for (int x : a) {
+            if (x == m) {
+                System.out.println("Yes");
+                return;
+            }
+        }
+
+        System.out.println("No");
+    }
+}
+/*整数 N, M を受け取ります。
+N 個の整数をループを用いてそれぞれ受け取ります。
+N 個の整数の中に M が含まれているか判別します。
+含まれているなら Yes、含まれていないなら No を出力します。
+n を用いて配列 a を初期化します。
+for 文を用いて a に入力値の整数を代入していきます。
+if 文で x == m が true のときに Yes を出力して、return するようにします。
+No を出力する箇所に到達するのは m が配列 a の要素になかったときだけなので、このように書けます。*/
+
 step4　何番目にある？１
+public class Main {
+
+    public static void main(String[] args) {
+        int[] a = new int[] { 1, 10, 2, 9, 3, 8, 4, 7, 5, 6 };
+        for (int i = 0; i < 10; i++) {
+            if (a[i] == 8) {
+                System.out.println(i + 1);
+            }
+        }
+    }
+}
+/*事前に与えられた配列を宣言します。
+ループを用いて、8 が何番目にあるか検索します。
+問題文で指定された数列を配列で管理します。
+for 文と if 文を用いて、8 があるか確認します。
+今回は 8 が 1 つしかない数列なので、break や return などをする必要はありません。
+配列のインデックスは 0 から始まるので i+1 を出力することに注意して下さい。*/
 
 step5　何番目にある？２
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] a = new int[] { 1, 5, 9, 7, 3, 2, 4, 8, 6, 10 };
+
+        for (int i = 0; i < 10; i++) {
+            if (a[i] == n) {
+                System.out.println(i + 1);
+            }
+        }
+
+        sc.close();
+    }
+}
+/*事前に与えられた配列を宣言します。
+整数 N を受け取ります。
+ループを用いて、N が何番目にあるか検索します。
+問題文で指定された数列を配列で管理します。
+for 文と if 文を使って n が配列 a に存在するか確かめます。
+n が存在した場合、i+1 を出力します。
+i+1 を出力する理由は配列のインデックスが 0 から始まるからです。*/
 
 step6　何番目にある？３
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        int[] a = new int[m];
+        for (int i = 0; i < m; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        for (int i = 0; i < m; i++) {
+            if (a[i] == n) {
+                System.out.println(i + 1);
+            }
+        }
+
+        sc.close();
+    }
+}
+/*整数 N, M を受け取ります。
+ループを用いて M 個の整数を受け取ります。
+ループを用いて、N が何番目にあるか検索します。
+m を用いて配列 a を初期化します。
+for 文と if 文を使って n が配列 a の何番目の要素か調べます。
+a[i]=n が成立したとき、i+1 を出力します。
+i+1 を出力する理由は配列のインデックスが 0 から始まるからです。*/
 
 step7  何個ある？１
+public class Main {
+
+    public static void main(String[] args) {
+        int[] a = new int[] { 1, 2, 2, 1, 2, 1, 2, 1, 1, 1 };
+
+        int ans = 0;
+        for (int x : a) {
+            if (x == 1) {
+                ans += 1;
+            }
+        }
+
+        System.out.println(ans);
+    }
+}
+/*事前に与えられた配列を宣言します。
+ループを用いて、1 が何個あるか数えます。
+問題文で指定された数列を配列で管理します。
+解を保存するために変数 ans を用意します。
+拡張 for 文と if 文で配列の各要素が 1 であるか (1 と等しいか) を確認していきます。
+1 であった場合、ans の値を +1 します。
+拡張 for 文の処理終了後には変数 ans に「配列に 1 が幾つあったか」の情報が格納されているので、これを出力すれば解けます。*/
 
 step8　何個ある？２
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] a = new int[] { 1, 2, 5, 1, 4, 3, 2, 5, 1, 4 };
+
+        int n = sc.nextInt();
+        int ans = 0;
+        for (int x : a) {
+            if (x == n) {
+                ans += 1;
+            }
+        }
+
+        System.out.println(ans);
+
+        sc.close();
+    }
+}
+/*事前に与えられた配列を宣言します。
+整数 N を受け取ります。
+ループを用いて、N が何個あるか数えます。
+問題文で指定された数列を配列で管理します。
+解を保存するために変数 ans を用意しておきます。
+拡張 for 文で配列の各要素が整数 n と等しいかを確認します。
+もし、等しかったら ans の値を +1 します。
+拡張 for 文の処理終了後、ans には「配列に n が幾つあったか」の情報が格納されていので、これを出力すれば解けます。*/
 
 final  何個ある？Boss
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        int[] a = new int[m];
+        for (int i = 0; i < m; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        int ans = 0;
+        for (int x : a) {
+            if (x == n) {
+                ans += 1;
+            }
+        }
+
+        System.out.println(ans);
+
+        sc.close();
+    }
+}
+/*整数 N, M を受け取ります。
+ループを用いて、M 個の整数を受け取ります。
+ループを用いて、N が何個あるか数えます。
+長さ m の数列が入力によって与えられるので、整数型で長さが m の配列 a を用意します。
+また、解を保存するために変数 ans を用意します。
+for 文で配列 a に入力値を代入していきます。
+配列 a に代入が終わったら、拡張 for 文を用いて配列の各要素が n と等しいかを確認します。
+n と等しかったら ans の値を +1 します。
+拡張 for 文の処理終了後、ans には「配列に n が幾つあったか」の情報が格納されているので、これを出力すれば解けます。*/
 
 <【文字列の配列】辞書順に出力 Boss>
 step1　配列の書き換え
