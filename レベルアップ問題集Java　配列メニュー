@@ -840,6 +840,52 @@ n と等しかったら ans の値を +1 します。
 
 <【文字列の配列】辞書順に出力 Boss>
 step1　配列の書き換え
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 1行目の入力
+        int A = sc.nextInt();
+        int B = sc.nextInt();
+        int N = sc.nextInt();
+
+        // N個の整数を順に処理
+        for (int i = 0; i < N; i++) {
+            int x = sc.nextInt();
+
+            // Aだった場合はBに書き換える
+            if (x == A) {
+                x = B;
+            }
+
+            // 改行区切りで出力
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*Scanner を使って標準入力を読み取ります
+Javaでは競技プログラミングでもっとも安定した方法です。
+
+まず
+A（置き換え対象）
+B（置き換え後の値）
+N（個数）
+を順番に受け取ります。
+
+次に for ループで N 回だけ整数を読み込み ます。
+読み込んだ数 x が A と一致した場合だけ
+x = B;
+と書き換えます。
+
+各数値を 1 行ずつ println で出力
+→ これにより
+余計な空行なし
+末尾にちょうど 1 つ改行
+という条件を自然に満たします。*/
 
 step2　2変数の入れ替え
 
