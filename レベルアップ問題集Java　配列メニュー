@@ -888,6 +888,35 @@ x = B;
 という条件を自然に満たします。*/
 
 step2　2変数の入れ替え
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        int tmp = a;
+        a = b;
+        b = tmp;
+
+        System.out.println(a + " " + b);
+
+        sc.close();
+    }
+}
+/*一時的に値を保存しておくために変数 tmp を整数型で用意します。
+次の手順で処理を行います。
+変数 tmp に変数 a の値を代入する
+変数 a に変数 b の値を代入する
+変数 b に変数 tmp の値を代入する
+変数 tmp を用意しないで次のように処理を行うと失敗します。
+変数 a に変数 b の値を代入する
+変数 b に変数 a の値を代入する
+なぜなら、2. で変数 b に代入するとき、既に変数 a の値は変数 b の値になっているからです。
+逆の手順でやっても、同様の理由で失敗します。*/
 
 step3　配列の要素の入れ替え
     
