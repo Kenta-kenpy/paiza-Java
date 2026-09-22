@@ -428,6 +428,277 @@ ArrayList を用いて、出現する英単語とその出現回数を保存す�
 ArrayList クラスの indexOf メソッドを用いると、指定した要素が格納されているインデックスを取得することが出来ます。指定した要素が格納されていない場合は、-1 が返ります。*/
 
 // 宝くじ
+step2 「宝くじ」を解くために:part1
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 当選番号
+        int b = sc.nextInt();
+
+        // 購入した宝くじの数
+        int n = sc.nextInt();
+
+        // 当選番号を出力
+        System.out.println(b);
+
+        // 購入した宝くじの数を出力
+        System.out.println(n);
+
+        // n枚分の宝くじ番号を読み込み、そのまま出力
+        for (int i = 0; i < n; i++) {
+            int a = sc.nextInt();
+            System.out.println(a);
+        }
+
+        sc.close();
+    }
+}
+/*標準入力を用いて、 1 行目の入力を受け取ります。
+　　このとき、整数型で受け取ります。以下の入力もすべて整数型で受け取りましょう。
+受け取った値を変数に代入します。
+　　変数の名前に特に決まりはありませんが、この入力について問題文中で b と表記されているので、実装例では変数名も b にして、あわせています。
+変数 b の値を出力します。
+標準入力を用いて、 2 行目の入力を受け取ります。
+受け取った値を変数に代入します。（実装例では変数名を n としています。）
+変数 n の値を出力します。
+n 回実行される繰り返し処理を書きます。
+　　8 ~ 10 の手順が n 回実行されるように書きます
+入力を 1 行受け取ります。
+受け取った値を変数に代入します。（実装例では変数名を a としています。）
+変数 a の値を出力します。*/
+
+step3 「宝くじ」を解くために:part2
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 当選番号
+        int b = sc.nextInt();
+
+        // 購入した宝くじの枚数
+        int n = sc.nextInt();
+
+        // n枚の宝くじを1枚ずつ確認
+        for (int i = 0; i < n; i++) {
+            int a = sc.nextInt();
+
+            // 当選番号と一致するか判定
+            if (a == b) {
+                System.out.println("first");
+            } else {
+                System.out.println("blank");
+            }
+        }
+
+        sc.close();
+    }
+}
+
+step4 「宝くじ」を解くために:part3
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 当選番号
+        int b = sc.nextInt();
+
+        // 100000の場合は前の番号が存在しない
+        if (b == 100000) {
+            System.out.println(b + 1);
+        }
+        // 199999の場合は後ろの番号が存在しない
+        else if (b == 199999) {
+            System.out.println(b - 1);
+        }
+        // それ以外は前後の番号を出力
+        else {
+            System.out.println((b - 1) + " " + (b + 1));
+        }
+
+        sc.close();
+    }
+}
+
+step5 「宝くじ」を解くために:part4
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 当選番号
+        int b = sc.nextInt();
+
+        // 購入した宝くじの枚数
+        int n = sc.nextInt();
+
+        // n枚の宝くじを1枚ずつ判定
+        for (int i = 0; i < n; i++) {
+            int a = sc.nextInt();
+
+            // 1等
+            if (a == b) {
+                System.out.println("first");
+            }
+            // 前後賞
+            else if (a == b - 1 || a == b + 1) {
+                System.out.println("adjacent");
+            }
+            // それ以外
+            else {
+                System.out.println("blank");
+            }
+        }
+
+        sc.close();
+    }
+}
+/*標準入力を用いて 1 行目の入力を受け取り、受け取った値を変数に代入します。
+標準入力を用いて 2 行目の入力を受け取り、受け取った値を変数に代入します。
+n 回実行される繰り返し処理を書きます。
+　　4 ~ 5 の手順が n 回実行されるように書きます
+入力を 1 行受け取り、受け取った値を変数に代入します。
+4 の変数の値によって処理が変わる条件分岐を書きます。
+変数の値が当選番号と同じなら first を出力する。
+変数の値が前後賞に該当するなら adjacent を出力する
+　　ここで当選番号が 100000 または 199999 の場合，前後賞は一つしかないことに注意しましょう。
+　　具体的には、当選番号が 100000 でないとき当選番号 - 1 の前後賞、当選番号が 199999 でないとき当選番号 + 1 の前後賞の判定を行います。
+　　※厳密には今回の問題での前後賞の判定は、当選番号が 100000 または 199999ときの場合分けをしなくてもWrong Answerになることはありません（なぜなら条件より、番号が 99999 や 200000 の宝くじが与えられることはないからです）。
+　　part 3 の内容をふまえて、この解説及び実装例では場合分けをする方法で記述しています。
+1等でも前後賞でもないならば blank を出力する。*/
+
+step6 「宝くじ」を解くために:part5
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 当選番号
+        int b = sc.nextInt();
+
+        // 購入した宝くじの枚数
+        int n = sc.nextInt();
+
+        // n枚の宝くじ番号を処理
+        for (int i = 0; i < n; i++) {
+            int a = sc.nextInt();
+
+            // 下4桁を取り出す
+            int lastFour = a % 10000;
+
+            System.out.println(lastFour);
+        }
+
+        sc.close();
+    }
+}
+
+step7 「宝くじ」を解くために:part6
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 当選番号
+        int b = sc.nextInt();
+
+        // 購入した宝くじの枚数
+        int n = sc.nextInt();
+
+        // 当選番号の下4桁を取得
+        int winningLastFour = b % 10000;
+
+        // n枚の宝くじを1枚ずつ判定
+        for (int i = 0; i < n; i++) {
+            int a = sc.nextInt();
+
+            // 購入した宝くじの下4桁を取得
+            int ticketLastFour = a % 10000;
+
+            // 下4桁が一致するか判定
+            if (ticketLastFour == winningLastFour) {
+                System.out.println("second");
+            } else {
+                System.out.println("blank");
+            }
+        }
+
+        sc.close();
+    }
+}
+/*標準入力を用いて 1 行目の入力を受け取り、受け取った値を変数に代入します。
+標準入力を用いて 2 行目の入力を受け取り、受け取った値を変数に代入します。
+n 回実行される繰り返し処理を書きます。
+　　4 ~ 5 の手順が n 回実行されるように書きます
+入力を 1 行受け取り、受け取った値を変数に代入します。
+4 の変数の値によって処理が変わる条件分岐を書きます。
+　　変数の値が 2 等に該当するなら second を出力する。
+　　　　2 等の判定条件は「a の下 4 桁と b の下 4 桁が一致するかどうか」です。part5のように、実装では10000で割った余りを比較すればよいです。
+　　　　今回の問題では 1 等もしくは前後賞に当選していてるかは関係ないため、 1 等に該当する番号も second を出力します。
+　　そうでないならば blankを出力する。*/
+
+step8 「宝くじ」を解くために:part7
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 当選番号
+        int b = sc.nextInt();
+
+        // 購入した宝くじの枚数
+        int n = sc.nextInt();
+
+        // 当選番号の下4桁
+        int winningLastFour = b % 10000;
+
+        // n枚の宝くじを1枚ずつ判定
+        for (int i = 0; i < n; i++) {
+            int a = sc.nextInt();
+
+            // 1等
+            if (a == b) {
+                System.out.println("first");
+            }
+            // 前後賞
+            else if (a == b - 1 || a == b + 1) {
+                System.out.println("adjacent");
+            }
+            // 2等
+            else if (a % 10000 == winningLastFour) {
+                System.out.println("second");
+            }
+            // 外れ
+            else {
+                System.out.println("blank");
+            }
+        }
+
+        sc.close();
+    }
+}
+/*標準入力を用いて 1 行目の入力を受け取り、受け取った値を変数に代入します。
+標準入力を用いて 2 行目の入力を受け取り、受け取った値を変数に代入します。
+n 回実行される繰り返し処理を書きます。
+　　4 ~ 5 の手順が n 回実行されるように書きます
+入力を 1 行受け取り、受け取った値を変数に代入します。
+4 の変数の値によって処理が変わる条件分岐を書きます。
+変数の値が当選番号と同じなら first を出力する。
+変数の値が前後賞に該当するなら adjacent を出力する
+変数の値が 2 等に該当するなら second を出力する。
+上記のいずれでもないならば blank を出力する。*/
+
+step1 宝くじ・final 宝くじ
 import java.util.Scanner;
 
 public class Main {
