@@ -1,0 +1,86 @@
+// 円の直径
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 半径Rを入力
+        int R = sc.nextInt();
+
+        // 直径を計算
+        int diameter = 2 * R;
+
+        // 直径を出力
+        System.out.println(diameter);
+
+        sc.close();
+    }
+}
+/*この問題では入力として円の半径 R が与えられます。
+円の直径は半径の 2 倍なので、答えは単に 2 × R です。*/
+
+// 分割の余り
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // NとKを入力
+        int N = sc.nextInt();
+        int K = sc.nextInt();
+
+        // NをKで割った余りを出力
+        System.out.println(N % K);
+
+        sc.close();
+    }
+}
+
+// 足して100になる数
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Xを入力
+        int X = sc.nextInt();
+
+        // 100 - Xを計算して出力
+        System.out.println(100 - X);
+
+        sc.close();
+    }
+}
+/*この問題では整数 X が与えられます。
+求める値は 100 - X で、100 から X を引いた結果を出力すれば良いです。*/
+
+// 台形の面積
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 上底Aと下底Bを入力
+        int A = sc.nextInt();
+        int B = sc.nextInt();
+
+        // 高さHを入力
+        int H = sc.nextInt();
+
+        // 台形の面積を計算
+        int area = (A + B) * H / 2;
+
+        // 面積を出力
+        System.out.println(area);
+
+        sc.close();
+    }
+}
+/*この問題では、台形の上底 A、下底 B、高さ H が与えられます。
+台形の面積は、(A + B) × H ÷ 2 で求められます。
+Python では掛け算 * と整数除算 // を使い、(A + B) * H // 2 と書けば面積（整数）が得られます。*/
+
