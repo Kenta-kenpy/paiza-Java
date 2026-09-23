@@ -919,7 +919,45 @@ public class Main {
 逆の手順でやっても、同様の理由で失敗します。*/
 
 step3　配列の要素の入れ替え
-    
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int x = sc.nextInt();
+        int y = sc.nextInt();
+        int n = sc.nextInt();
+
+        ArrayList<Integer> a = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            a.add(sc.nextInt());
+        }
+
+        int tmp = a.get(x - 1);
+        a.set(x - 1, a.get(y - 1));
+        a.set(y - 1, tmp);
+
+        for (int i : a) {
+            System.out.println(i);
+        }
+
+        sc.close();
+    }
+}
+/*整数 x, y, n を受け取ります。
+ループを用いて、n 個の整数を受け取ります。
+左から x 番目 と y 番目 の値を入れ替えて、改行区切りで出力します。
+一時的に値を保存しておくために変数 tmp を整数型で用意します。
+次の流れで処理を行います。
+※見やすさのため、配列の操作方法で書いています。
+変数 tmp に a[x-1] の値を代入する
+a[x-1] に a[y-1] の値を代入する
+a[y-1] に変数 tmp の値を代入する
+リストのインデックスは 0 から始まるので、x 番目の要素のインデックスは x-1 になります。
+y に関しても同様です。*/
+
 step4　部分配列
 
 step5　配列の連結
