@@ -1,0 +1,182 @@
+// 計算ドリル
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 数式を入力
+        String S = sc.nextLine();
+
+        // 左の数字
+        int left = S.charAt(0) - '0';
+
+        // 演算記号
+        char operator = S.charAt(1);
+
+        // 右の数字
+        int right = S.charAt(2) - '0';
+
+        // 演算記号によって処理を分岐
+        switch (operator) {
+            case '+':
+                System.out.println(left + right);
+                break;
+
+            case '-':
+                System.out.println(left - right);
+                break;
+
+            case 'x':
+                System.out.println(left * right);
+                break;
+        }
+
+        sc.close();
+    }
+}
+
+// 中間テスト
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 問題数
+        int N = sc.nextInt();
+
+        // 採点結果
+        String S = sc.next();
+
+        // 得点
+        int score = 0;
+
+        // 文字列を1文字ずつ確認
+        for (int i = 0; i < N; i++) {
+            if (S.charAt(i) == 'o') {
+                score += 10;
+            }
+        }
+
+        // 合計得点を出力
+        System.out.println(score);
+
+        sc.close();
+    }
+}
+/*for 文を書き、S の i (1 ≦ i ≦ N) 文字目が o なら答えに 10 加算すればよいです。*/
+
+// 計算ドリル2
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // A, B, C は最大で 10^18 なので long で受け取る
+        long A = sc.nextLong();
+        long B = sc.nextLong();
+        long C = sc.nextLong();
+
+        // A × B > C を、掛け算せずに判定する
+        if (A > C / B) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+
+        sc.close();
+    }
+}
+/*今回の問題では 1 ≦ A, B, C ≦ 10^18 であるため、A × B は非常に大きな数になることがあり、一般的な 64 ビット整数ではオーバーフローを起こします。
+そのため、掛け算をせず A × B > C を判定する方法を考えます。
+A × B > C の両辺を B で割ると A > C / B です。
+A,B,C はすべて整数であるため、A > floor(C / B) を判定すれば十分です (floor(C / B) は C / B の計算結果の小数点以下を切り捨てたものを表します)。
+
+### なぜ掛け算しないのか
+Javaの `long` は最大で、
+9,223,372,036,854,775,807
+まで扱えます。
+
+ところが、
+A = 1,000,000,000,000
+B = 1,000,000,000,000
+なら、
+
+A × B
+= 1,000,000,000,000,000,000,000,000
+となり、long の範囲を大きく超えます。
+
+したがって、
+if (A * B > C)
+とは書かないほうが安全です。
+
+掛け算を割り算に変える
+B は必ず正の整数なので、
+A × B > Cは、
+A > C / B
+と考えられます。
+
+例えば、
+A = 9
+B = 8
+C = 50
+なら、
+C / B
+= 50 / 8
+= 6
+整数除算なので 6 になります。
+
+したがって、
+9 > 6
+なので、
+Yes
+ですわ。
+
+ただし、この問題で特に大事な点
+A, B, C はすべて正の整数なので、この方法が使えます。
+
+if (A > C / B)
+なら、巨大な A × B を実際には計算しません。
+
+例えば入力例3では、
+1000000000000
+1000000000000
+1000000000000000000
+なので、
+
+C / B
+= 1000000000000000000 / 1000000000000
+= 1000000
+となり、
+
+1000000000000 > 1000000
+なので Yes です。*/
+
+// 期末テスト
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+        String S = sc.next();
+        String T = sc.next();
+
+        if (S.compareTo(T) > 0) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+
+        sc.close();
+    }
+}
+/*今回の問題では S,T は最大で 100 桁の整数になるため、一般的な 64 ビット整数では扱えません。
+そこで、S と T を文字列として受け取り、大小比較をする方法を考えます。
+S, T の上から i 桁目の値を S_i, T_i と表します。
+k を S_k ≠ T_k を満たす最小の k とすると、答えは以下の通りです。
+・S_k > T_k の場合 : 答えは Yes
+・S_k < T_k の場合 : 答えは No*/
