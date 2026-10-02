@@ -959,8 +959,88 @@ a[y-1] に変数 tmp の値を代入する
 y に関しても同様です。*/
 
 step4　部分配列
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int A = sc.nextInt();
+        int B = sc.nextInt();
+        int n = sc.nextInt();
+
+        ArrayList<Integer> a = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            a.add(sc.nextInt());
+        }
+
+        for (int i = A - 1; i < B; i++) {
+            System.out.println(a.get(i));
+        }
+
+        sc.close();
+    }
+}
+/*整数 A, B, N を受け取ります。
+ループを用いて、N 個の整数を受け取ります。
+配列の A 番目から B 番目を改行区切りで出力します。
+ArrayList を用いた方法を紹介します。
+まず、空のリストを ArrayList<Integer> a = new ArrayList<>() で用意します。
+その後 for 文を用いて入力値をリスト a に追加していきます。要素 e を追加するには add(e) を使います。
+A 番目から B 番目の要素を出力するために for 文を使うのですが、そのループカウンタ変数 i の設定に注意が必要です。
+i=A-1; i < B; i++ のように設定します。
+i の範囲が A-1 以上 B 未満になるのは、配列のインデックスが 0 から始まるからです。
+インデックス i の要素の取得は get(i) を使います。*/
 
 step5　配列の連結
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        ArrayList<Integer> a = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            a.add(sc.nextInt());
+        }
+
+        ArrayList<Integer> b = new ArrayList<>();
+        for (int i = 0; i < m; i++) {
+            b.add(sc.nextInt());
+        }
+
+        a.addAll(b);
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*整数 N, M を受け取ります。
+ループを用いて、N 個の整数と M 個の整数を受け取ります。
+N 個の整数と M 個の整数を連結させ、改行区切りで出力します。ArrayList を使うことで簡単に連結を行うことができます。
+以下の内容に分けて説明するので、必要なところを読んで下さい。
+入力の受け取り
+addAll メソッドで連結
+出力
+【 1. 入力の受け取り 】
+まずは、整数 n と整数 m を受け取ります。
+空のリストを ArrayList<Integer> a = new ArrayList<>() で用意した後 for(int i = 0; i < n; i++) を使ってリスト a に入力値を追加します。
+空のリストを ArrayList<Integer> b = new ArrayList<>() で用意した後 for(int i = 0; i < m; i++) を使ってリスト b に入力値を追加します。
+リストの末尾に要素 e を追加するとき add(e) を使います。
+【 2. addAll メソッドで連結 】
+addAll メソッドはリストに他のリストの全要素を追加するメソッドです。
+a.addAll(b) として使うことで、リスト a の末尾にリスト b の全要素を追加できます。
+【 3. 出力 】
+拡張 for 文で出力します。
+for(int x : a) では変数 x にリスト a の各要素が代入されるので、x を System.out.println() で出力すれば解けます。*/
 
 step6　配列のソート
 
