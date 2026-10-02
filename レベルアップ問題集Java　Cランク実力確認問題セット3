@@ -1,8 +1,142 @@
 // お菓子の分け合い
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int n = scanner.nextInt();
+
+        if (n % 2 == 0) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+
+        scanner.close();
+    }
+}
 
 // ポイント2倍デー
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int a = scanner.nextInt();
+
+        int point = a * 2;
+
+        System.out.println(point);
+
+        scanner.close();
+    }
+}
 
 // 最大の3桁整数
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // キーボードから入力を受け取るためのScannerを作る
+        Scanner scanner = new Scanner(System.in);
+
+        // A、B、Cの3つの整数を入力する
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+        int c = scanner.nextInt();
+
+        // A、B、Cの順番につなげて整数を作る
+        int abc = Integer.parseInt("" + a + b + c);
+
+        // A、C、Bの順番につなげて整数を作る
+        int acb = Integer.parseInt("" + a + c + b);
+
+        // B、A、Cの順番につなげて整数を作る
+        int bac = Integer.parseInt("" + b + a + c);
+
+        // B、C、Aの順番につなげて整数を作る
+        int bca = Integer.parseInt("" + b + c + a);
+
+        // C、A、Bの順番につなげて整数を作る
+        int cab = Integer.parseInt("" + c + a + b);
+
+        // C、B、Aの順番につなげて整数を作る
+        int cba = Integer.parseInt("" + c + b + a);
+
+        // まずA、B、Cの順番を最大値として設定する
+        int max = abc;
+
+        // A、C、Bの方が大きければ最大値を更新する
+        if (acb > max) {
+            max = acb;
+        }
+
+        // B、A、Cの方が大きければ最大値を更新する
+        if (bac > max) {
+            max = bac;
+        }
+
+        // B、C、Aの方が大きければ最大値を更新する
+        if (bca > max) {
+            max = bca;
+        }
+
+        // C、A、Bの方が大きければ最大値を更新する
+        if (cab > max) {
+            max = cab;
+        }
+
+        // C、B、Aの方が大きければ最大値を更新する
+        if (cba > max) {
+            max = cba;
+        }
+
+        // 最も大きかった値を出力する
+        System.out.println(max);
+
+        // Scannerを閉じる
+        scanner.close();
+    }
+}
 
 // うるう年判定
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // キーボードから入力を受け取るためのScannerを作る
+        Scanner scanner = new Scanner(System.in);
+
+        // 年を入力する
+        int n = scanner.nextInt();
+
+        // まず4で割り切れるか確認する
+        if (n % 4 == 0) {
+
+            // 4で割り切れても、100で割り切れる場合は平年
+            if (n % 100 == 0) {
+
+                // ただし、400で割り切れる場合はうるう年
+                if (n % 400 == 0) {
+                    System.out.println("Leap");
+                } else {
+                    System.out.println("Common");
+                }
+
+            } else {
+                // 4で割り切れて、100では割り切れない場合はうるう年
+                System.out.println("Leap");
+            }
+
+        } else {
+            // 4で割り切れない場合は平年
+            System.out.println("Common");
+        }
+
+        // Scannerを閉じる
+        scanner.close();
+    }
+}
 
