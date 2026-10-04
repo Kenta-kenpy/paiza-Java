@@ -1043,14 +1043,183 @@ a.addAll(b) として使うことで、リスト a の末尾にリスト b の�
 for(int x : a) では変数 x にリスト a の各要素が代入されるので、x を System.out.println() で出力すれば解けます。*/
 
 step6　配列のソート
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        ArrayList<Integer> a = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            a.add(sc.nextInt());
+        }
+
+        Collections.sort(a);
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*整数 N を受け取ります。
+ループを用いて、N 個の整数を受け取ります。
+N 個の整数を小さい順にソートし、改行区切りで出力します。配列をソートする方法として、Collections.sort() を使う方法があります。
+以下の内容に分けて説明するので、必要なところを読んで下さい。
+入力の受け取り
+Collections.sort() でソート
+出力
+【 1. 入力の受け取り 】
+まずは、整数 n を受け取ります。
+さらに、空のリストを ArrayList<Integer> a = new ArrayList<>() で用意します。
+for(int i = 0; i < n; i++) を使ってリスト a に入力値を追加します。
+【 2. Collections.sort() でソート 】
+Collections.sort() はソートを行うメソッドです。
+引数でリストを渡すと、要素が昇順にソートされます。
+今回は Collections.sort(a) として使います。
+【 3. 出力 】
+拡張 for 文で出力します。
+for(int x : a) では変数 x にリスト a の各要素が代入されるので、x を System.out.println() で出力すれば解けます。*/
 
 step7  配列の反転
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        ArrayList<Integer> a = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            a.add(sc.nextInt());
+        }
+
+        Collections.reverse(a);
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*整数 N を受け取ります。
+ループを用いて、N 個の整数を受け取ります。
+N 個の整数の順序を反転させ、改行区切りで出力します。
+
+リストを逆順にするとき、Collections.reverse() が便利なので、これを使います。
+Collections.reverse() は引数でリストを渡す必要があるので、整数列を ArrayList で管理します。
+空のリストを ArrayList<Integer> a = new ArrayList<>() で用意し、a.add(sc.nextInt) で入力値をリストに追加していきます。
+その後、Collections.reverse(a) で逆順にします。
+あとは、for 文を使って a の各要素を System.out.println() で出力すれば解けます。*/
 
 step8　要素のカウント
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        ArrayList<Integer> a = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            a.add(sc.nextInt());
+        }
+
+        int ans = 0;
+        for (int x : a) {
+            if (x == m) {
+                ans += 1;
+            }
+        }
+
+        System.out.println(ans);
+
+        sc.close();
+    }
+}
+/*整数 N, M を受け取ります。
+ループを用いて、N 個の整数を受け取ります。
+M の個数をカウントし、出力します。
+n と m を受け取ります。
+空のリストを ArrayList<Integer> a = new ArrayList<>() で用意して for 文でリストに入力値を追加していきます。
+その後、解を保存するために変数 ans を用意します。
+拡張 for 文と if 文を使って配列の各要素が m と等しいかを確認します。
+m と等しかったら、ans の値を +1 します。
+拡張 for 文の処理後、ans を出力すれば解けます。*/
 
 step9  配列末尾への追加
-    
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        ArrayList<Integer> a = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            a.add(sc.nextInt());
+        }
+
+        a.add(m);
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*整数 N, M を受け取ります。
+ループを用いて、N 個の整数を受け取ります。
+N 個の整数の末尾に M を挿入し、改行区切りで出力します。
+ArrayList を使った方法を紹介します。
+要素の追加は add メソッドを使います。
+a.add(要素) とすれば、ArrayList の末尾に 要素 を追加できます。*/
+
 step10　要素の削除
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        ArrayList<Integer> a = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            a.add(sc.nextInt());
+        }
+
+        a.remove(m - 1);
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*整数 N, M を受け取ります。
+ループを用いて、N 個の整数を受け取ります。
+左から M 番目の要素を削除し、改行区切りで出力します。
+ArrayList を用いた方法を紹介します。
+ArrayList では要素の削除は remove メソッドが使われます。
+a.remove(m-1) とすれば、インデックス m-1 の要素を削除できます。*/
 
 step11  要素の挿入
     
