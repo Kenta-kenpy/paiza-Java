@@ -1265,8 +1265,29 @@ public class Main {
 配列を用いて問題文で指定された複数の文字列を管理します。
 配列の各要素に 1 つ文字列が格納されるように配列を定義すると、配列の要素数 (長さ) が文字列の数と一致するので 配列名.length を出力します。*/
 step13　全要素の出力
+public class Main {
 
+    public static void main(String[] args) {
+        String[] s = new String[] { "good", "morning", "paiza", "813", "pa13" };
+
+        for (String t : s) {
+            System.out.println(t);
+        }
+    }
+}
+/*配列を与えられた文字列で初期化します。すべての文字列をループを用いて出力します。
+複数の文字列を配列で管理します。出力は拡張 for 文を使うと便利です。s は文字列型の配列なので、拡張 for 文で用意する変数の型は String です。*/
 step14　i番目の出力
+public class Main {
+
+    public static void main(String[] args) {
+        String[] s = new String[] { "good", "morning", "paiza", "813", "pa13" };
+        System.out.println(s[2]);
+    }
+}
+/*配列を与えられた文字列で初期化します。3 番目の文字列を出力します。
+問題文で指定された複数の文字列を配列で管理します。
+配列のインデックスは 0 から始まるので 3 番目の文字列のインデックスは 2 であることに注意して下さい。*/
 
 step15　文字列の配列の入力１
 
