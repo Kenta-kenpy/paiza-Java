@@ -1222,9 +1222,48 @@ ArrayList では要素の削除は remove メソッドが使われます。
 a.remove(m-1) とすれば、インデックス m-1 の要素を削除できます。*/
 
 step11  要素の挿入
-    
-step12  要素数の出力
+import java.util.*;
 
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int k = sc.nextInt();
+
+        ArrayList<Integer> a = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            a.add(sc.nextInt());
+        }
+
+        a.add(m - 1, k);
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*整数 N, M, K を受け取ります。
+ループを用いて、N 個の整数を受け取ります。
+左から M 番目に K を挿入し、改行区切りで出力します。
+ArrayList を用いる方法を紹介します。
+ArrayList の add メソッドは a.add(i, e) のように使えば a のインデックス i の位置に要素 e を挿入できます。*/
+
+step12  要素数の出力
+public class Main {
+
+    public static void main(String[] args) {
+        String[] s = new String[] { "Hello", "paiza", "1234", "pa13" };
+        System.out.println(s.length);
+    }
+}
+/*配列を与えられた複数の文字列で初期化します。文字列の数を出力します。
+配列を用いて問題文で指定された複数の文字列を管理します。
+配列の各要素に 1 つ文字列が格納されるように配列を定義すると、配列の要素数 (長さ) が文字列の数と一致するので 配列名.length を出力します。*/
 step13　全要素の出力
 
 step14　i番目の出力
