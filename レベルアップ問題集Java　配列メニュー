@@ -1290,14 +1290,130 @@ public class Main {
 配列のインデックスは 0 から始まるので 3 番目の文字列のインデックスは 2 であることに注意して下さい。*/
 
 step15　文字列の配列の入力１
+public class Main {
+
+    public static void main(String[] args) {
+        String[] s = new String[] {
+            "eight",
+            "one",
+            "three",
+            "paiza",
+            "pa13",
+            "813",
+        };
+
+        for (String t : s) {
+            System.out.println(t);
+        }
+    }
+}
+/*配列を与えられた文字列で初期化します。すべての文字列をループを用いて出力します。
+問題文で指定された複数の文字列を配列で管理します。
+出力は拡張 for 文を使うと簡潔に書けます。
+配列 s は文字列型なので、拡張 for 文で用意する変数は文字列型です。*/
 
 step16　文字列の配列の入力２
-    
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] s = new String[10];
+        for (int i = 0; i < 10; i++) {
+            s[i] = sc.next();
+        }
+
+        for (String t : s) {
+            System.out.println(t);
+        }
+
+        sc.close();
+    }
+}
+/*ループを用いて 10 個の文字列を受け取ります。すべての文字列をループを用いて出力します。
+予め 10 個の文字列が入力されると分かっているので、文字列型で長さが 10 の配列を用意します。
+出力は拡張 for 文で書きました。
+拡張 for 文は配列の各要素が順に変数に代入されるので、配列の要素を対象に処理を行いたいときに便利です。*/
+
 step17　文字列の配列の入力３
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        String[] s = new String[n];
+        for (int i = 0; i < n; i++) {
+            s[i] = sc.next();
+        }
+
+        for (String t : s) {
+            System.out.println(t);
+        }
+
+        sc.close();
+    }
+}
+/*整数 N を受け取ります。
+ループを用いて N 個の文字列を受け取ります。
+すべての文字列をループを用いて出力します。
+n 個の文字列が入力されるので、n を受け取って、文字列型で長さ n の配列を用意します。
+for 文で n 個の入力値を受け取って配列に代入していきます。
+出力は拡張 for 文で書くと簡潔に書けます。
+拡張 for 文は配列の各要素が順に変数に代入されるので、配列の要素を対象に処理を行いたいときに便利です。*/
 
 step18　i番目の出力１
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] s = new String[] { "good", "morning", "paiza", "813", "pa13" };
+
+        int n = sc.nextInt();
+
+        System.out.println(s[n - 1]);
+
+        sc.close();
+    }
+}
+/*整数 N を受け取ります。N 番目の文字列を出力します。
+問題文で指定された複数の文字列を配列で管理します。
+整数 n を入力から受け取り、n 番目の要素を出力します。
+配列のインデックスは 0 から始まるので、n 番目の要素のインデックスは n-1 であることに注意して下さい。*/
 
 step19　i番目の出力２
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        String[] s = new String[5];
+        for (int i = 0; i < 5; i++) {
+            s[i] = sc.next();
+        }
+
+        System.out.println(s[n - 1]);
+
+        sc.close();
+    }
+}
+/*整数 N を受け取ります。ループを用いて 5 個の文字列を受け取ります。N 番目の文字列を出力します。
+n を入力から受け取ります。
+予め入力される文字列 s_i の数は 5 個だと分かっているので、文字列型で長さ 5 の配列を用意します。
+for 文で 5 個の入力を受け取って配列に代入していきます。
+配列のインデックスは 0 から始まるので n 番目の要素のインデックスは n-1 であることに注意して下さい。*/
 
 step20　i番目の出力３
 
