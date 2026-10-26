@@ -1,1 +1,177 @@
+<シェルソート>
+import java.util.Scanner;
 
+public class Main {
+
+    static void insertion_sort(int a[], int n, int h) {
+        int num_of_move = 0;
+
+        for (int i = h; i < n; i++) {
+            int x = a[i];
+            int j = i - h;
+
+            while (j >= 0 && a[j] > x) {
+                a[j + h] = a[j];
+                j -= h;
+                num_of_move++;
+            }
+
+            a[j + h] = x;
+        }
+
+        System.out.println(num_of_move);
+    }
+
+    static void shell_sort(int a[], int n, int[] h, int k) {
+        for (int i = 0; i < k; i++) {
+            insertion_sort(a, n, h[i]);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int a[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        int k = sc.nextInt();
+
+        int h[] = new int[k];
+        for (int i = 0; i < k; i++) {
+            h[i] = sc.nextInt();
+        }
+
+        shell_sort(a, n, h, k);
+    }
+}
+
+<マージソート>
+import java.util.Scanner;
+
+public class Main {
+
+    static final int INF = 1000000001;
+    static int count = 0;
+
+    static void merge(int[] a, int left, int mid, int right) {
+        int nl = mid - left;
+        int nr = right - mid;
+
+        int[] l = new int[nl + 1];
+        int[] r = new int[nr + 1];
+        for (int i = 0; i < nl; i++) {
+            l[i] = a[left + i];
+        }
+        for (int i = 0; i < nr; i++) {
+            r[i] = a[mid + i];
+        }
+        l[nl] = INF;
+        r[nr] = INF;
+
+        int lindex = 0;
+        int rindex = 0;
+
+        for (int i = left; i < right; i++) {
+            if (l[lindex] < r[rindex]) {
+                a[i] = l[lindex];
+                lindex++;
+            } else {
+                a[i] = r[rindex];
+                rindex++;
+                count++;
+            }
+        }
+    }
+
+    static void merge_sort(int a[], int left, int right) {
+        if (left + 1 < right) {
+            int mid = (left + right) / 2;
+            merge_sort(a, left, mid);
+            merge_sort(a, mid, right);
+            merge(a, left, mid, right);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int a[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        merge_sort(a, 0, n);
+
+        for (int i = 0; i < n; i++) {
+            if (i > 0) {
+                System.out.print(" ");
+            }
+            System.out.print(a[i]);
+        }
+        System.out.println();
+
+        System.out.println(count);
+    }
+}
+
+<クイックソート>
+import java.util.Scanner;
+
+public class Main {
+
+    static int count = 0;
+
+    static void quick_sort(int a[], int left, int right) {
+        if (left + 1 >= right) {
+            return;
+        }
+
+        int pivot = a[right - 1];
+
+        int cur_index = left;
+        for (int i = left; i < right - 1; i++) {
+            if (a[i] < pivot) {
+                int cp = a[cur_index];
+                a[cur_index] = a[i];
+                a[i] = cp;
+                cur_index++;
+                count++;
+            }
+        }
+
+        a[right - 1] = a[cur_index];
+        a[cur_index] = pivot;
+
+        quick_sort(a, left, cur_index);
+        quick_sort(a, cur_index + 1, right);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int a[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        quick_sort(a, 0, n);
+
+        for (int i = 0; i < n; i++) {
+            if (i > 0) {
+                System.out.print(" ");
+            }
+            System.out.print(a[i]);
+        }
+        System.out.println();
+
+        System.out.println(count);
+    }
+}
