@@ -1597,17 +1597,249 @@ for 文で n 個の入力値を配列に格納します。
 
 <フィボナッチ数>
 step1　重複の削除
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        List<Integer> li = Arrays.asList(1, 3, 5, 1, 2, 3, 6, 6, 5, 1, 4);
+        Set<Integer> a = new TreeSet(li);
+
+        for (int x : a) {
+            System.out.println(x);
+        }
+    }
+}
+/*与えられた数列を宣言します。
+数列をソートします。
+重複を削除し、ループを用いて出力します。
+重複を排除するために、集合を使う方法です。
+TreeSet クラスのインスタンスは常に整列済みの状態を保つので、これを使います。
+整列の法則は自分で設定することもできますが、デフォルトでは昇順になっているので、今回は変更する必要はありません。
+TreeSet のインスタンスを生成するために、一旦リストを生成します。
+その後、リストを引数で渡して TreeSet のインスタンスを生成します。
+最後に拡張 for 文を使って出力の処理を書きます。*/
 
 step2　配列の最大最小
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        Arrays.sort(a);
+
+        System.out.println(a[n - 1] + " " + a[0]);
+
+        sc.close();
+    }
+}
+/*方針の通り実装しました。
+昇順にソートしたあとは、インデックス 0 に最小値が、インデックス n-1 に最大値が、それぞれ格納されているのでそれを出力します。
+昇順にソートする際、Arrays.sort() が便利です。*/
 
 step3　ある数以上以下の要素の列挙１
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        for (int x : a) {
+            if (x >= 5) {
+                System.out.println(x);
+            }
+        }
+
+        sc.close();
+    }
+}
+/*整数 N を受け取ります。
+N 個の整数をループを用いて受け取ります。
+5 以上の数を改行区切りで出力します。
+入力される n に基づいて、整数型で長さ n の配列を用意します。
+解答コードでは、拡張 for 文と if 文を使って配列の各要素が 5 以上であればその要素を出力する、という書き方をしています。*/
 
 step4　ある数以上以下の要素の列挙２
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        for (int x : a) {
+            if (x >= k) {
+                System.out.println(x);
+            }
+        }
+
+        sc.close();
+    }
+}
+/*整数 N, K を受け取ります。
+N 個の整数をループを用いて受け取ります。
+K 以上の数を改行区切りで出力します。
+入力される n に基づいて、整数型で長さ n の配列を用意します。
+解答コードでは、拡張 for 文と if 文を使って配列の各要素が k 以上であればその要素を出力する、という書き方をしています。*/
 
 step5　ある数以上以下の要素の列挙３
-        
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        int sum = 0;
+        for (int x : a) {
+            sum += x;
+        }
+        double ave = (double) sum / n;
+
+        for (int x : a) {
+            if (x >= ave) {
+                System.out.println(x);
+            }
+        }
+
+        sc.close();
+    }
+}
+/*整数 N を受け取ります。
+N 個の整数をループを用いて受け取ります。
+N 個の整数の平均を計算します。
+平均以上の数を改行区切りで出力します。
+方針の通りに実装しました。
+まず、入力される整数列を配列に格納します。
+その後、for 文を使って配列の全要素の合計を求めてから、配列の長さ (要素数) で割って平均を求めます。
+出力は for 文と if 文で配列の各要素が平均 ave 以上であるかを判定して true の場合その要素を出力します。*/
+
 step6　二点間の距離１
-    
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int x0 = 2;
+        int y0 = 3;
+
+        int[] x = new int[n];
+        int[] y = new int[n];
+        for (int i = 0; i < n; i++) {
+            x[i] = sc.nextInt();
+            y[i] = sc.nextInt();
+        }
+
+        for (int i = 0; i < n; i++) {
+            System.out.println(Math.abs(x[i] - x0) + Math.abs(y[i] - y0));
+        }
+
+        sc.close();
+    }
+}
+/*整数 N を受け取ります。
+N 個のx, yをループを用いて受け取ります。
+点 (2, 3) と各点の距離をマンハッタン距離で計算し、改行区切りで出力します。
+入力で与えられる n に基づいて x 座標と y 座標を n 回受け取って、マンハッタン距離を出力します。
+絶対値を扱いたいとき、Math.abs() を使います。*/
+
 step7　二点間の距離２
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        int[] x = new int[n];
+        int[] y = new int[n];
+        for (int i = 0; i < n; i++) {
+            x[i] = sc.nextInt();
+            y[i] = sc.nextInt();
+        }
+
+        System.out.println(
+            Math.abs(x[b - 1] - x[a - 1]) + Math.abs(y[b - 1] - y[a - 1])
+        );
+
+        sc.close();
+    }
+}
+/*整数 N, A, B を受け取ります。
+N 個のx, yをループを用いて受け取ります。
+A 番目の点と B 番目の点の距離をマンハッタン距離で計算し出力します。
+入力で与えられる n に基づいて x 座標と y 座標を n 回受け取って、マンハッタン距離を出力します。
+絶対値を扱いたいとき、Math.abs() を使います。
+配列のインデックスは 0 から始まるので、a 番目の要素のインデックスは a-1 になることに注意して下さい。*/
 
 final　フィボナッチ数
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] fibo = new int[n];
+        fibo[0] = 0;
+        fibo[1] = 1;
+        for (int i = 2; i < n; i++) {
+            fibo[i] = fibo[i - 2] + fibo[i - 1];
+        }
+
+        for (int x : fibo) {
+            System.out.println(x);
+        }
+
+        sc.close();
+    }
+}
+/*整数 N を受け取ります。
+N 番目のフィボナッチ数までループを用いて計算します。
+ループを用いて N 番目までのフィボナッチ数まで出力します。
+方針に沿って作成しました。
+fibo[i] が整数 i のフィボナッチ数を持つようにすることで、2 番目以降のフィボナッチ数は fibo[i] = fibo[i-2] + fibo[i-1] で求めることができます。
+配列は定義時に 0 で初期化されるので、fibo[0] = 0; は書かなくても大丈夫です。*/
+
