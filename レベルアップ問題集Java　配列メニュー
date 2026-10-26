@@ -1416,16 +1416,184 @@ for 文で 5 個の入力を受け取って配列に代入していきます。
 配列のインデックスは 0 から始まるので n 番目の要素のインデックスは n-1 であることに注意して下さい。*/
 
 step20　i番目の出力３
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        String[] s = new String[m];
+        for (int i = 0; i < m; i++) {
+            s[i] = sc.next();
+        }
+
+        System.out.println(s[n - 1]);
+
+        sc.close();
+    }
+}
+/*整数 N, M を受け取ります。ループを用いて M 個の文字列を受け取ります。N 番目の文字列を出力します。
+m 個の文字列 s_i が入力されるので、文字列型で長さ m の配列を用意します。
+for 文で m 個の文字列を受け取って配列に代入していきます。
+その後 s[n-1] を出力します。
+これは配列のインデックスが 0 から始まることに起因します。*/
 
 step21　i番目の出力４
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int l = sc.nextInt();
+
+        String[] s = new String[m];
+        for (int i = 0; i < m; i++) {
+            s[i] = sc.next();
+        }
+
+        System.out.println(s[n - 1].charAt(l - 1));
+
+        sc.close();
+    }
+}
+/*整数 N, M, L を受け取ります。
+ループを用いて M 個の文字列を受け取ります。
+N 番目の文字列の L 番目の文字を出力します。
+m 個の文字列 s_i を受け取るために、文字列型で長さ m の配列を用意します。
+s[n-1].charAt(l-1) で n 番目の文字列の l 番目の文字を取得できます。
+以下で、もう少し詳しく説明します。
+s[n-1] とすると、配列の n 番目の要素を取得することができます。
+文字列.charAt(l-1) とすると 文字列 の l 番目の文字を取得することができます。
+よって、s[n-1].charAt(l-1) とすると、配列 s の n 番目の文字列の l 番目の文字を取得することができます。
+配列や文字列のインデックスは 0 から始まることに注意して下さい。*/
 
 step22　辞書順に出力１
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        String[] s = new String[] { "zaipa", "izapa", "paiza" };
+
+        Arrays.sort(s);
+
+        for (String t : s) {
+            System.out.println(t);
+        }
+    }
+}
+/*vector を用いて事前に与えられた文字列で初期化します。
+3 つの文字列をソートします。
+ソートした 3 つの文字列を改行区切りで出力します。
+指定された文字列を配列で管理します。
+配列をソートするとき、Arrays.sort を使います。
+デフォルトでは、 Arrays.sort は引数で文字列型の配列が渡されたとき、その配列をアルファベット順 (辞書順) にソートします。
+引数で渡された配列に直接変更が加えられるので、注意が必要です。
+今回は、配列 s を引数で渡してソートした後、拡張 for 文で配列 s の各要素を出力すれば解けます。*/
 
 step23　辞書順に出力２
-    
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] s = new String[5];
+        for (int i = 0; i < 5; i++) {
+            s[i] = sc.next();
+        }
+
+        Arrays.sort(s);
+
+        for (String t : s) {
+            System.out.println(t);
+        }
+
+        sc.close();
+    }
+}
+/*5 つの文字列をループを用いて受け取ります。
+5 つの文字列をソートします。
+ソートした 5 つの文字列を改行区切りで出力します。
+予め 5 個の文字列が入力されると分かっているので、文字列型で長さが 5 の配列 s を用意します。
+for 文で、入力の受け取りと配列への代入を 5 回繰り返して、入力値を配列に格納します。
+文字列型の配列 s を辞書順にソートしたいとき Arrays.sort(s) とすると簡単です。
+拡張 for 文などを使って配列 s の各要素を出力すれば解けます。*/
+
 step24　辞書順に出力３
-    
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        String[] s = new String[n];
+        for (int i = 0; i < n; i++) {
+            s[i] = sc.next();
+        }
+
+        Arrays.sort(s);
+
+        for (String t : s) {
+            System.out.println(t);
+        }
+
+        sc.close();
+    }
+}
+/*整数 N を受け取ります。
+N 個の文字列をループを用いて受け取ります。
+N 個の文字列をソートします。
+ソートした N 個の文字列を改行区切りで出力します。
+まず、入力される文字列の数 n が与えられるのでそれを受け取り、文字列型で長さ n の配列を用意します。
+文字列型の配列 s を辞書順にソートしたいとき Arrays.sort(s) とすると簡単です。
+拡張 for 文などを使って配列 s の各要素を出力すれば解けます。*/
+
 final　 辞書順に出力 Boss
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+
+        String[] s = new String[n];
+        for (int i = 0; i < n; i++) {
+            s[i] = sc.next();
+        }
+
+        Arrays.sort(s);
+
+        System.out.println(s[k - 1]);
+
+        sc.close();
+    }
+}
+/*整数 N, K を受け取ります。
+N 個の文字列をループを用いて受け取ります。
+N 個の文字列をソートします。
+辞書順で K 番目の文字列を出力します。
+
+入力される整数 n に基づいて、文字列型で長さ n の配列 s を用意します。
+for 文で n 個の入力値を配列に格納します。
+文字列型の配列 s を辞書順にソートしたいとき Arrays.sort(s) とすると簡単です。
+最後に s[k-1] を出力すれば解けます。
+なぜ s[k-1] かというと、配列のインデックスは 0 から始まるからです。*/
 
 <フィボナッチ数>
 step1　重複の削除
